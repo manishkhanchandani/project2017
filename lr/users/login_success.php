@@ -8,8 +8,8 @@
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
-<script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 <!-- InstanceBeginEditable name="head" -->
 <meta charset="utf-8">

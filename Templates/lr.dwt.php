@@ -8,8 +8,8 @@
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../lr/css/bootstrap.min.css">
-<script src="../lr/js/bootstrap.min.js"></script>
 <script src="../lr/js/jquery.min.js"></script>
+<script src="../lr/js/bootstrap.min.js"></script>
 
 <!-- TemplateBeginEditable name="head" -->
 <!-- TemplateEndEditable -->
