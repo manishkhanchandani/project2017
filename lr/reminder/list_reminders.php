@@ -173,7 +173,7 @@ $queryString_rsReminder = sprintf("&totalRows_rsReminder=%d%s", $totalRows_rsRem
                           <td><?php echo $row_rsReminder['fileLink']; ?></td>
                           <td><?php echo $row_rsReminder['status']; ?></td>
                           <td><?php echo $row_rsReminder['reminder_created_dt']; ?></td>
-                          <td><a href="#">Edit</a></td>
+                          <td><a href="edit_reminder.php?reminder_id=<?php echo $row_rsReminder['reminder_id']; ?>">Edit</a></td>
                           <td><a href="delete_reminder.php?reminder_id=<?php echo $row_rsReminder['reminder_id']; ?>">Delete</a></td>
                         </tr>
                         <?php } while ($row_rsReminder = mysql_fetch_assoc($rsReminder)); ?>

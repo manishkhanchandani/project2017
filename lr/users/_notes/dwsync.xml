@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="login.php" local="131432732873583722" remote="131432729470000000" testing="131432729470000000" />
-<file name="intermediate1.php" local="131430138850275392" remote="131430135310000000" testing="131430135310000000" />
+<file name="login.php" local="131433593063027717" remote="131433592750000000" testing="131433592750000000" />
+<file name="intermediate1.php" local="131433599442676719" remote="131433597050000000" testing="131433597050000000" />
 <file name="login_success.php" local="131432732873699035" remote="131432729470000000" testing="131432729470000000" />
 <file name="login_failure.php" local="131432732873869771" remote="131432729470000000" testing="131432729470000000" />
 <file name="register.php" local="131432732873513540" remote="131432729470000000" testing="131432729470000000" />
@@ -14,4 +14,5 @@
 <file name="intermediate3.php" local="131430139650807581" remote="131430139600000000" testing="131430139600000000" />
 <file name="change_password.php" local="131430139723166565" remote="131430139600000000" testing="131430139600000000" />
 <file name="logout.php" local="131431009984385884" remote="131431007180000000" testing="131431007180000000" />
+<file name="register2.php" local="131433610968460067" remote="131433609930000000" testing="131433609930000000" />
 </dwsync>
