@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="login.php" local="131434038499245830" remote="131434035140000000" testing="131434035140000000" />
+<file name="login.php" local="131434847119830568" remote="131434846890000000" testing="131434846890000000" />
+<file name="logout.php" local="131434205150635750" remote="131434202640000000" testing="131434202640000000" />
+<file name="add_quiz.php" local="131434847120016543" remote="131434846890000000" testing="131434846890000000" />
+<file name="view_quiz.php" local="131434847119785549" remote="131434846890000000" testing="131434846890000000" />
+<file name="index.php" local="131434847119921291" remote="131434846890000000" testing="131434846890000000" />
+<file name="register.php" local="131434850833801464" remote="131434846890000000" testing="131434846890000000" />
 </dwsync>

@@ -1,49 +1,3 @@
-<?php require_once('../Connections/conn.php'); ?>
-<?php
-// *** Validate request to login to this site.
-if (!isset($_SESSION)) {
-  session_start();
-}
-
-$loginFormAction = $_SERVER['PHP_SELF'];
-if (isset($_GET['accesscheck'])) {
-  $_SESSION['PrevUrl'] = $_GET['accesscheck'];
-}
-
-if (isset($_POST['email'])) {
-  $loginUsername=$_POST['email'];
-  $password=$_POST['password'];
-  $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "login_success.php";
-  $MM_redirectLoginFailed = "login_failure.php";
-  $MM_redirecttoReferrer = true;
-  mysql_select_db($database_conn, $conn);
-  
-  $LoginRS__query=sprintf("SELECT user_id, email, password FROM qz_users WHERE email='%s' AND password='%s'",
-    get_magic_quotes_gpc() ? $loginUsername : addslashes($loginUsername), get_magic_quotes_gpc() ? $password : addslashes($password)); 
-   
-  $LoginRS = mysql_query($LoginRS__query, $conn) or die(mysql_error());
-  $loginFoundUser = mysql_num_rows($LoginRS);
-  if ($loginFoundUser) {
-     $loginStrGroup = "";
-	 
-    $user_id  = mysql_result($LoginRS,0,'user_id');
-    
-    //declare two session variables and assign them
-    $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	  
-    $_SESSION['MM_UserId'] = $user_id;   
-
-    if (isset($_SESSION['PrevUrl']) && true) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
-    }
-    header("Location: " . $MM_redirectLoginSuccess );
-  }
-  else {
-    header("Location: ". $MM_redirectLoginFailed );
-  }
-}
-?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -90,8 +44,8 @@ if (isset($_POST['email'])) {
 <!-- InstanceBeginEditable name="EditRegion3" -->
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Login</h3>
-				<form method="POST" name="formLogin" id="formLogin" action="<?php echo $loginFormAction; ?>">
+				<h3>Register</h3>
+				<form method="POST" name="formLogin" id="formLogin">
 				  <div class="form-group">
 					<label for="email">Email address</label>
 					<input type="email" class="form-control" id="email" name="email" placeholder="Email">
