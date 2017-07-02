@@ -80,7 +80,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO qz_questions (user_id, category_id, question, explanation, quiz_dt, status, answers, correct) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO qz_questions (user_id, category_id, question, explanation, quiz_dt, status, answers, correct, topic) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['user_id'], "int"),
                        GetSQLValueString($_POST['category_id'], "int"),
                        GetSQLValueString($_POST['question'], "text"),
@@ -88,7 +88,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_POST['quiz_dt'], "date"),
                        GetSQLValueString($_POST['status'], "int"),
                        GetSQLValueString($_POST['answers'], "text"),
-                       GetSQLValueString($_POST['correct'], "int"));
+                       GetSQLValueString($_POST['correct'], "int"),
+                       GetSQLValueString($_POST['topic'], "text"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
@@ -111,12 +112,22 @@ $query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s", $co
 $rsQuiz = mysql_query($query_rsQuiz, $conn) or die(mysql_error());
 $row_rsQuiz = mysql_fetch_assoc($rsQuiz);
 $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
+
+$colname_rsCat = "-1";
+if (isset($_GET['cat_id'])) {
+  $colname_rsCat = (get_magic_quotes_gpc()) ? $_GET['cat_id'] : addslashes($_GET['cat_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsCat = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $colname_rsCat);
+$rsCat = mysql_query($query_rsCat, $conn) or die(mysql_error());
+$row_rsCat = mysql_fetch_assoc($rsCat);
+$totalRows_rsCat = mysql_num_rows($rsCat);
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Add Quiz</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -166,11 +177,20 @@ $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Add New Quiz</h1>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a></div>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
-  <table>
+  
+  <div class="table-responsive">
+  <table class="table">
+    <tr valign="baseline">
+      <td nowrap align="right" valign="top">Topic:</td>
+      <td><label>
+        <input name="topic" type="text" id="topic" size="55">
+      </label></td>
+    </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>
-      <td><textarea name="question" cols="50" rows="5"></textarea>      </td>
+      <td><textarea name="question" rows="7" class="form-control"></textarea>      </td>
     </tr>
 	<?php for ($i = 0; $i < 4; $i++) { ?>
     <tr valign="baseline">
@@ -178,7 +198,7 @@ $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
       <td><table width="100%" border="0">
         <tr>
           <td><label>
-            <input name="option[<?php echo $i; ?>]" type="text" id="option[<?php echo $i; ?>]" size="50" />
+		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"></textarea>
           </label></td>
           <td><label>
             <input name="correct" type="radio" value="<?php echo $i; ?>" />
@@ -203,6 +223,7 @@ $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
       <td><input type="submit" value="Insert record"></td>
     </tr>
   </table>
+  </div>
   <input type="hidden" name="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
   <input type="hidden" name="category_id" value="<?php echo $_GET['cat_id']; ?>">
   <input type="hidden" name="answers" value="">
@@ -211,17 +232,20 @@ $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
 </form>
 <?php if ($totalRows_rsQuiz > 0) { // Show if recordset not empty ?>
   <h3>View Quiz </h3>
-  <table border="1">
+  <div class="table-responsive">
+  <table class="table">
     <tr>
-      <td valign="top"><strong>question</strong></td>
-      <td valign="top"><strong>explanation</strong></td>
-      <td valign="top"><strong>status</strong></td>
-      <td valign="top"><strong>answers</strong></td>
-      <td valign="top"><strong>correct</strong></td>
+      <td valign="top"><strong>Topic</strong></td>
+      <td valign="top"><strong>Question</strong></td>
+      <td valign="top"><strong>Explanation</strong></td>
+      <td valign="top"><strong>Status</strong></td>
+      <td valign="top"><strong>Answers</strong></td>
+      <td valign="top"><strong>Correct</strong></td>
       <td valign="top"><strong>Delete</strong></td>
     </tr>
       <?php do { ?>
       <tr>
+        <td valign="top"><?php echo $row_rsQuiz['topic']; ?></td>
         <td valign="top"><?php echo $row_rsQuiz['question']; ?></td>
         <td valign="top"><?php echo $row_rsQuiz['explanation']; ?></td>
         <td valign="top"><?php echo $row_rsQuiz['status']; ?></td>
@@ -234,10 +258,13 @@ $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
       </tr>
       <?php } while ($row_rsQuiz = mysql_fetch_assoc($rsQuiz)); ?>
       </table>
+	  </div>
   <?php } // Show if recordset not empty ?><!-- InstanceEndEditable -->
 </div>
 </body>
 <!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsQuiz);
+
+mysql_free_result($rsCat);
 ?>

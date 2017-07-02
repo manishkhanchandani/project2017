@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <info>
-	<infoitem key="UD_rsQuiz" value="name:id;datatype:int,name:user_id;datatype:int,name:category_id;datatype:int,name:question;datatype:blob,name:explanation;datatype:blob,name:quiz_dt;datatype:timestamp,name:status;datatype:int,name:answers;datatype:blob,name:correct;datatype:int" />
+	<infoitem key="UD_rsQuiz" value="name:id;datatype:int,name:user_id;datatype:int,name:category_id;datatype:int,name:question;datatype:blob,name:explanation;datatype:blob,name:quiz_dt;datatype:timestamp,name:status;datatype:int,name:answers;datatype:blob,name:correct;datatype:int,name:topic;datatype:string" />
+	<infoitem key="UD_rsCat" value="name:cat_id;datatype:int,name:category;datatype:string,name:parent_id;datatype:int,name:user_id;datatype:int" />
 </info>

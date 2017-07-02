@@ -72,6 +72,15 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 
+if ((isset($_GET['del_id'])) && ($_GET['del_id'] != "")) {
+  $deleteSQL = sprintf("DELETE FROM qz_results WHERE cid=%s AND user_id=%s",
+                       GetSQLValueString($_GET['del_id'], "int"),
+                       GetSQLValueString($_SESSION['MM_UserId'], "int"));
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($deleteSQL, $conn) or die(mysql_error());
+}
+
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -115,6 +124,16 @@ if (isset($_GET['totalRows_rsResults'])) {
   $totalRows_rsResults = mysql_num_rows($all_rsResults);
 }
 $totalPages_rsResults = ceil($totalRows_rsResults/$maxRows_rsResults)-1;
+
+$colname_rsCat = "-1";
+if (isset($_GET['cat_id'])) {
+  $colname_rsCat = (get_magic_quotes_gpc()) ? $_GET['cat_id'] : addslashes($_GET['cat_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsCat = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $colname_rsCat);
+$rsCat = mysql_query($query_rsCat, $conn) or die(mysql_error());
+$row_rsCat = mysql_fetch_assoc($rsCat);
+$totalRows_rsCat = mysql_num_rows($rsCat);
 
 $queryString_rsResults = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
@@ -167,7 +186,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 <head>
 <meta charset="utf-8">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>View Quiz</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -175,6 +194,31 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 <script src="js/bootstrap.min.js"></script>
 
 <!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.boxParent {
+	position: absolute;
+	padding: 15px;
+	right: 0;
+}
+
+.box {
+	position: absolute;
+	width: 500px;
+	background-color: black;
+	color: white;
+	visibility:hidden;
+	padding: 15px;
+	border-radius: 6px;
+}
+.boxParent:hover .box {
+	visibility: visible;
+}
+
+.left {
+	right: 105%;
+	top: -5px;
+}
+</style>
 <!-- InstanceEndEditable -->
 </head>
 
@@ -206,27 +250,36 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
     </nav>
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-<h1>Start Quiz</h1>
+<h1>View Quiz</h1>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a></div>
 <form id="form1" name="form1" method="post" action="">
-  <table border="1">
+  
+  <div class="table-responsive">
+  <table class="table table-striped">
     <tr>
       <td valign="top"><strong>Question</strong></td>
-      <td valign="top"><strong>Options</strong></td>
-      <td valign="top"><strong>Explanation</strong></td>
     </tr>
     <?php do { ?>
       <tr>
-        <td valign="top"><?php echo $row_rsQuiz['question']; ?></td>
-        <td valign="top"><?php foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
+        <td valign="top"><?php echo nl2br($row_rsQuiz['question']); ?><br><br>
+			<?php foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
 			?>
 			<div><input name="option[<?php echo $row_rsQuiz['id']; ?>]" type="radio" value="<?php echo $k; ?>" /> <?php echo $v; ?><input name="correct[<?php echo $row_rsQuiz['id']; ?>]" type="hidden" value="<?php echo $row_rsQuiz['correct']; ?>" /> </div>
 		<?php
-		} ?></td>
-        <td valign="top"><?php echo $row_rsQuiz['explanation']; ?>
-		<br /><?php echo $row_rsQuiz['correct']; ?> is correct</td>
+		} ?>
+		<br><br>
+		<div class="boxParent">
+			Show Explanation
+			<span class="box left">
+				<?php echo $row_rsQuiz['topic']; ?><br><br>
+				<?php echo $row_rsQuiz['explanation']; ?>
+			</span>
+		</div>
+		</td>
       </tr>
       <?php } while ($row_rsQuiz = mysql_fetch_assoc($rsQuiz)); ?>
   </table>
+  </div>
   <p>
     <label>
 	<input name="MM_insert" type="hidden" value="form1" />
@@ -236,7 +289,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 </form>
 <?php if ($totalRows_rsResults > 0) { // Show if recordset not empty ?>
   <h3>View Past Results</h3>
-  <table border="1">
+  
+  <div class="table-responsive">
+  <table class="table table-striped">
     <tr>
       <td><strong>Date</strong></td>
       <td><strong>Total Questions </strong></td>
@@ -252,12 +307,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
         <td><?php echo $row_rsResults['total_question']; ?></td>
         <td><?php echo $row_rsResults['correct_results']; ?></td>
         <td><?php echo $row_rsResults['wrong_results']; ?></td>
-        <td><?php echo $row_rsResults['calc_percentage']; ?></td>
+        <td><?php echo $row_rsResults['calc_percentage']; ?> %</td>
         <td><?php echo $row_rsResults['results']; ?></td>
-        <td><a href="view_quiz.php?del_id=<?php echo $row_rsResults['cid']; ?>">Delete</a></td>
+        <td><a href="view_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&del_id=<?php echo $row_rsResults['cid']; ?>" onClick="var a = confirm('do you really want to delete his record?'); return a;">Delete</a></td>
       </tr>
       <?php } while ($row_rsResults = mysql_fetch_assoc($rsResults)); ?>
       </table>
+    </div>
   <p> Records <?php echo ($startRow_rsResults + 1) ?> to <?php echo min($startRow_rsResults + $maxRows_rsResults, $totalRows_rsResults) ?> of <?php echo $totalRows_rsResults ?>
   <table border="0" width="50%" align="center">
     <tr>
@@ -274,7 +330,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
           <a href="<?php printf("%s?pageNum_rsResults=%d%s", $currentPage, $totalPages_rsResults, $queryString_rsResults); ?>">Last</a>
           <?php } // Show if not last page ?>      </td>
     </tr>
-      </table>
+    </table>
   <?php } // Show if recordset not empty ?></p>
 <p>&nbsp; </p>
 <!-- InstanceEndEditable -->
@@ -285,4 +341,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 mysql_free_result($rsQuiz);
 
 mysql_free_result($rsResults);
+
+mysql_free_result($rsCat);
 ?>

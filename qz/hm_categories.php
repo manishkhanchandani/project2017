@@ -76,10 +76,23 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+function getLink($id, $arr=array()) {
+	global $database_conn, $conn;
+	mysql_select_db($database_conn, $conn);
+	$query = sprintf("SELECT * FROM hm_categories WHERE cat_id = %s", $id);
+	$rs = mysql_query($query, $conn) or die(mysql_error());
+	$row = mysql_fetch_assoc($rs);
+
+	if (empty($row)) {
+		return $arr;
+	}
+	array_push($arr, $row);
+	return getLink($row['parent_id'], $arr);
+}
 if (empty($_GET['parent_id'])) $_GET['parent_id'] = 0;
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO qz_categories (category, parent_id, user_id) VALUES (%s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO hm_categories (category, parent_id, user_id) VALUES (%s, %s, %s)",
                        GetSQLValueString($_POST['category'], "text"),
                        GetSQLValueString($_POST['parent_id'], "int"),
                        GetSQLValueString($_POST['user_id'], "int"));
@@ -89,7 +102,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE qz_categories SET category=%s, parent_id=%s WHERE cat_id=%s",
+  $updateSQL = sprintf("UPDATE hm_categories SET category=%s, parent_id=%s WHERE cat_id=%s",
                        GetSQLValueString($_POST['category'], "text"),
                        GetSQLValueString($_POST['parent_id'], "int"),
                        GetSQLValueString($_POST['cat_id'], "int"));
@@ -114,7 +127,7 @@ if (isset($_GET['parent_id'])) {
   $colname_rsCategory = (get_magic_quotes_gpc()) ? $_GET['parent_id'] : addslashes($_GET['parent_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsCategory = sprintf("SELECT * FROM qz_categories WHERE parent_id = %s AND user_id = %s", $colname_rsCategory,$colname2_rsCategory);
+$query_rsCategory = sprintf("SELECT * FROM hm_categories WHERE parent_id = %s AND user_id = %s", $colname_rsCategory,$colname2_rsCategory);
 $query_limit_rsCategory = sprintf("%s LIMIT %d, %d", $query_rsCategory, $startRow_rsCategory, $maxRows_rsCategory);
 $rsCategory = mysql_query($query_limit_rsCategory, $conn) or die(mysql_error());
 $row_rsCategory = mysql_fetch_assoc($rsCategory);
@@ -132,7 +145,7 @@ if (isset($_GET['cat_id'])) {
   $colname_rsEdit = (get_magic_quotes_gpc()) ? $_GET['cat_id'] : addslashes($_GET['cat_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsEdit = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $colname_rsEdit);
+$query_rsEdit = sprintf("SELECT * FROM hm_categories WHERE cat_id = %s", $colname_rsEdit);
 $rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
 $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
@@ -152,6 +165,11 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCategory, $queryString_rsCategory);
+
+
+
+$breadCrumb = getLink($_GET['parent_id'], array());
+
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -198,6 +216,16 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Category </h1>
+<div>
+<?php if (!empty($breadCrumb)) { ?>
+<ol class="breadcrumb">
+<?php for ($i = count($breadCrumb) - 1; $i >= 0; $i--) { ?>
+
+  <li><a href="hm_categories.php?parent_id=<?php echo $breadCrumb[$i]['parent_id']; ?>"><?php echo $breadCrumb[$i]['category']; ?></a></li>
+<?php } ?>
+</ol>
+<?php } ?>
+</div>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   
   <div class="table-responsive">
@@ -226,8 +254,6 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
       <td><strong>Category</strong></td>
       <td><strong>Parent Id </strong></td>
       <td><strong>Add Child </strong></td>
-      <td><strong>Add Quiz </strong></td>
-      <td><strong>View Quiz </strong></td>
       <td><strong>Edit</strong></td>
       <td><strong>Delete</strong></td>
     </tr>
@@ -236,9 +262,7 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
         <td><?php echo $row_rsCategory['cat_id']; ?></td>
         <td><?php echo $row_rsCategory['category']; ?></td>
         <td><?php echo $row_rsCategory['parent_id']; ?></td>
-        <td><a href="index.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Child</a> </td>
-        <td><a href="add_quiz.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Quiz</a> </td>
-        <td><a href="view_quiz.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">View Quiz </a></td>
+        <td><a href="hm_categories.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Child</a> </td>
         <td>Edit</td>
         <td>Delete</td>
       </tr>

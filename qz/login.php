@@ -14,7 +14,7 @@ if (isset($_POST['email'])) {
   $loginUsername=$_POST['email'];
   $password=$_POST['password'];
   $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "login_success.php";
+  $MM_redirectLoginSuccess = "index.php";
   $MM_redirectLoginFailed = "login_failure.php";
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn, $conn);
