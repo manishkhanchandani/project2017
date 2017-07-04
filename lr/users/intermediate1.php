@@ -75,20 +75,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-
-$colname_rsEdit = "-1";
-if (isset($_SESSION['MM_Username'])) {
-  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_SESSION['MM_Username'] : addslashes($_SESSION['MM_Username']);
-}
-mysql_select_db($database_conn, $conn);
-$query_rsEdit = sprintf("SELECT * FROM lr_users WHERE email = '%s'", $colname_rsEdit);
-$rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
-$row_rsEdit = mysql_fetch_assoc($rsEdit);
-$totalRows_rsEdit = mysql_num_rows($rsEdit);
-
 $updateSQL = sprintf("UPDATE lr_users SET login_dt=%s WHERE user_id=%s",
 				   GetSQLValueString(time(), "int"),
-				   GetSQLValueString($row_rsEdit['user_id'], "int"));
+				   GetSQLValueString($_SESSION['MM_UserId'], "int"));
 
 mysql_select_db($database_conn, $conn);
 $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
@@ -96,7 +85,4 @@ $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 
 header("Location: login_success.php");
 exit;
-?>
-<?php
-mysql_free_result($rsEdit);
 ?>

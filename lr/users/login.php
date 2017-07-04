@@ -19,17 +19,20 @@ if (isset($_POST['email'])) {
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_conn, $conn);
   
-  $LoginRS__query=sprintf("SELECT email, password FROM lr_users WHERE email='%s' AND password='%s'",
+  $LoginRS__query=sprintf("SELECT user_id, email, password FROM lr_users WHERE email='%s' AND password='%s'",
     get_magic_quotes_gpc() ? $loginUsername : addslashes($loginUsername), get_magic_quotes_gpc() ? $password : addslashes($password)); 
    
   $LoginRS = mysql_query($LoginRS__query, $conn) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
   if ($loginFoundUser) {
      $loginStrGroup = "";
+	 
+	  $user_id  = mysql_result($LoginRS,0,'user_id');
     
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
+    $_SESSION['MM_UserGroup'] = $loginStrGroup;	
+	$_SESSION['MM_UserId'] = $user_id;      
 
     if (isset($_SESSION['PrevUrl']) && false) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	

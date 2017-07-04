@@ -55,11 +55,11 @@ if (isset($_GET['pageNum_rsReminder'])) {
 $startRow_rsReminder = $pageNum_rsReminder * $maxRows_rsReminder;
 
 $colname_rsReminder = "-1";
-if (isset($_SESSION['MM_Username'])) {
-  $colname_rsReminder = (get_magic_quotes_gpc()) ? $_SESSION['MM_Username'] : addslashes($_SESSION['MM_Username']);
+if (isset($_SESSION['MM_UserId'])) {
+  $colname_rsReminder = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsReminder = sprintf("select * from lr_reminders INNER JOIN lr_users ON lr_reminders.user_id = lr_users.user_id WHERE lr_users.email = '%s'", $colname_rsReminder);
+$query_rsReminder = sprintf("SELECT * FROM lr_reminders WHERE user_id = %s", $colname_rsReminder);
 $query_limit_rsReminder = sprintf("%s LIMIT %d, %d", $query_rsReminder, $startRow_rsReminder, $maxRows_rsReminder);
 $rsReminder = mysql_query($query_limit_rsReminder, $conn) or die(mysql_error());
 $row_rsReminder = mysql_fetch_assoc($rsReminder);

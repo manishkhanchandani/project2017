@@ -95,16 +95,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   }
   header(sprintf("Location: %s", $insertGoTo));
 }
-
-$colname_rsUser = "-1";
-if (isset($_SESSION['MM_Username'])) {
-  $colname_rsUser = (get_magic_quotes_gpc()) ? $_SESSION['MM_Username'] : addslashes($_SESSION['MM_Username']);
-}
-mysql_select_db($database_conn, $conn);
-$query_rsUser = sprintf("SELECT user_id FROM lr_users WHERE email = '%s'", $colname_rsUser);
-$rsUser = mysql_query($query_rsUser, $conn) or die(mysql_error());
-$row_rsUser = mysql_fetch_assoc($rsUser);
-$totalRows_rsUser = mysql_num_rows($rsUser);
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/lr.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -201,16 +191,13 @@ $totalRows_rsUser = mysql_num_rows($rsUser);
 				    </p>
 				  </div>
 				  <button type="submit" class="btn btn-default">Submit</button>
-			      <input name="user_id" type="hidden" id="user_id" value="<?php echo $row_rsUser['user_id']; ?>">
+			      <input name="user_id" type="hidden" id="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
 				  <input name="reminder_created_dt" type="hidden" id="reminder_created_dt" value="<?php echo date('Y-m-d H:i:s'); ?>" />
 				  <input type="hidden" name="MM_insert" value="form1">
 			  </form>
 			</div>
 		</div> 
-	<!-- InstanceEndEditable -->
+  <!-- InstanceEndEditable -->
 </div>
 </body>
 <!-- InstanceEnd --></html>
-<?php
-mysql_free_result($rsUser);
-?>
