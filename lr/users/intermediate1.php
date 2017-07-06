@@ -75,7 +75,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-$updateSQL = sprintf("UPDATE lr_users SET login_dt=%s WHERE user_id=%s",
+$updateSQL = sprintf("UPDATE lr_users SET login_dt=%s, emailFlag1 = 0, cronFlag = 0 WHERE user_id=%s",
 				   GetSQLValueString(time(), "int"),
 				   GetSQLValueString($_SESSION['MM_UserId'], "int"));
 
