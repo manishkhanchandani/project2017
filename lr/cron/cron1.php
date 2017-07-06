@@ -37,7 +37,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 ?>
 <?php
 mysql_select_db($database_conn, $conn);
-$query_rsRecord = "SELECT * FROM lr_users  WHERE login_dt < $pastDate AND emailFlag1 = 0 LIMIT 5";
+$query_rsRecord = "SELECT * FROM lr_users WHERE login_dt < $pastDate AND emailFlag1 = 0 LIMIT 5";
 $rsRecord = mysql_query($query_rsRecord, $conn) or die(mysql_error());
 $row_rsRecord = mysql_fetch_assoc($rsRecord);
 $totalRows_rsRecord = mysql_num_rows($rsRecord);
