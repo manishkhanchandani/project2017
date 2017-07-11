@@ -27,7 +27,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 ?>
 <?php
-$threeDays = time() - (60 * 60);// three days from today,  * 24 * 3
+$threeDays = time() - (60 * 60 * 3);
 
 
 $maxRows_rsUsers = 5;

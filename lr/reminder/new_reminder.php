@@ -75,6 +75,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+print_r($_POST);
+exit;
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $insertSQL = sprintf("INSERT INTO lr_reminders (user_id, title, emailTo, message, fileLink, status, reminder_created_dt) VALUES (%s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['user_id'], "int"),

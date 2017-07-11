@@ -28,7 +28,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 ?>
 <?php
-$threeDays = time() - (60 * 60);// three days from today,  * 24 * 3
+$threeDays = time() - (60 * 60 * 3);
 
 $colname_rsUsers = "-1";
 if (isset($threeDays)) {
