@@ -7,5 +7,6 @@
 </head>
 
 <body>
+Terms
 </body>
 </html>

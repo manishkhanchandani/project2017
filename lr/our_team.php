@@ -7,5 +7,6 @@
 </head>
 
 <body>
+Our team 
 </body>
 </html>

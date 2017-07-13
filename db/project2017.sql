@@ -73,7 +73,7 @@ CREATE TABLE `lr_users` (
 
 /*Data for the table `lr_users` */
 
-insert  into `lr_users`(`user_id`,`email`,`password`,`first_name`,`last_name`,`gender`,`birth_year`,`created_dt`,`login_dt`,`emailFlag1`,`emailFlag1Date`,`cronFlag`) values (1,'manny@mkgalaxy.com','password','Manish','Khanchandani','male',1974,'2017-06-30 06:35:03',1391369252,1,1499317108,1),(2,'carrie@mkgalaxy.com','password','Carrie','P','female',1970,'2017-06-30 06:35:03',1291369252,1,1499317108,1),(3,'kate@mkgalaxy.com','password','Kate','L','female',1986,'2017-06-30 06:35:03',1191369252,1,1499317108,1);
+insert  into `lr_users`(`user_id`,`email`,`password`,`first_name`,`last_name`,`gender`,`birth_year`,`created_dt`,`login_dt`,`emailFlag1`,`emailFlag1Date`,`cronFlag`) values (1,'manny@mkgalaxy.com','1234','Manish','Khanchandani','male',1974,'2017-06-30 06:35:03',1391369252,1,1499317108,1),(2,'carrie@mkgalaxy.com','password','Carrie','P','female',1970,'2017-06-30 06:35:03',1291369252,1,1499317108,1),(3,'kate@mkgalaxy.com','password','Kate','L','female',1986,'2017-06-30 06:35:03',1191369252,1,1499317108,1);
 
 /*Table structure for table `qz_categories` */
 

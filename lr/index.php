@@ -61,7 +61,11 @@
 
 <div class="container">
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div>my basic content</div> 
+		<div>
+		  <p>Main page</p>
+		  <p>&nbsp;</p>
+		  <p>&nbsp; </p>
+		</div> 
 	<!-- InstanceEndEditable -->
 </div>
 </body>
