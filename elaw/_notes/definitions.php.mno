@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsCategory" value="name:id;datatype:int,name:title;datatype:string,name:definition;datatype:blob,name:example;datatype:blob,name:exception;datatype:blob,name:subject;datatype:string,name:parent_id;datatype:int,name:ref_id;datatype:int,name:created;datatype:timestamp" />
+	<infoitem key="UD_rsEdit" value="name:id;datatype:int,name:title;datatype:string,name:definition;datatype:blob,name:example;datatype:blob,name:exception;datatype:blob,name:subject;datatype:string,name:parent_id;datatype:int,name:ref_id;datatype:int,name:created;datatype:timestamp" />
+	<infoitem key="UD_rsView" value="name:id;datatype:int,name:title;datatype:string,name:definition;datatype:blob,name:example;datatype:blob,name:exception;datatype:blob,name:subject;datatype:string,name:parent_id;datatype:int,name:ref_id;datatype:int,name:created;datatype:timestamp" />
+</info>
