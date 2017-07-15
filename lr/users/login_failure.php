@@ -12,10 +12,12 @@ if (!isset($_SESSION)) {
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../css/font-awesome.css">
+<link rel="stylesheet" href="../css/style.css">
 <!-- InstanceBeginEditable name="head" -->
 <meta charset="utf-8">
 
@@ -72,10 +74,12 @@ if (!isset($_SESSION)) {
       </div>
     </nav>
 
-<div class="container">
 	<!-- InstanceBeginEditable name="EditRegion3" -->
 		<div>login failed, try again </div> 
 	<!-- InstanceEndEditable -->
-</div>
+	
+	<footer>
+		<p>Life Reminder : Copyright &copy; 2017 - <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+	</footer>
 </body>
 <!-- InstanceEnd --></html>

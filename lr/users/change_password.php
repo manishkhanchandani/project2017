@@ -109,10 +109,12 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../css/font-awesome.css">
+<link rel="stylesheet" href="../css/style.css">
 <!-- InstanceBeginEditable name="head" -->
 <meta charset="utf-8">
 <script>
@@ -181,7 +183,6 @@ function validateForm() {
       </div>
     </nav>
 
-<div class="container">
 	<!-- InstanceBeginEditable name="EditRegion3" -->
 		<div>
 		  <h1>Change Password      </h1>
@@ -209,7 +210,10 @@ function validateForm() {
           <p>&nbsp; </p>
 		</div> 
 	<!-- InstanceEndEditable -->
-</div>
+	
+	<footer>
+		<p>Life Reminder : Copyright &copy; 2017 - <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+	</footer>
 </body>
 <!-- InstanceEnd --></html>
 <?php

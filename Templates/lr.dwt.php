@@ -7,10 +7,12 @@
 <!-- TemplateEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link rel="stylesheet" href="../lr/css/bootstrap.min.css">
 <script src="../lr/js/jquery.min.js"></script>
 <script src="../lr/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="../lr/css/font-awesome.css">
+<link rel="stylesheet" href="../lr/css/style.css">
 <!-- TemplateBeginEditable name="head" -->
 <!-- TemplateEndEditable -->
 </head>
@@ -64,10 +66,12 @@
       </div>
     </nav>
 
-<div class="container">
 	<!-- TemplateBeginEditable name="EditRegion3" -->
 		<div>my basic content</div> 
 	<!-- TemplateEndEditable -->
-</div>
+	
+	<footer>
+		<p>Life Reminder : Copyright &copy; 2017 - <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+	</footer>
 </body>
 </html>

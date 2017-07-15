@@ -12,10 +12,12 @@ if (!isset($_SESSION)) {
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
+<link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/style.css">
 <!-- InstanceBeginEditable name="head" -->
 <meta charset="utf-8">
 
@@ -72,14 +74,111 @@ if (!isset($_SESSION)) {
       </div>
     </nav>
 
-<div class="container">
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div>
-		  <p>Main page</p>
-		  <p>&nbsp;</p>
-		  <p>&nbsp; </p>
-		</div> 
+<section class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<h1>Life Reminder</h1>
+				<p class="lead">Life Reminder is to remind your ideas after your death.
+					<a class="btn btn-primary btn-lg" href="#">Find out more</a>
+				</p>
+			</div>
+			<div class="col-md-5">
+				<img src="images/logos.png" />
+			</div>
+		</div>
+	</div>
+</section> 
+
+<section class="section-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 text-center">
+				<span class="fa-stack fa-lg fa-4x">
+				  <i class="fa fa-circle fa-stack-2x fa-color"></i>
+				  <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+				</span>
+				<h3>Valid Code</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<span class="fa-stack fa-lg fa-4x">
+				  <i class="fa fa-circle fa-stack-2x fa-color"></i>
+				  <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+				</span>
+				<h3>Responsive</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<span class="fa-stack fa-lg fa-4x">
+				  <i class="fa fa-circle fa-stack-2x fa-color"></i>
+				  <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+				</span>
+				<h3>Animation Ready</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<span class="fa-stack fa-lg fa-4x">
+				  <i class="fa fa-circle fa-stack-2x fa-color"></i>
+				  <i class="fa fa-gear fa-stack-1x fa-inverse"></i>
+				</span>
+				<h3>Customizable</h3>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-secondary slogan">
+	<h1>Take a Closer Look</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porttitor sapien sit amet ante sodales interdum. Curabitur in est risus</p>
+	<a href="#" class="btn btn-lg btn-default">More Info</a>
+</section>
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2 class="page-header">Business Theme Includes....</h2>
+				<ul class="feature-list">
+					<li><i class="glyphicon glyphicon-ok"></i> Bootstrap 3 Framework</li>
+					<li><i class="glyphicon glyphicon-ok"></i> Mobile Responsive Design</li>
+					<li><i class="glyphicon glyphicon-ok"></i> Minimal Custom CSS Styles</li>
+					<li><i class="glyphicon glyphicon-ok"></i> Unstyled: Add Your Own Style and Content!</li>
+					<li><i class="glyphicon glyphicon-ok"></i> 100% <strong>Free</strong> to Use</li>
+					<li><i class="glyphicon glyphicon-ok"></i> Open Source: Use for any project, private or commercial!</li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<img src="images/macbook.png" class="img-responsive" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-primary">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="images/sample1.jpg" class="img-responsive img-circle" />
+			</div>
+			<div class="col-md-6">
+				<h2 class="page-header">More Features Include...</h2>
+				<ul class="feature-list">
+				  <li><i class="glyphicon glyphicon-ok"></i> Bootstrap 3 Framework</li>
+				  <li><i class="glyphicon glyphicon-ok"></i> Mobile Responsive Design</li>
+				  <li><i class="glyphicon glyphicon-ok"></i> Minimal Custom CSS Styles</li>
+				  <li><i class="glyphicon glyphicon-ok"></i> Unstyled: Add Your Own Style and Content!</li>
+				  <li><i class="glyphicon glyphicon-ok"></i> 100% <strong>Free</strong> to Use</li>
+				  <li><i class="glyphicon glyphicon-ok"></i> Open Source: Use for any project, private or commercial!</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+
 	<!-- InstanceEndEditable -->
-</div>
+	
+	<footer>
+		<p>Life Reminder : Copyright &copy; 2017 - <a href="#">Terms</a> | <a href="#">Privacy</a></p>
+	</footer>
 </body>
 <!-- InstanceEnd --></html>
