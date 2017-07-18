@@ -195,20 +195,32 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
 $breadCrumb = getLink($_GET['parent_id'], array());
 
 ?>
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/elaw.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
-<meta charset="utf-8">
-
-<title>Category Management</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Definitions</title>
+<!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="css/bootstrap-treeview.css">
+<!-- InstanceBeginEditable name="head" -->
+<meta charset="utf-8" />
+
+
+
+
+<link rel="stylesheet" href="css/bootstrap-treeview.css" />
 <script src="js/bootstrap-treeview.js"></script>
+<script>
+//http://www.jqueryrain.com/?9_I6fGfI
+//https://github.com/jonmiles/bootstrap-treeview
+</script>
+<!-- InstanceEndEditable -->
 </head>
 
 <body>
@@ -222,13 +234,16 @@ $breadCrumb = getLink($_GET['parent_id'], array());
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>          </button>
-          <a class="navbar-brand" href="index.php">Law</a>        </div>
+          <a class="navbar-brand" href="../Templates/index.php">Law</a>        </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+	
+<!-- InstanceBeginEditable name="EditRegion3" -->
+
 <div class="container">
 
 <h1>Definitions </h1>
@@ -237,37 +252,37 @@ $breadCrumb = getLink($_GET['parent_id'], array());
   <ol class="breadcrumb">
   <?php for ($i = count($breadCrumb) - 1; $i >= 0; $i--) { ?>
     
-    <li><a href="definitions.php?parent_id=<?php echo $breadCrumb[$i]['parent_id']; ?>&subject=<?php echo $_POST['subject']; ?>"><?php echo $breadCrumb[$i]['title']; ?></a></li>
+    <li><a href="definitions.php?parent_id=<?php echo $breadCrumb[$i]['parent_id']; ?>&amp;subject=<?php echo $_POST['subject']; ?>"><?php echo $breadCrumb[$i]['title']; ?></a></li>
   <?php } ?>
   </ol>
   <?php } ?>
 </div>
 <p><a href="definitions.php?subject=contracts">Contracts</a> | <a href="definitions.php?subject=criminal">Criminal</a> | <a href="definitions.php?subject=torts">Torts</a> </p>
 
-  <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+  <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
     <div class="table-responsive">
   <table class="table table-striped">
       <tr valign="baseline">
-        <td nowrap align="right">Title:</td>
-        <td><input type="text" name="title" id="title" value="" size="32"></td>
+        <td nowrap="nowrap" align="right">Title:</td>
+        <td><input type="text" name="title" id="title" value="" size="32" /></td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right" valign="top">Definition:</td>
+        <td nowrap="nowrap" align="right" valign="top">Definition:</td>
         <td><textarea name="definition" cols="50" rows="5"></textarea>
         </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right" valign="top">Example:</td>
+        <td nowrap="nowrap" align="right" valign="top">Example:</td>
         <td><textarea name="example" cols="50" rows="5"></textarea>
         </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right" valign="top">Exception:</td>
+        <td nowrap="nowrap" align="right" valign="top">Exception:</td>
         <td><textarea name="exception" cols="50" rows="5"></textarea>
         </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">Subject:</td>
+        <td nowrap="nowrap" align="right">Subject:</td>
         <td><select name="subject">
             <option value="contracts" <?php if (!(strcmp("contracts", $_POST['subject']))) {echo "SELECTED";} ?>>Contracts</option>
             <option value="criminal" <?php if (!(strcmp("criminal", $_POST['subject']))) {echo "SELECTED";} ?>>Criminal</option>
@@ -276,20 +291,20 @@ $breadCrumb = getLink($_GET['parent_id'], array());
         </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">Ref ID:</td>
-        <td><input type="text" name="ref_id" value="0" size="32"></td>
+        <td nowrap="nowrap" align="right">Ref ID:</td>
+        <td><input type="text" name="ref_id" value="0" size="32" /></td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">Parent ID: </td>
-        <td><input type="text" name="parent_id" value="<?php echo $_GET['parent_id']; ?>"></td>
+        <td nowrap="nowrap" align="right">Parent ID: </td>
+        <td><input type="text" name="parent_id" value="<?php echo $_GET['parent_id']; ?>" /></td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">&nbsp;</td>
-        <td><input type="submit" value="Insert record"></td>
+        <td nowrap="nowrap" align="right">&nbsp;</td>
+        <td><input type="submit" value="Insert record" /></td>
       </tr>
     </table>
 	</div>
-    <input type="hidden" name="MM_insert" value="form1">
+    <input type="hidden" name="MM_insert" value="form1" />
   </form>
   <script>
   	document.getElementById('title').focus();
@@ -302,11 +317,10 @@ $breadCrumb = getLink($_GET['parent_id'], array());
         <td><strong>Id</strong></td>
         <td><strong>Title</strong></td>
         <td><strong>Definition</strong></td>
-        <td><strong>Example</strong></td>
-        <td><strong>Exception</strong></td>
         <td><strong>Subject</strong></td>
         <td><strong>Parent Id </strong></td>
         <td><strong>Ref Id </strong></td>
+        <td><strong>Details</strong> </td>
         <td><strong>Child</strong></td>
         <td><strong>Edit</strong></td>
       </tr>
@@ -314,20 +328,19 @@ $breadCrumb = getLink($_GET['parent_id'], array());
         <tr>
           <td><?php echo $row_rsCategory['id']; ?></td>
           <td><?php echo $row_rsCategory['title']; ?></td>
-          <td><?php echo $row_rsCategory['definition']; ?></td>
-          <td><?php echo $row_rsCategory['example']; ?></td>
-          <td><?php echo $row_rsCategory['exception']; ?></td>
+          <td><?php echo nl2br($row_rsCategory['definition']); ?></td>
           <td><?php echo $row_rsCategory['subject']; ?></td>
           <td><?php echo $row_rsCategory['parent_id']; ?></td>
           <td><?php echo $row_rsCategory['ref_id']; ?></td>
-          <td><a href="definitions.php?parent_id=<?php echo $row_rsCategory['id']; ?>&subject=<?php echo $_POST['subject']; ?>">Child</a></td>
-          <td><a href="definitions.php?id=<?php echo $row_rsCategory['id']; ?>&subject=<?php echo $_POST['subject']; ?>#edit">Edit</a></td>
+          <td><a href="detail.php?id=<?php echo $row_rsCategory['id']; ?>">Details</a></td>
+          <td><a href="definitions.php?parent_id=<?php echo $row_rsCategory['id']; ?>&amp;subject=<?php echo $_POST['subject']; ?>">Child</a></td>
+          <td><a href="definitions.php?id=<?php echo $row_rsCategory['id']; ?>&amp;subject=<?php echo $_POST['subject']; ?>#edit">Edit</a></td>
         </tr>
         <?php } while ($row_rsCategory = mysql_fetch_assoc($rsCategory)); ?>
       </table>
 	</div>
     <p> Records <?php echo ($startRow_rsCategory + 1) ?> to <?php echo min($startRow_rsCategory + $maxRows_rsCategory, $totalRows_rsCategory) ?> of <?php echo $totalRows_rsCategory ?>
-    <table border="0" width="50%" align="center">
+    </p><table border="0" width="50%" align="center">
       <tr>
         <td width="23%" align="center"><?php if ($pageNum_rsCategory > 0) { // Show if not first page ?>
             <a href="<?php printf("%s?pageNum_rsCategory=%d%s", $currentPage, 0, $queryString_rsCategory); ?>">First</a>
@@ -345,30 +358,30 @@ $breadCrumb = getLink($_GET['parent_id'], array());
     </table>
     <?php } // Show if recordset not empty ?></p>
 </p>
-<?php if ($totalRows_rsEdit > 0) { // Show if recordset not empty ?><a name="edit"></a>
+<?php if ($totalRows_rsEdit > 0) { // Show if recordset not empty ?><a name="edit" id="edit"></a>
   <h3>Edit Category </h3>
   
-  <form method="POST" name="form2" action="<?php echo $editFormAction; ?>">
+  <form action="<?php echo $editFormAction; ?>&parent_id=<?php echo $row_rsEdit['parent_id']; ?>" method="post" name="form2" id="form2">
     <div class="table-responsive">
   <table class="table table-striped">
       <tr valign="baseline">
-        <td nowrap align="right">Title:</td>
-        <td><input type="text" name="title" value="<?php echo $row_rsEdit['title']; ?>" size="32"></td>
+        <td nowrap="nowrap" align="right">Title:</td>
+        <td><input type="text" name="title" value="<?php echo $row_rsEdit['title']; ?>" size="32" /></td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right" valign="top">Definition:</td>
+        <td nowrap="nowrap" align="right" valign="top">Definition:</td>
         <td><textarea name="definition" cols="50" rows="5"><?php echo $row_rsEdit['definition']; ?></textarea>        </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right" valign="top">Example:</td>
+        <td nowrap="nowrap" align="right" valign="top">Example:</td>
         <td><textarea name="example" cols="50" rows="5"><?php echo $row_rsEdit['example']; ?></textarea>        </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right" valign="top">Exception:</td>
+        <td nowrap="nowrap" align="right" valign="top">Exception:</td>
         <td><textarea name="exception" cols="50" rows="5"><?php echo $row_rsEdit['exception']; ?></textarea>        </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">Subject:</td>
+        <td nowrap="nowrap" align="right">Subject:</td>
         <td><select name="subject">
           <option value="contracts" <?php if (!(strcmp("contracts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Contracts</option>
           <option value="criminal" <?php if (!(strcmp("criminal", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Criminal</option>
@@ -376,21 +389,21 @@ $breadCrumb = getLink($_GET['parent_id'], array());
           </select>        </td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">Ref ID:</td>
-        <td><input type="text" name="ref_id" value="<?php echo $row_rsEdit['ref_id']; ?>" size="32"></td>
+        <td nowrap="nowrap" align="right">Ref ID:</td>
+        <td><input type="text" name="ref_id" value="<?php echo $row_rsEdit['ref_id']; ?>" size="32" /></td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">Parent ID: </td>
-        <td><input type="text" name="parent_id" value="<?php echo $row_rsEdit['parent_id']; ?>"></td>
+        <td nowrap="nowrap" align="right">Parent ID: </td>
+        <td><input type="text" name="parent_id" value="<?php echo $row_rsEdit['parent_id']; ?>" /></td>
       </tr>
       <tr valign="baseline">
-        <td nowrap align="right">&nbsp;</td>
-        <td><input type="submit" value="Update Record"></td>
+        <td nowrap="nowrap" align="right">&nbsp;</td>
+        <td><input type="submit" value="Update Record" /></td>
       </tr>
     </table>
 	</div>
-    <input name="id" type="hidden" id="id" value="<?php echo $row_rsEdit['id']; ?>">
-    <input type="hidden" name="MM_update" value="form2">
+    <input name="id" type="hidden" id="id" value="<?php echo $row_rsEdit['id']; ?>" />
+    <input type="hidden" name="MM_update" value="form2" />
   </form>
   <?php } // Show if recordset not empty ?>
 <?php
@@ -415,6 +428,8 @@ function parseTree($tree, $root = 0) {
             $return[] = array(
                 'text' => $v['title'],
 				'data' => $v,
+				'icon' => 'glyphicon glyphicon-log-in',
+				'href' => 'detail.php?id='.$v['id'].'&title='.urlencode($v['title']),
                 'nodes' => parseTree($tree, $v['id'])
             );
         }
@@ -453,6 +468,11 @@ $resultContracts = parseTree($tree);
 <script>
 	var treeCriminal = <?php echo json_encode($resultCriminal); ?>;
 	$('#treeCriminal').treeview({
+          levels: 1,
+		  expandIcon: "glyphicon glyphicon-stop",
+          collapseIcon: "glyphicon glyphicon-unchecked",
+          nodeIcon: "glyphicon glyphicon-user",
+		  enableLinks: true,
           color: "yellow",
           backColor: "purple",
           onhoverColor: "orange",
@@ -473,6 +493,11 @@ $resultContracts = parseTree($tree);
 <script>
 	var treeTorts = <?php echo json_encode($resultTorts); ?>;
 	$('#treeTorts').treeview({
+          levels: 1,
+		  expandIcon: "glyphicon glyphicon-stop",
+          collapseIcon: "glyphicon glyphicon-unchecked",
+          nodeIcon: "glyphicon glyphicon-user",
+		  enableLinks: true,
           color: "yellow",
           backColor: "purple",
           onhoverColor: "orange",
@@ -492,6 +517,11 @@ $resultContracts = parseTree($tree);
 <script>
 	var treeContracts = <?php echo json_encode($resultContracts); ?>;
 	$('#treeContracts').treeview({
+          levels: 1,
+		  expandIcon: "glyphicon glyphicon-stop",
+          collapseIcon: "glyphicon glyphicon-unchecked",
+          nodeIcon: "glyphicon glyphicon-user",
+		  enableLinks: true,
           color: "yellow",
           backColor: "purple",
           onhoverColor: "orange",
@@ -516,8 +546,9 @@ $resultContracts = parseTree($tree);
       from qz_categories as c1 LEFT JOIN qz_categories as c2 ON c1.cat_id = c2.parent_id<br />
       WHERE c1.user_id = 1</p> -->
 </div>
+<!-- InstanceEndEditable -->
 </body>
-</html>
+<!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsCategory);
 
