@@ -77,6 +77,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'", $conn);
+
 function getLink($id, $arr=array()) {
 	global $database_conn, $conn;
 	mysql_select_db($database_conn, $conn);
@@ -449,6 +451,7 @@ function printTree($tree) {
     }
 }*/
 //printTree($result);
+
 $tree =  $data['criminal'];
 
 $resultCriminal = parseTree($tree);

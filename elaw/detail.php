@@ -54,14 +54,12 @@ $totalRows_rsDetail = mysql_num_rows($rsDetail);
 	<?php } ?>
 	<?php if (!empty($row_rsDetail['example'])) { ?>
 	<p><strong>Examples</strong><br />
-    <?php echo $row_rsDetail['example']; ?></p>
+    <?php echo nl2br($row_rsDetail['example']); ?></p>
 	<?php } ?>
 	<?php if (!empty($row_rsDetail['exception'])) { ?>
 	<p><strong>Exception</strong><br />
-    <?php echo $row_rsDetail['exception']; ?></p>
+    <?php echo nl2br($row_rsDetail['exception']); ?></p>
 	<?php } ?>
-	<p>&nbsp;</p>
-	<p>&nbsp;</p>
 </div>
 <!-- InstanceEndEditable -->
 </body><!-- InstanceEnd --></html>
