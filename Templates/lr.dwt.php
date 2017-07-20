@@ -34,10 +34,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="../lr/index.php">Home</a></li>
-            <li><a href="../lr/faq.php">FAQ</a></li>
             <li><a href="../lr/our_team.php">Our Team</a></li>
             <li><a href="../lr/about.php">About</a></li>
             <li><a href="../lr/contact.php">Contact</a></li>
+			
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reminders <span class="caret"></span></a>
               <ul class="dropdown-menu">

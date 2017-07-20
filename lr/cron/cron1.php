@@ -74,7 +74,7 @@ You haven't logged in on our website (http://localhost/project2017/lr/users/logi
 Thank you,
 Administrator
 ";
-  	//@mail($row_rsRecord['email'], 'Life Reminder, Are you Alive?', $message, 'From: Administrator<admin@lifereminder.com>');
+mail($row_rsRecord['email'], 'Life Reminder, Are you Alive?', $message, 'From: Administrator<admin@lifereminder.tk>');
 	//update the table with emailFlag1 = 1 and emailflag1Date = current time
 
 

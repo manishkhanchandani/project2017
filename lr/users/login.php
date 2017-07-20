@@ -83,10 +83,10 @@ if (isset($_POST['email'])) {
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="../index.php">Home</a></li>
-            <li><a href="../faq.php">FAQ</a></li>
             <li><a href="../our_team.php">Our Team</a></li>
             <li><a href="../about.php">About</a></li>
             <li><a href="../contact.php">Contact</a></li>
+			
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reminders <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -116,7 +116,8 @@ if (isset($_POST['email'])) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div class="row">
+	
+		<div class="container"><div class="row">
 			<div class="col-md-12">
 				<h3>Login</h3>
 				<form method="POST" name="formLogin" id="formLogin" action="<?php echo $loginFormAction; ?>">
@@ -131,7 +132,7 @@ if (isset($_POST['email'])) {
 				  <button type="submit" class="btn btn-default">Login</button>
 			  </form>
 			</div>
-		</div> 
+		</div> </div>
   <!-- InstanceEndEditable -->
 	
 	<footer>

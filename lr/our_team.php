@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Our Team</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -42,10 +42,10 @@ if (!isset($_SESSION)) {
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="faq.php">FAQ</a></li>
             <li><a href="our_team.php">Our Team</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="contact.php">Contact</a></li>
+			
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reminders <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -84,7 +84,7 @@ if (!isset($_SESSION)) {
 	<div class="container">
 		<ol class="breadcrumb">
 		  <li><a href="index.php">Home</a></li>
-		  <li>Our Team</li>
+		  <li class="active">Our Team</li>
 		</ol>
 	</div>
 </section>
@@ -93,29 +93,29 @@ if (!isset($_SESSION)) {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<img class="img-responsive img-thumbnail img-circle" src="images/man1.jpg" />
+				<img class="img-responsive img-thumbnail img-circle" src="images/mk.jpg" />
 				<h3 class="text-center">Manish Khanchandani <small>Sr. Web Developer</small></h3>
 				<p>15 years of experience in Web Development. Working on Angular JS, React JS, PHP, Mysql, Javascript, Bootstrap CSS, etc.</p>
 				<ul class="list-unstyled list-inline list-social-icons">
-				  <li class="tooltip-social facebook-link"><a href="http://facebook.com" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-				  <li class="tooltip-social linkedin-link"><a href="http://linkedin.com" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-				  <li class="tooltip-social twitter-link"><a href="http://twitter.com" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-				  <li class="tooltip-social google-plus-link"><a href="http://google.com" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+				  <li class="tooltip-social facebook-link"><a href="https://www.facebook.com/nkhanchandani7" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+				  <li class="tooltip-social linkedin-link"><a href="https://www.linkedin.com/in/manishkhanchandani/" data-toggle="tooltip" data-placement="top" title="LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+				  <li class="tooltip-social twitter-link"><a href="https://twitter.com/ManishK92468643" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+				  <li class="tooltip-social google-plus-link"><a href="https://plus.google.com/u/0/100546875099861959996" data-toggle="tooltip" data-placement="top" title="Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
 				</ul>
 			</div>
 			<div class="col-md-4">
-				<img class="img-responsive img-thumbnail img-circle" src="images/woman1.jpg" />
+				<img class="img-responsive img-thumbnail img-circle" src="http://carrieparecki.com/project2017/lr/images/2k_carrie_parecki_square.jpg" />
 				<h3 class="text-center">Carrie Parecki <small>Webmaster</small></h3>
-				<p>15 years of experience in Web Development. Working on Angular JS, React JS, PHP, Mysql, Javascript, Bootstrap CSS, etc.</p>
+				<p>Over 10 years of professional experience as a Webmaster, Web assistant, UI Technical Artist and Web and Graphic Designer using HTML, CSS, Dreamweaver, Drupal, Photoshop, and the latest web and 3D technologies.</p>
 				<ul class="list-unstyled list-inline list-social-icons">
-				  <li class="tooltip-social facebook-link"><a href="http://facebook.com" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-				  <li class="tooltip-social linkedin-link"><a href="http://linkedin.com" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
-				  <li class="tooltip-social twitter-link"><a href="http://twitter.com" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-				  <li class="tooltip-social google-plus-link"><a href="http://google.com" data-toggle="tooltip" data-placement="top" title="Google+"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+				  <li class="tooltip-social facebook-link"><a href="https://www.facebook.com/carrie.dinitz" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+				  <li class="tooltip-social linkedin-link"><a href="http://www.linkedin.com/in/carrie-parecki-3a73261" data-toggle="tooltip" data-placement="top" title="LinkedIn" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+				  <li class="tooltip-social twitter-link"><a href="https://twitter.com/CarrieParecki" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+				  <li class="tooltip-social google-plus-link"><a href="https://plus.google.com/u/0/107540902803960382512" data-toggle="tooltip" data-placement="top" title="Google+" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i></a></li>
 				</ul>
 			</div>
 			<div class="col-md-4">
-				<img class="img-responsive img-thumbnail img-circle" src="images/man2.jpg" />
+				<img class="img-responsive img-thumbnail img-circle" src="images/kate.jpg" />
 				<h3 class="text-center">Kate <small>Sr. Web Developer</small></h3>
 				<p>15 years of experience in Web Development. Working on Angular JS, React JS, PHP, Mysql, Javascript, Bootstrap CSS, etc.</p>
 				<ul class="list-unstyled list-inline list-social-icons">

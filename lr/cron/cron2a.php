@@ -122,7 +122,7 @@ Life Reminder Admin
 
 ";
 echo nl2br($message);
-//@mail($row_rsReminder['emailTo'], $row_rsReminder['title'], $message, 'From: Admin<admin@lifereminder.com>');
+mail($row_rsReminder['emailTo'], $row_rsReminder['title'], $message, 'From: Admin<admin@lifereminder.com>');
 
 	?>
 	
