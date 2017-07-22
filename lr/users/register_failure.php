@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Register Failure</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -75,7 +75,10 @@ if (!isset($_SESSION)) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
+<div class="container">
+	<h1>Registration Failed</h1>
 		<div>Registration Failed. Please go back and enter the email address again. </div> 
+</div>
 	<!-- InstanceEndEditable -->
 	
 	<footer>

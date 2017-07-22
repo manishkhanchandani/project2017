@@ -70,8 +70,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 if ((isset($_GET['reminder_id'])) && ($_GET['reminder_id'] != "")) {
-  $deleteSQL = sprintf("DELETE FROM lr_reminders WHERE reminder_id=%s",
-                       GetSQLValueString($_GET['reminder_id'], "int"));
+  $deleteSQL = sprintf("DELETE FROM lr_reminders WHERE reminder_id=%s AND user_id = %s",
+                       GetSQLValueString($_GET['reminder_id'], "int"),
+					   GetSQLValueString($_SESSION['MM_UserId'], "int"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($deleteSQL, $conn) or die(mysql_error());

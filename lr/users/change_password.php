@@ -105,7 +105,7 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Change Password</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -184,7 +184,8 @@ function validateForm() {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div>
+		<div class="container">
+<div>
 		  <h1>Change Password      </h1>
 		  <form method="post" name="form1" action="<?php echo $editFormAction; ?>" onSubmit="return validateForm();">
             <table>
@@ -195,7 +196,7 @@ function validateForm() {
               <tr valign="baseline">
                 <td nowrap align="right">Confirm Password: </td>
                 <td><label>
-                  <input name="confirm_password" type="text" id="confirm_password" size="32">
+                  <input name="confirm_password" type="password" id="confirm_password" size="32">
                 </label></td>
               </tr>
               <tr valign="baseline">
@@ -209,6 +210,7 @@ function validateForm() {
           <p>&nbsp;</p>
           <p>&nbsp; </p>
 		</div> 
+</div>
 	<!-- InstanceEndEditable -->
 	
 	<footer>

@@ -93,7 +93,7 @@ $queryString_rsReminder = sprintf("&totalRows_rsReminder=%d%s", $totalRows_rsRem
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>List Reminder</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -158,7 +158,8 @@ $queryString_rsReminder = sprintf("&totalRows_rsReminder=%d%s", $totalRows_rsRem
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div class="row">
+		<div class="container">
+<div class="row">
 		  <div class="col-md-12">
 				<h3>List Reminders</h3>
 				<?php if ($totalRows_rsReminder > 0) { // Show if recordset not empty ?>
@@ -183,7 +184,7 @@ $queryString_rsReminder = sprintf("&totalRows_rsReminder=%d%s", $totalRows_rsRem
                           <td><?php echo $row_rsReminder['status']; ?></td>
                           <td><?php echo $row_rsReminder['reminder_created_dt']; ?></td>
                           <td><a href="edit_reminder.php?reminder_id=<?php echo $row_rsReminder['reminder_id']; ?>">Edit</a></td>
-                          <td><a href="delete_reminder.php?reminder_id=<?php echo $row_rsReminder['reminder_id']; ?>">Delete</a></td>
+                          <td><a href="delete_reminder.php?reminder_id=<?php echo $row_rsReminder['reminder_id']; ?>" onClick="var a = confirm('Do you really want to delete this reminder?'); return a;">Delete</a></td>
                         </tr>
                         <?php } while ($row_rsReminder = mysql_fetch_assoc($rsReminder)); ?>
                                         </table>
@@ -213,7 +214,8 @@ $queryString_rsReminder = sprintf("&totalRows_rsReminder=%d%s", $totalRows_rsRem
                 </p>
 <p>&nbsp;</p>
 		  </div>
-		</div>  
+		</div> 
+</div> 
   <!-- InstanceEndEditable -->
 	
 	<footer>

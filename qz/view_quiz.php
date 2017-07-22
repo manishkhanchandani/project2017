@@ -91,7 +91,7 @@ if (isset($_GET['cat_id'])) {
   $colname_rsQuiz = (get_magic_quotes_gpc()) ? $_GET['cat_id'] : addslashes($_GET['cat_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s ORDER BY RAND()", $colname_rsQuiz);
+$query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND correct >= 0 AND status = 1 ORDER BY RAND()", $colname_rsQuiz);
 $rsQuiz = mysql_query($query_rsQuiz, $conn) or die(mysql_error());
 $row_rsQuiz = mysql_fetch_assoc($rsQuiz);
 $totalRows_rsQuiz = mysql_num_rows($rsQuiz);
@@ -250,10 +250,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
     </nav>
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-<h1>View Quiz</h1>
+<h1>View Quiz for "<?php echo $row_rsCat['category']; ?>"</h1>
 <div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a></div>
 <form id="form1" name="form1" method="post" action="">
-  
+    <?php $i = 0; ?>
   <div class="table-responsive">
   <table class="table table-striped">
     <tr>
@@ -261,12 +261,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
     </tr>
     <?php do { ?>
       <tr>
-        <td valign="top"><?php echo nl2br($row_rsQuiz['question']); ?><br><br>
-			<?php foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
+        <td valign="top"><?php $i++; echo $i; ?>. <?php echo nl2br($row_rsQuiz['question']); ?><br><br>
+			<?php if (!empty($row_rsQuiz['answers'])) { foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
 			?>
 			<div><input name="option[<?php echo $row_rsQuiz['id']; ?>]" type="radio" value="<?php echo $k; ?>" /> <?php echo $v; ?><input name="correct[<?php echo $row_rsQuiz['id']; ?>]" type="hidden" value="<?php echo $row_rsQuiz['correct']; ?>" /> </div>
 		<?php
-		} ?>
+		} } ?>
 		<br><br>
 		<div class="boxParent">
 			Show Explanation
@@ -289,7 +289,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 </form>
 <?php if ($totalRows_rsResults > 0) { // Show if recordset not empty ?>
   <h3>View Past Results</h3>
-  
+
   <div class="table-responsive">
   <table class="table table-striped">
     <tr>

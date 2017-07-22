@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Life Reminder</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->

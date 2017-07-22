@@ -69,7 +69,7 @@ $totalRows_rsRecord = mysql_num_rows($rsRecord);
   <?php
   	$message = "Dear {$row_rsRecord['first_name']},
 
-You haven't logged in on our website (http://localhost/project2017/lr/users/login.php). Are you really alive. If yes, then go and login to our website to confirm that you are alive.
+You haven't logged in on our website (http://lifereminder.tk/users/login.php). Are you really alive. If yes, then go and login to our website to confirm that you are alive.
 
 Thank you,
 Administrator

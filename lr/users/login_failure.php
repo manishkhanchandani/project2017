@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Login Failure</title>
+<title>Login Failed</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -75,7 +75,13 @@ if (!isset($_SESSION)) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div class="container"><div>login failed, try again </div> </div>
+		<div class="container">
+		  <div>
+		    <h1>Login Failed</h1>
+		    <p>Username and password invalid, please go back and try again.</p>
+		    <p>&nbsp;  </p>
+		  </div> 
+		</div>
 	<!-- InstanceEndEditable -->
 	
 	<footer>

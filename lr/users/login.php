@@ -49,7 +49,7 @@ if (isset($_POST['email'])) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Login</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->

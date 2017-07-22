@@ -17,7 +17,7 @@ has sent following message:
 Thanks
 System Generated.
 ";
-	mail('naveenkhanchandani@gmail.com', 'New Contact Message at LifeReminder.tk', $message, 'From:admin<admin@lifereminder.tk>');
+	mail('manishkk74@gmail.com', 'New Contact Message at LifeReminder.tk', $message, 'From:admin<admin@lifereminder.tk>');
 	
 	$status = 'Message Submitted';
 }

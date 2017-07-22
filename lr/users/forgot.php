@@ -24,7 +24,7 @@ Your password is {$row_rsEdit['password']}.
 
 Thanks	
 ";
-mail($row_rsEdit['email'], 'Forgot Password', $message, 'From:admin<admin@lifereminder.com>');
+mail($row_rsEdit['email'], 'Forgot Password', $message, 'From:admin<admin@lifereminder.tk>');
 	
 	$status = 'Password sent to your email successfully';
 }
@@ -35,7 +35,7 @@ mail($row_rsEdit['email'], 'Forgot Password', $message, 'From:admin<admin@lifere
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Forgot Password</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -102,7 +102,8 @@ mail($row_rsEdit['email'], 'Forgot Password', $message, 'From:admin<admin@lifere
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div>
+		<div class="container">
+<div>
 		  <h1>Forgot Password </h1>
 		  <p><?php echo $status; ?></p>
 		  <form method="get" name="form1">
@@ -120,6 +121,7 @@ mail($row_rsEdit['email'], 'Forgot Password', $message, 'From:admin<admin@lifere
 	      </form>
 		  <p></p>
 		</div> 
+</div>
 	<!-- InstanceEndEditable -->
 	
 	<footer>

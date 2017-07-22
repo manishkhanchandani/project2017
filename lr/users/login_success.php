@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Login Success</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -75,7 +75,12 @@ if (!isset($_SESSION)) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div>login success </div> 
+		<div class="container">
+<div>
+  <h1>Login Success </h1>
+  <p>You are successfully logged on our website. </p>
+</div> 
+</div>
 	<!-- InstanceEndEditable -->
 	
 	<footer>

@@ -75,8 +75,29 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
+	$_POST['answers'] = json_encode($_POST['option']);
+	if (empty($_POST['correct'])) $_POST['correct'] = null;
+}
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
+  $updateSQL = sprintf("UPDATE qz_questions set question = %s, explanation = %s, status = %s, answers = %s, correct = %s, topic = %s WHERE id = %s",
+                       GetSQLValueString($_POST['question'], "text"),
+                       GetSQLValueString($_POST['explanation'], "text"),
+                       GetSQLValueString($_POST['status'], "int"),
+                       GetSQLValueString($_POST['answers'], "text"),
+                       GetSQLValueString($_POST['correct'], "int"),
+                       GetSQLValueString($_POST['topic'], "text"),
+                       GetSQLValueString($_POST['id'], "int"));
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
+}
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['answers'] = json_encode($_POST['option']);
+	if (empty($_POST['correct'])) $_POST['correct'] = null;
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
@@ -122,7 +143,19 @@ $query_rsCat = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $colname
 $rsCat = mysql_query($query_rsCat, $conn) or die(mysql_error());
 $row_rsCat = mysql_fetch_assoc($rsCat);
 $totalRows_rsCat = mysql_num_rows($rsCat);
-?><!doctype html>
+
+
+$colname_rsEdit = "-1";
+if (isset($_GET['editId'])) {
+  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_GET['editId'] : addslashes($_GET['editId']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsEdit = sprintf("SELECT * FROM qz_questions WHERE id = %s", $colname_rsEdit);
+$rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
+$row_rsEdit = mysql_fetch_assoc($rsEdit);
+$totalRows_rsEdit = mysql_num_rows($rsEdit);
+?>
+<!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8">
@@ -179,13 +212,13 @@ $totalRows_rsCat = mysql_num_rows($rsCat);
 <h1>Add New Quiz</h1>
 <div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a></div>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
-  
+
   <div class="table-responsive">
   <table class="table">
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td><label>
-        <input name="topic" type="text" id="topic" size="55">
+        <input name="topic" type="text" id="topic1" size="55">
       </label></td>
     </tr>
     <tr valign="baseline">
@@ -215,7 +248,7 @@ $totalRows_rsCat = mysql_num_rows($rsCat);
       <td nowrap align="right">Status:</td>
       <td><select name="status">
         <option value="1" <?php if (!(strcmp(1, ""))) {echo "SELECTED";} ?>>Active</option>
-        <option value="0" <?php if (!(strcmp(0, ""))) {echo "SELECTED";} ?>>Inactive</option>
+        <option value="0" <?php if (!(strcmp(0, "0"))) {echo "SELECTED";} ?>>Inactive</option>
       </select>      </td>
     </tr>
     <tr valign="baseline">
@@ -230,21 +263,28 @@ $totalRows_rsCat = mysql_num_rows($rsCat);
   <input type="hidden" name="quiz_dt" value="<?php echo date('Y-m-d H:i:s'); ?>">
   <input type="hidden" name="MM_insert" value="form1">
 </form>
+<script>
+document.getElementById('topic1').focus();	
+</script>
 <?php if ($totalRows_rsQuiz > 0) { // Show if recordset not empty ?>
+   <?php $i = 0;?>
   <h3>View Quiz </h3>
   <div class="table-responsive">
   <table class="table">
     <tr>
+      <td valign="top"><strong>Number</strong></td>
       <td valign="top"><strong>Topic</strong></td>
       <td valign="top"><strong>Question</strong></td>
       <td valign="top"><strong>Explanation</strong></td>
       <td valign="top"><strong>Status</strong></td>
       <td valign="top"><strong>Answers</strong></td>
       <td valign="top"><strong>Correct</strong></td>
+      <td valign="top"><strong>Edit</strong></td>
       <td valign="top"><strong>Delete</strong></td>
     </tr>
       <?php do { ?>
       <tr>
+        <td valign="top"><?php $i++; echo $i; ?></td>
         <td valign="top"><?php echo $row_rsQuiz['topic']; ?></td>
         <td valign="top"><?php echo $row_rsQuiz['question']; ?></td>
         <td valign="top"><?php echo $row_rsQuiz['explanation']; ?></td>
@@ -254,12 +294,72 @@ $totalRows_rsCat = mysql_num_rows($rsCat);
 			echo '<div class="'.$class.'">'.($k + 1).'. '.$v.'</div>';
 		} ?></td>
         <td valign="top"><?php echo $row_rsQuiz['correct']; ?></td>
-        <td valign="top"><a href="add_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&del_id=<?php echo $row_rsQuiz['id']; ?>">Delete</a></td>
+        <td valign="top"><a href="add_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&editId=<?php echo $row_rsQuiz['id']; ?>#edit">Edit</a></td>
+        <td valign="top"><a href="add_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&del_id=<?php echo $row_rsQuiz['id']; ?>" onClick="var a = confirm('do you want to delete?'); return a;">Delete</a></td>
       </tr>
       <?php } while ($row_rsQuiz = mysql_fetch_assoc($rsQuiz)); ?>
       </table>
 	  </div>
-  <?php } // Show if recordset not empty ?><!-- InstanceEndEditable -->
+  <?php } // Show if recordset not empty ?>
+
+<?php if ($totalRows_rsEdit > 0) { // Show if recordset not empty ?>
+<h3>Edit Record <a name="edit"></a></h3>
+<?php 
+	$row_rsEdit['options'] = json_decode($row_rsEdit['answers'], true);
+	 
+?>
+ <form method="post" name="form2" action="<?php echo $editFormAction; ?>">
+
+  <div class="table-responsive">
+  <table class="table">
+    <tr valign="baseline">
+      <td nowrap align="right" valign="top">Topic:</td>
+      <td><label>
+        <input name="topic" type="text" id="topic" size="55" value="<?php echo $row_rsEdit['topic']; ?>">
+      </label></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right" valign="top">Question:</td>
+      <td><textarea name="question" rows="7" class="form-control"><?php echo $row_rsEdit['question']; ?></textarea>      </td>
+    </tr>
+	<?php for ($i = 0; $i < 4; $i++) { ?>
+    <tr valign="baseline">
+      <td nowrap align="right" valign="top">Option </td>
+      <td><table width="100%" border="0">
+        <tr>
+          <td><label>
+		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $row_rsEdit['options'][$i]; ?></textarea>
+          </label></td>
+          <td><label>
+            <input name="correct" type="radio" value="<?php echo $i; ?>" <?php if (!is_null($row_rsEdit['correct']) && $row_rsEdit['correct'] == $i) echo ' checked'; ?> />
+          Correct Option </label></td>
+        </tr>
+      </table></td>
+    </tr>
+	<?php } ?>
+    <tr valign="baseline">
+      <td nowrap align="right" valign="top">Explanation:</td>
+      <td><textarea name="explanation" cols="50" rows="5"><?php echo $row_rsEdit['explanation']; ?></textarea>      </td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">Status:</td>
+      <td><select name="status">
+        <option value="1" <?php if (!(strcmp(1, $row_rsEdit['status']))) {echo "SELECTED";} ?>>Active</option>
+        <option value="0" <?php if (!(strcmp(0, $row_rsEdit['status']))) {echo "SELECTED";} ?>>Inactive</option>
+      </select>      </td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">&nbsp;</td>
+      <td><input type="submit" value="Update record"></td>
+    </tr>
+  </table>
+  </div>
+  <input type="hidden" name="id" value="<?php echo $row_rsEdit['id']; ?>">
+  <input type="hidden" name="answers" value="<?php echo $row_rsEdit['answers']; ?>">
+  <input type="hidden" name="MM_update" value="form2">
+</form>  
+<?php } // Show if recordset not empty ?>
+<!-- InstanceEndEditable -->
 </div>
 </body>
 <!-- InstanceEnd --></html>
@@ -267,4 +367,6 @@ $totalRows_rsCat = mysql_num_rows($rsCat);
 mysql_free_result($rsQuiz);
 
 mysql_free_result($rsCat);
+
+mysql_free_result($rsEdit);
 ?>

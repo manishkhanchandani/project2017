@@ -101,7 +101,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>New Reminder</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -168,7 +168,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div class="row">
+		<div class="container">
+<div class="row">
 			<div class="col-md-12">
 				<h3>New Reminder</h3>
 				<form method="POST" name="form1" id="form1" action="<?php echo $editFormAction; ?>">
@@ -207,6 +208,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 			  </form>
 			</div>
 		</div> 
+</div>
   <!-- InstanceEndEditable -->
 	
 	<footer>

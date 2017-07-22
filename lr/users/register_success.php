@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Registration Success</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -75,7 +75,13 @@ if (!isset($_SESSION)) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div>Registration Successful </div> 
+<div class="container">
+		<div>
+		  <h1>Registration Successful </h1>
+		  <p>&nbsp;</p>
+		  <p>You are successfully registered on our website. </p>
+		</div>
+</div> 
 	<!-- InstanceEndEditable -->
 	
 	<footer>

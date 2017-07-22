@@ -82,7 +82,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formRegister")) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>Register Now</title>
 <!-- InstanceEndEditable -->
 
 <!-- Latest compiled and minified CSS -->
@@ -149,7 +149,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formRegister")) {
     </nav>
 
 	<!-- InstanceBeginEditable name="EditRegion3" -->
-		<div class="row">
+		<div class="container">
+<div class="row">
 			<div class="col-md-12">
 				<h3>Register As New User</h3>
 				<form method="POST" name="formRegister" id="formRegister" action="<?php echo $editFormAction; ?>">
@@ -193,7 +194,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "formRegister")) {
 				  <input type="hidden" name="MM_insert" value="formRegister">
 			  </form>
 			</div>
-		</div> 
+		</div>
+</div> 
 	<!-- InstanceEndEditable -->
 	
 	<footer>
