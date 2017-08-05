@@ -21,7 +21,26 @@ if (!isset($_SESSION)) {
 <!-- InstanceBeginEditable name="head" -->
 <meta charset="utf-8">
 
-
+<style type="text/css">
+	@media only screen and (max-width: 768px) {
+		.jumbotron {
+			background-image: none;
+		}
+		
+		.jumbotron h1 {
+			font-size: 24px;
+		}
+		
+		.jumbotron p {
+			font-size: 12px;
+		}
+		
+		.btn-group-lg>.btn, .btn-lg {
+			padding: 5px 8px; 
+			font-size: 12px;
+		}
+	}
+</style>
 <!-- InstanceEndEditable -->
 </head>
 
@@ -78,13 +97,13 @@ if (!isset($_SESSION)) {
 <section class="jumbotron">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-7">
+			<div class="col-md-7 col-xs-12">
 				<h1>Life Reminder</h1>
 				<p class="lead">Life Reminder is to remind your ideas after your death.
 					<a class="btn btn-primary btn-lg" href="#">Find out more</a>
 				</p>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-5 col-xs-12">
 				<img src="images/logos.png" />
 			</div>
 		</div>
