@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsQuiz" value="name:quiz_id;datatype:int,name:user_id;datatype:int,name:definition;datatype:blob,name:answer_value;datatype:blob,name:subject;datatype:string,name:sorting;datatype:int,name:created_quiz_dt;datatype:datetime,name:chapter;datatype:string,name:topic;datatype:string" />
+	<infoitem key="UD_rsSubjects" value="name:subject;datatype:string" />
+	<infoitem key="UD_rsChapter" value="name:chapter;datatype:string" />
+	<infoitem key="UD_rsTopic" value="name:topic;datatype:string" />
+</info>
