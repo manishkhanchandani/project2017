@@ -238,7 +238,7 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
         <td><?php echo $row_rsCategory['parent_id']; ?></td>
         <td><a href="index.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Child</a> </td>
         <td><a href="add_quiz.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Quiz</a> </td>
-        <td><a href="view_quiz.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">View Quiz </a></td>
+        <td><a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">View Quiz </a></td>
         <td>Edit</td>
         <td>Delete</td>
       </tr>
