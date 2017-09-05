@@ -218,7 +218,7 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td><label>
-        <input name="topic" type="text" id="topic1" size="55">
+        <input name="topic" type="text" id="topic1" value="Pending" size="55">
       </label></td>
     </tr>
     <tr valign="baseline">
@@ -230,12 +230,12 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
       <td nowrap align="right" valign="top">Option </td>
       <td><table width="100%" border="0">
         <tr>
-          <td><label>
+          <td>
 		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"></textarea>
-          </label></td>
-          <td><label>
+          </td>
+          <td>
             <input name="correct" type="radio" value="<?php echo $i; ?>" />
-          Correct Option </label></td>
+          Correct Option </td>
         </tr>
       </table></td>
     </tr>
