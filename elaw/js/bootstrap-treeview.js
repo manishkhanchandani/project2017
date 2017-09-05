@@ -589,6 +589,14 @@
 						.attr('href', node.href)
 						.append(node.text)
 					);
+				if (node.href2) {
+					treeItem
+						.append($(_this.template.link)
+							.attr('href', node.href2)
+							.attr('style', 'color: inherit; float:right;')
+							.append(node.text2)
+						);
+				}
 			}
 			else {
 				// otherwise just text
