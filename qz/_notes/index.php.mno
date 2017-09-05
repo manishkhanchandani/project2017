@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsCategory" value="name:cat_id;datatype:int,name:category;datatype:string,name:parent_id;datatype:int,name:user_id;datatype:int" />
-	<infoitem key="UD_rsEdit" value="name:cat_id;datatype:int,name:category;datatype:string,name:parent_id;datatype:int,name:user_id;datatype:int" />
-</info>
