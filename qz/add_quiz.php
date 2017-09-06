@@ -210,16 +210,16 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Add New Quiz</h1>
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a></div>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a></div>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
 
   <div class="table-responsive">
   <table class="table">
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
-      <td><label>
+      <td>
         <input name="topic" type="text" id="topic1" value="Pending" size="55">
-      </label></td>
+      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>

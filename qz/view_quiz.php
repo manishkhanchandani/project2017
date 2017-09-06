@@ -135,7 +135,7 @@ if (isset($_GET['cat_id'])) {
 }
 mysql_select_db($database_conn, $conn);
 $query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND correct >= 0 AND status = 1", GetSQLValueString($colname_rsQuiz, ""));
-$query_limit_rsQuiz = sprintf("%s LIMIT %d, %d", $query_rsQuiz, $startRow_rsQuiz, $maxRows_rsQuiz);
+echo $query_limit_rsQuiz = sprintf("%s LIMIT %d, %d", $query_rsQuiz, $startRow_rsQuiz, $maxRows_rsQuiz);
 $rsQuiz = mysql_query($query_limit_rsQuiz, $conn) or die(mysql_error());
 $row_rsQuiz = mysql_fetch_assoc($rsQuiz);
 
