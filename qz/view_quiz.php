@@ -220,6 +220,7 @@ $queryString_rsQuiz = sprintf("&totalRows_rsQuiz=%d%s", $totalRows_rsQuiz, $quer
 
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($_POST['option'])) {
+	$max = min($startRow_rsQuiz + $maxRows_rsQuiz, $totalRows_rsQuiz) - $startRow_rsQuiz;
 	$results = json_encode($_POST['option']);
 	$correct_results = 0;
 	foreach ($_POST['option'] as $k => $v) {
@@ -228,13 +229,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 		}
 	}
 	
-	$wrong_results = $maxRows_rsQuiz - $correct_results;
-	$percentage = (($correct_results/$maxRows_rsQuiz) * 100);
+	$wrong_results = $max - $correct_results;
+	$percentage = (($correct_results/$max) * 100);
 	
   $insertSQL = sprintf("INSERT INTO qz_results (category_id, user_id, total_question, correct_results, cdate, results, wrong_results, calc_percentage) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_GET['cat_id'], "int"),
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
-                       GetSQLValueString($maxRows_rsQuiz, "int"),
+                       GetSQLValueString($max, "int"),
                        GetSQLValueString($correct_results, "int"),
                        GetSQLValueString(date('Y-m-d H:i:s'), "date"),
                        GetSQLValueString($results, "text"),
