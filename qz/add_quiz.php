@@ -78,7 +78,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 	$_POST['answers'] = json_encode($_POST['option']);
-	if (empty($_POST['correct'])) $_POST['correct'] = null;
+	//if (empty($_POST['correct'])) $_POST['correct'] = null;
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {

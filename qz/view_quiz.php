@@ -119,7 +119,7 @@ if (isset($_GET['maxRows_rsQuiz'])) {
 
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
-  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+  $editFormAction .= "?" . ($_SERVER['QUERY_STRING']);
 }
 
 $maxRows_rsQuiz = $maxRows_rsQuiz;
@@ -135,7 +135,7 @@ if (isset($_GET['cat_id'])) {
 }
 mysql_select_db($database_conn, $conn);
 $query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND correct >= 0 AND status = 1", GetSQLValueString($colname_rsQuiz, ""));
-echo $query_limit_rsQuiz = sprintf("%s LIMIT %d, %d", $query_rsQuiz, $startRow_rsQuiz, $maxRows_rsQuiz);
+$query_limit_rsQuiz = sprintf("%s LIMIT %d, %d", $query_rsQuiz, $startRow_rsQuiz, $maxRows_rsQuiz);
 $rsQuiz = mysql_query($query_limit_rsQuiz, $conn) or die(mysql_error());
 $row_rsQuiz = mysql_fetch_assoc($rsQuiz);
 
@@ -245,7 +245,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
-  header("Location: view_quiz.php?cat_id=".$colname_rsQuiz);
+  header("Location: ".$editFormAction);
   exit;
   
 }
@@ -358,7 +358,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
     
   </form>
   <p>Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz + $maxRows_rsQuiz, $totalRows_rsQuiz) ?> of <?php echo $totalRows_rsQuiz ?> </p>
-  <table border="0">
+  <table width="50%" border="0" align="center">
     <tr>
       <td><?php if ($pageNum_rsQuiz > 0) { // Show if not first page ?>
         <a href="<?php printf("%s?pageNum_rsQuiz=%d%s", $currentPage, 0, $queryString_rsQuiz); ?>">First</a>
