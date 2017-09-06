@@ -267,6 +267,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 	position: absolute;
 	padding: 15px;
 	right: 0;
+	bottom: 0;
 }
 
 .box {
@@ -320,6 +321,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>View Quiz for "<?php echo $row_rsCat['category']; ?>"</h1>
 <div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a></div>
+<div>
+<form name="form1" method="get" action="view_quiz.php">
+    No of Questions: 
+    <input name="maxRows_rsQuiz" type="text" id="maxRows_rsQuiz" size="32" value="<?php echo $maxRows_rsQuiz; ?>">
+    <input type="submit" id="button" value="Update No of Questions">
+    <input name="cat_id" type="hidden" id="cat_id" value="<?php echo $_GET['cat_id']; ?>">
+    <br /><br />
+  </form>
+</div>
 <?php if ($totalRows_rsQuiz > 0) { // Show if recordset not empty ?>
   <form id="form1" name="form1" method="post" action="<?php echo $editFormAction; ?>">
     <?php $i = 0; ?>
@@ -330,7 +340,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
         </tr>
         <?php do { ?>
           <tr>
-            <td valign="top"><?php $i++; echo $i; ?>. <?php echo nl2br($row_rsQuiz['question']); ?><br><br>
+            <td valign="top" style="position:relative;"><?php $i++; echo $i; ?>. <?php echo nl2br($row_rsQuiz['question']); ?><br><br>
               <?php if (!empty($row_rsQuiz['answers'])) { foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
 			?>
               <div><input name="option[<?php echo $row_rsQuiz['id']; ?>]" type="radio" value="<?php echo $k; ?>" /> <?php echo $v; ?><input name="correct[<?php echo $row_rsQuiz['id']; ?>]" type="hidden" value="<?php echo $row_rsQuiz['correct']; ?>" /> </div>
@@ -341,7 +351,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
                 Show Explanation
                 <span class="box left">
                   <?php echo $row_rsQuiz['topic']; ?><br><br>
-                  <?php echo $row_rsQuiz['explanation']; ?>
+                  <?php echo nl2br($row_rsQuiz['explanation']); ?>
                   </span>
               </div>
             </td>

@@ -45,6 +45,39 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 }
 ?>
 <?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$currentPage = $_SERVER["PHP_SELF"];
+
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
@@ -78,7 +111,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 	$_POST['answers'] = json_encode($_POST['option']);
-	//if (empty($_POST['correct'])) $_POST['correct'] = null;
+	if ($_POST['correct'] != 0 && empty($_POST['correct'])) $_POST['correct'] = null;
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
@@ -97,7 +130,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['answers'] = json_encode($_POST['option']);
-	if (empty($_POST['correct'])) $_POST['correct'] = null;
+	if ($_POST['correct'] != 0 && empty($_POST['correct'])) $_POST['correct'] = null;
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
@@ -124,15 +157,30 @@ if ((isset($_GET['del_id'])) && ($_GET['del_id'] != "")) {
   $Result1 = mysql_query($deleteSQL, $conn) or die(mysql_error());
 }
 
+$maxRows_rsQuiz = 5;
+$pageNum_rsQuiz = 0;
+if (isset($_GET['pageNum_rsQuiz'])) {
+  $pageNum_rsQuiz = $_GET['pageNum_rsQuiz'];
+}
+$startRow_rsQuiz = $pageNum_rsQuiz * $maxRows_rsQuiz;
+
 $colname_rsQuiz = "-1";
 if (isset($_GET['cat_id'])) {
-  $colname_rsQuiz = (get_magic_quotes_gpc()) ? $_GET['cat_id'] : addslashes($_GET['cat_id']);
+  $colname_rsQuiz = $_GET['cat_id'];
 }
 mysql_select_db($database_conn, $conn);
-$query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s", $colname_rsQuiz);
-$rsQuiz = mysql_query($query_rsQuiz, $conn) or die(mysql_error());
+$query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s ORDER by id DESC", GetSQLValueString($colname_rsQuiz, "-1"));
+$query_limit_rsQuiz = sprintf("%s LIMIT %d, %d", $query_rsQuiz, $startRow_rsQuiz, $maxRows_rsQuiz);
+$rsQuiz = mysql_query($query_limit_rsQuiz, $conn) or die(mysql_error());
 $row_rsQuiz = mysql_fetch_assoc($rsQuiz);
-$totalRows_rsQuiz = mysql_num_rows($rsQuiz);
+
+if (isset($_GET['totalRows_rsQuiz'])) {
+  $totalRows_rsQuiz = $_GET['totalRows_rsQuiz'];
+} else {
+  $all_rsQuiz = mysql_query($query_rsQuiz);
+  $totalRows_rsQuiz = mysql_num_rows($all_rsQuiz);
+}
+$totalPages_rsQuiz = ceil($totalRows_rsQuiz/$maxRows_rsQuiz)-1;
 
 $colname_rsCat = "-1";
 if (isset($_GET['cat_id'])) {
@@ -154,6 +202,22 @@ $query_rsEdit = sprintf("SELECT * FROM qz_questions WHERE id = %s", $colname_rsE
 $rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
 $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
+
+$queryString_rsQuiz = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_rsQuiz") == false && 
+        stristr($param, "totalRows_rsQuiz") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_rsQuiz = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_rsQuiz = sprintf("&totalRows_rsQuiz=%d%s", $totalRows_rsQuiz, $queryString_rsQuiz);
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -284,22 +348,40 @@ document.getElementById('topic1').focus();
     </tr>
       <?php do { ?>
       <tr>
-        <td valign="top"><?php $i++; echo $i; ?></td>
+        <td valign="top"><?php echo $row_rsQuiz['id']; ?> (<?php $i++; echo $i; ?>)</td>
         <td valign="top"><?php echo $row_rsQuiz['topic']; ?></td>
-        <td valign="top"><?php echo $row_rsQuiz['question']; ?></td>
-        <td valign="top"><?php echo $row_rsQuiz['explanation']; ?></td>
+        <td valign="top"><?php echo substr($row_rsQuiz['question'], 0, 25).'...<br />'.substr($row_rsQuiz['question'], -25); ?></td>
+        <td valign="top"><?php echo substr($row_rsQuiz['explanation'], 0, 25); ?></td>
         <td valign="top"><?php echo $row_rsQuiz['status']; ?></td>
-        <td valign="top"><?php foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
+        <td valign="top"><?php /*foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
 			if ($k == $row_rsQuiz['correct']) $class = 'active'; else $class = '';
 			echo '<div class="'.$class.'">'.($k + 1).'. '.$v.'</div>';
-		} ?></td>
+		}*/ ?></td>
         <td valign="top"><?php echo $row_rsQuiz['correct']; ?></td>
         <td valign="top"><a href="add_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&editId=<?php echo $row_rsQuiz['id']; ?>#edit">Edit</a></td>
         <td valign="top"><a href="add_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&del_id=<?php echo $row_rsQuiz['id']; ?>" onClick="var a = confirm('do you want to delete?'); return a;">Delete</a></td>
       </tr>
       <?php } while ($row_rsQuiz = mysql_fetch_assoc($rsQuiz)); ?>
       </table>
-	  </div>
+Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz + $maxRows_rsQuiz, $totalRows_rsQuiz) ?> of <?php echo $totalRows_rsQuiz ?> <br>
+<br>
+  <table width="50%" border="0" align="center">
+    <tr>
+      <td><?php if ($pageNum_rsQuiz > 0) { // Show if not first page ?>
+          <a href="<?php printf("%s?pageNum_rsQuiz=%d%s", $currentPage, 0, $queryString_rsQuiz); ?>">First</a>
+          <?php } // Show if not first page ?></td>
+      <td><?php if ($pageNum_rsQuiz > 0) { // Show if not first page ?>
+          <a href="<?php printf("%s?pageNum_rsQuiz=%d%s", $currentPage, max(0, $pageNum_rsQuiz - 1), $queryString_rsQuiz); ?>">Previous</a>
+          <?php } // Show if not first page ?></td>
+      <td><?php if ($pageNum_rsQuiz < $totalPages_rsQuiz) { // Show if not last page ?>
+          <a href="<?php printf("%s?pageNum_rsQuiz=%d%s", $currentPage, min($totalPages_rsQuiz, $pageNum_rsQuiz + 1), $queryString_rsQuiz); ?>">Next</a>
+          <?php } // Show if not last page ?></td>
+      <td><?php if ($pageNum_rsQuiz < $totalPages_rsQuiz) { // Show if not last page ?>
+          <a href="<?php printf("%s?pageNum_rsQuiz=%d%s", $currentPage, $totalPages_rsQuiz, $queryString_rsQuiz); ?>">Last</a>
+          <?php } // Show if not last page ?></td>
+    </tr>
+  </table>
+  </div>
   <?php } // Show if recordset not empty ?>
 
 <?php if ($totalRows_rsEdit > 0) { // Show if recordset not empty ?>

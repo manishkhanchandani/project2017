@@ -47,11 +47,9 @@
   <form name="form1" method="get" action="view_quiz.php">
     No of Questions: 
     <input name="maxRows_rsQuiz" type="text" id="maxRows_rsQuiz" size="50" value="10">
-    <input type="submit" name="button" id="button" value="Start Test">
+    <input type="submit" id="button" value="Start Test">
     <input name="cat_id" type="hidden" id="cat_id" value="<?php echo $_GET['cat_id']; ?>">
   </form>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
 </div> 
 <!-- InstanceEndEditable -->
 </div>
