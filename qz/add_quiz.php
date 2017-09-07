@@ -282,7 +282,7 @@ $queryString_rsQuiz = sprintf("&totalRows_rsQuiz=%d%s", $totalRows_rsQuiz, $quer
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td>
-        <input name="topic" type="text" id="topic1" value="Pending" size="55">
+        <input name="topic" type="text" id="topic1" value="" size="55">
       </td>
     </tr>
     <tr valign="baseline">
@@ -306,13 +306,13 @@ $queryString_rsQuiz = sprintf("&totalRows_rsQuiz=%d%s", $totalRows_rsQuiz, $quer
 	<?php } ?>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Explanation:</td>
-      <td><textarea name="explanation" cols="50" rows="5"></textarea>      </td>
+      <td><textarea name="explanation" cols="50" rows="5" class="form-control"></textarea>      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">Status:</td>
       <td><select name="status">
-        <option value="1" <?php if (!(strcmp(1, ""))) {echo "SELECTED";} ?>>Active</option>
-        <option value="0" <?php if (!(strcmp(0, "0"))) {echo "SELECTED";} ?>>Inactive</option>
+        <option value="1" <?php if (!(strcmp(1, "1"))) {echo "selected=\"selected\"";} ?>>Active</option>
+        <option value="0" <?php if (!(strcmp(0, "1"))) {echo "selected=\"selected\"";} ?>>Inactive</option>
       </select>      </td>
     </tr>
     <tr valign="baseline">
@@ -396,9 +396,9 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
   <table class="table">
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
-      <td><label>
+      <td>
         <input name="topic" type="text" id="topic" size="55" value="<?php echo $row_rsEdit['topic']; ?>">
-      </label></td>
+      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>
@@ -409,19 +409,19 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
       <td nowrap align="right" valign="top">Option </td>
       <td><table width="100%" border="0">
         <tr>
-          <td><label>
+          <td>
 		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $row_rsEdit['options'][$i]; ?></textarea>
-          </label></td>
-          <td><label>
+          </td>
+          <td>
             <input name="correct" type="radio" value="<?php echo $i; ?>" <?php if (!is_null($row_rsEdit['correct']) && $row_rsEdit['correct'] == $i) echo ' checked'; ?> />
-          Correct Option </label></td>
+          Correct Option </td>
         </tr>
       </table></td>
     </tr>
 	<?php } ?>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Explanation:</td>
-      <td><textarea name="explanation" cols="50" rows="5"><?php echo $row_rsEdit['explanation']; ?></textarea>      </td>
+      <td><textarea name="explanation" cols="50" rows="7" class="form-control"><?php echo $row_rsEdit['explanation']; ?></textarea>      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">Status:</td>

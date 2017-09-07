@@ -287,6 +287,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 	right: 105%;
 	top: -5px;
 }
+.table-responsive {
+	overflow:inherit;	
+}
 </style>
 <!-- InstanceEndEditable -->
 </head>

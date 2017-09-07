@@ -152,6 +152,29 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCategory, $queryString_rsCategory);
+
+$breadcrumb = array();
+function breadcrumb($id = 0) {
+	global $breadcrumb, $conn;
+	if ($id == 0) {
+		array_unshift($breadcrumb, array('id' => $id, 'text' => 'Home'));
+		return;
+	}
+	
+	$query = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $id);
+	$rs = mysql_query($query, $conn) or die(mysql_error());
+	$row = mysql_fetch_assoc($rs);
+	
+	array_unshift($breadcrumb, array('id' => $row['cat_id'], 'text' => $row['category']));
+	return breadcrumb($row['parent_id']);
+}
+breadcrumb($_GET['parent_id']);
+$tmp = array();
+foreach ($breadcrumb as $k => $v) {
+	$tmp[] = '<a href="index.php?parent_id='.$v['id'].'">'.$v['text'].'</a>';
+}
+$breadCrumbString = implode(' > ', $tmp);
+
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -198,6 +221,11 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Category </h1>
+<div>
+<?php
+echo $breadCrumbString;
+?>
+</div>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
   
   <div class="table-responsive">
@@ -225,7 +253,7 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
       <td><strong>Category ID </strong></td>
       <td><strong>Category</strong></td>
       <td><strong>Parent Id </strong></td>
-      <td><strong>Add Child </strong></td>
+      <td><strong> Child </strong></td>
       <td><strong>Add Quiz </strong></td>
       <td><strong>View Quiz </strong></td>
       <td><strong>Edit</strong></td>
@@ -236,7 +264,7 @@ $queryString_rsCategory = sprintf("&totalRows_rsCategory=%d%s", $totalRows_rsCat
         <td><?php echo $row_rsCategory['cat_id']; ?></td>
         <td><?php echo $row_rsCategory['category']; ?></td>
         <td><?php echo $row_rsCategory['parent_id']; ?></td>
-        <td><a href="index.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Child</a> </td>
+        <td><a href="index.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>">Child</a> </td>
         <td><a href="add_quiz.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Quiz</a> </td>
         <td><a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">View Quiz </a></td>
         <td>Edit</td>
