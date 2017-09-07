@@ -115,7 +115,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE qz_questions set question = %s, explanation = %s, status = %s, answers = %s, correct = %s, topic = %s WHERE id = %s",
+  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s WHERE id=%s",
+                       GetSQLValueString($_POST['category_id'], "int"),
                        GetSQLValueString($_POST['question'], "text"),
                        GetSQLValueString($_POST['explanation'], "text"),
                        GetSQLValueString($_POST['status'], "int"),
@@ -394,6 +395,11 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
 
   <div class="table-responsive">
   <table class="table">
+    <tr valign="baseline">
+      <td nowrap align="right" valign="top">Category ID:</td>
+      <td><label for="category_id"></label>
+        <input name="category_id" type="text" id="category_id" value="<?php echo $row_rsEdit['category_id']; ?>" size="55"></td>
+    </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td>
