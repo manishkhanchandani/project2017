@@ -219,6 +219,29 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsQuiz = sprintf("&totalRows_rsQuiz=%d%s", $totalRows_rsQuiz, $queryString_rsQuiz);
+
+
+$breadcrumb = array();
+function breadcrumb($id = 0) {
+	global $breadcrumb, $conn;
+	if ($id == 0) {
+		array_unshift($breadcrumb, array('id' => $id, 'text' => 'Home'));
+		return;
+	}
+	
+	$query = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $id);
+	$rs = mysql_query($query, $conn) or die(mysql_error());
+	$row = mysql_fetch_assoc($rs);
+	
+	array_unshift($breadcrumb, array('id' => $row['cat_id'], 'text' => $row['category']));
+	return breadcrumb($row['parent_id']);
+}
+breadcrumb($row_rsCat['cat_id']);
+$tmp = array();
+foreach ($breadcrumb as $k => $v) {
+	$tmp[] = '<a href="index.php?parent_id='.$v['id'].'">'.$v['text'].'</a>';
+}
+$breadCrumbString = implode(' > ', $tmp);
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -275,7 +298,8 @@ $queryString_rsQuiz = sprintf("&totalRows_rsQuiz=%d%s", $totalRows_rsQuiz, $quer
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Add New Quiz</h1>
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a></div>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a><br><br>
+<?php echo $breadCrumbString; ?></div>
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
 
   <div class="table-responsive">
