@@ -252,24 +252,22 @@ echo $breadCrumbString;
     <tr>
       <td><strong>Category ID </strong></td>
       <td><strong>Category</strong></td>
-      <td><strong>Parent Id </strong></td>
-      <td><strong> Child </strong></td>
       <td><strong>Add Quiz </strong></td>
       <td><strong>View Quiz </strong></td>
       <td><strong>Edit</strong></td>
       <td><strong>Delete</strong></td>
-    </tr>
+      <td><strong>Parent Id </strong></td>
+      </tr>
     <?php do { ?>
       <tr>
         <td><?php echo $row_rsCategory['cat_id']; ?></td>
-        <td><?php echo $row_rsCategory['category']; ?></td>
-        <td><?php echo $row_rsCategory['parent_id']; ?></td>
-        <td><a href="index.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>">Child</a> </td>
+        <td><a href="index.php?parent_id=<?php echo $row_rsCategory['cat_id']; ?>"><?php echo $row_rsCategory['category']; ?></a></td>
         <td><a href="add_quiz.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">Add Quiz</a> </td>
         <td><a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCategory['cat_id']; ?>">View Quiz </a></td>
         <td>Edit</td>
         <td>Delete</td>
-      </tr>
+        <td><?php echo $row_rsCategory['parent_id']; ?></td>
+        </tr>
       <?php } while ($row_rsCategory = mysql_fetch_assoc($rsCategory)); ?>
     </table>
 	</div>
