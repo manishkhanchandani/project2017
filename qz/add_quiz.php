@@ -172,6 +172,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['answers'] = json_encode($_POST['option']);
 	if ($_POST['correct'] != 0 && empty($_POST['correct'])) $_POST['correct'] = null;
+	$_POST['topic'] = trim($_POST['topic']);
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
