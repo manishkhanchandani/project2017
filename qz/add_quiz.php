@@ -103,11 +103,51 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 
+function regexp($input, $regexp, $casesensitive=false)
+	{
+		if ($casesensitive === true) {
+			if (preg_match_all("/$regexp/sU", $input, $matches, PREG_SET_ORDER)) {
+				return $matches;
+			}
+		} else {
+			if (preg_match_all("/$regexp/siU", $input, $matches, PREG_SET_ORDER)) {
+				return $matches;
+			}
+		}
+
+		return false;
+	}
+function pr($value)
+	{
+		echo '<pre>';
+		print_r($value);
+		echo '</pre>';
+		return true;
+	}
+
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+$arr = array();
+$arr['explanation'] = '';
+$arr['description'] = '';
+$arr['option'][0] = '';
+$arr['option'][1] = '';
+$arr['option'][2] = '';
+$arr['option'][3] = '';
+if (!empty($_POST["body"])) {
+	$regexp = 'EXPLANATION:(.*)QUESTION:(.*)(A\.(.*))(B\.(.*))(C\.(.*))(D\.(.*))$';
+	$input = $_POST["body"];
+	$matches = regexp($input, $regexp, true);
+	$arr['explanation'] = trim($matches[0][1]);
+	$arr['description'] = trim($matches[0][2]);
+	$arr['option'][0] = trim($matches[0][4]);
+	$arr['option'][1] = trim($matches[0][6]);
+	$arr['option'][2] = trim($matches[0][8]);
+	$arr['option'][3] = trim($matches[0][10]);
+}
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 	$_POST['answers'] = json_encode($_POST['option']);
@@ -300,6 +340,9 @@ $breadCrumbString = implode(' > ', $tmp);
 <h1>Add New Quiz</h1>
 <div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a><br><br>
 <?php echo $breadCrumbString; ?></div>
+
+
+
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
 
   <div class="table-responsive">
@@ -307,12 +350,12 @@ $breadCrumbString = implode(' > ', $tmp);
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td>
-        <input name="topic" type="text" id="topic1" value="" size="55">
+        <input name="topic" type="text" id="topic" value="" size="55">
       </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>
-      <td><textarea name="question" rows="7" class="form-control"></textarea>      </td>
+      <td><textarea name="question" rows="7" class="form-control"><?php echo $arr['description']; ?></textarea>      </td>
     </tr>
 	<?php for ($i = 0; $i < 4; $i++) { ?>
     <tr valign="baseline">
@@ -320,7 +363,7 @@ $breadCrumbString = implode(' > ', $tmp);
       <td><table width="100%" border="0">
         <tr>
           <td>
-		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"></textarea>
+		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $arr['option'][$i]; ?></textarea>
           </td>
           <td>
             <input name="correct" type="radio" value="<?php echo $i; ?>" />
@@ -331,7 +374,7 @@ $breadCrumbString = implode(' > ', $tmp);
 	<?php } ?>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Explanation:</td>
-      <td><textarea name="explanation" cols="50" rows="5" class="form-control"></textarea>      </td>
+      <td><textarea name="explanation" cols="50" rows="5" class="form-control"><?php echo $arr['explanation']; ?></textarea>      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">Status:</td>
@@ -355,6 +398,12 @@ $breadCrumbString = implode(' > ', $tmp);
 <script>
 document.getElementById('topic1').focus();	
 </script>
+
+<form method="post" name="formParse" action="<?php echo $editFormAction; ?>">
+<label>Parse Text</label>
+<textarea name="body" cols="50" rows="5" class="form-control"></textarea>
+<input type="submit" value="Process">
+</form>
 <?php if ($totalRows_rsQuiz > 0) { // Show if recordset not empty ?>
    <?php $i = 0;?>
   <h3>View Quiz </h3>

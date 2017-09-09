@@ -133,8 +133,12 @@ $colname_rsQuiz = "-1";
 if (isset($_GET['cat_id'])) {
   $colname_rsQuiz = $_GET['cat_id'];
 }
+$coltopic_rsQuiz = "%";
+if (isset($_GET['topic'])) {
+  $coltopic_rsQuiz = $_GET['topic'];
+}
 mysql_select_db($database_conn, $conn);
-$query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND correct >= 0 AND status = 1", GetSQLValueString($colname_rsQuiz, ""));
+$query_rsQuiz = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND correct >= 0 AND status = 1 AND topic like %s", GetSQLValueString($colname_rsQuiz, "int"),GetSQLValueString($coltopic_rsQuiz, "text"));
 $query_limit_rsQuiz = sprintf("%s LIMIT %d, %d", $query_rsQuiz, $startRow_rsQuiz, $maxRows_rsQuiz);
 $rsQuiz = mysql_query($query_limit_rsQuiz, $conn) or die(mysql_error());
 $row_rsQuiz = mysql_fetch_assoc($rsQuiz);
@@ -185,6 +189,16 @@ $query_rsCat = sprintf("SELECT * FROM qz_categories WHERE cat_id = %s", $colname
 $rsCat = mysql_query($query_rsCat, $conn) or die(mysql_error());
 $row_rsCat = mysql_fetch_assoc($rsCat);
 $totalRows_rsCat = mysql_num_rows($rsCat);
+
+$colname_rsTitle = "-1";
+if (isset($_GET['cat_id'])) {
+  $colname_rsTitle = $_GET['cat_id'];
+}
+mysql_select_db($database_conn, $conn);
+$query_rsTitle = sprintf("SELECT Distinct topic, count(*) as cnt FROM qz_questions WHERE category_id = %s GROUP BY topic ORDER BY topic ASC", GetSQLValueString($colname_rsTitle, "int"));
+$rsTitle = mysql_query($query_rsTitle, $conn) or die(mysql_error());
+$row_rsTitle = mysql_fetch_assoc($rsTitle);
+$totalRows_rsTitle = mysql_num_rows($rsTitle);
 
 $queryString_rsResults = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
@@ -328,6 +342,22 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 <form name="form1" method="get" action="view_quiz.php">
     No of Questions: 
     <input name="maxRows_rsQuiz" type="text" id="maxRows_rsQuiz" size="32" value="<?php echo $maxRows_rsQuiz; ?>">
+    <strong>Topic:</strong>
+    <select name="topic" id="topic">
+      <option value="%" <?php if (!(strcmp("%", $coltopic_rsQuiz))) {echo "selected=\"selected\"";} ?>>All</option>
+      <?php
+do {  
+?>
+      <option value="<?php echo $row_rsTitle['topic']?>"<?php if (!(strcmp($row_rsTitle['topic'], $coltopic_rsQuiz))) {echo "selected=\"selected\"";} ?>><?php echo $row_rsTitle['topic']?> (<?php echo  $row_rsTitle['cnt']; ?>)</option>
+      <?php
+} while ($row_rsTitle = mysql_fetch_assoc($rsTitle));
+  $rows = mysql_num_rows($rsTitle);
+  if($rows > 0) {
+      mysql_data_seek($rsTitle, 0);
+	  $row_rsTitle = mysql_fetch_assoc($rsTitle);
+  }
+?>
+    </select>
     <input type="submit" id="button" value="Update No of Questions">
     <input name="cat_id" type="hidden" id="cat_id" value="<?php echo $_GET['cat_id']; ?>">
     <br /><br />
@@ -444,4 +474,6 @@ mysql_free_result($rsQuiz);
 mysql_free_result($rsResults);
 
 mysql_free_result($rsCat);
+
+mysql_free_result($rsTitle);
 ?>
