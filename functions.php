@@ -1,4 +1,5 @@
 <?php
+if (!function_exists('pr')) {
 function pr($value)
 	{
 		echo '<pre>';
@@ -6,7 +7,7 @@ function pr($value)
 		echo '</pre>';
 		return true;
 	}
-
+}
 if (!function_exists('regexp')) {
 	function regexp($input, $regexp, $casesensitive=false)
 	{
@@ -24,7 +25,7 @@ if (!function_exists('regexp')) {
 	}
 }
 
-
+if (!function_exists('GetSQLValueString')) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
   $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
@@ -48,6 +49,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
       break;
   }
   return $theValue;
+}
 }
 
 ?>
