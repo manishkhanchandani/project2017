@@ -45,11 +45,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 }
 ?>
 <?php
-$currentPage = $_SERVER["PHP_SELF"];
-
+if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
-  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -60,7 +63,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
       break;
     case "double":
-      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
       break;
     case "date":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
@@ -71,6 +74,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   }
   return $theValue;
 }
+}
+
+$currentPage = $_SERVER["PHP_SELF"];
 
 function regexp($input, $regexp, $casesensitive=false)
 	{
@@ -213,6 +219,7 @@ $query_rsEdit = sprintf("SELECT * FROM qz_questions WHERE id = %s", $colname_rsE
 $rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
 $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
+
 
 $queryString_rsQuiz = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
@@ -374,6 +381,7 @@ document.getElementById('topic1').focus();
 <textarea name="body" cols="50" rows="5" class="form-control"></textarea>
 <input type="submit" value="Process">
 </form>
+
 <?php if ($totalRows_rsQuiz > 0) { // Show if recordset not empty ?>
    <?php $i = 0;?>
   <h3>View Quiz </h3>
