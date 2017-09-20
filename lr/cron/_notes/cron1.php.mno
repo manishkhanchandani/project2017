@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsRecord" value="name:user_id;datatype:int,name:email;datatype:string,name:password;datatype:string,name:first_name;datatype:string,name:last_name;datatype:string,name:gender;datatype:string,name:birth_year;datatype:int,name:created_dt;datatype:timestamp,name:login_dt;datatype:int,name:emailFlag1;datatype:int,name:emailFlag1Date;datatype:int,name:cronFlag;datatype:int" />
-</info>

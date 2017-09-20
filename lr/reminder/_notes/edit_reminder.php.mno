@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsEdit" value="name:reminder_id;datatype:int,name:user_id;datatype:int,name:title;datatype:string,name:emailTo;datatype:string,name:message;datatype:blob,name:fileLink;datatype:blob,name:status;datatype:int,name:reminder_created_dt;datatype:timestamp" />
-</info>
