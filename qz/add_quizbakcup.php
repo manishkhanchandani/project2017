@@ -78,6 +78,31 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
 $currentPage = $_SERVER["PHP_SELF"];
 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+
 function regexp($input, $regexp, $casesensitive=false)
 	{
 		if ($casesensitive === true) {
@@ -220,7 +245,6 @@ $rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
 $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
 
-
 $queryString_rsQuiz = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
   $params = explode("&", $_SERVER['QUERY_STRING']);
@@ -343,7 +367,7 @@ $breadCrumbString = implode(' > ', $tmp);
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td>
-        <input name="topic" type="text" id="topic" value="" size="55">
+        <input name="topic" type="text" id="topic" value="Intentional Torts And Defenses" size="55">
       </td>
     </tr>
     <tr valign="baseline">
@@ -397,7 +421,6 @@ document.getElementById('topic1').focus();
 <textarea name="body" cols="50" rows="5" class="form-control"></textarea>
 <input type="submit" value="Process">
 </form>
-
 <?php if ($totalRows_rsQuiz > 0) { // Show if recordset not empty ?>
    <?php $i = 0;?>
   <h3>View Quiz </h3>
