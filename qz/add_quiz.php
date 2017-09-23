@@ -331,7 +331,7 @@ $breadCrumbString = implode(' > ', $tmp);
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Add New Quiz</h1>
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a><br><br>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View New Quiz </a><br><br>
 <?php echo $breadCrumbString; ?></div>
 
 
