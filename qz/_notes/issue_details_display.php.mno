@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsDetails" value="name:issue_id;datatype:int,name:subject;datatype:string,name:title;datatype:string,name:description;datatype:blob,name:essay_related;datatype:blob,name:mbe_related;datatype:blob,name:own_words;datatype:blob,name:created_issue_dt;datatype:timestamp,name:user_id;datatype:int" />
+</info>
