@@ -37,8 +37,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -76,22 +76,41 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$colname_rsDetails = "-1";
-if (isset($_GET['issue_id'])) {
-  $colname_rsDetails = $_GET['issue_id'];
+$currentPage = $_SERVER["PHP_SELF"];
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
-mysql_select_db($database_conn, $conn);
-$query_rsDetails = sprintf("SELECT * FROM qz_issue_mbe_essay WHERE issue_id = %s", GetSQLValueString($colname_rsDetails, "int"));
-$rsDetails = mysql_query($query_rsDetails, $conn) or die(mysql_error());
-$row_rsDetails = mysql_fetch_assoc($rsDetails);
-$totalRows_rsDetails = mysql_num_rows($rsDetails);
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
+  $insertSQL = sprintf("INSERT INTO qz_issue_mbe_essay (subject, title, `description`, essay_related, mbe_related, own_words, user_id) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['subject'], "text"),
+                       GetSQLValueString($_POST['title'], "text"),
+                       GetSQLValueString($_POST['description'], "text"),
+                       GetSQLValueString($_POST['essay_related'], "text"),
+                       GetSQLValueString($_POST['mbe_related'], "text"),
+                       GetSQLValueString($_POST['own_words'], "text"),
+                       GetSQLValueString($_POST['user_id'], "int"));
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+}
+
+$subject = '';
+
+if (!empty($_POST['subject'])) {
+	$subject = $_POST['subject'];	
+} else if (!empty($_GET['subject'])) {
+	$subject = $_GET['subject'];	
+}
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title><?php echo $row_rsDetails['title']; ?></title>
+<title>Issues</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -99,6 +118,11 @@ $totalRows_rsDetails = mysql_num_rows($rsDetails);
 <script src="js/bootstrap.min.js"></script>
 
 <!-- InstanceBeginEditable name="head" -->
+
+<!-- include summernote css/js-->
+<link href="library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="library/wysiwyg/summernote.js"></script>
+
 <!-- InstanceEndEditable -->
 </head>
 
@@ -144,26 +168,61 @@ $totalRows_rsDetails = mysql_num_rows($rsDetails);
     </nav>
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-<p><strong>Issue Details</strong></p>
-<p><a href="issue_details.php"> Back To View | New Issue</a></p>
-<p><strong><?php echo $row_rsDetails['title']; ?></strong></p>
-<p><?php echo $row_rsDetails['description']; ?></p>
-<hr>
-<p><strong>Essay Related</strong><br />
-<?php echo $row_rsDetails['essay_related']; ?></p>
-<hr>
-<p><strong>MBE Related</strong><br />
-  <?php echo $row_rsDetails['mbe_related']; ?></p>
-<hr>
-<p><strong>Own Words</strong><br />
-  <?php echo $row_rsDetails['own_words']; ?></p>
-<hr>
-<p><strong>Subject:</strong><br />
-  <?php echo $row_rsDetails['subject']; ?></p>
+<h1>Add New Issue Details</h1>
+<p><a href="issue_details.php">Refresh</a> | <a href="issue_details_view.php">Back To View</a></p>
+<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Subject:</td>
+      <td><select name="subject">
+        <option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
+        <option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
+        <option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
+      </select></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Title:</td>
+      <td><input type="text" name="title" id="title" value="" size="32" /></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right" valign="top">Description:</td>
+      <td><textarea name="description" cols="50" rows="5" id="description_1"></textarea></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right" valign="top">Essay_related:</td>
+      <td><textarea name="essay_related" cols="50" rows="5" id="essay_related_1"></textarea></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right" valign="top">Mbe_related:</td>
+      <td><textarea name="mbe_related" cols="50" rows="5" id="mbe_related_1"></textarea></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">Own_words:</td>
+      <td><textarea name="own_words" value="" cols="50" rows="10" id="own_words_1"></textarea></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right">&nbsp;</td>
+      <td><input type="submit" value="Insert record" /></td>
+    </tr>
+  </table>
+  </div>
+  <input type="hidden" name="MM_insert" value="form1" />
+  <input name="user_id" type="hidden" id="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
+</form>
+<script>
+ 	$(document).ready(function() {
+        $('#description_1').summernote();
+        $('#essay_related_1').summernote();
+        $('#mbe_related_1').summernote();
+        $('#own_words_1').summernote();
+    });
+</script>
+<script>
+document.getElementById('title').focus();
+</script>
+<h3>&nbsp;</h3>
 <!-- InstanceEndEditable -->
 </div>
 </body>
 <!-- InstanceEnd --></html>
-<?php
-mysql_free_result($rsDetails);
-?>

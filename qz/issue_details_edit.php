@@ -83,20 +83,6 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO qz_issue_mbe_essay (subject, title, `description`, essay_related, mbe_related, own_words, user_id) VALUES (%s, %s, %s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['subject'], "text"),
-                       GetSQLValueString($_POST['title'], "text"),
-                       GetSQLValueString($_POST['description'], "text"),
-                       GetSQLValueString($_POST['essay_related'], "text"),
-                       GetSQLValueString($_POST['mbe_related'], "text"),
-                       GetSQLValueString($_POST['own_words'], "text"),
-                       GetSQLValueString($_POST['user_id'], "int"));
-
-  mysql_select_db($database_conn, $conn);
-  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
-}
-
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
   $updateSQL = sprintf("UPDATE qz_issue_mbe_essay SET subject=%s, title=%s, `description`=%s, essay_related=%s, mbe_related=%s, own_words=%s WHERE issue_id=%s",
                        GetSQLValueString($_POST['subject'], "text"),
@@ -110,39 +96,6 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 }
-
-$maxRows_rsIssues = 25;
-$pageNum_rsIssues = 0;
-if (isset($_GET['pageNum_rsIssues'])) {
-  $pageNum_rsIssues = $_GET['pageNum_rsIssues'];
-}
-$startRow_rsIssues = $pageNum_rsIssues * $maxRows_rsIssues;
-
-$colname_rsIssues = "-1";
-if (isset($_SESSION['MM_UserId'])) {
-  $colname_rsIssues = $_SESSION['MM_UserId'];
-}
-$colsubject_rsIssues = "%";
-if (isset($_GET['subject'])) {
-  $colsubject_rsIssues = $_GET['subject'];
-}
-$col_issue_rsIssues = "%";
-if (isset($_GET['keyword'])) {
-  $col_issue_rsIssues = $_GET['keyword'];
-}
-mysql_select_db($database_conn, $conn);
-$query_rsIssues = sprintf("SELECT * FROM qz_issue_mbe_essay WHERE user_id = %s AND  (title LIKE %s OR `description` LIKE %s OR essay_related LIKE %s OR mbe_related LIKE %s OR own_words LIKE %s) AND subject LIKE %s ORDER BY subject ASC, issue_id ASC", GetSQLValueString($colname_rsIssues, "int"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString($colsubject_rsIssues, "text"));
-$query_limit_rsIssues = sprintf("%s LIMIT %d, %d", $query_rsIssues, $startRow_rsIssues, $maxRows_rsIssues);
-$rsIssues = mysql_query($query_limit_rsIssues, $conn) or die(mysql_error());
-$row_rsIssues = mysql_fetch_assoc($rsIssues);
-
-if (isset($_GET['totalRows_rsIssues'])) {
-  $totalRows_rsIssues = $_GET['totalRows_rsIssues'];
-} else {
-  $all_rsIssues = mysql_query($query_rsIssues);
-  $totalRows_rsIssues = mysql_num_rows($all_rsIssues);
-}
-$totalPages_rsIssues = ceil($totalRows_rsIssues/$maxRows_rsIssues)-1;
 
 $colname_rsEdit = "-1";
 if (isset($_GET['issue_id'])) {
@@ -244,118 +197,8 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
     </nav>
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-<h1>Issue Details</h1>
-<p><a href="issue_details.php">Refresh</a></p>
-<form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
-<div class="table-responsive">
-  <table class="table table-striped">
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Subject:</td>
-      <td><select name="subject">
-        <option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
-        <option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
-        <option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
-      </select></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Title:</td>
-      <td><input type="text" name="title" id="title" value="" size="32" /></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">Description:</td>
-      <td><textarea name="description" cols="50" rows="5" id="description_1"></textarea></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">Essay_related:</td>
-      <td><textarea name="essay_related" cols="50" rows="5" id="essay_related_1"></textarea></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">Mbe_related:</td>
-      <td><textarea name="mbe_related" cols="50" rows="5" id="mbe_related_1"></textarea></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Own_words:</td>
-      <td><textarea name="own_words" value="" cols="50" rows="10" id="own_words_1"></textarea></td>
-    </tr>
-    <tr valign="baseline">
-      <td nowrap="nowrap" align="right">&nbsp;</td>
-      <td><input type="submit" value="Insert record" /></td>
-    </tr>
-  </table>
-  </div>
-  <input type="hidden" name="MM_insert" value="form1" />
-  <input name="user_id" type="hidden" id="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
-</form>
-<script>
- 	$(document).ready(function() {
-        $('#description_1').summernote();
-        $('#essay_related_1').summernote();
-        $('#mbe_related_1').summernote();
-        $('#own_words_1').summernote();
-    });
-</script>
-<script>
-document.getElementById('title').focus();
-</script>
-<h3>View Issue</h3>
-<form name="form3" method="get" action="">
-Keyword: 
-<label>
-<input name="keyword" type="text" id="keyword" value="<?php echo $keyword; ?>">
-</label> 
-Subject: 
-<select name="subject" id="subject">
-<option value="%" <?php if (!(strcmp("%", $subject))) {echo "selected=\"selected\"";} ?>>All</option>
-<option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
-<option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
-<option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
-</select>
-<label>
-<input type="submit" id="button" value="Search">
-</label>
-</form>
-<p>&nbsp;</p>
-<?php if ($totalRows_rsIssues > 0) { // Show if recordset not empty ?>
-  
-<div class="table-responsive">
-<table class="table table-striped">
-    <tr>
-      <td valign="top"><strong>Issue ID</strong></td>
-      <td valign="top"><strong>Subject</strong></td>
-      <td valign="top"><strong>Title</strong></td>
-      <td valign="top"><strong>Edit</strong></td>
-      <td valign="top"><strong>Details</strong></td>
-      </tr>
-    <?php do { ?>
-      <tr>
-        <td valign="top"><?php echo $row_rsIssues['issue_id']; ?></td>
-        <td valign="top"><?php echo $row_rsIssues['subject']; ?></td>
-        <td valign="top"><p><strong><?php echo $row_rsIssues['title']; ?></strong></p>
-          <p><?php echo $row_rsIssues['description']; ?></p></td>
-        <td valign="top"><a href="issue_details.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>&keyword=<?php echo $keyword; ?>&subject=<?php echo $subject; ?>#edit">Edit</a></td>
-        <td valign="top"><a href="issue_details_display.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>">Details</a></td>
-    </tr>
-    <?php } while ($row_rsIssues = mysql_fetch_assoc($rsIssues)); ?>
-  </table>
-  </div>
-  <p> Records <?php echo ($startRow_rsIssues + 1) ?> to <?php echo min($startRow_rsIssues + $maxRows_rsIssues, $totalRows_rsIssues) ?> of <?php echo $totalRows_rsIssues ?> </p>
-  <table border="0">
-    <tr>
-      <td><?php if ($pageNum_rsIssues > 0) { // Show if not first page ?>
-          <a href="<?php printf("%s?pageNum_rsIssues=%d%s", $currentPage, 0, $queryString_rsIssues); ?>">First</a>
-          <?php } // Show if not first page ?></td>
-      <td><?php if ($pageNum_rsIssues > 0) { // Show if not first page ?>
-          <a href="<?php printf("%s?pageNum_rsIssues=%d%s", $currentPage, max(0, $pageNum_rsIssues - 1), $queryString_rsIssues); ?>">Previous</a>
-          <?php } // Show if not first page ?></td>
-      <td><?php if ($pageNum_rsIssues < $totalPages_rsIssues) { // Show if not last page ?>
-          <a href="<?php printf("%s?pageNum_rsIssues=%d%s", $currentPage, min($totalPages_rsIssues, $pageNum_rsIssues + 1), $queryString_rsIssues); ?>">Next</a>
-          <?php } // Show if not last page ?></td>
-      <td><?php if ($pageNum_rsIssues < $totalPages_rsIssues) { // Show if not last page ?>
-          <a href="<?php printf("%s?pageNum_rsIssues=%d%s", $currentPage, $totalPages_rsIssues, $queryString_rsIssues); ?>">Last</a>
-          <?php } // Show if not last page ?></td>
-    </tr>
-  </table>
-  <?php } // Show if recordset not empty ?>
+<h1>Edit Issue Details</h1>
+<p><a href="issue_details.php">Refresh</a> | <a href="issue_details_view.php">Back To View</a> | <a href="issue_details_new.php">New Issue</a></p>
 <?php if ($totalRows_rsEdit > 0) { // Show if recordset not empty ?>
   <h3>Edit Issue<a name="edit"></a></h3>
   <form method="post" name="form2" action="<?php echo $editFormAction; ?>">
@@ -414,7 +257,5 @@ Subject:
 </body>
 <!-- InstanceEnd --></html>
 <?php
-mysql_free_result($rsIssues);
-
 mysql_free_result($rsEdit);
 ?>
