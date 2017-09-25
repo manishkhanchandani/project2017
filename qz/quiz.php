@@ -90,8 +90,6 @@ if (!empty($_GET['num'])) {
               
               <ul class="dropdown-menu">
                 <li><a href="issue_details_view.php">Issue Details</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Deprecated</li>
                 <li><a href="issues.php">Issue Spotting</a></li>
