@@ -103,18 +103,20 @@ $totalRows_rsDetails = mysql_num_rows($rsDetails);
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <p><strong>Issue Details</strong></p>
 <p><a href="issue_details.php">Back</a></p>
-<p><strong>Subject:</strong><br />
-<?php echo $row_rsDetails['subject']; ?></p>
-<p><strong>Title</strong><br />
-<?php echo $row_rsDetails['title']; ?></p>
-<p><strong>Description</strong><br />
-<?php echo $row_rsDetails['description']; ?></p>
+<p><strong><?php echo $row_rsDetails['title']; ?></strong></p>
+<p><?php echo $row_rsDetails['description']; ?></p>
+<hr>
 <p><strong>Essay Related</strong><br />
 <?php echo $row_rsDetails['essay_related']; ?></p>
+<hr>
 <p><strong>MBE Related</strong><br />
-<?php echo $row_rsDetails['mbe_related']; ?></p>
+  <?php echo $row_rsDetails['mbe_related']; ?></p>
+<hr>
 <p><strong>Own Words</strong><br />
-<?php echo $row_rsDetails['own_words']; ?></p>
+  <?php echo $row_rsDetails['own_words']; ?></p>
+<hr>
+<p><strong>Subject:</strong><br />
+  <?php echo $row_rsDetails['subject']; ?></p>
 <!-- InstanceEndEditable -->
 </div>
 </body>

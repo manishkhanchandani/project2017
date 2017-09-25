@@ -181,6 +181,11 @@ $subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
 <script src="js/bootstrap.min.js"></script>
 
 <!-- InstanceBeginEditable name="head" -->
+
+<!-- include summernote css/js-->
+<link href="library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="library/wysiwyg/summernote.js"></script>
+
 <!-- InstanceEndEditable -->
 </head>
 
@@ -231,7 +236,7 @@ $subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
 <h1>Issue Details</h1>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
 <div class="table-responsive">
-  <table class="table">
+  <table class="table table-striped">
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Subject:</td>
       <td><select name="subject">
@@ -275,21 +280,28 @@ document.getElementById('title').focus();
 <?php if ($totalRows_rsIssues > 0) { // Show if recordset not empty ?>
   <h3>View Issue</h3>
 <div class="table-responsive">
-  <table class="table">
+  <table class="table table-striped">
     <tr>
-      <td><strong>Issue ID</strong></td>
-      <td><strong>Subject</strong></td>
-      <td><strong>Title</strong></td>
-      <td><strong>Edit</strong></td>
-      <td><strong>Details</strong></td>
+      <td valign="top"><strong>Issue ID</strong></td>
+      <td valign="top"><strong>Subject</strong></td>
+      <td valign="top"><strong>Title</strong></td>
+      <td valign="top"><strong>Essays</strong></td>
+      <td valign="top"><strong>MBE</strong></td>
+      <td valign="top"><strong>Own Words</strong></td>
+      <td valign="top"><strong>Edit</strong></td>
+      <td valign="top"><strong>Details</strong></td>
       </tr>
     <?php do { ?>
       <tr>
-        <td><?php echo $row_rsIssues['issue_id']; ?></td>
-        <td><?php echo $row_rsIssues['subject']; ?></td>
-        <td><?php echo $row_rsIssues['title']; ?></td>
-        <td><a href="issue_details.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>#edit">Edit</a></td>
-        <td><a href="issue_details_display.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>">Details</a></td>
+        <td valign="top"><?php echo $row_rsIssues['issue_id']; ?></td>
+        <td valign="top"><?php echo $row_rsIssues['subject']; ?></td>
+        <td valign="top"><p><?php echo $row_rsIssues['title']; ?></p>
+          <p><?php echo $row_rsIssues['description']; ?></p></td>
+        <td valign="top"><?php echo $row_rsIssues['essay_related']; ?></td>
+        <td valign="top"><?php echo $row_rsIssues['mbe_related']; ?></td>
+        <td valign="top"><?php echo $row_rsIssues['own_words']; ?></td>
+        <td valign="top"><a href="issue_details.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>#edit">Edit</a></td>
+        <td valign="top"><a href="issue_details_display.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>">Details</a></td>
         </tr>
       <?php } while ($row_rsIssues = mysql_fetch_assoc($rsIssues)); ?>
   </table>
@@ -316,7 +328,7 @@ document.getElementById('title').focus();
   <h3>Edit Issue<a name="edit"></a></h3>
   <form method="post" name="form2" action="<?php echo $editFormAction; ?>">
     <div class="table-responsive">
-  <table class="table">
+  <table class="table table-striped">
       <tr valign="baseline">
         <td nowrap align="right"><strong>Subject:</strong></td>
         <td><select name="subject">
@@ -331,19 +343,19 @@ document.getElementById('title').focus();
       </tr>
       <tr valign="baseline">
         <td nowrap align="right" valign="top"><strong>Description:</strong></td>
-        <td><textarea name="description" cols="50" rows="5"><?php echo htmlentities($row_rsEdit['description'], ENT_COMPAT, ''); ?></textarea></td>
+        <td><textarea name="description" cols="50" rows="5" id="description_2"><?php echo htmlentities($row_rsEdit['description'], ENT_COMPAT, ''); ?></textarea></td>
       </tr>
       <tr valign="baseline">
         <td nowrap align="right" valign="top"><strong>Essay_related:</strong></td>
-        <td><textarea name="essay_related" cols="50" rows="5"><?php echo htmlentities($row_rsEdit['essay_related'], ENT_COMPAT, ''); ?></textarea></td>
+        <td><textarea name="essay_related" cols="50" rows="5" id="essay_related_2"><?php echo htmlentities($row_rsEdit['essay_related'], ENT_COMPAT, ''); ?></textarea></td>
       </tr>
       <tr valign="baseline">
         <td nowrap align="right" valign="top"><strong>Mbe_related:</strong></td>
-        <td><textarea name="mbe_related" cols="50" rows="5"><?php echo htmlentities($row_rsEdit['mbe_related'], ENT_COMPAT, ''); ?></textarea></td>
+        <td><textarea name="mbe_related" cols="50" rows="5" id="mbe_related_2"><?php echo htmlentities($row_rsEdit['mbe_related'], ENT_COMPAT, ''); ?></textarea></td>
       </tr>
       <tr valign="baseline">
         <td nowrap align="right" valign="top"><strong>Own_words:</strong></td>
-        <td><textarea name="own_words" cols="50" rows="5"><?php echo htmlentities($row_rsEdit['own_words'], ENT_COMPAT, ''); ?></textarea></td>
+        <td><textarea name="own_words" cols="50" rows="5" id="own_words_2"><?php echo htmlentities($row_rsEdit['own_words'], ENT_COMPAT, ''); ?></textarea></td>
       </tr>
       <tr valign="baseline">
         <td nowrap align="right">&nbsp;</td>
@@ -354,6 +366,15 @@ document.getElementById('title').focus();
     <input type="hidden" name="MM_update" value="form2">
     <input type="hidden" name="issue_id" value="<?php echo $row_rsEdit['issue_id']; ?>">
   </form>
+  
+<script>
+ 	$(document).ready(function() {
+        $('#description_2').summernote();
+        $('#essay_related_2').summernote();
+        $('#mbe_related_2').summernote();
+        $('#own_words_2').summernote();
+    });
+</script>
   <?php } // Show if recordset not empty ?>
 
 <!-- InstanceEndEditable -->
