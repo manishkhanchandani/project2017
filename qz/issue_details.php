@@ -111,7 +111,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 }
 
-$maxRows_rsIssues = 200;
+$maxRows_rsIssues = 25;
 $pageNum_rsIssues = 0;
 if (isset($_GET['pageNum_rsIssues'])) {
   $pageNum_rsIssues = $_GET['pageNum_rsIssues'];
@@ -122,12 +122,16 @@ $colname_rsIssues = "-1";
 if (isset($_SESSION['MM_UserId'])) {
   $colname_rsIssues = $_SESSION['MM_UserId'];
 }
+$colsubject_rsIssues = "%";
+if (isset($_GET['subject'])) {
+  $colsubject_rsIssues = $_GET['subject'];
+}
 $col_issue_rsIssues = "%";
 if (isset($_GET['keyword'])) {
   $col_issue_rsIssues = $_GET['keyword'];
 }
 mysql_select_db($database_conn, $conn);
-$query_rsIssues = sprintf("SELECT * FROM qz_issue_mbe_essay WHERE user_id = %s AND  (title LIKE %s OR `description` LIKE %s OR essay_related LIKE %s OR mbe_related LIKE %s OR own_words LIKE %s) ORDER BY subject ASC, issue_id ASC", GetSQLValueString($colname_rsIssues, "int"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"));
+$query_rsIssues = sprintf("SELECT * FROM qz_issue_mbe_essay WHERE user_id = %s AND  (title LIKE %s OR `description` LIKE %s OR essay_related LIKE %s OR mbe_related LIKE %s OR own_words LIKE %s) AND subject LIKE %s ORDER BY subject ASC, issue_id ASC", GetSQLValueString($colname_rsIssues, "int"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString($colsubject_rsIssues, "text"));
 $query_limit_rsIssues = sprintf("%s LIMIT %d, %d", $query_rsIssues, $startRow_rsIssues, $maxRows_rsIssues);
 $rsIssues = mysql_query($query_limit_rsIssues, $conn) or die(mysql_error());
 $row_rsIssues = mysql_fetch_assoc($rsIssues);
@@ -166,7 +170,16 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_rsIssues = sprintf("&totalRows_rsIssues=%d%s", $totalRows_rsIssues, $queryString_rsIssues);
 
-$subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
+$subject = '';
+
+if (!empty($_POST['subject'])) {
+	$subject = $_POST['subject'];	
+} else if (!empty($_GET['subject'])) {
+	$subject = $_GET['subject'];	
+}
+
+
+$keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -234,6 +247,7 @@ $subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Issue Details</h1>
+<p><a href="issue_details.php">Refresh</a></p>
 <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
 <div class="table-responsive">
   <table class="table table-striped">
@@ -285,17 +299,32 @@ $subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
 <script>
 document.getElementById('title').focus();
 </script>
+<h3>View Issue</h3>
+<form name="form3" method="get" action="">
+Keyword: 
+<label>
+<input name="keyword" type="text" id="keyword" value="<?php echo $keyword; ?>">
+</label> 
+Subject: 
+<select name="subject" id="subject">
+<option value="%" <?php if (!(strcmp("%", $subject))) {echo "selected=\"selected\"";} ?>>All</option>
+<option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
+<option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
+<option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
+</select>
+<label>
+<input type="submit" id="button" value="Search">
+</label>
+</form>
+<p>&nbsp;</p>
 <?php if ($totalRows_rsIssues > 0) { // Show if recordset not empty ?>
-  <h3>View Issue</h3>
+  
 <div class="table-responsive">
-  <table class="table table-striped">
+<table class="table table-striped">
     <tr>
       <td valign="top"><strong>Issue ID</strong></td>
       <td valign="top"><strong>Subject</strong></td>
       <td valign="top"><strong>Title</strong></td>
-      <td valign="top"><strong>Essays</strong></td>
-      <td valign="top"><strong>MBE</strong></td>
-      <td valign="top"><strong>Own Words</strong></td>
       <td valign="top"><strong>Edit</strong></td>
       <td valign="top"><strong>Details</strong></td>
       </tr>
@@ -303,15 +332,12 @@ document.getElementById('title').focus();
       <tr>
         <td valign="top"><?php echo $row_rsIssues['issue_id']; ?></td>
         <td valign="top"><?php echo $row_rsIssues['subject']; ?></td>
-        <td valign="top"><p><?php echo $row_rsIssues['title']; ?></p>
+        <td valign="top"><p><strong><?php echo $row_rsIssues['title']; ?></strong></p>
           <p><?php echo $row_rsIssues['description']; ?></p></td>
-        <td valign="top"><?php echo $row_rsIssues['essay_related']; ?></td>
-        <td valign="top"><?php echo $row_rsIssues['mbe_related']; ?></td>
-        <td valign="top"><?php echo $row_rsIssues['own_words']; ?></td>
-        <td valign="top"><a href="issue_details.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>#edit">Edit</a></td>
+        <td valign="top"><a href="issue_details.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>&keyword=<?php echo $keyword; ?>&subject=<?php echo $subject; ?>#edit">Edit</a></td>
         <td valign="top"><a href="issue_details_display.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>">Details</a></td>
-        </tr>
-      <?php } while ($row_rsIssues = mysql_fetch_assoc($rsIssues)); ?>
+    </tr>
+    <?php } while ($row_rsIssues = mysql_fetch_assoc($rsIssues)); ?>
   </table>
   </div>
   <p> Records <?php echo ($startRow_rsIssues + 1) ?> to <?php echo min($startRow_rsIssues + $maxRows_rsIssues, $totalRows_rsIssues) ?> of <?php echo $totalRows_rsIssues ?> </p>
