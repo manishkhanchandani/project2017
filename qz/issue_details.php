@@ -251,19 +251,19 @@ $subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right" valign="top">Description:</td>
-      <td><textarea name="description" cols="50" rows="5"></textarea></td>
+      <td><textarea name="description" cols="50" rows="5" id="description_1"></textarea></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right" valign="top">Essay_related:</td>
-      <td><textarea name="essay_related" cols="50" rows="5"></textarea></td>
+      <td><textarea name="essay_related" cols="50" rows="5" id="essay_related_1"></textarea></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right" valign="top">Mbe_related:</td>
-      <td><textarea name="mbe_related" cols="50" rows="5"></textarea></td>
+      <td><textarea name="mbe_related" cols="50" rows="5" id="mbe_related_1"></textarea></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Own_words:</td>
-      <td><textarea name="own_words" value="" cols="50" rows="10"></textarea></td>
+      <td><textarea name="own_words" value="" cols="50" rows="10" id="own_words_1"></textarea></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">&nbsp;</td>
@@ -274,6 +274,14 @@ $subject = !empty($_POST['subject']) ? $_POST['subject'] : '';
   <input type="hidden" name="MM_insert" value="form1" />
   <input name="user_id" type="hidden" id="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
 </form>
+<script>
+ 	$(document).ready(function() {
+        $('#description_1').summernote();
+        $('#essay_related_1').summernote();
+        $('#mbe_related_1').summernote();
+        $('#own_words_1').summernote();
+    });
+</script>
 <script>
 document.getElementById('title').focus();
 </script>
