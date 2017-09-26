@@ -182,11 +182,11 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
               
               <ul class="dropdown-menu">
                 <li><a href="issue_details_view.php">Issue Details</a></li>
-                <li role="separator" class="divider"></li>
+              <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Deprecated</li>
                 <li><a href="issues.php">Issue Spotting</a></li>
               </ul>
-            </li>
+        </li>
 		  	<?php if (!empty($_SESSION['MM_UserId'])) { ?>
             <li><a href="logout.php">Logout</a></li>
 			<?php } else { ?>
@@ -200,6 +200,7 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Issue Details</h1>
+<p><a href="issue_details_new.php">New Issue</a></p>
 <form name="form3" method="get" action="">
 Keyword: 
 <label>

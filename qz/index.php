@@ -182,7 +182,7 @@ $breadCrumbString = implode(' > ', $tmp);
 <meta charset="utf-8">
 <!-- InstanceBeginEditable name="doctitle" -->
 <title><?php
-echo $breadCrumbString;
+echo strip_tags($breadCrumbString);
 ?></title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
