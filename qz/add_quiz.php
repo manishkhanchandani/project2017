@@ -126,7 +126,7 @@ if (!empty($_POST["body"])) {
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 	$_POST['answers'] = json_encode($_POST['option']);
-	if ($_POST['correct'] != 0 && empty($_POST['correct'])) $_POST['correct'] = null;
+	if (!isset($_POST['correct'])) $_POST['correct'] = null;
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
