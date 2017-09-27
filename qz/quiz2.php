@@ -76,6 +76,70 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+function time_elapsed_string($time_elapsed)
+{
+    $seconds    = $time_elapsed ;
+    $minutes    = round($time_elapsed / 60 );
+    $hours      = round($time_elapsed / 3600);
+    $days       = round($time_elapsed / 86400 );
+    $weeks      = round($time_elapsed / 604800);
+    $months     = round($time_elapsed / 2600640 );
+    $years      = round($time_elapsed / 31207680 );
+    // Seconds
+    if($seconds <= 60){
+        return "just now";
+    }
+    //Minutes
+    else if($minutes <=60){
+        if($minutes==1){
+            return "one minute ago";
+        }
+        else{
+            return "$minutes minutes ago";
+        }
+    }
+    //Hours
+    else if($hours <=24){
+        if($hours==1){
+            return "an hour ago";
+        }else{
+            return "$hours hrs ago";
+        }
+    }
+    //Days
+    else if($days <= 7){
+        if($days==1){
+            return "yesterday";
+        }else{
+            return "$days days ago";
+        }
+    }
+    //Weeks
+    else if($weeks <= 4.3){
+        if($weeks==1){
+            return "a week ago";
+        }else{
+            return "$weeks weeks ago";
+        }
+    }
+    //Months
+    else if($months <=12){
+        if($months==1){
+            return "a month ago";
+        }else{
+            return "$months months ago";
+        }
+    }
+    //Years
+    else{
+        if($years==1){
+            return "one year ago";
+        }else{
+            return "$years years ago";
+        }
+    }
+}
+
 $sorting = 'id ASC';
 if (!empty($_GET['sorting'])) {
 	if ($_GET['sorting'] == 2) {
@@ -108,6 +172,9 @@ function totalPoints($data)
 $error = '';
 if (!empty($_POST['formData'])) {
 	$formData = json_decode($_POST['formData'], 1);
+	if (empty($_SESSION['startTime'])) {
+		$_SESSION['startTime'] = time();	
+	}
 	$_SESSION['quiz'][$formData['id']] = array(
 												   	'data' => $formData,
 													'answer' => $_POST['selectedAnswer'],
@@ -130,7 +197,7 @@ if (!empty($_POST['formData'])) {
 		$error .= '<b>Explanation:</b><br />'.nl2br($formData['explanation']).'<br /><br />';
 	}
 	
-	$error .= '<b>Question:</b><br />'.nl2br($formData['question']);
+	$error .= '<b>Question:</b><br />'.nl2br($formData['question']).'<br /><br />';
 	
 	$answers =  json_decode($formData['answers'], 1); 
 	foreach ($answers as $k => $ans) { 
@@ -157,16 +224,12 @@ $colid_rsQuestions = "-1";
 if (isset($_SESSION['ansString'])) {
   $colid_rsQuestions = $_SESSION['ansString'];
 }
-$coluser_rsQuestions = "-1";
-if (isset($_SESSION['MM_UserId'])) {
-  $coluser_rsQuestions = $_SESSION['MM_UserId'];
-}
 $coltopic_rsQuestions = "%";
 if (isset($_GET['topic'])) {
   $coltopic_rsQuestions = $_GET['topic'];
 }
 mysql_select_db($database_conn, $conn);
-$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s and user_id = %s and topic LIKE %s AND id NOT IN (%s) ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"),GetSQLValueString($coluser_rsQuestions, "int"),GetSQLValueString($coltopic_rsQuestions, "text"),$colid_rsQuestions);
+$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s and topic LIKE %s AND id NOT IN (%s) ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"),GetSQLValueString($coltopic_rsQuestions, "text"),$colid_rsQuestions);
 $query_limit_rsQuestions = sprintf("%s LIMIT %d, %d", $query_rsQuestions, $startRow_rsQuestions, $maxRows_rsQuestions);
 $rsQuestions = mysql_query($query_limit_rsQuestions, $conn) or die(mysql_error());
 $row_rsQuestions = mysql_fetch_assoc($rsQuestions);
@@ -285,14 +348,16 @@ $breadCrumbString = implode(' > ', $tmp);
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Quiz</h1>
 <form id="form1" name="form1" method="post" action="">
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Change Parameters</a></div>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Restart Quiz</a></div>
 
 <div><?php echo $breadCrumbString; ?></div><br />
 
 <?php echo $error; ?>
 <?php if (!empty($_SESSION['quiz'])) { ?>
-<p><b>Score: </b> <?php echo $pts = calculatePoints($_SESSION['quiz']); ?> / <?php echo $max = count($_SESSION['quiz']); ?> : <?php echo $percentage = (($pts / $max) * 100); ?> % <br />
+<p><b>Score: </b> <?php echo $pts = calculatePoints($_SESSION['quiz']); ?> / <?php echo $max = count($_SESSION['quiz']); ?> : <?php echo $percentage = number_format((($pts / $max) * 100), 2); ?> % <br />
+Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> <br />
 <?php } ?>
+<?php if ($totalRows_rsQuestions > 0) { ?>
 <div class="table-responsive">
       <table class="table table-striped">
 <?php do { ?>
@@ -335,8 +400,16 @@ $breadCrumbString = implode(' > ', $tmp);
 <?php } // Show if not last page ?></td>
 </tr>
 </table>
+<?php } ?>
+<p>&nbsp;</p>
+<p><strong>Remaining Problems:</strong> <?php echo $totalRows_rsQuestions ?></p>
 <p>&nbsp;</p>
 </form>
+<?php if (!empty($_SESSION['quiz'])) { ?>
+<pre>
+<?php print_r($_SESSION['quiz']); ?>
+</pre>
+<?php } ?>
 <p>&nbsp;</p>
 <!-- InstanceEndEditable -->
 </div>

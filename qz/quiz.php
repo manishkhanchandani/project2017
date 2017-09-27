@@ -1,3 +1,4 @@
+<?php require_once('../Connections/conn.php'); ?>
 <?php
 if (!isset($_SESSION)) {
   session_start();
@@ -48,8 +49,51 @@ if (!empty($_GET['num'])) {
 	$_SESSION['ansArray'] = array();
 	$_SESSION['quiz'] = array();
 	$_SESSION['points']  = 0;
+	$_SESSION['startTime'] = time();
 	header("Location: quiz2.php?".$_SERVER['QUERY_STRING']);
 }
+?>
+<?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$colname_rsTitle = "-1";
+if (isset($_GET['cat_id'])) {
+  $colname_rsTitle = $_GET['cat_id'];
+}
+mysql_select_db($database_conn, $conn);
+$query_rsTitle = sprintf("SELECT Distinct topic, count(*) as cnt FROM qz_questions WHERE category_id = %s GROUP BY topic ORDER BY topic ASC", GetSQLValueString($colname_rsTitle, "int"));
+$rsTitle = mysql_query($query_rsTitle, $conn) or die(mysql_error());
+$row_rsTitle = mysql_fetch_assoc($rsTitle);
+$totalRows_rsTitle = mysql_num_rows($rsTitle);
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -121,6 +165,23 @@ By Question ID
 <input type="radio" name="sorting" id="radio2" value="2" />
 </label>
 By Random</p>
+<p><strong>Topic:</strong>
+<select name="topic" id="topic">
+<option value="%">All</option>
+<?php
+do {  
+?>
+<option value="<?php echo $row_rsTitle['topic']?>"><?php echo $row_rsTitle['topic']?> (<?php echo  $row_rsTitle['cnt']; ?>)</option>
+<?php
+} while ($row_rsTitle = mysql_fetch_assoc($rsTitle));
+  $rows = mysql_num_rows($rsTitle);
+  if($rows > 0) {
+      mysql_data_seek($rsTitle, 0);
+	  $row_rsTitle = mysql_fetch_assoc($rsTitle);
+  }
+?>
+</select>
+</p>
 <p>
 <label>
 <input type="submit" id="button" value="Submit" />
@@ -133,3 +194,6 @@ By Random</p>
 </div>
 </body>
 <!-- InstanceEnd --></html>
+<?php
+mysql_free_result($rsTitle);
+?>
