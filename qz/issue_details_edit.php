@@ -226,7 +226,9 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
   
 <script>
  	$(document).ready(function() {
-        $('#description_2').summernote();
+        $('#description_2').summernote({
+			height: 250							   
+		});
         $('#essay_related_2').summernote();
         $('#mbe_related_2').summernote();
         $('#own_words_2').summernote();

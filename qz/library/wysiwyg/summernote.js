@@ -7709,7 +7709,7 @@
         ['font', ['bold', 'underline', 'clear']],
         ['fontname', ['fontname']],
         ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
+        ['para', ['ul', 'ol', 'paragraph', 'hr']],
         ['table', ['table']],
         ['insert', ['link', 'picture', 'video']],
         ['view', ['fullscreen', 'codeview', 'help']]
