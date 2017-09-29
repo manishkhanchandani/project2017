@@ -167,11 +167,11 @@ By Question ID
 By Random</p>
 <p><strong>Topic:</strong>
 <select name="topic" id="topic">
-<option value="%">All</option>
+<option value="">All</option>
 <?php
 do {  
 ?>
-<option value="<?php echo $row_rsTitle['topic']?>"><?php echo $row_rsTitle['topic']?> (<?php echo  $row_rsTitle['cnt']; ?>)</option>
+<option value="<?php echo $row_rsTitle['topic']?>"><?php echo $row_rsTitle['topic']?></option>
 <?php
 } while ($row_rsTitle = mysql_fetch_assoc($rsTitle));
   $rows = mysql_num_rows($rsTitle);

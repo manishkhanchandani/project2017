@@ -193,6 +193,7 @@ if (!empty($_POST['formData'])) {
 	
 	$error = '<div class="alert alert-success">'.$error.'</div>';
 	
+	$error .= '<h3>Topic</h3><div>'.$formData['topic'].'<br /></div>';
 	if (!empty($formData['explanation'])) {
 		$error .= '<b>Explanation:</b><br />'.nl2br($formData['explanation']).'<br /><br />';
 	}
@@ -204,7 +205,13 @@ if (!empty($_POST['formData'])) {
 		$error .= ($k + 1).'. '. $ans.'<br /><br />';
 	}
 	
-	$error .= '<hr />';
+	$error .= '<a href="add_quiz.php?cat_id='.$formData['category_id'].'&editId='.$formData['id'].'#edit" target="_blank">Edit This Question</a><hr />';
+}
+
+
+$topicQuery = '';
+if (!empty($_GET['topic'])) {
+  $topicQuery = ' AND topic = '.GetSQLValueString($_GET['topic'], 'text');
 }
 
 $currentPage = $_SERVER["PHP_SELF"];
@@ -229,7 +236,7 @@ if (isset($_GET['topic'])) {
   $coltopic_rsQuestions = $_GET['topic'];
 }
 mysql_select_db($database_conn, $conn);
-$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s and topic LIKE %s AND id NOT IN (%s) ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"),GetSQLValueString($coltopic_rsQuestions, "text"),$colid_rsQuestions);
+$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND id NOT IN (%s)  $topicQuery ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"),$colid_rsQuestions);
 $query_limit_rsQuestions = sprintf("%s LIMIT %d, %d", $query_rsQuestions, $startRow_rsQuestions, $maxRows_rsQuestions);
 $rsQuestions = mysql_query($query_limit_rsQuestions, $conn) or die(mysql_error());
 $row_rsQuestions = mysql_fetch_assoc($rsQuestions);
