@@ -171,7 +171,7 @@ By Random</p>
 <?php
 do {  
 ?>
-<option value="<?php echo $row_rsTitle['topic']?>"><?php echo $row_rsTitle['topic']?></option>
+<option value="<?php echo $row_rsTitle['topic']?>"><?php echo $row_rsTitle['topic']?> - <?php echo $row_rsTitle['cnt']; ?></option>
 <?php
 } while ($row_rsTitle = mysql_fetch_assoc($rsTitle));
   $rows = mysql_num_rows($rsTitle);
