@@ -158,11 +158,11 @@ $totalRows_rsTitle = mysql_num_rows($rsTitle);
 </p>
 <p>Order: 
 <label>
-<input name="sorting" type="radio" id="radio" value="1" checked="checked" />
+<input name="sorting" type="radio" id="sorting1" value="1" checked="checked" />
 </label>
 By Question ID 
 <label>
-<input type="radio" name="sorting" id="radio2" value="2" />
+<input type="radio" name="sorting" id="sorting2" value="2" />
 </label>
 By Random</p>
 <p><strong>Topic:</strong>
@@ -181,8 +181,10 @@ do {
   }
 ?>
 </select>
+
+<p>Keyword:
+<input name="keyword" type="text" id="keyword" value="" />
 </p>
-<p>
 <label>
 <input type="submit" id="button" value="Submit" />
 </label>

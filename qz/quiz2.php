@@ -235,8 +235,9 @@ $coltopic_rsQuestions = "%";
 if (isset($_GET['topic'])) {
   $coltopic_rsQuestions = $_GET['topic'];
 }
+
 mysql_select_db($database_conn, $conn);
-$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND id NOT IN (%s)  $topicQuery ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"),$colid_rsQuestions);
+$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND id NOT IN (%s)  $topicQuery ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"), $colid_rsQuestions);
 $query_limit_rsQuestions = sprintf("%s LIMIT %d, %d", $query_rsQuestions, $startRow_rsQuestions, $maxRows_rsQuestions);
 $rsQuestions = mysql_query($query_limit_rsQuestions, $conn) or die(mysql_error());
 $row_rsQuestions = mysql_fetch_assoc($rsQuestions);
@@ -310,6 +311,12 @@ $breadCrumbString = implode(' > ', $tmp);
 <script src="js/bootstrap.min.js"></script>
 
 <!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+.answer_0 {
+	background-color: #999 !important;
+	color: #fff;
+}
+</style>
 <!-- InstanceEndEditable -->
 </head>
 
@@ -356,7 +363,7 @@ $breadCrumbString = implode(' > ', $tmp);
 <h1>Quiz</h1>
 <form id="form1" name="form1" method="post" action="">
 <div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Restart Quiz</a></div>
-
+<div><strong>Current Page Url:</strong> <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?><?php echo $_SERVER['PHP_SELF']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">http://<?php echo $_SERVER['HTTP_HOST']; ?><?php echo $_SERVER['PHP_SELF']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?></a></div>
 <div><?php echo $breadCrumbString; ?></div><br />
 
 <?php echo $error; ?>
@@ -410,11 +417,42 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
 <?php } ?>
 <p>&nbsp;</p>
 <p><strong>Remaining Problems:</strong> <?php echo $totalRows_rsQuestions ?></p>
-<p>&nbsp;</p>
+
 </form>
 <?php if (!empty($_SESSION['quiz'])) { ?>
+<h3>Your Answers</h3>
+<div class="table-responsive">
+      <table class="table table-striped">
+      	<tr>
+        	<td valign="top">ID
+            </td>
+<td valign="top">Question</td>
+<td valign="top">You Answered</td>
+<td valign="top">Correct Answer</td>
+<td valign="top">Options</td>
+<td valign="top">Topic</td>
+<td valign="top">Edit</td>
+        </tr>
+        <?php foreach ($_SESSION['quiz'] as $k => $v) { ?>
+<tr class="answer_<?php echo $v['isCorrect'] ? 1 : 0; ?>">
+<td valign="top"><?php echo $v['data']['id']; ?></td>
+<td valign="top" style="width: 450px;"><?php echo nl2br($v['data']['question']); ?><hr /><?php echo nl2br($v['data']['explanation']); ?></td>
+<td valign="top"><?php echo $v['answer']  + 1; ?> is something you answered</td>
+<td valign="top"><?php echo $v['correct'] + 1; ?> is correct answer</td>
+<td valign="top"><ol><?php $answer =  $v['data']['answers']; $answer2 = json_decode($answer, 1); foreach ($answer2 as $k2 => $v2) {
+		?>
+        <li><?php echo $v2; ?></li>
+        <?php
+	} ?></ol></td>
+<td valign="top"><?php echo $v['data']['topic']; ?></td>
+<td valign="top"><a href="add_quiz.php?cat_id=<?php echo $v['data']['category_id']; ?>&editId=<?php echo $v['data']['id']; ?>#edit" target="_blank">Edit</a></td>
+</tr>
+		<?php } ?>
+      </table>
+</div>
+
 <pre>
-<?php print_r($_SESSION['quiz']); ?>
+<?php //print_r($_SESSION['quiz']); ?>
 </pre>
 <?php } ?>
 <p>&nbsp;</p>
