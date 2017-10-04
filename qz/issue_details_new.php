@@ -104,6 +104,11 @@ if (!empty($_POST['subject'])) {
 } else if (!empty($_GET['subject'])) {
 	$subject = $_GET['subject'];	
 }
+
+$title = '';
+if (!empty($_POST['title'])) {
+	$title = $_POST['title'];	
+}
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -145,7 +150,7 @@ if (!empty($_POST['subject'])) {
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Title:</td>
-      <td><input type="text" name="title" id="title" value="" size="32" /></td>
+      <td><input type="text" name="title" id="title" value="<?php echo $title; ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right" valign="top">Description:</td>

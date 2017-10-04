@@ -98,7 +98,7 @@ if (isset($_GET['keyword'])) {
   $col_issue_rsIssues = $_GET['keyword'];
 }
 mysql_select_db($database_conn, $conn);
-$query_rsIssues = sprintf("SELECT * FROM qz_issue_mbe_essay WHERE user_id = %s AND  (title LIKE %s OR `description` LIKE %s OR essay_related LIKE %s OR mbe_related LIKE %s OR own_words LIKE %s) AND subject LIKE %s ORDER BY subject ASC, issue_id ASC", GetSQLValueString($colname_rsIssues, "int"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString($colsubject_rsIssues, "text"));
+$query_rsIssues = sprintf("SELECT * FROM qz_issue_mbe_essay WHERE user_id = %s AND  (title LIKE %s OR `description` LIKE %s OR essay_related LIKE %s OR mbe_related LIKE %s OR own_words LIKE %s) AND subject LIKE %s ORDER BY issue_id ASC", GetSQLValueString($colname_rsIssues, "int"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString("%" . $col_issue_rsIssues . "%", "text"),GetSQLValueString($colsubject_rsIssues, "text"));
 $query_limit_rsIssues = sprintf("%s LIMIT %d, %d", $query_rsIssues, $startRow_rsIssues, $maxRows_rsIssues);
 $rsIssues = mysql_query($query_limit_rsIssues, $conn) or die(mysql_error());
 $row_rsIssues = mysql_fetch_assoc($rsIssues);
