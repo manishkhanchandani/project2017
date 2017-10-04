@@ -237,7 +237,7 @@ if (isset($_GET['topic'])) {
 }
 
 mysql_select_db($database_conn, $conn);
-$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE category_id = %s AND id NOT IN (%s)  $topicQuery ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"), $colid_rsQuestions);
+$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE correct is not null AND category_id = %s AND id NOT IN (%s)  $topicQuery ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"), $colid_rsQuestions);
 $query_limit_rsQuestions = sprintf("%s LIMIT %d, %d", $query_rsQuestions, $startRow_rsQuestions, $maxRows_rsQuestions);
 $rsQuestions = mysql_query($query_limit_rsQuestions, $conn) or die(mysql_error());
 $row_rsQuestions = mysql_fetch_assoc($rsQuestions);
