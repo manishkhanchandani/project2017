@@ -98,7 +98,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 }
 
-$maxRows_rsCategory = 10;
+$maxRows_rsCategory = 50;
 $pageNum_rsCategory = 0;
 if (isset($_GET['pageNum_rsCategory'])) {
   $pageNum_rsCategory = $_GET['pageNum_rsCategory'];

@@ -274,6 +274,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
     $queryString_rsQuestions = "&" . htmlentities(implode("&", $newParams));
   }
 }
+$queryString_rsQuestions_main = $queryString_rsQuestions;
 $queryString_rsQuestions = sprintf("&totalRows_rsQuestions=%d%s", $totalRows_rsQuestions, $queryString_rsQuestions);
 
 $breadcrumb = array();
@@ -326,7 +327,7 @@ $breadCrumbString = implode(' > ', $tmp);
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Quiz</h1>
 <form id="form1" name="form1" method="post" action="">
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Restart Quiz</a></div>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Back To Category</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Add Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Restart Quiz</a> | <a href="quiz2.php?<?php echo $queryString_rsQuestions_main; ?>">Refresh This Page</a></div>
 <div><strong>Current Page Url:</strong> <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?><?php echo $_SERVER['PHP_SELF']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">http://<?php echo $_SERVER['HTTP_HOST']; ?><?php echo $_SERVER['PHP_SELF']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?></a></div>
 <div><?php echo $breadCrumbString; ?></div><br />
 
@@ -336,6 +337,7 @@ $breadCrumbString = implode(' > ', $tmp);
 Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> <br />
 <?php } ?>
 <?php if ($totalRows_rsQuestions > 0) { ?>
+<?php if (!empty($row_rsQuestions)) { ?>
 <div class="table-responsive">
       <table class="table table-striped">
 <?php do { ?>
@@ -362,7 +364,9 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
 <?php } while ($row_rsQuestions = mysql_fetch_assoc($rsQuestions)); ?>
 </table>
 </div>
-<table border="0">
+<?php } ?>
+<div class="table-responsive">
+      <table class="table table-striped">
 <tr>
 <td><?php if ($pageNum_rsQuestions > 0) { // Show if not first page ?>
 <a href="<?php printf("%s?pageNum_rsQuestions=%d%s", $currentPage, 0, $queryString_rsQuestions); ?>">First</a>
@@ -378,6 +382,7 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
 <?php } // Show if not last page ?></td>
 </tr>
 </table>
+</div>
 <?php } ?>
 <p>&nbsp;</p>
 <p><strong>Remaining Problems:</strong> <?php echo $totalRows_rsQuestions ?></p>
