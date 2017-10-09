@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 30, 2017 at 03:42 PM
+-- Generation Time: Oct 09, 2017 at 11:33 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -67,7 +67,16 @@ INSERT INTO `qz_categories` (`cat_id`, `category`, `parent_id`, `user_id`) VALUE
 (29, 'Torts', 26, 1),
 (30, 'Contracts', 25, 1),
 (31, 'Criminal', 25, 1),
-(32, 'Torts', 25, 1);
+(32, 'Torts', 25, 1),
+(33, 'TEST #1 CONTRACTS â€“ TERMS AND FORMATION', 25, 1),
+(34, 'TEST #2 CONTRACTS â€“ INTERPRETATION AND ENFORCEABILITY', 25, 1),
+(35, 'TEST #3 CONTRACTS â€“ THIRD PARTIES AND REMEDIES', 25, 1),
+(36, 'TEST #4 UCC', 25, 1),
+(37, 'TEST #5 â€“ TORTS â€“ INTENTIONAL TORTS AND DEFENSES', 25, 1),
+(38, 'TEST # 6 â€“TORTS â€“ NEGLIGENCE AND DEFENSES', 25, 1),
+(39, 'TEST # 7 â€“ TORTS â€“ DEFAMATION / PRODUCT LIABILITY / MISCELLANEOUS', 25, 1),
+(40, 'TEST # 8 â€“ CRIMINAL LAW FUNDAMENTALS AND CRIMES AGAINST PROPERTY ', 25, 1),
+(42, 'TEST # 9 â€“ CRIMES AGAINST THE PERSON / VICARIOUS LIABILITY / DEFENSES', 25, 1);
 
 --
 -- Indexes for dumped tables
@@ -87,7 +96,7 @@ ALTER TABLE `qz_categories`
 -- AUTO_INCREMENT for table `qz_categories`
 --
 ALTER TABLE `qz_categories`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;COMMIT;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
