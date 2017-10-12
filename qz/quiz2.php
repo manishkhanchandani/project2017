@@ -342,8 +342,7 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
       <table class="table table-striped">
 <?php do { ?>
 <tr>
-<td valign="top"><p><strong>Question Id:</strong><br /> 
-<?php echo $row_rsQuestions['id']; ?></p>
+<td valign="top"><p><strong>Question Id:</strong> <?php echo $row_rsQuestions['id']; ?> (<?php echo $row_rsQuestions['topic']; ?>)</p>
 <p><strong>Question:</strong><br />
 <?php echo nl2br($row_rsQuestions['question']); ?></p>
 <p><strong>Options:</strong><br />
