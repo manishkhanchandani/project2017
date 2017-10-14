@@ -146,6 +146,7 @@ if (!empty($_POST['title'])) {
         <option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
         <option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
         <option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
+        <option value="common" <?php if (!(strcmp("common", $subject))) {echo "selected=\"selected\"";} ?>>Common</option>
       </select></td>
     </tr>
     <tr valign="baseline">

@@ -172,10 +172,11 @@ Keyword:
 </label> 
 Subject: 
 <select name="subject" id="subject">
-<option value="%" <?php if (!(strcmp("%", $subject))) {echo "selected=\"selected\"";} ?>>All</option>
-<option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
-<option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
-<option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
+  <option value="%" <?php if (!(strcmp("%", $subject))) {echo "selected=\"selected\"";} ?>>All</option>
+  <option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
+  <option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
+  <option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
+  <option value="common" <?php if (!(strcmp("common", $subject))) {echo "selected=\"selected\"";} ?>>Common</option>
 </select>
 <label>
 <input type="submit" id="button" value="Search">
@@ -198,7 +199,7 @@ Subject:
         <td valign="top"><?php echo $row_rsIssues['issue_id']; ?></td>
         <td valign="top"><?php echo $row_rsIssues['subject']; ?></td>
         <td valign="top"><p><strong><?php echo $row_rsIssues['title']; ?></strong></p>
-          <p><?php echo $row_rsIssues['description']; ?></p></td>
+          <p><?php echo substr(strip_tags($row_rsIssues['description']), 0, 200).' ....'; ?></p></td>
         <td valign="top"><a href="issue_details_edit.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>&keyword=<?php echo $keyword; ?>&subject=<?php echo $subject; ?>#edit">Edit</a></td>
         <td valign="top"><a href="issue_details_display.php?issue_id=<?php echo $row_rsIssues['issue_id']; ?>">Details</a></td>
     </tr>

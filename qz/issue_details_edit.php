@@ -156,6 +156,7 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
           <option value="contracts" <?php if (!(strcmp("contracts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Contracts</option>
           <option value="criminal" <?php if (!(strcmp("criminal", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Criminal</option>
           <option value="torts" <?php if (!(strcmp("torts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Torts</option>
+          <option value="common" <?php if (!(strcmp("common", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Common</option>
         </select></td>
       </tr>
       <tr valign="baseline">
