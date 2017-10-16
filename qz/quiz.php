@@ -146,13 +146,15 @@ do {
 ?>
 </select>
 
-<p>Keyword:
-<input name="keyword" type="text" id="keyword" value="" />
+<p>Category Id's:
+  <input name="cat_id" type="text" id="cat_id" value="<?php echo !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''; ?>" />
+</p>
+<p>Question Id's:
+  <input name="question_id" type="text" id="question_id" value="<?php echo !empty($_GET['question_id']) ? $_GET['question_id'] : ''; ?>" />
 </p>
 <label>
-<input type="submit" id="button" value="Submit" />
+  <input type="submit" id="button" value="Submit" />
 </label>
-<input name="cat_id" type="hidden" id="cat_id" value="<?php echo $_GET['cat_id']; ?>" />
 </p>
 </form>
 <p>&nbsp;</p>
