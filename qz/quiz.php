@@ -94,6 +94,12 @@ $query_rsTitle = sprintf("SELECT Distinct topic, count(*) as cnt FROM qz_questio
 $rsTitle = mysql_query($query_rsTitle, $conn) or die(mysql_error());
 $row_rsTitle = mysql_fetch_assoc($rsTitle);
 $totalRows_rsTitle = mysql_num_rows($rsTitle);
+
+mysql_select_db($database_conn, $conn);
+$query_rsCategories = "SELECT * FROM qz_categories ORDER BY category ASC";
+$rsCategories = mysql_query($query_rsCategories, $conn) or die(mysql_error());
+$row_rsCategories = mysql_fetch_assoc($rsCategories);
+$totalRows_rsCategories = mysql_num_rows($rsCategories);
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -145,9 +151,24 @@ do {
   }
 ?>
 </select>
-
-<p>Category Id's:
-  <input name="cat_id" type="text" id="cat_id" value="<?php echo !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''; ?>" />
+<p>
+  <label for="cat_ids[]">Category Ids:</label>
+  <br>
+  <select name="cat_ids[]" size="10" multiple id="cat_ids[]">
+    <option value="" <?php if (!(strcmp("", !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''))) {echo "selected=\"selected\"";} ?>>Category</option>
+    <?php
+do {  
+?>
+    <option value="<?php echo $row_rsCategories['cat_id']?>"<?php if (!(strcmp($row_rsCategories['cat_id'], !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''))) {echo "selected=\"selected\"";} ?>><?php echo $row_rsCategories['category']?> - <?php echo $row_rsCategories['parent_id']?></option>
+    <?php
+} while ($row_rsCategories = mysql_fetch_assoc($rsCategories));
+  $rows = mysql_num_rows($rsCategories);
+  if($rows > 0) {
+      mysql_data_seek($rsCategories, 0);
+	  $row_rsCategories = mysql_fetch_assoc($rsCategories);
+  }
+?>
+  </select>
 </p>
 <p>Question Id's:
   <input name="question_id" type="text" id="question_id" value="<?php echo !empty($_GET['question_id']) ? $_GET['question_id'] : ''; ?>" />
@@ -164,4 +185,6 @@ do {
 <!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsTitle);
+
+mysql_free_result($rsCategories);
 ?>

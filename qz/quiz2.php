@@ -76,6 +76,15 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+function getValue($theValue) {
+    if (PHP_VERSION < 6) {
+        $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+    }
+    
+    $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);  
+    return $theValue; 
+}
+
 function time_elapsed_string($time_elapsed)
 {
     $seconds    = $time_elapsed ;
@@ -140,12 +149,6 @@ function time_elapsed_string($time_elapsed)
     }
 }
 
-$sorting = 'id ASC';
-if (!empty($_GET['sorting'])) {
-	if ($_GET['sorting'] == 2) {
-		$sorting = 'RAND()';
-	}
-}
 function calculatePoints($data)
 {
 	if (empty($data)) {
@@ -208,6 +211,39 @@ if (!empty($_POST['formData'])) {
 	$error .= '<a href="add_quiz.php?cat_id='.$formData['category_id'].'&editId='.$formData['id'].'#edit" target="_blank">Edit This Question</a><hr />';
 }
 
+function buildQuery()
+{
+    $query = '';
+    if (!empty($_GET['cat_ids'])) {
+        $ids = implode(', ', $_GET['cat_ids']);
+        $query .= ' AND category_id IN ('.getValue($ids).')';
+    } else if (!empty($_GET['cat_id'])) {
+        $query .= ' AND category_id = '. getValue($_GET['cat_id']);
+    }
+    
+    if (!empty($_GET['question_id'])) {
+        $query .= ' AND id IN ('.getValue($_GET['question_id']).')';
+    }
+    
+    if (!empty($_SESSION['ansString'])) {
+        $query .= ' AND id NOT IN ('.getValue($_SESSION['ansString']).')';
+    }
+    
+    if (!empty($_GET['topic'])) {
+      $query .= ' AND topic = '.GetSQLValueString($_GET['topic'], 'text');
+    }
+    return $query;
+}
+
+$sorting = 'id ASC';
+if (!empty($_GET['sorting'])) {
+	if ($_GET['sorting'] == 2) {
+		$sorting = 'RAND()';
+	}
+}
+
+$query = buildQuery();
+
 
 $topicQuery = '';
 if (!empty($_GET['topic'])) {
@@ -237,7 +273,7 @@ if (isset($_GET['topic'])) {
 }
 
 mysql_select_db($database_conn, $conn);
-$query_rsQuestions = sprintf("SELECT * FROM qz_questions WHERE correct is not null AND category_id = %s AND id NOT IN (%s)  $topicQuery ORDER BY $sorting", GetSQLValueString($colname_rsQuestions, "int"), $colid_rsQuestions);
+echo $query_rsQuestions = "SELECT * FROM qz_questions WHERE correct is not null $query ORDER BY $sorting";
 $query_limit_rsQuestions = sprintf("%s LIMIT %d, %d", $query_rsQuestions, $startRow_rsQuestions, $maxRows_rsQuestions);
 $rsQuestions = mysql_query($query_limit_rsQuestions, $conn) or die(mysql_error());
 $row_rsQuestions = mysql_fetch_assoc($rsQuestions);
@@ -275,7 +311,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsQuestions_main = $queryString_rsQuestions;
-$queryString_rsQuestions = sprintf("&totalRows_rsQuestions=%d%s", $totalRows_rsQuestions, $queryString_rsQuestions);
+$queryString_rsQuestions = sprintf("&%s", $queryString_rsQuestions);
 
 $breadcrumb = array();
 function breadcrumb($id = 0) {
