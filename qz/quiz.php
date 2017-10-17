@@ -83,11 +83,32 @@ if (!empty($_GET['MM_Test'])) {
 	$_SESSION['quiz'] = array();
 	$_SESSION['points']  = 0;
 	$_SESSION['startTime'] = time();
-    print_r($_GET);
-    if (!empty($_GET['cat_ids'])) {
+    if (!empty($_GET['cat_ids']) && count($_GET['cat_ids']) == 1 && !empty($_GET['topic'])) {
         $sql = array();
+        $num = !empty($_GET['num']) ? $_GET['num'] : 25;
+        $_GET['cat_id'] = $_GET['cat_ids'][0];
+        foreach ($_GET['topic'] as $k => $v) {
+            $sql[] = '(SELECT * FROM `qz_questions` WHERE category_id = '.GetSQLValueString($_GET['cat_ids'][0], 'int').' AND topic like "%'.$v.'%" ORDER BY RAND() LIMIT '.$num.')';
+        }
+        $query = implode(' UNION ', $sql);
+        mysql_select_db($database_conn, $conn);
+        $rs = mysql_query($query, $conn) or die(mysql_error());
+        $qid = array();
+        while ($row = mysql_fetch_assoc($rs)) {
+            $qid[] = $row['id'];    
+        }
+        unset($_GET['topic']);
+        unset($_GET['cat_ids']);
+        $_GET['question_id'] = implode(',', $qid);
+        
+        $str = http_build_query($_GET);
+        header("Location: quiz2.php?".$str);
+        exit;
+    } else if (!empty($_GET['cat_ids'])) {
+        $sql = array();
+        $num = !empty($_GET['num']) ? $_GET['num'] : 25;
         foreach ($_GET['cat_ids'] as $k => $v) {
-            $sql[] = '(SELECT * FROM `qz_questions` WHERE category_id = '.GetSQLValueString($v, 'int').' ORDER BY RAND() LIMIT 2)';
+            $sql[] = '(SELECT * FROM `qz_questions` WHERE category_id = '.GetSQLValueString($v, 'int').' ORDER BY RAND() LIMIT '.$num.')';
         }
         $query = implode(' UNION ', $sql);
         mysql_select_db($database_conn, $conn);
@@ -221,9 +242,8 @@ do {
     <input type="radio" name="sorting" id="sorting4" value="2" />
   </label>
     By Random</p>
-  <p><strong>Topic:</strong>
-    <select name="topic2" id="topic2">
-      <option value="">All</option>
+  <p><strong>Topic:</strong><br>
+    <select name="topic[]" size="5" multiple>
       <?php
 do {  
 ?>
@@ -236,11 +256,11 @@ do {
 	  $row_rsTitle = mysql_fetch_assoc($rsTitle);
   }
 ?>
-    </select>
+  </select>
   <p>
     <label for="cat_ids[]">Category Ids:</label>
     <br>
-    <select name="cat_ids[]" size="5" multiple id="cat_ids[]">
+    <select name="cat_ids[]" size="5" multiple>
       <option value="" <?php if (!(strcmp("", !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''))) {echo "selected=\"selected\"";} ?>>Category</option>
       <?php
 do {  
