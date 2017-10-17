@@ -454,9 +454,9 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
 		<?php } ?>
       </table>
 </div>
-<a href="save_quiz_result.php?save=1">Save Result</a>
+<a href="save_quiz_result.php?save=1">Save Result</a> | <a href="quiz3_restart.php?<?php echo $_SERVER['QUERY_STRING']; ?>">Restart Quiz with Failed Results</a>
 <pre>
-<?php //print_r($_SESSION['quiz']); ?>
+<?php print_r($_SESSION['quiz']); ?>
 </pre>
 <?php } ?>
 <p>&nbsp;</p>
