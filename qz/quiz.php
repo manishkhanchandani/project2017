@@ -44,14 +44,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   exit;
 }
 
-if (!empty($_GET['num'])) {
-	$_SESSION['ansString'] = 0;
-	$_SESSION['ansArray'] = array();
-	$_SESSION['quiz'] = array();
-	$_SESSION['points']  = 0;
-	$_SESSION['startTime'] = time();
-	header("Location: quiz2.php?".$_SERVER['QUERY_STRING']);
-}
 ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -83,6 +75,41 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   }
   return $theValue;
 }
+}
+
+if (!empty($_GET['MM_Test'])) {
+	$_SESSION['ansString'] = 0;
+	$_SESSION['ansArray'] = array();
+	$_SESSION['quiz'] = array();
+	$_SESSION['points']  = 0;
+	$_SESSION['startTime'] = time();
+    print_r($_GET);
+    if (!empty($_GET['cat_ids'])) {
+        $sql = array();
+        foreach ($_GET['cat_ids'] as $k => $v) {
+            $sql[] = '(SELECT * FROM `qz_questions` WHERE category_id = '.GetSQLValueString($v, 'int').' ORDER BY RAND() LIMIT 2)';
+        }
+        $query = implode(' UNION ', $sql);
+        mysql_select_db($database_conn, $conn);
+        $rs = mysql_query($query, $conn) or die(mysql_error());
+        $qid = array();
+        while ($row = mysql_fetch_assoc($rs)) {
+            $qid[] = $row['id'];    
+        }
+        unset($_GET['cat_ids']);
+        $_GET['question_id'] = implode(',', $qid);
+        
+        $str = http_build_query($_GET);
+        header("Location: quiz2.php?".$str);
+    }
+    //header("Location: quiz2.php?".$_SERVER['QUERY_STRING']);
+} else if (!empty($_GET['num'])) {
+	$_SESSION['ansString'] = 0;
+	$_SESSION['ansArray'] = array();
+	$_SESSION['quiz'] = array();
+	$_SESSION['points']  = 0;
+	$_SESSION['startTime'] = time();
+	header("Location: quiz2.php?".$_SERVER['QUERY_STRING']);
 }
 
 $colname_rsTitle = "-1";
@@ -177,6 +204,63 @@ do {
   <input type="submit" id="button" value="Submit" />
 </label>
 </p>
+</form>
+<p>&nbsp;</p>
+<form id="form2" name="form2" method="get" action="quiz.php">
+  <p><strong>Generate Random Records To Test Area of Weakness
+  </strong></p>
+  <p>No Of Questions Per Category:
+    <input name="num" type="text" id="num" value="2" />
+  </p>
+  <p>Order:
+    <label>
+      <input name="sorting" type="radio" id="sorting" value="1" checked="checked" />
+    </label>
+    By Question ID
+  <label>
+    <input type="radio" name="sorting" id="sorting4" value="2" />
+  </label>
+    By Random</p>
+  <p><strong>Topic:</strong>
+    <select name="topic2" id="topic2">
+      <option value="">All</option>
+      <?php
+do {  
+?>
+      <option value="<?php echo $row_rsTitle['topic']?>"><?php echo $row_rsTitle['topic']?> - <?php echo $row_rsTitle['cnt']; ?></option>
+      <?php
+} while ($row_rsTitle = mysql_fetch_assoc($rsTitle));
+  $rows = mysql_num_rows($rsTitle);
+  if($rows > 0) {
+      mysql_data_seek($rsTitle, 0);
+	  $row_rsTitle = mysql_fetch_assoc($rsTitle);
+  }
+?>
+    </select>
+  <p>
+    <label for="cat_ids[]">Category Ids:</label>
+    <br>
+    <select name="cat_ids[]" size="5" multiple id="cat_ids[]">
+      <option value="" <?php if (!(strcmp("", !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''))) {echo "selected=\"selected\"";} ?>>Category</option>
+      <?php
+do {  
+?>
+      <option value="<?php echo $row_rsCategories['cat_id']?>"<?php if (!(strcmp($row_rsCategories['cat_id'], !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''))) {echo "selected=\"selected\"";} ?>><?php echo $row_rsCategories['category']?> - <?php echo $row_rsCategories['parent_id']?></option>
+      <?php
+} while ($row_rsCategories = mysql_fetch_assoc($rsCategories));
+  $rows = mysql_num_rows($rsCategories);
+  if($rows > 0) {
+      mysql_data_seek($rsCategories, 0);
+	  $row_rsCategories = mysql_fetch_assoc($rsCategories);
+  }
+?>
+    </select>
+  </p>
+  <p>
+    <input type="submit" id="button2" value="Submit" />
+    <input name="MM_Test" type="hidden" id="MM_Test" value="2">
+  </p>
+  <p>&nbsp; </p>
 </form>
 <p>&nbsp;</p>
 <!-- InstanceEndEditable -->
