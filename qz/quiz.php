@@ -152,9 +152,9 @@ do {
 ?>
 </select>
 <p>
-  <label for="cat_ids[]">Category Ids:</label>
+  <label for="cat_id">Category Ids:</label>
   <br>
-  <select name="cat_ids[]" size="10" multiple id="cat_ids[]">
+  <select name="cat_id" size="1" id="cat_id">
     <option value="" <?php if (!(strcmp("", !empty($_GET['cat_id']) ? $_GET['cat_id'] : ''))) {echo "selected=\"selected\"";} ?>>Category</option>
     <?php
 do {  
