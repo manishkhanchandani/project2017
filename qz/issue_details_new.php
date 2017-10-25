@@ -143,10 +143,24 @@ if (!empty($_POST['title'])) {
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">Subject:</td>
       <td><select name="subject">
-        <option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>Contracts</option>
-        <option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>Criminal</option>
-        <option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>Torts</option>
         <option value="common" <?php if (!(strcmp("common", $subject))) {echo "selected=\"selected\"";} ?>>Common</option>
+        <option value="books" <?php if (!(strcmp("books", $subject))) {echo "selected=\"selected\"";} ?>>Books</option>
+        <option value="business_organization" <?php if (!(strcmp("business_organization", $subject))) {echo "selected=\"selected\"";} ?>>1. business_organization</option>
+        <option value="civil_procedure" <?php if (!(strcmp("civil_procedure", $subject))) {echo "selected=\"selected\"";} ?>>2. civil_procedure</option>
+        <option value="contracts" <?php if (!(strcmp("contracts", $subject))) {echo "selected=\"selected\"";} ?>>3. Contracts</option>
+        <option value="community_property" <?php if (!(strcmp("community_property", $subject))) {echo "selected=\"selected\"";} ?>>4. Community Property</option>
+        <option value="constitutional_law" <?php if (!(strcmp("constitutional_law", $subject))) {echo "selected=\"selected\"";} ?>>5. Constitutional Law</option>
+        <option value="corporations" <?php if (!(strcmp("corporations", $subject))) {echo "selected=\"selected\"";} ?>>6. Corporations</option>
+        <option value="criminal" <?php if (!(strcmp("criminal", $subject))) {echo "selected=\"selected\"";} ?>>7. Criminal</option>
+        <option value="criminal_procedure" <?php if (!(strcmp("criminal_procedure", $subject))) {echo "selected=\"selected\"";} ?>>8. criminal Procedure</option>
+        <option value="evidence" <?php if (!(strcmp("evidence", $subject))) {echo "selected=\"selected\"";} ?>>9. Evidence</option>
+        <option value="professional_responsibility" <?php if (!(strcmp("professional_responsibility", $subject))) {echo "selected=\"selected\"";} ?>>10. Professional Responsibility</option>
+        <option value="real_property" <?php if (!(strcmp("real_property", $subject))) {echo "selected=\"selected\"";} ?>>11. Real Property</option>
+        <option value="remedies" <?php if (!(strcmp("remedies", $subject))) {echo "selected=\"selected\"";} ?>>12. Remedies</option>
+        <option value="torts" <?php if (!(strcmp("torts", $subject))) {echo "selected=\"selected\"";} ?>>13. Torts</option>
+        <option value="trusts" <?php if (!(strcmp("trusts", $subject))) {echo "selected=\"selected\"";} ?>>14. trusts</option>
+        <option value="ucc" <?php if (!(strcmp("ucc", $subject))) {echo "selected=\"selected\"";} ?>>15. UCC</option>
+        <option value="wills" <?php if (!(strcmp("wills", $subject))) {echo "selected=\"selected\"";} ?>>16. Wills</option>        
       </select></td>
     </tr>
     <tr valign="baseline">
@@ -180,7 +194,9 @@ if (!empty($_POST['title'])) {
 </form>
 <script>
  	$(document).ready(function() {
-        $('#description_1').summernote();
+        $('#description_1').summernote({
+			height: 250							   
+		});
         $('#essay_related_1').summernote();
         $('#mbe_related_1').summernote();
         $('#own_words_1').summernote();

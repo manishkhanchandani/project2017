@@ -153,10 +153,25 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
       <tr valign="baseline">
         <td nowrap align="right"><strong>Subject:</strong></td>
         <td><select name="subject">
-          <option value="contracts" <?php if (!(strcmp("contracts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Contracts</option>
-          <option value="criminal" <?php if (!(strcmp("criminal", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Criminal</option>
-          <option value="torts" <?php if (!(strcmp("torts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Torts</option>
-          <option value="common" <?php if (!(strcmp("common", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Common</option>
+            
+        <option value="common" <?php if (!(strcmp("common", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Common</option>
+        <option value="books" <?php if (!(strcmp("books", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>Books</option>
+        <option value="business_organization" <?php if (!(strcmp("business_organization", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>1. business_organization</option>
+        <option value="civil_procedure" <?php if (!(strcmp("civil_procedure", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>2. civil_procedure</option>
+        <option value="contracts" <?php if (!(strcmp("contracts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>3. Contracts</option>
+        <option value="community_property" <?php if (!(strcmp("community_property", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>4. Community Property</option>
+        <option value="constitutional_law" <?php if (!(strcmp("constitutional_law", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>5. Constitutional Law</option>
+        <option value="corporations" <?php if (!(strcmp("corporations", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>6. Corporations</option>
+        <option value="criminal" <?php if (!(strcmp("criminal", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>7. Criminal</option>
+        <option value="criminal_procedure" <?php if (!(strcmp("criminal_procedure", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>8. criminal Procedure</option>
+        <option value="evidence" <?php if (!(strcmp("evidence", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>9. Evidence</option>
+        <option value="professional_responsibility" <?php if (!(strcmp("professional_responsibility", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>10. Professional Responsibility</option>
+        <option value="real_property" <?php if (!(strcmp("real_property", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>11. Real Property</option>
+        <option value="remedies" <?php if (!(strcmp("remedies", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>12. Remedies</option>
+        <option value="torts" <?php if (!(strcmp("torts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>13. Torts</option>
+        <option value="trusts" <?php if (!(strcmp("trusts", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>14. trusts</option>
+        <option value="ucc" <?php if (!(strcmp("ucc", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>15. UCC</option>
+        <option value="wills" <?php if (!(strcmp("wills", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>16. Wills</option> 
         </select></td>
       </tr>
       <tr valign="baseline">
