@@ -1,6 +1,6 @@
 <!-- Static navbar -->
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -25,6 +25,8 @@
                 <li><a href="issues.php">Issue Spotting</a></li>
               </ul>
             </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <?php if (!empty($_SESSION['MM_UserId'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?><span class="caret"></span></a>
@@ -41,6 +43,10 @@
               </ul>
             </li>
           </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    
