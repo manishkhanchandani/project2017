@@ -18,11 +18,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Issues <span class="caret"></span></a>
               
               <ul class="dropdown-menu">
-                <li><a href="issue_details_view.php">Issue Details</a></li>
-                <li><a href="save_quiz_result.php">Saved Quiz</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Deprecated</li>
-                <li><a href="issues.php">Issue Spotting</a></li>
+                <li><a href="">Issue Spotting</a></li>
               </ul>
             </li>
           </ul>
