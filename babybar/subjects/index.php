@@ -1,22 +1,27 @@
 <?php
 session_start();
-include_once('config.php');
-include_once('../functions.php');
+include_once('../config.php');
+include_once('../../functions.php');
+
+$resSubject = curlget(COMPLETE_HTTP_PATH.'apis/baby_bar_subject.php?id='.$_GET['id']);
+$rowSubject = json_decode($resSubject['output'], 1);
+$subjectData = $rowSubject['data'];
+
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybar.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="UTF-8">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Baby Bar &amp; Bar Examination</title>
+<title>Subject - <?php echo $subjectData['subject']; ?></title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/dashboard.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/firebase_4_1_5.js"></script>
-<?php include('head.php'); ?>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/firebase_4_1_5.js"></script>
+<?php include('../head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -28,21 +33,21 @@ include_once('../functions.php');
 
 <body>
 
-<?php include('nav.php'); ?>
+<?php include('../nav.php'); ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <?php include('nav_side.php'); ?>
+      <?php include('../nav_side.php'); ?>
     </div>
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-<h1 class="page-header">Dashboard</h1>
+  <h1 class="page-header">Subject - <?php echo $subjectData['subject']; ?> (<?php echo $subjectData['subject_year']; ?>)</h1>
 
   <div class="row placeholders">
     <div class="col-xs-6 col-sm-3 placeholder">
       <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-      <h4>Label</h4>
+      <h4>Definitions</h4>
       <span class="text-muted">Something else</span>
     </div>
     <div class="col-xs-6 col-sm-3 placeholder">
