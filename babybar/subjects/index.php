@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (empty($_GET['id'])) {
+    header("Location: ../");
+    exit;   
+}
 include_once('../config.php');
 include_once('../../functions.php');
 
@@ -7,6 +11,12 @@ $resSubject = curlget(COMPLETE_HTTP_PATH.'apis/baby_bar_subject.php?id='.$_GET['
 $rowSubject = json_decode($resSubject['output'], 1);
 $subjectData = $rowSubject['data'];
 
+
+//getting data based on node type, 1 is definitions, which is default
+$node_type_id = !empty($_GET['type_id']) ? $_GET['type_id'] : 1;
+$resNodes = curlget(COMPLETE_HTTP_PATH.'apis/baby_bar_sub_definitions.php?id='.$_GET['id'].'&type_id='.$node_type_id);
+$rowNodes = json_decode($resNodes['output'], 1);
+$nodesData = $rowNodes['data'];
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybar.dwt.php" codeOutsideHTMLIsLocked="false" -->
