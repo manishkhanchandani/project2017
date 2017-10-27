@@ -1,0 +1,3 @@
+$include_path=".;c:\wamp\www\procentris2\includes\pear";
+ini_set("include_path", $include_path); //".:../:./include:../include");
+require_once 'Spreadsheet/Excel/Writer.php';
