@@ -31,6 +31,9 @@ $nodesData = $rowNodes['data'];
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/firebase_4_1_5.js"></script>
+
+<link href="../library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="../library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->

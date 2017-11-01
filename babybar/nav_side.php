@@ -25,9 +25,9 @@ if (!empty($fetchSubjects['output'])) {
     </ul>
 <?php } ?>
 <?php } ?>
-<h4><?php if (!empty($_SESSION['MM_UserId'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?></h4>
+<h4><?php if (!empty($_SESSION['MM_DisplayName'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?></h4>
 <ul class="nav nav-sidebar">
-  <?php if (!empty($_SESSION['MM_UserId'])) { ?>
+  <?php if (!empty($_SESSION['MM_DisplayName'])) { ?>
       <li><a href="" onClick="signOut(); return false;">Signout</a></li>
   <?php } else { ?>
       <li><a href="" onClick="googleLogin(); return false;">Google Login</a></li>

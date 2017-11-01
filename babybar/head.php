@@ -11,7 +11,7 @@
   firebase.initializeApp(config);
 </script>
 <script>
-	var homeUrl = '/p2017/babybar/';
+	var homeUrl = '/project2017/babybar/';
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
           console.log('user is ', user);
@@ -47,7 +47,7 @@
 	}
     
 	function postToApi(obj) {
-		postJson('api.php', obj);
+		postJson(homeUrl+'api.php', obj);
 		
 	}
     

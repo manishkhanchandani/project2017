@@ -11,6 +11,9 @@
 <script src="../babybar/js/jquery.min.js"></script>
 <script src="../babybar/js/bootstrap.min.js"></script>
 <script src="../babybar/js/firebase_4_1_5.js"></script>
+
+<link href="../babybar/library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="../babybar/library/wysiwyg/summernote.js"></script>
 <?php include('../babybar/head.php'); ?>
 <!-- TemplateBeginEditable name="head" -->
 <!-- TemplateEndEditable -->
