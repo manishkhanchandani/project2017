@@ -123,6 +123,11 @@ if (!empty($_POST["body"])) {
 	$arr['option'][2] = trim($matches[0][8]);
 	$arr['option'][3] = trim($matches[0][10]);
 }
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
+	if (!empty($_POST['laws_all'])) {
+		$_POST['laws'] = implode(',', $_POST['laws_all']);
+	}
+}
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 	$_POST['answers'] = json_encode($_POST['option']);
@@ -130,7 +135,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s WHERE id=%s",
+  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s, laws=%s, essence=%s WHERE id=%s",
                        GetSQLValueString($_POST['category_id'], "int"),
                        GetSQLValueString($_POST['question'], "text"),
                        GetSQLValueString($_POST['explanation'], "text"),
@@ -138,6 +143,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
                        GetSQLValueString($_POST['answers'], "text"),
                        GetSQLValueString($_POST['correct'], "int"),
                        GetSQLValueString($_POST['topic'], "text"),
+                       GetSQLValueString($_POST['laws'], "text"),
+                       GetSQLValueString($_POST['essence'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_conn, $conn);
@@ -220,6 +227,12 @@ $rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
 $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
 
+mysql_select_db($database_conn, $conn);
+$query_rsIssues = "SELECT * FROM qz_issue_mbe_essay ORDER BY subject ASC, title ASC";
+$rsIssues = mysql_query($query_rsIssues, $conn) or die(mysql_error());
+$row_rsIssues = mysql_fetch_assoc($rsIssues);
+$totalRows_rsIssues = mysql_num_rows($rsIssues);
+
 
 $queryString_rsQuiz = "";
 if (!empty($_SERVER['QUERY_STRING'])) {
@@ -259,6 +272,11 @@ foreach ($breadcrumb as $k => $v) {
 	$tmp[] = '<a href="index.php?parent_id='.$v['id'].'">'.$v['text'].'</a>';
 }
 $breadCrumbString = implode(' > ', $tmp);
+
+$laws = array();
+if (!empty($row_rsEdit['laws'])) {
+	$laws = explode(',', $row_rsEdit['laws']); 	
+}
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -464,8 +482,33 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
       </select>      </td>
     </tr>
     <tr valign="baseline">
+      <td align="right" valign="top" nowrap>Laws:</td>
+      <td><label for="laws_all[]"></label>
+        <select name="laws_all[]" size="10" multiple id="laws_all[]">
+          <option value="" <?php if (!(strcmp("", $row_rsEdit['laws']))) {echo "selected=\"selected\"";} ?>>Select</option>
+          <?php
+do {  
+?>
+          <option value="<?php echo $row_rsIssues['issue_id']?>"<?php if (in_array($row_rsIssues['issue_id'], $laws)) {echo "selected=\"selected\"";} ?>><?php echo $row_rsIssues['title']?> - <?php echo $row_rsIssues['subject']?> / <?php echo $row_rsIssues['issue_id']?></option>
+          <?php
+} while ($row_rsIssues = mysql_fetch_assoc($rsIssues));
+  $rows = mysql_num_rows($rsIssues);
+  if($rows > 0) {
+      mysql_data_seek($rsIssues, 0);
+	  $row_rsIssues = mysql_fetch_assoc($rsIssues);
+  }
+?>
+        </select></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" valign="top" nowrap>Essence:</td>
+      <td><label for="essence"></label>
+        <textarea name="essence" id="essence" cols="55" rows="5"><?php echo $row_rsEdit['essence']; ?></textarea></td>
+    </tr>
+    <tr valign="baseline">
       <td nowrap align="right">&nbsp;</td>
-      <td><input type="submit" value="Update record"></td>
+      <td><input type="submit" value="Update record">
+        <input name="laws" type="hidden" id="laws" value="<?php echo $row_rsEdit['laws']; ?>"></td>
     </tr>
   </table>
   </div>
@@ -484,4 +527,6 @@ mysql_free_result($rsQuiz);
 mysql_free_result($rsCat);
 
 mysql_free_result($rsEdit);
+
+mysql_free_result($rsIssues);
 ?>
