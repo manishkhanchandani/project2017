@@ -291,6 +291,8 @@ if (!empty($row_rsEdit['laws'])) {
 <script src="js/bootstrap.min.js"></script>
 
 <!-- InstanceBeginEditable name="head" -->
+<link href="library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="library/wysiwyg/summernote.js"></script>
 
 
 <style type="text/css">
@@ -453,7 +455,7 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
     </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>
-      <td><textarea name="question" rows="7" class="form-control"><?php echo $row_rsEdit['question']; ?></textarea>      </td>
+      <td><textarea name="question" id="questionEdit" rows="7" class="form-control"><?php echo $row_rsEdit['question']; ?></textarea>      </td>
     </tr>
 	<?php for ($i = 0; $i < 4; $i++) { ?>
     <tr valign="baseline">
@@ -515,6 +517,13 @@ do {
   <input type="hidden" name="id" value="<?php echo $row_rsEdit['id']; ?>">
   <input type="hidden" name="answers" value="<?php echo $row_rsEdit['answers']; ?>">
   <input type="hidden" name="MM_update" value="form2">
+<script>
+ 	$(document).ready(function() {
+        $('#questionEdit').summernote({
+			height: 250							   
+		});
+    });
+</script>
 </form>  
 <?php } // Show if recordset not empty ?>
 <!-- InstanceEndEditable -->
