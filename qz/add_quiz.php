@@ -135,7 +135,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s, laws=%s, essence=%s WHERE id=%s",
+  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s, laws=%s, essence=%s, level_type=%s, seconds_assigned=%s WHERE id=%s",
                        GetSQLValueString($_POST['category_id'], "int"),
                        GetSQLValueString($_POST['question'], "text"),
                        GetSQLValueString($_POST['explanation'], "text"),
@@ -145,6 +145,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
                        GetSQLValueString($_POST['topic'], "text"),
                        GetSQLValueString($_POST['laws'], "text"),
                        GetSQLValueString($_POST['essence'], "text"),
+                       GetSQLValueString($_POST['level_type'], "text"),
+                       GetSQLValueString($_POST['seconds_assigned'], "int"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_conn, $conn);
@@ -393,6 +395,7 @@ document.getElementById('topic1').focus();
       <td valign="top"><strong>Correct</strong></td>
       <td valign="top"><strong>Edit</strong></td>
       <td valign="top"><strong>Delete</strong></td>
+      <td valign="top"><strong>Copy</strong></td>
     </tr>
       <?php do { ?>
       <tr>
@@ -408,6 +411,7 @@ document.getElementById('topic1').focus();
         <td valign="top"><?php echo $row_rsQuiz['correct']; ?></td>
         <td valign="top"><a href="add_quiz.php?pageNum_rsQuiz=<?php echo $pageNum_rsQuiz; ?>&totalRows_rsQuiz=<?php echo $totalRows_rsQuiz; ?>&cat_id=<?php echo $_GET['cat_id']; ?>&editId=<?php echo $row_rsQuiz['id']; ?>#edit">Edit</a></td>
         <td valign="top"><a href="add_quiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&del_id=<?php echo $row_rsQuiz['id']; ?>" onClick="var a = confirm('do you want to delete?'); return a;">Delete</a></td>
+        <td valign="top"><a href="copyQuiz.php?cat_id=<?php echo $_GET['cat_id']; ?>&id=<?php echo $row_rsQuiz['id']; ?>">Copy</a></td>
       </tr>
       <?php } while ($row_rsQuiz = mysql_fetch_assoc($rsQuiz)); ?>
       </table>
@@ -506,6 +510,20 @@ do {
       <td align="right" valign="top" nowrap>Essence:</td>
       <td><label for="essence"></label>
         <textarea name="essence" id="essence" cols="55" rows="5"><?php echo $row_rsEdit['essence']; ?></textarea></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">Level: </td>
+      <td><label for="level_type"></label>
+        <select name="level_type" id="level_type">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="difficult">Difficult</option>
+        </select></td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap align="right">Seconds Assigned: </td>
+      <td><label for="seconds_assigned"></label>
+        <input name="seconds_assigned" type="text" id="seconds_assigned" value="<?php echo $row_rsEdit['seconds_assigned']; ?>"></td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">&nbsp;</td>
