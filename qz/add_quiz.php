@@ -135,7 +135,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s, laws=%s, essence=%s, level_type=%s, seconds_assigned=%s WHERE id=%s",
+  $updateSQL = sprintf("UPDATE qz_questions SET category_id=%s, question=%s, explanation=%s, status=%s, answers=%s, correct=%s, topic=%s, laws=%s, essence=%s, level_type=%s, seconds_assigned=%s, q_desc=%s WHERE id=%s",
                        GetSQLValueString($_POST['category_id'], "int"),
                        GetSQLValueString($_POST['question'], "text"),
                        GetSQLValueString($_POST['explanation'], "text"),
@@ -147,6 +147,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
                        GetSQLValueString($_POST['essence'], "text"),
                        GetSQLValueString($_POST['level_type'], "text"),
                        GetSQLValueString($_POST['seconds_assigned'], "int"),
+                       GetSQLValueString($_POST['q_desc'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_conn, $conn);
@@ -230,7 +231,7 @@ $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
 
 mysql_select_db($database_conn, $conn);
-$query_rsIssues = "SELECT * FROM qz_issue_mbe_essay ORDER BY subject ASC, title ASC";
+$query_rsIssues = "(SELECT * FROM qz_issue_mbe_essay WHERE issue_sorting is not null ORDER BY issue_sorting ASC)"; // UNION (SELECT * FROM qz_issue_mbe_essay WHERE issue_key = '' OR issue_key IS NULL ORDER BY subject ASC, title ASC)
 $rsIssues = mysql_query($query_rsIssues, $conn) or die(mysql_error());
 $row_rsIssues = mysql_fetch_assoc($rsIssues);
 $totalRows_rsIssues = mysql_num_rows($rsIssues);
@@ -313,7 +314,8 @@ if (!empty($row_rsEdit['laws'])) {
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Add New Quiz</h1>
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View New Quiz </a><br><br>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View New Quiz </a>| <a href="create_json.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Create Json</a> <br>
+    <br>
 <?php echo $breadCrumbString; ?></div>
 
 
@@ -454,8 +456,7 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td>
-        <input name="topic" type="text" id="topic" size="55" value="<?php echo $row_rsEdit['topic']; ?>">
-      </td>
+        <input name="topic" type="text" id="topic" size="55" value="<?php echo $row_rsEdit['topic']; ?>">      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>
@@ -467,8 +468,7 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
       <td><table width="100%" border="0">
         <tr>
           <td>
-		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $row_rsEdit['options'][$i]; ?></textarea>
-          </td>
+		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $row_rsEdit['options'][$i]; ?></textarea>          </td>
           <td>
             <input name="correct" type="radio" value="<?php echo $i; ?>" <?php if (!is_null($row_rsEdit['correct']) && $row_rsEdit['correct'] == $i) echo ' checked'; ?> />
           Correct Option </td>
@@ -479,6 +479,11 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Explanation:</td>
       <td><textarea name="explanation" cols="50" rows="7" class="form-control"><?php echo $row_rsEdit['explanation']; ?></textarea>      </td>
+    </tr>
+    <tr valign="baseline">
+        <td nowrap align="right" valign="top">Description:</td>
+        <td><textarea name="q_desc" cols="50" rows="7" class="form-control" id="q_desc"><?php echo $row_rsEdit['q_desc']; ?></textarea>
+        </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">Status:</td>
@@ -495,7 +500,7 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
           <?php
 do {  
 ?>
-          <option value="<?php echo $row_rsIssues['issue_id']?>"<?php if (in_array($row_rsIssues['issue_id'], $laws)) {echo "selected=\"selected\"";} ?>><?php echo $row_rsIssues['title']?> - <?php echo $row_rsIssues['subject']?> / <?php echo $row_rsIssues['issue_id']?></option>
+          <option value="<?php echo $row_rsIssues['issue_id']?>"<?php if (in_array($row_rsIssues['issue_id'], $laws)) {echo "selected=\"selected\"";} ?>><?php echo $row_rsIssues['issue_key'];?> / <?php echo $row_rsIssues['subject']?> / <?php echo $row_rsIssues['title']?> / <?php echo $row_rsIssues['issue_id']?></option>
           <?php
 } while ($row_rsIssues = mysql_fetch_assoc($rsIssues));
   $rows = mysql_num_rows($rsIssues);

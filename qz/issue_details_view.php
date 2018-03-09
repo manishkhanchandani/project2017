@@ -155,7 +155,6 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
 <!-- include summernote css/js-->
 <link href="library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="library/wysiwyg/summernote.js"></script>
-
 <!-- InstanceEndEditable -->
 </head>
 
@@ -204,6 +203,7 @@ Subject:
 <table class="table table-striped">
     <tr>
       <td valign="top"><strong>Issue ID</strong></td>
+      <td valign="top"><strong>Key</strong></td>
       <td valign="top"><strong>Subject</strong></td>
       <td valign="top"><strong>Title</strong></td>
       <td valign="top"><strong>Edit</strong></td>
@@ -212,6 +212,7 @@ Subject:
     <?php do { ?>
       <tr>
         <td valign="top"><?php echo $row_rsIssues['issue_id']; ?></td>
+        <td valign="top"><?php echo $row_rsIssues['issue_key']; ?></td>
         <td valign="top"><?php echo $row_rsIssues['subject']; ?></td>
         <td valign="top"><p><strong><?php echo $row_rsIssues['title']; ?></strong></p>
           <p><?php echo substr(strip_tags($row_rsIssues['description']), 0, 200).' ....'; ?></p></td>

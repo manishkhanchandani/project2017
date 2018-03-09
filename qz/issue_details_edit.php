@@ -84,8 +84,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE qz_issue_mbe_essay SET subject=%s, title=%s, `description`=%s, essay_related=%s, mbe_related=%s, own_words=%s WHERE issue_id=%s",
+  $updateSQL = sprintf("UPDATE qz_issue_mbe_essay SET subject=%s, issue_key=%s, title=%s, `description`=%s, essay_related=%s, mbe_related=%s, own_words=%s WHERE issue_id=%s",
                        GetSQLValueString($_POST['subject'], "text"),
+                       GetSQLValueString($_POST['issue_key'], "text"),
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['essay_related'], "text"),
@@ -135,7 +136,6 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
 <!-- include summernote css/js-->
 <link href="library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="library/wysiwyg/summernote.js"></script>
-
 <!-- InstanceEndEditable -->
 </head>
 
@@ -173,6 +173,12 @@ $keyword = !empty($_GET['keyword']) ? $_GET['keyword'] : '';
         <option value="ucc" <?php if (!(strcmp("ucc", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>15. UCC</option>
         <option value="wills" <?php if (!(strcmp("wills", $row_rsEdit['subject']))) {echo "selected=\"selected\"";} ?>>16. Wills</option> 
         </select></td>
+      </tr>
+      <tr valign="baseline">
+          <td nowrap align="right"><strong>Issue Key:</strong> </td>
+          <td>
+              <input name="issue_key" type="text" id="issue_key" value="<?php echo htmlentities($row_rsEdit['issue_key'], ENT_COMPAT, ''); ?>" size="32">
+         </td>
       </tr>
       <tr valign="baseline">
         <td nowrap align="right"><strong>Title:</strong></td>

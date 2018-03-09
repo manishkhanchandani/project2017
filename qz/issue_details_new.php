@@ -84,8 +84,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO qz_issue_mbe_essay (subject, title, `description`, essay_related, mbe_related, own_words, user_id) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO qz_issue_mbe_essay (subject, issue_key, title, `description`, essay_related, mbe_related, own_words, user_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['subject'], "text"),
+                       GetSQLValueString($_POST['issue_key'], "text"),
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['essay_related'], "text"),
@@ -127,7 +128,6 @@ if (!empty($_POST['title'])) {
 <!-- include summernote css/js-->
 <link href="library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="library/wysiwyg/summernote.js"></script>
-
 <!-- InstanceEndEditable -->
 </head>
 
@@ -141,7 +141,7 @@ if (!empty($_POST['title'])) {
 <div class="table-responsive">
   <table class="table table-striped">
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Subject:</td>
+      <td nowrap="nowrap" align="right"><strong>Subject:</strong></td>
       <td><select name="subject">
         <option value="common" <?php if (!(strcmp("common", $subject))) {echo "selected=\"selected\"";} ?>>Common</option>
         <option value="books" <?php if (!(strcmp("books", $subject))) {echo "selected=\"selected\"";} ?>>Books</option>
@@ -164,23 +164,27 @@ if (!empty($_POST['title'])) {
       </select></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Title:</td>
+        <td nowrap align="right"><strong>Issue Key: </strong></td>
+        <td><input name="issue_key" type="text" id="issue_key" value="" size="32">        </td>
+    </tr>
+    <tr valign="baseline">
+      <td nowrap="nowrap" align="right"><strong>Title:</strong></td>
       <td><input type="text" name="title" id="title" value="<?php echo $title; ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">Description:</td>
+      <td nowrap="nowrap" align="right" valign="top"><strong>Description:</strong></td>
       <td><textarea name="description" cols="50" rows="5" id="description_1"></textarea></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">Essay_related:</td>
+      <td nowrap="nowrap" align="right" valign="top"><strong>Essay_related:</strong></td>
       <td><textarea name="essay_related" cols="50" rows="5" id="essay_related_1"></textarea></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right" valign="top">Mbe_related:</td>
+      <td nowrap="nowrap" align="right" valign="top"><strong>Mbe_related:</strong></td>
       <td><textarea name="mbe_related" cols="50" rows="5" id="mbe_related_1"></textarea></td>
     </tr>
     <tr valign="baseline">
-      <td nowrap="nowrap" align="right">Own_words:</td>
+      <td nowrap="nowrap" align="right"><strong>Own_words:</strong></td>
       <td><textarea name="own_words" value="" cols="50" rows="10" id="own_words_1"></textarea></td>
     </tr>
     <tr valign="baseline">
