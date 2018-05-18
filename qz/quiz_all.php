@@ -172,6 +172,28 @@ function totalPoints($data)
 	return count($data);
 }
 
+function getTextArea($fd) {
+	$answers =  json_decode($fd['answers'], 1); 
+	return '{
+			"key": "rule'.$fd['id'].'",
+			"name": "Rule '.$fd['id'].': '.$fd['topic'].'",
+			"description": "'.addcslashes(preg_replace('/\s+/', ' ', nl2br($fd['explanation'])), '"').' (Ref '.$fd['id'].')",
+			"examples": [
+				{
+					"question": "'.addcslashes(preg_replace('/\s+/', ' ', nl2br($fd['question'])), '"').'",
+					"answerOptions": [
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[0])), '"').'",
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[1])), '"').'",
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[2])), '"').'",
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[3])), '"').'"
+					],
+					"correct": '.$fd['correct'].',
+					"explanation": "'.addcslashes(preg_replace('/\s+/', ' ', nl2br($fd['explanation'])), '"').'"
+				}
+			]
+		}';
+}
+
 $error = '';
 if (!empty($_POST['formData'])) {
 	$formData = json_decode($_POST['formData'], 1);
@@ -216,16 +238,16 @@ if (!empty($_POST['formData'])) {
 				{
 					"question": "'.addcslashes(preg_replace('/\s+/', ' ', nl2br($formData['question'])), '"').'",
 					"answerOptions": [
-						"'.$answers[0].'",
-						"'.$answers[1].'",
-						"'.$answers[2].'",
-						"'.$answers[3].'"
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[0])), '"').'",
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[1])), '"').'",
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[2])), '"').'",
+						"'.addcslashes(preg_replace('/\s+/', ' ', nl2br($answers[3])), '"').'"
 					],
 					"correct": '.$formData['correct'].',
 					"explanation": "'.addcslashes(preg_replace('/\s+/', ' ', nl2br($formData['explanation'])), '"').'"
 				}
 			]
-		}';
+		}';//getTextArea($formData);
 	
 	$error .= '<a href="add_quiz.php?cat_id='.$formData['category_id'].'&editId='.$formData['id'].'#edit" target="_blank">Edit This Question</a><hr /><textarea rows="10" cols="50">'.$textarea.'</textarea>';
 }
@@ -271,7 +293,7 @@ if (!empty($_GET['topic'])) {
 
 $currentPage = $_SERVER["PHP_SELF"];
 
-$maxRows_rsQuestions = 1;
+$maxRows_rsQuestions = 1000;
 $pageNum_rsQuestions = 0;
 if (isset($_GET['pageNum_rsQuestions'])) {
   $pageNum_rsQuestions = $_GET['pageNum_rsQuestions'];
@@ -352,6 +374,8 @@ foreach ($breadcrumb as $k => $v) {
 	$tmp[] = '<a href="index.php?parent_id='.$v['id'].'">'.$v['text'].'</a>';
 }
 $breadCrumbString = implode(' > ', $tmp);
+
+$textareaAll = '';
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/qz.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -395,6 +419,10 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
 <div class="table-responsive">
       <table class="table table-striped">
 <?php do { ?>
+<?php 
+$textarea = getTextArea($row_rsQuestions);
+$textareaAll = $textareaAll.',
+		'.$textarea; ?>
 <tr>
 <td valign="top"><p><strong>Question Id:</strong> <?php echo $row_rsQuestions['id']; ?> (<?php echo $row_rsQuestions['topic']; ?>)</p>
 <p><strong>Question:</strong><br />
@@ -412,10 +440,12 @@ Total Time: <?php echo time_elapsed_string(time() - $_SESSION['startTime']); ?> 
 <td valign="top">
 <input type="submit" name="button" id="button" value="Submit" />
 <input name="formData" type="hidden" id="formData" value="<?php echo htmlentities(json_encode($row_rsQuestions)); ?>" />
+<textarea rows="10" cols="50"><?php echo $textarea; ?></textarea>
 </td>
 </tr>
 <?php } while ($row_rsQuestions = mysql_fetch_assoc($rsQuestions)); ?>
 </table>
+<textarea rows="10" cols="50"><?php echo $textareaAll; ?></textarea>
 </div>
 <?php } ?>
 <div class="table-responsive">

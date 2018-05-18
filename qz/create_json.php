@@ -5,7 +5,7 @@ if (isset($_GET['cat_id'])) {
   $colname_rsView = (get_magic_quotes_gpc()) ? $_GET['cat_id'] : addslashes($_GET['cat_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsView = sprintf("SELECT * FROM qz_questions LEFT JOIN qz_issue_mbe_essay on qz_questions.laws = qz_issue_mbe_essay.issue_id WHERE qz_questions.category_id = %s ORDER BY qz_issue_mbe_essay.issue_key", $colname_rsView);
+$query_rsView = sprintf("SELECT * FROM qz_questions LEFT JOIN qz_issue_mbe_essay on qz_questions.laws = qz_issue_mbe_essay.issue_id WHERE qz_questions.category_id = %s AND status = 1 ORDER BY qz_issue_mbe_essay.issue_key", $colname_rsView);
 $rsView = mysql_query($query_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);
 $totalRows_rsView = mysql_num_rows($rsView);
@@ -42,20 +42,47 @@ if (empty($row_rsIssues['issue_key'])) continue;
 $issues[$row_rsIssues['issue_id']] = $row_rsIssues['issue_key'];
 } while ($row_rsIssues = mysql_fetch_assoc($rsIssues)); 
 
+
+$export = '';
 $questions = array();
 do {
 $x = explode(',', $row_rsView['laws']);
 $x = array_filter($x);
 if (!empty($x)) {
 	foreach ($x as $k => $v) {
-		$questions[$issues[$v]][$row_rsView['id']] = $row_rsView;
+		$key = !empty($issues[$v]) ? $issues[$v] : 0;
+		$questions[$key][$row_rsView['id']] = $row_rsView;
 	}
 } else {
 	$questions[0][$row_rsView['id']] = $row_rsView;
 }
+
+$answers = json_decode($row_rsView['answers']);
+$export .= "\nID: ". $row_rsView['id'];
+$export .= "\nTopic is ". $row_rsView['topic'];
+$export .= "\nTopic is ". $row_rsView['topic'];
+$export .= "\nQuestion is ". strip_tags($row_rsView['question']);
+$export .= "\nQuestion is ". strip_tags($row_rsView['question']);
+$export .= "\nOptions are ";
+
+foreach ($answers as $k => $v) {
+	$export .= "\nOption ".($k + 1)." ". $v;
+}
+$export .= "\nOptions are ";
+
+foreach ($answers as $k => $v) {
+	$export .= "\nOption ".($k + 1)." ". $v;
+}
+$export .= "\nCorrect option is ". ($row_rsView['correct'] + 1)." that is ".$answers[$row_rsView['correct']];
+$export .= "\nCorrect option is ". ($row_rsView['correct'] + 1)." that is ".$answers[$row_rsView['correct']];
+$export .= "\nexplanation is ". strip_tags($row_rsView['explanation']);
+$export .= "\nexplanation is: ". strip_tags($row_rsView['explanation']);
 } while ($row_rsView = mysql_fetch_assoc($rsView)); 
 
-?><?php
+?>
+<textarea rows="10" cols="45"><?php echo $export; ?></textarea>
+
+<?php
 $key = '';
 ?>
 <?php 

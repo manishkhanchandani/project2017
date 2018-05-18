@@ -53,6 +53,9 @@ function convertType($type) {
 		case 7:
 			return 'DELETE PENDING ORDER';
 			break;
+		case 8:
+			return 'MODIFY ORDER';
+			break;
 			
 	}
 	return '';
@@ -64,9 +67,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO fxtable (fx_date, symbol, order_type, order_price, order_sl, order_tp, order_comment, order_magic, include_accounts, exclude_accounts) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO fxtable (fx_date, symbol, order_type, order_price, order_sl, order_tp, order_comment, order_magic, include_accounts, exclude_accounts, order_lots) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['fx_date'], "date"),
-                       GetSQLValueString(strtoupper($_POST['symbol']), "text"),
+                       GetSQLValueString($_POST['symbol'], "text"),
                        GetSQLValueString($_POST['order_type'], "int"),
                        GetSQLValueString($_POST['order_price'], "text"),
                        GetSQLValueString($_POST['order_sl'], "text"),
@@ -74,7 +77,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_POST['order_comment'], "text"),
                        GetSQLValueString($_POST['order_magic'], "int"),
                        GetSQLValueString($_POST['include_accounts'], "text"),
-                       GetSQLValueString($_POST['exclude_accounts'], "text"));
+                       GetSQLValueString($_POST['exclude_accounts'], "text"),
+                       GetSQLValueString($_POST['order_lots'], "double"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
@@ -160,7 +164,12 @@ body {
                 <option value="5" <?php if (!(strcmp(5, ""))) {echo "SELECTED";} ?>>SELLSTOP</option>
                 <option value="6" <?php if (!(strcmp(6, ""))) {echo "SELECTED";} ?>>ClOSE CURRENT RUNNING ORDER</option>
                 <option value="7" <?php if (!(strcmp(7, ""))) {echo "SELECTED";} ?>>DELETE PENDING ORDER</option>
+                <option value="8" <?php if (!(strcmp(8, ""))) {echo "SELECTED";} ?>>MODIFY ORDER</option>
             </select>            </td>
+        </tr>
+        <tr valign="baseline">
+            <td align="right" valign="top" nowrap="nowrap">Order Lots :</td>
+            <td valign="top"><input name="order_lots" type="text" id="order_lots" value="0.01" size="32" /></td>
         </tr>
         <tr valign="baseline">
             <td align="right" valign="top" nowrap>Price:</td>
@@ -180,7 +189,7 @@ body {
         </tr>
         <tr valign="baseline">
             <td align="right" valign="top" nowrap>Comment:</td>
-            <td valign="top"><input type="text" name="order_comment" value="Roger Trade" size="32"></td>
+            <td valign="top"><input type="text" name="order_comment" value="MKTrade" size="32"></td>
         </tr>
         <tr valign="baseline">
             <td align="right" valign="top" nowrap>Magic:</td>
@@ -212,6 +221,7 @@ body {
         <tr>
             <td><strong>Date Created </strong></td>
             <td><strong>Symbol</strong></td>
+            <td><strong>Lots</strong></td>
             <td><strong>Type</strong></td>
             <td><strong>Price</strong></td>
             <td><strong>Stop Loss </strong></td>
@@ -226,6 +236,7 @@ body {
             <tr>
                 <td><?php echo $row_rsTrading['fx_date']; ?></td>
                 <td><?php echo $row_rsTrading['symbol']; ?></td>
+                <td><?php echo $row_rsTrading['order_lots']; ?></td>
                 <td><?php echo convertType($row_rsTrading['order_type']); ?></td>
                 <td><?php echo $row_rsTrading['order_price']; ?></td>
                 <td><?php echo $row_rsTrading['order_sl']; ?></td>
@@ -254,7 +265,7 @@ body {
                     <a href="<?php printf("%s?pageNum_rsTrading=%d%s", $currentPage, $totalPages_rsTrading, $queryString_rsTrading); ?>">Last</a>
             <?php } // Show if not last page ?>            </td>
         </tr>
-            </table>
+    </table>
     <?php } // Show if recordset not empty ?></p>
 </body>
 </html>

@@ -39,7 +39,7 @@ if (!empty($row_rsTrading['exclude_accounts'])) {
 	}
 }
 
-echo strtoupper($row_rsTrading['symbol']).'|'.$row_rsTrading['order_type'].'|'.$row_rsTrading['order_price'].'|'.$row_rsTrading['order_sl'].'|'.$row_rsTrading['order_tp'].'|'.$row_rsTrading['order_comment'].'|'.$row_rsTrading['order_magic']."\n";
+echo strtoupper($row_rsTrading['symbol']).'|'.$row_rsTrading['order_type'].'|'.$row_rsTrading['order_price'].'|'.$row_rsTrading['order_sl'].'|'.$row_rsTrading['order_tp'].'|'.$row_rsTrading['order_comment'].'|'.$row_rsTrading['order_magic'].'|'.$row_rsTrading['order_lots']."\n";
 } while ($row_rsTrading = mysql_fetch_assoc($rsTrading));
 mysql_free_result($rsTrading);
 ?>

@@ -1,3 +1,4 @@
+
 <!-- Static navbar -->
     <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container">
@@ -18,6 +19,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Issues <span class="caret"></span></a>
               
               <ul class="dropdown-menu">
+                <li><a href="babybar_prep.php">Baby Bar Prep (Apr, May, Jun)</a></li>
+                <li><a href="elements.php">Elements</a></li>
+                <li role="separator" class="divider"></li>
                 <li><a href="issue_details_view.php">Issue Details</a></li>
                 <li><a href="save_quiz_result.php">Saved Quiz</a></li>
                 <li role="separator" class="divider"></li>

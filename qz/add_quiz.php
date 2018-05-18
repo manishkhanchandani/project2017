@@ -154,6 +154,36 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 }
 
+
+
+if ((isset($_POST["MM_insert_multi"])) && ($_POST["MM_insert_multi"] == "form1")) {
+	$count = count($_POST['data']);
+	for ($i = 0; $i < $count; $i++) {
+		$_POST['data'][$i]['answers'] = json_encode($_POST['data'][$i]['option']);
+		if (!isset($_POST['data'][$i]['correct'])) $_POST['data'][$i]['correct'] = null;
+		$_POST['data'][$i]['topic'] = trim($_POST['data'][$i]['topic']);
+		if (!$_POST['data'][$i]['question']) {
+			unset($_POST['data'][$i]);
+			continue;
+		}
+		$insertSQL = sprintf("INSERT INTO qz_questions (user_id, category_id, question, explanation, quiz_dt, status, answers, correct, topic) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['user_id'], "int"),
+                       GetSQLValueString($_POST['category_id'], "int"),
+                       GetSQLValueString($_POST['data'][$i]['question'], "text"),
+                       GetSQLValueString($_POST['data'][$i]['explanation'], "text"),
+                       GetSQLValueString($_POST['quiz_dt'], "date"),
+                       GetSQLValueString($_POST['data'][$i]['status'], "int"),
+                       GetSQLValueString($_POST['data'][$i]['answers'], "text"),
+                       GetSQLValueString($_POST['data'][$i]['correct'], "int"),
+                       GetSQLValueString($_POST['data'][$i]['topic'], "text"));
+
+	  mysql_select_db($database_conn, $conn);
+	  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+	}
+	  header("Location: add_quiz.php?cat_id=".$_GET['cat_id']);
+	  exit;
+}
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['answers'] = json_encode($_POST['option']);
 	if (!isset($_POST['correct'])) $_POST['correct'] = null;
@@ -327,8 +357,7 @@ if (!empty($row_rsEdit['laws'])) {
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Topic:</td>
       <td>
-        <input name="topic" type="text" id="topic" size="55">
-      </td>
+        <input name="topic" type="text" id="topic" size="55">      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right" valign="top">Question:</td>
@@ -340,8 +369,7 @@ if (!empty($row_rsEdit['laws'])) {
       <td><table width="100%" border="0">
         <tr>
           <td>
-		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $arr['option'][$i]; ?></textarea>
-          </td>
+		  	<textarea name="option[<?php echo $i; ?>]" rows="3" cols="55"><?php echo $arr['option'][$i]; ?></textarea>          </td>
           <td>
             <input name="correct" type="radio" value="<?php echo $i; ?>" />
           Correct Option </td>
@@ -404,7 +432,7 @@ document.getElementById('topic1').focus();
         <td valign="top"><?php echo $row_rsQuiz['id']; ?> (<?php $i++; echo $i; ?>)</td>
         <td valign="top"><?php echo $row_rsQuiz['topic']; ?></td>
         <td valign="top"><?php echo substr($row_rsQuiz['question'], 0, 25).'...<br />'.substr($row_rsQuiz['question'], -25); ?></td>
-        <td valign="top"><?php echo substr($row_rsQuiz['explanation'], 0, 25); ?></td>
+        <td valign="top"><?php echo substr($row_rsQuiz['explanation'], 2, 25); ?></td>
         <td valign="top"><?php echo $row_rsQuiz['status']; ?></td>
         <td valign="top"><?php /*foreach (json_decode($row_rsQuiz['answers'], 1) as $k => $v) {
 			if ($k == $row_rsQuiz['correct']) $class = 'active'; else $class = '';
@@ -477,13 +505,12 @@ Records <?php echo ($startRow_rsQuiz + 1) ?> to <?php echo min($startRow_rsQuiz 
     </tr>
 	<?php } ?>
     <tr valign="baseline">
-      <td nowrap align="right" valign="top">Explanation:</td>
-      <td><textarea name="explanation" cols="50" rows="7" class="form-control"><?php echo $row_rsEdit['explanation']; ?></textarea>      </td>
+        <td nowrap align="right" valign="top">Description:</td>
+        <td><textarea name="q_desc" cols="50" rows="7" class="form-control" id="q_desc"><?php echo $row_rsEdit['q_desc']; ?></textarea>        </td>
     </tr>
     <tr valign="baseline">
-        <td nowrap align="right" valign="top">Description:</td>
-        <td><textarea name="q_desc" cols="50" rows="7" class="form-control" id="q_desc"><?php echo $row_rsEdit['q_desc']; ?></textarea>
-        </td>
+      <td nowrap align="right" valign="top">Explanation:</td>
+      <td><textarea name="explanation" cols="50" rows="7" class="form-control"><?php echo $row_rsEdit['explanation']; ?></textarea>      </td>
     </tr>
     <tr valign="baseline">
       <td nowrap align="right">Status:</td>
@@ -549,8 +576,57 @@ do {
 </script>
 </form>  
 <?php } // Show if recordset not empty ?>
-<!-- InstanceEndEditable -->
-</div>
+<h3>Add Mulitple Questions</h3>
+<?php
+$num = isset($_GET['num']) ? $_GET['num'] : 25;
+?>
+<form name="form3" method="post" action="">
+    <table width="100%" border="1" cellpadding="5" cellspacing="1">
+        <tr>
+            <td><strong>Topic</strong></td>
+            <td><strong>Question</strong></td>
+            <td><strong>Options</strong></td>
+            <td><strong>Explanation</strong></td>
+            <td><strong>Status</strong></td>
+            </tr>
+		<?php for ($i = 0; $i < $num; $i++) { ?>
+        <tr>
+            <td valign="top"><input name="data[<?php echo $i; ?>][topic]" type="text" id="topic" size="20"></td>
+            <td valign="top"><textarea name="data[<?php echo $i; ?>][question]" rows="10" class="form-control" id="question">
+</textarea></td>
+            <td valign="top">
+				<?php for ($j = 0; $j < 4; $j++) { ?>
+				<textarea name="data[<?php echo $i; ?>][option][<?php echo $j; ?>]" rows="3" cols="20"></textarea>
+				<br />
+				<input name="data[<?php echo $i; ?>][correct]" type="radio" value="<?php echo $j; ?>" />
+						  Correct Option
+				<hr />
+				<?php } ?>
+			
+			</td>
+            <td valign="top"><textarea name="data[<?php echo $i; ?>][explanation]" rows="10" class="form-control" id="explanation">
+</textarea></td>
+            <td valign="top"><select name="data[<?php echo $i; ?>][status]" id="status">
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+            </select>
+        	<input type="hidden" name="data[<?php echo $i; ?>][answers]" value=""></td>
+            </tr>
+		<?php } ?>
+    </table>
+    <p>
+        <label>
+        <input type="submit" name="Submit" value="Submit">
+        </label>
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
+        <input type="hidden" name="category_id" value="<?php echo $_GET['cat_id']; ?>">
+        <input type="hidden" name="quiz_dt" value="<?php echo date('Y-m-d H:i:s'); ?>">
+        <input type="hidden" name="MM_insert_multi" value="form1">
+</p>
+</form>
+<p>&nbsp;</p>
+<p></p>
+<!-- InstanceEndEditable --></div>
 </body>
 <!-- InstanceEnd --></html>
 <?php
