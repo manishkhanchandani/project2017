@@ -1,0 +1,1 @@
+Under tort law ASSUMPTION OF THE RISK is a complete <strong>bar to recovery</strong> for negligence if 1) plaintiffs <strong>deliberately</strong> put themselves at <strong>risk</strong> 2) with<strong> full awareness</strong> of the risks and 3) a <strong>conscious acceptance </strong>of the risks.

@@ -1,0 +1,1 @@
+<strong>INFANCY</strong>, <strong>INSANITY</strong> and <strong>INCOMPETENCE</strong> are <strong>not defenses</strong> for intentional torts.

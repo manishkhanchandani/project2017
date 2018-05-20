@@ -1,0 +1,2 @@
+<p><strong>Rule</strong></p>
+<p>Under tort law <strong>PROXIMATE CAUSE</strong> means that the injury suffered by the plaintiff was so <strong>DIRECT, NATURA</strong>L and <strong>FORESEEABLE</strong>, so <strong>close in time and place</strong>, resulting from a <strong>CHAIN OF CAUSATION</strong> begun by the defendant's acts, <strong>unbroken</strong> by <strong>UNFORESEEABLE INTERVENING EVENTS</strong> that the law will impose liability for the result. </p>
