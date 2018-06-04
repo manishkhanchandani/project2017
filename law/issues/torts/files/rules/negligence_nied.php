@@ -1,2 +1,0 @@
-<p>Under tort law, a <strong>BYSTANDER</strong> to an event may bring an action for <strong>NEGLIGENT INFLICTION</strong> if they suffer severe emotional distress and there is a nexus between the negligent act and the injury based on a <strong>PROXIMITY IN TIME, PLACE and RELATIONSHIP</strong>. </p>
-<p>In some jurisdictions a <strong>physical manifestation of emotional distress</strong> must be shown.</p>

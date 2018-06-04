@@ -1,1 +1,0 @@
-<p>Under tort law <strong>FULLY INFORMED CONSENT</strong> from a person with legal capacity is a <strong>defense</strong> to most intentional torts, but is <strong>not</strong> a defense to a <strong>battery</strong> that causes foreseeable great bodily injury.</p>

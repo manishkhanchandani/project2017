@@ -88,10 +88,16 @@ if ($totalRows_rsCategories > 0) {
 } while ($row_rsCategories = mysql_fetch_assoc($rsCategories));
 } // Show if recordset not empty
 $return['displayCategory'] = implode(', ', $catDisplay);
-
+function replaceMe($str) {
+	$remove_character = array("\n", "\r\n", "\r");
+	$str = str_replace($remove_character , '<br />', $str);
+	$remove_character = array("<br /><br />");
+	return $str = str_replace($remove_character , '<br />', $str);
+}
 if ($totalRows_rsDisplay > 0) {
 	do { 
-	
+		$row_rsDisplay['question'] = replaceMe($row_rsDisplay['question']);
+		$row_rsDisplay['explanation'] = replaceMe($row_rsDisplay['explanation']);
 		$return['data'][] = !empty($allFields) ? $row_rsDisplay : array('id' => $row_rsDisplay['id'], 'category_id' => $row_rsDisplay['category_id']);
 } while ($row_rsDisplay = mysql_fetch_assoc($rsDisplay));
 } // Show if recordset not empty 
@@ -104,6 +110,7 @@ mysql_free_result($rsCategories);
 	$return['success'] = 0;
 	$return['error'] = $e->getMessage();
 }
+
 echo json_encode($return);
 
 ?>

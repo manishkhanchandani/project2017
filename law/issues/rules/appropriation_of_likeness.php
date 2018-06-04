@@ -1,0 +1,4 @@
+<p>Under tort law <strong>APPROPRIATION</strong> is the <strong>unauthorized use </strong>of the <strong>name or likeness</strong> of a person in a manner that<strong> implies endorsement of a product</strong> or support of a cause, but <strong>not mere publication of names and photos </strong>as news articles. </p>
+<p>Damages are generally measured by the profit to the defendant.    </p>
+<p>Here there was a use of P's <strong>photo and name </strong>because billboards with her "picture" said "P Generate" buys their paper (or facts from hypo). And the <strong>use was not authorized </strong>because she did not give permission (or facts from hypo). The purpose of the billboards <strong>was to profit</strong> by implying she <strong>endorsed their paper</strong>. P's damages would generally be measured by the <strong>profits D made from using her likeness</strong>.</p>
+<p>Therefore D may be <strong>liable</strong> for appropriation of likeness. </p>

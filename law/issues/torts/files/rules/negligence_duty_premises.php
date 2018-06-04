@@ -1,7 +1,0 @@
-<p>Under tort law an <strong>OCCUPIER OF LAND</strong> has a duty to both those who <strong>come onto the land</strong> and to those <strong>off the land</strong>. This is a form of duty based on <strong>RELATIONSHIP</strong>.</p>
-<p>Under the common law an occupier of land had <strong>no duty</strong> to <strong>UNKNOWN TRESPASSERS</strong>.    </p>
-<p>The occupier had a duty to <strong>warn and protect</strong> KNOWN TRESPASSERS and LICENSEES from <strong>known, hidden dangers and artificial conditions</strong>. Licensees are people allowed onto the land but not for the occupier's benefit.    </p>
-<p>The occupier had a duty to reasonably <strong>inspect the land and warn and protect</strong> INVITEES from <strong>known, hidden dangers and artificial conditions</strong>. Invitees are people invited or allowed onto the land for the occupier's benefit.    </p>
-<p>Finally the occupier of land had a duty to conduct and <strong>control activities on the land</strong> with due care to <strong>prevent injury</strong> to PEOPLE OFF THE LAND .    </p>
-<p>Modernly these rigid rules by classification have often been modified by both statute and Court decision to create a balancing test under which the occupier of land has a <strong>duty of due care</strong> to ALL PEOPLE to act as a reasonable person would in inspecting, maintaining and using his property so that it does pose known dangers to others.    </p>
-<p>Here... because ...Therefore.</p>

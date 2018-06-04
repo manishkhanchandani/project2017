@@ -1,1 +1,0 @@
-In many States the <strong>COMPARATIVE NEGLIGENCE</strong> approach does not bar the negligent plaintiff from recovery but <strong>reduces </strong>the plaintiff's <strong>recovery</strong> to reflect the <strong>degree of fault</strong> shared by the plaintiff. Some states bar a plaintiff from recovery if they are over half to blame for an accident.

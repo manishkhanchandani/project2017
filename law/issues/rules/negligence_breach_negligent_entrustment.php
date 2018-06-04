@@ -1,0 +1,2 @@
+<p><strong>Rule</strong></p>
+Under tort law defendants who NEGLIGENTLY ENTRUST <strong>third parties</strong> with <strong>resources</strong> or authority are directly <strong>liable</strong> for <strong>injuries actually and proximately caused</strong> as a result.

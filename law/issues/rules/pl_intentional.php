@@ -1,0 +1,1 @@
+<p>In order for the plaintiff to recover on a theory of <strong>intent</strong> (battery), the plaintiff must prove that the <strong>manufacturer</strong>, distributor or supplier <strong>knew the product </strong>would cause <strong>harm</strong>.</p>

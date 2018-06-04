@@ -1,1 +1,0 @@
-<strong>SPECIAL damages</strong> are the plaintiff's<strong> out-of-pocket costs</strong>

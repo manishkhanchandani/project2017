@@ -1,4 +1,0 @@
-<p>Under tort law defendants that create <strong>reasonably foreseeable dangers to others</strong> have a DUTY based on PERIL to act reasonably to protect others from those dangers.    </p>
-<p>Under Palsgraf Cardozo said that defendants that create peril do not owe a duty to protect those <strong>outside the zone of danger</strong> created by their acts so they should not be liable to them. But Andrews said defendants who breach duties based on peril should be <strong>liable to everyone</strong> actually and proximately caused injury, even if they are outside the zone of danger, the same as is true under the Rescuer Doctrine.    </p>
-<p>Zone of danger is an <strong>area</strong> within which defendants actions created reasonably foreseeable peril to others. </p>
-<p>Here the ZONE OF DANGER was ... because ... </p>

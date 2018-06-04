@@ -1,1 +1,0 @@
-An act is <strong>intentional</strong> if it is for the <strong>purpose</strong> or with <strong>knowledge</strong> with reasonable certainty a <strong>result</strong> will occur. 

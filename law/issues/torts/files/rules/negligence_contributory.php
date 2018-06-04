@@ -1,1 +1,0 @@
-Under tort law CONTRIBUTORY NEGLIGENCE completely <strong>bars</strong> a plaintiff <strong>from recovery</strong> if any <strong>negligence by the plaintiff</strong> helped <strong>cause</strong> their <strong>injury</strong>. 

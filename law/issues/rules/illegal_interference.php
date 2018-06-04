@@ -1,0 +1,5 @@
+<p>Under tort law a person is liable for <strong>unreasonably and illegally interfering</strong> with another person’s known or apparent <strong>business relationships</strong>.</p>
+<p>Here D <strong>interfered</strong> with P's <strong>business relationship</strong> with Jack by suggesting to him that "P drank" and was a "bad tenant choice" (or facts from hypo). D also <strong>interfered</strong> by telling P the space was "too small for a coffee shop".(or facts from hypo). 
+
+D did these acts <strong>knowing</strong> that he was <strong>interfering with the business relationship</strong> between Jack and P because Jack had told him he, "promised the location to P." (or facts from hypo). The acts were <strong>unreasonable</strong> because they were intentional false statements intended to damage P. And they caused P <strong>damages</strong> because it prevented her from completing the lease agreement with Jack.(or facts from hypo). </p>
+<p>Therefore, D can be <strong>liable</strong> for <strong>tortious interference</strong>.</p>

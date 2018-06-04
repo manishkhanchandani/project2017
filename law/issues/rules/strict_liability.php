@@ -1,0 +1,21 @@
+<p>Under tort law a defendant that engages in any of three activities is <strong>STRICTLY LIABLE</strong> to any person who is actually and proximately caused injury.
+    
+</p>
+<p>These three activities are:    </p>
+<p>1) keeping a <strong>KNOWN, DANGEROUS ANIMAL</strong> ,    </p>
+<p>2) keeping an <strong>EXOTIC ANIMAL</strong> of a type that is not commonly domesticated, or    </p>
+<p>3) engaging in <strong>ULTRA-HAZARDOUS ACTIVITIES</strong> that are unusual, pose extreme risks to others, and are usually subject to strict safety regulations.    </p>
+<p>If a defendant engages in these activities <strong>duty</strong> is presumed, and if anyone is caused injured as a result <strong>breach</strong> is presumed as well.    </p>
+<p>Here ... because ... Therefore ...</p>
+<p><strong>My Explanation </strong></p>
+<p>Here, the owner of dangerous activity will be held strict liable for injuries caused by the activity.</p>
+<p>Here D engages in dangerous activity because they are are the owner of the tiger and so they have the responbility to make sure not to create danger or perilous situation and injure the P.</p>
+<p>So anyone keeping the dangerous activity is assuming the duty and if injury occurs because of that, breach is presumed.   </p>
+<p><strong>Sample:</strong></p>
+<p>Defendant, the owner of the tiger, will be held<strong> strict liable</strong> for injuries caused by the tiger. Tigers are <strong>dangerous wild animals</strong>. Under Strict liability, there is an <strong>absolute duty to make safe</strong> and Defendant will be subject to this duty because they are the owners of the tiger. This means that Defendant has a <strong>duty to enclose</strong> its wild tigers in cages <strong>capable of withstanding collisions</strong>. Plaintiff is a <strong>foreseeable plaintiff</strong> under the Cardozo view, and Defendant owes a duty to Plaintiff to not subject him to the dangers of a wild tiger on the loose. </p>
+<p>Defendant <strong>breached</strong> its duty to Plaintiff. When the cage was overturned by the accident <strong>it broke</strong> and the <strong>tiger escaped</strong>. It is assumed from the facts that Plaintiff was <strong>serverly mauled </strong>by the tiger. A mauling is the type of injury expected from the <strong>known dangerous propensities</strong> of the animal. </p>
+<p>Plaintiff will argue that &quot;<strong>but for</strong>&quot; the escape of the tiger, he would not have been injured. Defendant will be the <strong>cause in fact</strong> of Plaintiff's injuries. </p>
+<p>Defendant will argue that it should not be liable for the injuries of Plaintiff as it was <strong>not the proximate cause </strong>of the injuries. Defendant will argue that the Motorist's act of driving drunk and at an excessive speed was an unforeseeable criminal act and would relieve Defendant of liability for Plaintiff's injuries (a superseding cause). </p>
+<p>Plaintiff will argue that Motorists act were criminal and should be calssified as an independent intervening act. Plaintiff will contend that although the acts were independent, intervening, and criminal, such acts as <strong>foreseeable common occurrences</strong>. Drunk driving is a <strong>crime of common occurence</strong>. Furthermore, an <strong>accident alone without any criminal activity</strong> is a forseeable event and the cage should have been capable of withstanding a foreseeable accident in transportation. </p>
+<p>Even if the acts of Motorist are considered to be <strong>criminal and hence unforeseeable</strong>, they produced a <strong>foreseeable result </strong>in an <strong>unforeseeable manner</strong>. A foreseeable result produced in an unforeseeable manner (drunk driving) does <strong>not supersede.</strong> Defendant will be held <strong>proximately liable</strong> for the injuries of the Peo. Note: even under an <strong>Andrew's court</strong>, Defendant would not escape liability although the injury occurerd <strong>one mile</strong> from the accident. It would be foreseeable that a tiger would remain uncaptured and after an accident and that it could travel a mile from the accident site.</p>
+<p>Defendant is <strong>liable</strong> for all injuries proximately caused by Plaintiff by the tiger. </p>

@@ -159,18 +159,31 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 if ((isset($_POST["MM_insert_multi"])) && ($_POST["MM_insert_multi"] == "form1")) {
 	$count = count($_POST['data']);
 	for ($i = 0; $i < $count; $i++) {
-		$_POST['data'][$i]['answers'] = json_encode($_POST['data'][$i]['option']);
-		if (!isset($_POST['data'][$i]['correct'])) $_POST['data'][$i]['correct'] = null;
-		$_POST['data'][$i]['topic'] = trim($_POST['data'][$i]['topic']);
 		if (!$_POST['data'][$i]['question']) {
 			unset($_POST['data'][$i]);
 			continue;
 		}
+		if (!isset($_POST['data'][$i]['correct'])) $_POST['data'][$i]['correct'] = null;
+		$_POST['data'][$i]['topic'] = trim($_POST['data'][$i]['topic']);
+		
+		$_POST['data'][$i]['answers'] = json_encode($_POST['data'][$i]['option']);
+		$regexp = '(.*)(A\.(.*))(B\.(.*))(C\.(.*))(D\.(.*))$';
+		$input = trim($_POST['data'][$i]['question']);
+		$matches = regexp($input, $regexp, true);
+		$tmpArr = array();
+		if (!empty($matches[0][2])) {
+			$tmpArr[0] = trim($matches[0][2]);
+			$tmpArr[1] = trim($matches[0][4]);
+			$tmpArr[2] = trim($matches[0][6]);
+			$tmpArr[3] = trim($matches[0][8]);
+			$_POST['data'][$i]['question'] = trim($matches[0][1]);
+			$_POST['data'][$i]['answers'] = json_encode($tmpArr);
+		}
 		$insertSQL = sprintf("INSERT INTO qz_questions (user_id, category_id, question, explanation, quiz_dt, status, answers, correct, topic) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['user_id'], "int"),
                        GetSQLValueString($_POST['category_id'], "int"),
-                       GetSQLValueString($_POST['data'][$i]['question'], "text"),
-                       GetSQLValueString($_POST['data'][$i]['explanation'], "text"),
+                       GetSQLValueString(trim($_POST['data'][$i]['question']), "text"),
+                       GetSQLValueString(trim($_POST['data'][$i]['explanation']), "text"),
                        GetSQLValueString($_POST['quiz_dt'], "date"),
                        GetSQLValueString($_POST['data'][$i]['status'], "int"),
                        GetSQLValueString($_POST['data'][$i]['answers'], "text"),
@@ -344,7 +357,7 @@ if (!empty($row_rsEdit['laws'])) {
 <div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <h1>Add New Quiz</h1>
-<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View New Quiz </a>| <a href="create_json.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Create Json</a> <br>
+<div><a href="index.php?parent_id=<?php echo $row_rsCat['parent_id']; ?>">Go Back</a> | <a href="view_quiz_settings.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View Quiz </a> | <a href="quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">View New Quiz </a>| <a href="create_json.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Create Json</a> | <a href="add_quiz.php?cat_id=<?php echo $row_rsCat['cat_id']; ?>">Refresh</a><br>
     <br>
 <?php echo $breadCrumbString; ?></div>
 
@@ -592,7 +605,7 @@ $num = isset($_GET['num']) ? $_GET['num'] : 25;
 		<?php for ($i = 0; $i < $num; $i++) { ?>
         <tr>
             <td valign="top"><input name="data[<?php echo $i; ?>][topic]" type="text" id="topic" size="20"></td>
-            <td valign="top"><textarea name="data[<?php echo $i; ?>][question]" rows="10" class="form-control" id="question">
+            <td valign="top"><textarea name="data[<?php echo $i; ?>][question]" rows="20" class="form-control" id="question">
 </textarea></td>
             <td valign="top">
 				<?php for ($j = 0; $j < 4; $j++) { ?>
@@ -604,7 +617,7 @@ $num = isset($_GET['num']) ? $_GET['num'] : 25;
 				<?php } ?>
 			
 			</td>
-            <td valign="top"><textarea name="data[<?php echo $i; ?>][explanation]" rows="10" class="form-control" id="explanation">
+            <td valign="top"><textarea name="data[<?php echo $i; ?>][explanation]" rows="20" class="form-control" id="explanation">
 </textarea></td>
             <td valign="top"><select name="data[<?php echo $i; ?>][status]" id="status">
                 <option value="1">Active</option>
