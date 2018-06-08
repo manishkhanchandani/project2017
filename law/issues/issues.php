@@ -199,16 +199,135 @@ $issuesContracts = array(
 			
 		)
 	),
-	'defenses' => array(
-		'title' => 'Formation of Contrats',
-		'data' => array(
-		
-		)	
-	),
 	'contract_terms' => array(
 		'title' => 'Contract Terms',
 		'data' => array(
 		
+		)	
+	),
+	'defenses' => array(
+		'title' => 'Defenses',
+		'data' => array(
+			'defense_lack_of_intent' => array(
+				'title' => 'Defense of Lack of Intent',
+				'elements' => array(
+					'Objective Main Rule:',
+					'intent to enter into contract',
+					'if objective observer concluded from communication',
+					'that assent would form a bargain'
+				)
+			),
+			'defense_lack_of_consideration' => array(
+				'title' => 'Defense of Lack of Consideration',
+				'elements' => array(
+					'modification of contract',
+					'must  be supported by consideration'
+				)
+			),
+			'defense_contract_modify' => array(
+				'title' => 'Defense of Contract Modification',
+				'elements' => array(
+					'ucc 2-209',
+					'contract modification do not require consideration',
+					'but must be supported by sufficient writing',
+					'under 2-201, modification without sufficient writing is not enforceable'
+				)
+			),
+			'defense_unconsionable' => array(
+				'title' => 'Defense of Unconsionable',
+				'elements' => array(
+					'no reasonable finding of intent',
+					'so unconsionable contracts are not enforceable',
+					'Adhesion contract:',
+					'take it or leave it are not enforceable'
+				)
+			),
+			'defense_duress' => array(
+				'title' => 'Defense of Duress',
+				'elements' => array(
+					'good faith agreement are enforceable',
+					'illegal threats are not valid',
+					'acts to create threat of economic harm are not enforceable'
+				)
+			),
+			'defense_fraud' => array(
+				'title' => 'Defense of Fraud',
+				'elements' => array(
+					'duty to reveal facts',
+					'party deliberately concealing the facts',
+					'or misrepresenting the facts',
+					'if party seeking to void the contract',
+					'would have not agreed to bargain',
+					'but for the concealment or misrepresentation',
+					'OR: ',
+					'deliberately misrepresented material facts',
+					'duty to reveal facts',
+					'the party raising the defense reasonably relied on the misrepresentations',
+					'the party to be bound would not have entered into the contract but for the misrepresentation'
+				)
+			),
+			'defense_incapacity' => array(
+				'title' => 'Defense of Incapacity',
+				'elements' => array(
+					''
+				)
+			),
+			'defense_illegality' => array(
+				'title' => 'Defense of Illegality',
+				'elements' => array(
+					'k cannot be enforced for illegal purpose'
+				)
+			),
+			'defense_impossibility' => array(
+				'title' => 'Defense of Impossibility',
+				'elements' => array(
+					'performance of K duties must be possible',
+					'if performance becomes impossible',
+					'because of events beyond our control',
+					'then K is void'
+				)
+			),
+			'defense_impracticability' => array(
+				'title' => 'Defense of Commercial Impracticability',
+				'elements' => array(
+					'performance by a party',
+					'would be so financially burdensome',
+					'because of events beyond our control'
+				)
+			),
+			'defense_frustration_of_purpose' => array(
+				'title' => 'Defense of Frustration of Purpose',
+				'elements' => array(
+					'failure of condition',
+					'beyond their control',
+					'will deny one of the parties, benefit of bargain',
+					'condition is implied material condition',
+					'failure of which excuses both parties from agreement'
+				)
+			),
+			'defense_mutual_mistake' => array(
+				'title' => 'Defense of Mutual Mistake',
+				'elements' => array(
+					'misunderstanding of material fact by both parties',
+					'there is no meeting of minds',
+					'contract is void from beginning'
+				)
+			),
+			'defense_unilateral_mistake' => array(
+				'title' => 'Defense of Unilateral Mistake',
+				'elements' => array(
+					'Majority View:',
+					'misunderstanding of material fact by one party',
+					'legally bound to K',
+					'unless other party knew of the mistake',
+					'contract is voidable by mistaken party',
+					'Minority View: ',
+					'K is legally voidable if',
+					'discover mistake quickly before other party relies on it',
+					'give prompt notice',
+					'reimburse other party'					
+				)
+			)
 		)	
 	),
 	'third_party' => array(
@@ -220,7 +339,83 @@ $issuesContracts = array(
 	'breach' => array(
 		'title' => 'Breach',
 		'data' => array(
-		
+			'anticipatory_breach' => array(
+				'title' => 'Anticipatory Breach',
+				'elements' => array(
+					'clear statement that party will not perform',
+					'future duties when they become due',
+					'its a major breach',
+					'non breaching party is excused from performance',
+					'future duties of breaching party is accelerated to present',
+					'Reasonable Belief:',
+					'that party may not perform',
+					'so they can ask reasonable assurance like financial guarantee',
+					'and if they demanded and not provided then it is anticipatory breach'				
+				)
+			),
+			'waiver_breach' => array(
+				'title' => 'Waiver of the Breach',
+				'elements' => array(
+					'non breaching party lets the breaching party',
+					'continue performance after a major breach',
+					'it waives the breach, and waiver cannot be retracted',
+					'and it becomes minor breach'				
+				)
+			),
+			'breach_implied_covenant' => array(
+				'title' => 'Breach of Implied Covenant',
+				'elements' => array(	
+					'parties must act in good faith',
+					'help other party to enjoy the benefits of contract',
+					'they will not act in a way to prevent that from occuring'			
+				)
+			),
+			'breach' => array(
+				'title' => 'Breach, Major or Minor?',
+				'elements' => array(
+					'first party who breach is the breaching party',
+					'Definition:',
+					'failure to perform contractual duty is a Breach',
+					'For Common law: ',
+					'major breach is one which deprives the benefit of bargain',
+					'or violation of express or implied material condition',
+					'major breach excuses non breaching party, all further performances',
+					'accelerates the future duty to present',
+					'so that non breaching party can seek immediate payment of damages',
+					'For UCC (Perfect Tender Rule):',
+					'any shipment of non-conforming goods is breach',
+					'For UCC (Divisible Contracts): ',
+					'breach with respect to any shipment does not constitute breach of entire contract'			
+				)
+			),
+			'breach_divisible_contract' => array(
+				'title' => 'Effect of Breach on Divisible Contract',
+				'elements' => array(
+					'breach to any shipment of goods',
+					'does not constitute the breach of entire contract',
+					'Divisible Contract:',
+					'is one under which goods are delivered in separate shipments',
+					'each can be evaluated separately'				
+				)
+			),
+			'waiver_condition' => array(
+				'title' => 'Waiver of Condition',
+				'elements' => array(
+					'contractual duty that is subject to a condition precedent',
+					'condition fails to hold',
+					'party waives the condition',
+					'party can retract the waiver'				
+				)
+			),
+			'accord_satisfaction' => array(
+				'title' => 'Accord & Satisfaction',
+				'elements' => array(		
+					'agreement by the parties',
+					'to settle a reasonable claim',
+					'by one party',
+					'that other party has breached the original contract'		
+				)
+			)
 		)	
 	),
 	'remedies' => array(
@@ -272,6 +467,207 @@ $issuesCriminal = array(
 			),
 			'burglary' => array(
 				'title' => 'Burglary'
+			)
+		)
+	),
+	'homicide' => array(
+		'title' => 'Homicide',
+		'data' => array(
+			'murder' => array(
+				'title' => 'Murder',
+				'elements' => array(
+					'Homicide:',
+					'killing of one human being by another',
+					'Actual Cause:',
+					'"but for" the act of the defendant, the result would not have occured',
+					'Proximate Cause:',
+					'direct and natural result of act of defendant',
+					'Murder:',
+					'Cr lw, unlawful homicide with malice aforethought',
+					'Malice:',
+					'- intent to kill',
+					'- intent to commit great bodily injury',
+					'- felony murder rule, commission of felony',
+					'- depraved heart theory, deliberate creation of extreme risks, awareness of risk, conscious disregard of risks',
+					'First degree:',
+					'- willful, deliberate, premeditated homicide',
+					'- done with enumerated means like torture, poision, explosives',
+					'- caused by enumerated felony (BARRKSS - burglary, arson , rape, robbery, kidnapping)',
+					'Second Degree:',
+					'all other murders not listed in first degree',
+					'Felony Murder: ',
+					'death caused during commission of enumerated felony',
+					'death cause during res gestae of underlying felony',
+					'res gestae is seq of events from first substantial step till def leaves the scene of crime',
+					'Insanity: ',
+					'M\' Naughten Rule - unable to appreciate the nature and quality of acts or know that they are wrong',
+					'Irresistible Impulse - unable to control their acts, even if they know their act is wrong',
+					'Conspiracy & Accomplice Theory in Murder:',
+					'2 people doing the crime',
+					'Criminal B could be charge for murder by Criminal A based on vicarious liability theory',
+					'Two theories; Conspiracy theory and Accomplice theory',
+					'Conspiracy theory:',
+					'member of conspiracy commits crime within the scope of conspiracy',
+					'conspiracy ends when goal is attained or abandoned',
+					'Accomplice theory: ',
+					'person who commits or helps to commit the crime is vicariously liable for crimes of co-felons',
+					'that are direct and natural result of the crime'
+				)
+			),
+			'redline_rule' => array(
+				'title' => 'Redline Rule',
+				'elements' => array(
+					'killing of accomplice',
+					'other than accomplice',
+					'during felony',
+					'cannot be used as basis for felony murder rule'			
+				)
+			),
+			'murder_mitigating_factors' => array(
+				'title' => 'Mitigating Factors',
+				'elements' => array(
+					'do not serve as complete defense',
+					'murder weighed between first/second degree murder',
+					'or it is manslaughter'			
+				)
+			),
+			'voluntary_manslaughter' => array(
+				'title' => 'Voluntary Manslaughter',
+				'elements' => array(
+					'D commited murder',
+					'adequate provocation',
+					'D lost self control - subjective test',
+					'reasonable person would lose self control - objective test',
+					'no cool off period'					
+				)
+				
+			),
+			'involuntary_manslaughter' => array(
+				'title' => 'In Voluntary Manslaughter',
+				'elements' => array(
+					'unintentional homicide',
+					'from gross negligence or recklessness or malum in se crime',
+					'gross negligence is deliberate breach of pre-existing duty',
+					'recklessness is deliberate creation of extreme risks'			
+				)
+			)
+		)
+	),
+	'defenses' => array(
+		'title' => 'Defenses',
+		'data' => array(
+			'cr_defense_infancy' => array(
+				'title' => 'Defense of Infancy',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_insanity' => array(
+				'title' => 'Defense of Insanity',
+				'elements' => array(
+					
+				)
+			),
+			'cr_voluntary_intoxication' => array(
+				'title' => 'Defense of Voluntary Intoxication',
+				'elements' => array(
+					
+				)
+			),
+			'cr_involuntary_intoxication' => array(
+				'title' => 'Defense of InVoluntary Intoxication',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_mistake_of_fact' => array(
+				'title' => 'Defense of Mistake of Fact',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_mistake_of_law' => array(
+				'title' => 'Defense of Mistake of Law',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_necessity' => array(
+				'title' => ' Defense of Necessity',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_duress' => array(
+				'title' => 'Defense of Duress',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_entrapment' => array(
+				'title' => 'Defense of Entrapment',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_consent' => array(
+				'title' => 'Defense of Consent',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_self_defense' => array(
+				'title' => 'Defense of Self Defense',
+				'elements' => array(
+					
+				)
+			),
+			'cr_defense_of_others' => array(
+				'title' => 'Defense of Others',
+				'elements' => array(
+					'reasonable force',
+					'to protect others from aggressors',
+					'courts is split to protect aggressors',
+					'in one, person steps-in-shoes of aggressor and there is no defense',
+				)
+			),
+			'cr_defense_of_property' => array(
+				'title' => 'Defense of Property',
+				'elements' => array(
+					'reasonable force to protect',
+					'own property or property of others from harm'
+				)
+			),
+			'cr_defense_legal_impossibility' => array(
+				'title' => 'Defense of Legal Impossibility',
+				'elements' => array(
+					'attempted act is not an attempted crime',
+					'even if there is criminal intent'
+				)
+			),
+			'cr_defense_factual_impossibility' => array(
+				'title' => 'Defense of Factual Impossibility',
+				'elements' => array(
+					'act taken by D is not a substantial step',
+					'despite criminal intent',
+					'because act taken would never produce criminal result'
+				)
+			),
+			'cr_defense_withdrawal' => array(
+				'title' => 'Defense of Withdrawal',
+				'elements' => array(
+					'person who is member of the conspiracy is not liable for crime of co-consiprators if',
+					'they give notice that they are abandoning the conspiracy',
+					'try to stop the pursuing of the criminal goal'
+				)
+			),
+			'cr_defense_prevention_crime' => array(
+				'title' => 'Defense of Prevention of Crime',
+				'elements' => array(
+					'reasonable force',
+					'to prevent crime',
+					'in their presence'					
+				)
 			)
 		)
 	)
@@ -922,10 +1318,11 @@ if (!empty($_POST['MM_Insert1']) && !empty($_POST['issues'])) {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Template Issues</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <script src="../js/jquery.min.js"></script>
@@ -1016,7 +1413,7 @@ li.active {
             </form>
             <?php } ?>
             <hr />
-			<p><a href="#" onclick="flevToggleCheckboxes('form1',true,false)">Toggle Check Box</a></p> 
+			<p><a href="#" onClick="flevToggleCheckboxes('form1',true,false)">Toggle Check Box</a></p> 
 			<form id="form1" name="form1" method="post" action="">
 			<?php foreach ($subjects as $sub => $subDetails) { 
 				$issues = $subDetails['issues'];
