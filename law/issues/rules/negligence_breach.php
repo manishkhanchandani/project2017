@@ -1,5 +1,51 @@
 <p><strong>Rule</strong></p>
 <p>Under tort law a <strong>BREACH</strong> is the <strong>failure</strong> to exercise DUE CARE. The <strong>standard of due care</strong> is that level of caution a <strong>reasonably prudent person </strong>would use in the same circumstance.</p>
+<p><strong>Breach is brought using following methods:</strong></p>
+<ol>
+    <li>Negligence Per Se</li>
+    <li>Res Ipsa Loquitur</li>
+    <li>Violation of Standard Profession/Skills</li>
+    <li>Balance Test (Learned Hand Formula)</li>
+</ol>
+<p><strong>Balance Test</strong></p>
+<ol>
+    <li><strong>Risk
+        </strong>
+        <ol>
+            <li>Likelihood of Injury (x multiply)
+                <ol>
+                    <li>12 year old can cross the fence easily </li>
+                    <li>fence is 6', which can be easily crossed by 12 year old boy</li>
+                    <li>Barbed wire, is not very protective</li>
+                    <li>12 Signs, which can be ignored by 12 year old boy</li>
+                    <li>So it is highly likely that 12 year old boy can cross the wire and get injured.    </li>
+                </ol>
+            </li>
+            <li>Gravity of Injury  
+                <ol>
+                    <li>Injury of touching the live wire is very high causing grave injury. </li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+    <li><strong>Justification</strong>
+        <ol>
+            <li>Burden of Prevention (+ plus)
+                <ol>
+                    <li>Higher Fence, should have been used</li>
+                    <li>More wires, should have been used  </li>
+                </ol>
+            </li>
+            <li>Social Utility   
+                <ol>
+                    <li>Utility of pole is need for the community so it cannot be removed but safely kept to keep injury out of the scope. </li>
+                </ol>
+            </li>
+        </ol>
+    </li>
+</ol>
+<p>If Risk outweighs justification, there is negligence, and if justification outweighs risk, then there is no negligence. So based on above analysis of balance test, risk is more than justification so there is breach. </p>
+<p>&nbsp;  </p>
 <p><strong>Analysis</strong></p>
 <p>Here D went to <u>great lengths to be sure his activities did not endanger anyone</u> (show care taken by D from hypo) because <u>he went to a "gravel bar" in the "middle of the river" with no one around so there would be no foreseeable danger to anyone. And once there he threw the firecrackers &quot;carefully&quot;</u>. (show what D did about taking the care from hypo)</p>
 <p>

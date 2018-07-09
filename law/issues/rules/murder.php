@@ -17,16 +17,34 @@
 <p>2) done by <strong>enumerated means</strong>, e.g. torture, poison and explosives.</p>
 <p>3) caused by commission of an <strong>enumerated felony</strong>.</p>
 <p>All other murders are in the second degree.</p>
-<p><strong>Felony Murder</strong></p>
+<p><strong>Felony Murder</strong> (<strong>BARRKS</strong> - Burglary, arson, rape, robbery, kidnapping, sodomy) </p>
 <p>Murder may be charged under the <strong>FELONY-MURDER RULE</strong> if a death is caused by the commission of an<strong> inherently dangerous felony</strong>, but only if the death is caused by acts done during the <strong>RES GESTAE</strong> of the underlying felony. The RES GESTAE of a crime is the sequence of events from the first <strong>substantial step</strong> to committing the crime and ending when the <strong>defendants leave the scene</strong> of the crime and reach a place of a relative safety. </p>
+<p><strong>Four Versions:</strong></p>
+<p><strong>1. Common Law: </strong>If anyone is killed during felony, it is felony murder rule. </p>
+<p><strong>2. Redline:</strong> Killing of accomplice by other than accomplice like police or innocent person. (no felony murder) </p>
+<p><strong>3. California:</strong>  Police is chasing a person from robbery, and that person driving recklessly and hit somebody, (its a wanton conduct)</p>
+<p><strong>4. MPC</strong>: intent to kill but killed other, (need to check again) </p>
+<p>&nbsp;</p>
+<p><strong>Excuses</strong> are Infancy (see defense of Infancy) and Insanity (given below) </p>
 <p><strong>INSANITY </strong><br />
 Generally comes in murder case</p>
 <p>Under criminal law INSANITY is a defense that negates criminal intent. Under the <strong>M'NAUGHTEN RULE</strong> a person is insane if a <strong>disease of the mind</strong> so impairs their reasoning that they are <strong>unable to appreciate </strong>the nature and quality of their acts or to<strong> know that they are wrong</strong>. Under the <strong>IRRESISTIBLE IMPULSE </strong>theory a person may raise the defense of insanity if they are unable to control their acts, even if they know the act is wrong.</p>
+<p>Two others are: Durham and MPC</p>
+<p><strong>Durham: </strong>what person does is product of disease or defect.</p>
+<p><strong>MPC: </strong>combines first two and softens the body, as a result of mental disease, person does not fully appreciate the wrongfulness of what they are doing, man lacks substantial capacity to control their conduct. </p>
 <p>Here Killer could not plead M'Naughten because &quot;he knew it was wrong&quot;<br />
     or<br />
     Here Killer could plead M'Naughten because &quot;he does not know it was wrong&quot;.</p>
 <p>But Killer could plead an <strong>irresistible impulse</strong> because &quot;he had an overwhelming phobia&quot; and &quot;he could not help himself&quot;.</p>
 <p>Therefore, Killer might be successful with an insanity defense.</p>
+<p><strong>Justification</strong></p>
+<p>Public Authority</p>
+<p>Previliges: Self defense, def of others, prevention of crime </p>
+<p><strong>Mitigation</strong></p>
+<p><strong>Imperfect Self Defense</strong></p>
+<p><strong>Head of Passion:</strong> a. Provoked (obj &amp; subj), time (obj &amp; subj), objective is reasonable person, subjective is this person. </p>
+<p>Diminished Capacity: </p>
+<p>&nbsp;	 </p>
 <p><strong>Conspiracy &amp; Murder </strong></p>
 <p>If we have two people and one of them doing the crime then read below:</p>
 <p>Criminal B could only be charged with this murder (crime) based on a <strong>vicarious liability</strong> theory.</p>

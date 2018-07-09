@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="PageAccessControl" value="reiki1,admin,reiki2,reiki3,reiki12,reiki123,reiki23" />
+	<infoitem key="PageAccessControlMethod" value="useAccessList" />
+</info>

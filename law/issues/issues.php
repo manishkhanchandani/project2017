@@ -169,7 +169,11 @@ $issuesContracts = array(
 			'effective_rejection' => array(
 				'title' => 'Effective Rejection',
 				'elements' => array(
-				
+					'rejection effective upon receipt',
+					'acceptance effective upon dispatch',
+					'exception:',
+					'offeror changes position in reliance upon communication of rejection, not knowing acceptance is dispatched first.',
+					'here we have rejection regardless of fact that acceptance is dispatched first'
 				)
 			),
 			'revocation' => array(
@@ -181,19 +185,33 @@ $issuesContracts = array(
 			'effective_revocation' => array(
 				'title' => 'Effective Revocation',
 				'elements' => array(
-				
+					'Revocation effective upon receipt'
 				)
 			),
 			'implied_in_fact' => array(
 				'title' => 'Implied In Fact',
 				'elements' => array(
-				
+					'No express agreement between parties',
+					'one party bestow benefits on other',
+					'reasonably expecting to be compensated',
+					'other party knowingly accepts those benefits',
+					'knowingly that other party expects to be compensated.'
 				)
 			),
 			'writing_needed' => array(
 				'title' => 'Is Writing Needed (SOF)',
 				'elements' => array(
-				
+					'Under Common Law:',
+					'certain types of contracts must be written to be legally enforced',
+					'MYLEG: marriage, year, land, executor, gurantee',
+					'Under UCC:',
+					'sale of goods more than 500',
+					'Between Merchants:',
+					'sales confirmation with quanity will bind both parties',
+					'if not objected in 10 days',
+					'Exceptions:',
+					'sof not for special made goods, partial performance, admission that contract exists',
+					'2-209, modificaiton must also be written else it can be retracted'
 				)
 			)
 			
@@ -202,7 +220,48 @@ $issuesContracts = array(
 	'contract_terms' => array(
 		'title' => 'Contract Terms',
 		'data' => array(
-		
+			'timely_performance' => array(
+				'title' => 'Timely Performance a Material Condition',
+				'elements' => array(
+					'Parties agree at time of contract',
+					'timely performance is material condition',
+					'then it is called Express condition',
+					'and contract is called Time is Essense',
+					'Timely performance is Implied Material Condition:',
+					'if parties know tardy performance will deny the benefit of bargain'
+				)
+			),
+			'buyer_satisfaction' => array(
+				'title' =>  'Buyer Satisfaction a Material Condition',
+				'elements' => array(
+					'reasonable satisfactory performance is always an Implied Material Condition',
+					'parties may agree that Buyer Satisfaction is Material Condition',
+					'then buyers who are not satisfied are not legally bound to pay'
+				)
+			),
+			'parol_evidence_rule' => array(
+				'title' => 'Parol Evidence Rule',
+				'elements' => array(
+					'evidence of prior or contemporaneous agreement',
+					'may not be introduced to vary or contradict',
+					'the terms of Fully Integrated Writing',
+					'unless it shows evidence of DAM FOIL',
+					'duress, ambiguity, mistake, fraud, oral condition precedent, illegality, lack of consideration'
+				)
+			),
+			'requirement_contracts' => array(
+				'title' => 'Requirements and Output Contracts',
+				'elements' => array(
+					'Requirment Contracts:',
+					'buy or sell "all needed amount" by buyer',
+					'during stated period of time',
+					'quantity is actually needed by the buyer, not more than reasonably proportionate than previous',
+					'Output Contracts: ',
+					'buy or sell "all output" produced by seller',
+					'during stated period of time',
+					'quantity actually produced by seller, not more than reasonably proportionate than previous'
+				)
+			)
 		)	
 	),
 	'defenses' => array(
@@ -333,7 +392,59 @@ $issuesContracts = array(
 	'third_party' => array(
 		'title' => 'Third Party Contract',
 		'data' => array(
-		
+			'third_party_beneficiary' => array(
+				'title' => 'Third Party Beneficiary',
+				'elements' => array(
+					'Third Party Beneficiary Contract:',
+					'Legally enforced contract',
+					'Entered by two parties',
+					'Intending purpose',
+					'For benefiting a third party.',
+					'Incidental Beneficiary:',
+					'one who is not intended to benefit',
+					'from the contract between others',
+					'has no ability to enforce the contract or seek damages',
+					'Intended Third Party Beneficiary:',
+					'one who is intended to benefit',
+					'from the contract between others',
+					'has ability to enforce the contract or seek damages',
+					'they have legal rights to enforce the contract against promisors',
+					'this is called standing',
+					'they must have their rights vested to get the standing',
+					'Creditor Beneficiary:',
+					'Promisee enters into third-party beneficiary contracts',
+					'To satisfy legal obligations',
+					'Intended third party beneficiaries have legal right to enforce contract against promisee.',
+					'Intended third party beneficiary is called creditor beneficiary.',
+					'Donee Beneficiary:',
+					'Promisee enters into third-party beneficiary contracts',
+					'For gratuitous purposes',
+					'Intended third party beneficiaries have NO legal right to enforce contract against promisee.',
+					'Intended third party beneficiary is called donee beneficiary.',
+					'Intended 3rd Party Vs Promisors:',
+					'Intended third-party beneficiaries have standing to enforce against promisors, whether they are donee or creditor beneficiaries.',
+					'Defenses:',
+					'Promisors can raise defense against Intended Third Party Beneficiaries (as against promisees)',
+					'Promisees can raise defense against Intendted Third Party Beneficiaries (as against promisors)',
+					'Standing:',
+					'Original parties have standing against each other',
+					'Intended third party beneficiary has standing if their rights are vested.',
+					'Vesting:',
+					'to enforce contract, their rights must be vested',
+					'vesting means they must act in reliance to the contract'
+						
+				)
+			),
+			'assignment' => array(
+				'title' => 'Assignments',
+				'elements' => array(						
+				)
+			),
+			'delegation' => array(
+				'title' => 'Delegation',
+				'elements' => array(						
+				)
+			),
 		)	
 	),
 	'breach' => array(
@@ -421,7 +532,143 @@ $issuesContracts = array(
 	'remedies' => array(
 		'title' => 'Remedies',
 		'data' => array(
-		
+			'cl_remedies' => array(
+				'title' => 'Common Law remedies for Non breaching party & Breaching Party',
+				'elements' => array(
+					'Compensatory damages:',
+					'sum of reliance damage, expectation damage, incidental damage, consequential damage',
+					'Reliance damage:',
+					'out-of-pocket expenses lost before breach in reliance on the contract',
+					'Expectation damage: ',
+					'expected benefits lost due to breach',
+					'Incidental damage:',
+					'out-of-pocket expenses lost because of the breach (storege cost)',
+					'Consequential damage:',
+					'lost profits on collateral contracts that failed because of breach',
+					'Under Hadley v Baxendale:',
+					'consequential damages can only be awarded in forseeable situation',
+					'when at time of contract, breaching party knows or contemplated that',
+					'non breaching party would enter into collateral contracts',
+					'and would lose profits because of breach',
+					'burden is on non breach party to prove ',
+					'certainity (measurable in dollar amount)',
+					'caused by breach',
+					'could not be avoided',
+					'Remedy for Breaching Party:',
+					'Substantial performance by breaching party:',
+					'non breaching party is obligated with an offset price over the contract price for damages caused',
+					'Major breach:',
+					'non breaching party is free from any obligation and can recover all damages'
+				)
+			),
+			'ucc_remedies_non_breaching_buyer' => array(
+				'title' => 'UCC remedies for Non breaching Buyer',
+				'elements' => array(
+					'Non breaching buyer can',
+					'accept or reject non conformin goods',
+					'or repudiate the contract and cover it',
+					'or affirm the contract and ask for conforming goods',
+					'Measure of damage:',
+					'is the excess if any, of market or cover price over the contract price'
+				)
+			),
+			'ucc_remedies_non_breaching_seller' => array(
+				'title' => 'UCC remedies for Non breaching Seller',
+				'elements' => array(
+					'Non breaching seller can',
+					'sell rejected and conforming goods at',
+					'public or private salvage (with notice to buyer)',
+					'and demand excess if any, of contract price over the salvage price',
+					'Lost Volume Situation:',
+					'where sellers cannot sell the same goods to anyone else',
+					'here sellers can demand BENEFIT OF BARGAIN of their lost profits',
+					'i.e. excess of contract price over the price of acquring goods',
+					'Special Made Goods:',
+					'or where seller cannot sold it elsewhere',
+					'can sue on contract price'
+				)
+			),
+			'ucc_remedies_breaching_seller' => array(
+				'title' => 'UCC remedies for breaching Seller',
+				'elements' => array(
+					'Breaching seller who',
+					'gives notice of an intent to cure',
+					'can cure the breach WITHIN THE CONTRACTED PERIOD',
+					'also has REASONABLE EXTRA TIME',
+					'if non conforming good have been shipped with reasonable belief that they would satisfy the needs of buyer'
+				)
+			),
+			'liquidated_damages' => array(
+				'title' => 'Liquidated Damages',
+				'elements' => array(
+					'sole remedy for non-breaching party is specified amount of money damages',
+					'if :',
+					'damages arising from the breach is UNCERTAIN at time of contract',
+					'specified amount is REASONABLE',
+					'REASONABLE REMEDY for non-breaching party'
+				)
+			),
+			'unilateral_contract_saving_doctrine' => array(
+				'title' => 'Saving Doctrine for Unilateral Contracts',
+				'elements' => array(
+					'prohibit the offeror',
+					'from revoking a unilateral contract',
+					'for a reasonable period of time',
+					'after becoming aware that offeree has begun performance'
+				)
+			),
+			'implied_in_law' => array(
+				'title' => 'Implied In Law',
+				'elements' => array(
+					'court may award amount',
+					'necessary to prevent unjust enrichment'
+				)
+			),
+			'promissory_estoppel' => array(
+				'title' => 'Promissory Estoppel',
+				'elements' => array(
+					'agreement unenforceable at law because of lack of consideration',
+					'can be enforced at equity to avoid injustice',
+					'party must have Clean Hands',
+					'party to be bound made:',
+					'a promise',
+					'with intent to induce reliance',
+					'and there was reasonable reliance',
+					'failure to enforce the promise - would cause an injustice'
+				)
+			),
+			'detrimental_reliance' => array(
+				'title' => 'Detrimental Reliance',
+				'elements' => array(
+					'agreement unenforceable at law because of false representation of fact',
+					'or deliberately misleading behavior',
+					'can be enforced at equity to avoid injustice',
+					'party must have Clean Hands',
+					'party to be bound made:',
+					'a promise',
+					'with intent to induce reliance',
+					'and there was reasonable reliance',
+					'failure to enforce the promise - would cause an injustice'
+				)
+			),
+			'equitable_restitution' => array(
+				'title' => 'Equitable Restitution',
+				'elements' => array(
+					'awarded by court of equity',
+					'when parties have no legal remedy',
+					'purpose to compensate injuries',
+					'- prevent unjust enrichment',
+					'- prevent frustration of reasonable expectations',
+					'- or restore status quo'
+				)
+			),
+			'specific_performance' => array(
+				'title' => 'Specific Performance',
+				'elements' => array(
+					'court directing the parties to',
+					'deliver the possession and title of unique property'
+				)
+			)
 		)	
 	
 	),
@@ -438,7 +685,11 @@ $issuesCriminal = array(
 				)
 			),
 			'solicitation' => array(
-				'title' => 'Solicitation'
+				'title' => 'Solicitation',
+				'elements' => array(
+					'urging another person',
+					'to commit a crime'
+				)
 			),
 			'conspiracy' => array(
 				'title' => 'Conspiracy',
@@ -446,6 +697,14 @@ $issuesCriminal = array(
 					'agreement between 2 or more people',
 					'to work towards an illegal goal',
 					'overt act is reqd.'
+				)
+			),
+			'accomplice' => array(
+				'title' => 'Accomplie Theory',
+				'elements' => array(
+					'a person who commits crime or helps to commit a crime',
+					'is liable for all subsequent crimes by co-felons',
+					'that are direct and natural result of prior crimes'
 				)
 			)
 		)
@@ -466,8 +725,83 @@ $issuesCriminal = array(
 				)
 			),
 			'burglary' => array(
-				'title' => 'Burglary'
+				'title' => 'Burglary',
+				'elements' => array(
+					'remember: BEDONI',
+					'Common law: ',
+					'Breaking',
+					'Entering',
+					'Dwelling',
+					'Of Another',
+					'Night',
+					'Intent to commit a felony',
+					'Constructive Breaking:',
+					'entry by',
+					'trick',
+					'threat of violence',
+					'help of conspirator',
+					'Modernly:',
+					'any structure',
+					'all time of day',
+					'larceny too included in felony',
+					'or trespassory entry'					
+				)
 			)
+		)
+	),
+	'crime_against_property' => array(
+		'title' => 'Crime Against Property',
+		'data' => array(
+			'larceny' => array(
+				'title' => 'Larceny',
+				'elements' => array(
+					'trespassory',
+					'taking',
+					'carrying away',
+					'personal property',
+					'of another',
+					'intent to permanently deprive',
+					'larceny by trick:',
+					'possession gained by misrepressentation',
+					'Embezzelment or Larceny:',
+					'theft by manager or high level employee is embezzelment',
+					'theft by servant or low level employee is larceny'				
+				)
+			),
+			'embezzlement' => array(
+				'title' => 'Embezzlement',
+				'elements' => array(
+					'trespassory conversion',
+					'of the property',
+					'by one entrusted with lawful possession',
+					'intent to permanently deprive'					
+				)
+			),
+			'false_pretenses' => array(
+				'title' => 'False Pretenses',
+				'elements' => array(	
+					'misrepressentation of the fact',
+					'to obtain title of the property',
+					'intent to permanenlty deprive'				
+				)
+			),
+			'robbery' => array(
+				'title' => 'Robbery',
+				'elements' => array(
+					'larceny',
+					'by use of force or fear',
+					'to overcome will of victim to resist'					
+				)
+			),
+			'receiving_stolen_property' => array(
+				'title' => 'Receiving Stolen Property',
+				'elements' => array(
+					'taking possession',
+					'of stolen property',
+					'knowingly it has been stolen',
+					'intent to permeneantly deprive'					
+				)
+			),
 		)
 	),
 	'homicide' => array(
@@ -559,13 +893,19 @@ $issuesCriminal = array(
 			'cr_defense_infancy' => array(
 				'title' => 'Defense of Infancy',
 				'elements' => array(
-					
+					'conclusive presumption that child under age of 7 cannot form criminal intent',
+					'rebuttable presumption that child between age 7 and 14 could not form criminal intent',
+					'child above 14 can form criminal intent'
 				)
 			),
 			'cr_defense_insanity' => array(
 				'title' => 'Defense of Insanity',
 				'elements' => array(
-					
+					'M\'Naughten Rule:',
+					'unable to appreciate the nature and quality of their acts or to know that they were wrong',
+					'Irresistible Impulse:',
+					'unable to control their acts',
+					'even if they know the act is wrong'
 				)
 			),
 			'cr_voluntary_intoxication' => array(
@@ -575,7 +915,7 @@ $issuesCriminal = array(
 				)
 			),
 			'cr_involuntary_intoxication' => array(
-				'title' => 'Defense of InVoluntary Intoxication',
+				'title' => 'Defense of Involuntary Intoxication',
 				'elements' => array(
 					
 				)
@@ -583,7 +923,16 @@ $issuesCriminal = array(
 			'cr_defense_mistake_of_fact' => array(
 				'title' => 'Defense of Mistake of Fact',
 				'elements' => array(
-					
+					'mistake of fact is complete defense if it negates criminal intent',
+					'General Intent Crimes:',
+					'only reasonable mistake can negate the criminal intent',
+					'Specific Intent Crimes:',
+					'negate criminal intent whether reasonable or not',
+					'General and Specific Intent Crimes:',
+					'battery, rape, arson, involuntary manslaughter, murders that are not willful and deliberate are general intent crimes',
+					'all others are specific intent crimes',
+					'mistake of fact is no defense to attempt if criminal intent is proven',
+					'and mistake merely prevented an otherwise criminal act'
 				)
 			),
 			'cr_defense_mistake_of_law' => array(
@@ -677,7 +1026,12 @@ $issuesTorts = array(
 		'title' => 'Intentional Torts',
 		'data' => array(
 			'intentional' => array(
-				'title' => 'Intentional'
+				'title' => 'Intentional',
+				'elements' => array(
+					'for purpose/knowledge',
+					'with reasonable certainity',
+					'that result will occur'
+				)
 			),
 			'assault' => array(
 				'title' => 'Assault',
@@ -941,7 +1295,7 @@ $issuesTorts = array(
 			'independent_contractor_liability' => array(
 				'title' => 'Vicarious Liability for Independent Contractor',
 				'elements' => array(
-					'D who hires Independent Contractor to perform non-delegable duties',
+					'D who hires Independent Contractor to perform not non-delegable duties',
 					'is not VICARIOUSLY LIABLE for tors committed by contractor',
 					'they can liable for negligent selection or negligent entrustment'
 				)
@@ -996,7 +1350,7 @@ $issuesTorts = array(
 				'elements'  => array(
 					'D is negligent and causes injury to P',
 					'pre-existing condition in P',
-					'P is vulunerable to injury',
+					'P is vulunerable to injury with no fault of their own',
 					'D is liable for the injury'
 				)
 			),
@@ -1161,7 +1515,11 @@ $issuesTorts = array(
 					'Public Concern: ',
 					'Where a matter of Public concern is at issue',
 					'Or where plaintiff seeks punitive damages',
-					'Plaintiff must at least prove Negligence'
+					'Plaintiff must at least prove Negligence',
+					'Note:',
+					'Public figure - actual malice',
+					'Public concern; public person - malice',
+					'Public concern; private person - negligence'
 				)
 			)
 		)
@@ -1296,6 +1654,7 @@ $subjects = array(
 );
 
 $rules = array();
+
 if (!empty($_POST['MM_Insert1']) && !empty($_POST['issues'])) {
 	foreach ($_POST['issues'] as $sub => $subDetails) {
 		foreach ($subDetails as $k1 => $v1) {
@@ -1488,7 +1847,7 @@ li.active {
 				<?php } ?>
 				<?php echo $v['rule']; ?>
 				<hr />
-				<a href="issues.php?addIssue=1&subject=<?php echo $v['sub'];?>&issue=<?php echo $v['k'];?>" class="pull-right">Add New Template</a>
+				<!--<a href="issues.php?addIssue=1&subject=<?php echo $v['sub'];?>&issue=<?php echo $v['k'];?>" class="pull-right">Add New Template</a> -->
 			  </div>
 			</div>
 			<?php }
