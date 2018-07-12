@@ -122,7 +122,11 @@ Your browser does not support the audio element.
       <p><strong>How open you are to allowing Reiki to help you</strong> – Feeling hopeless no matter what will slow down the results because you are not allowing the energy to help you. It’s not necessary for you to believe without trying, but the more you are willing to accept the energy that could make a difference in your situation. Also, some people are not ready to heal because their issue is serving them in some way – bringing them attention or covering up emotional pain that’s deeper. Being truly ready to feel better can intensify the effects of the Reiki, speeding healing.</p>
       <p><br>
           So the best thing to consider is to start with <strong>the first Reiki treatment.</strong> Then work with your practitioner and set up a schedule that works for you and what you want to get out of your treatments. Going <strong>once a week or once a month is a good start</strong>. Then as you feel better maybe <strong>only once every other month</strong> and work towards <strong>once every six months</strong>. You know your body best and are the best spokesperson for YOU. Get started soon.</p>
-      <p>&nbsp;</p>
+      
+		<div>
+		<a href="self-healing.php" class="btn btn-primary">Previous</a>
+		<a href="treat_others.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

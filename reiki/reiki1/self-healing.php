@@ -111,9 +111,10 @@ Your browser does not support the audio element.
       <p>3 to 5 minutes on each position. Apply reiki on 7 chakras. Also apply reiki to positions based on weakness in any of 5 principles of reiki.</p>
       <p>Drink large glass of water after each treatment.</p>
       <p>Try to recollect all the experiences you felt during the session and note it down.</p>
-      <p>&nbsp;  </p>
-      <p>&nbsp;   </p>
-      <p>&nbsp;       </p>
+		<div>
+		<a href="attunement-process.php" class="btn btn-primary">Previous</a>
+		<a href="reiki-treatment.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

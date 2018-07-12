@@ -113,7 +113,10 @@ Your browser does not support the audio element.
           Reiki is <strong>Pure Energy</strong><br>
           Reiki is <strong>Channelled</strong> through the hands</p>
       <p>The best way to understand how Reiki works is to <strong>experience it</strong>.</p>
-      <p>&nbsp;</p>
+		<div>
+		<a href="what-is-reiki.php" class="btn btn-primary">Previous</a>
+		<a href="history-of-reiki.php" class="btn btn-primary">Next</a>
+		</div>
       <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->

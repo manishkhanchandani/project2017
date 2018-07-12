@@ -204,9 +204,11 @@ Your browser does not support the audio element.
       <p>For larger area, give distance reiki (second degree)</p>
       <p>Before eating, give reiki to food and stomach for few minutes.</p>
       <p>Give reiki to everything you come across like light, computer, bus, car, anything, etc.    </p>
-      <p>&nbsp;   </p>
-      <p>&nbsp;  </p>
-      <p>&nbsp;       </p>
+      
+		<div>
+		<a href="reiki-treatment.php" class="btn btn-primary">Previous</a>
+		<a href="group_healing.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

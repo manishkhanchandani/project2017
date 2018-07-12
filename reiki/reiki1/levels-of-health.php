@@ -86,6 +86,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   <h1 class="page-header">What is Reiki?</h1>
 
   <div id="content" class="visual">Coming soon...
+  
+  
+		<div>
+		<a href="group_healing.php" class="btn btn-primary">Previous</a>
+		<a href="pulse_diagnosis.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

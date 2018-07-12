@@ -354,10 +354,10 @@ Your browser does not support the audio element.
           You often suffer from headaches and migraines.<br>
           It is pertinent to note that if one primary chakra experiences imbalance, then all other chakras gets affected as well. So, do not get overwhelmed if you have symptoms of multiple blockages. The reason for many symptoms is that one chakra is blocked and others are also affected by it.</p>
       <p>So, the main goal should be to find that primary blockage. Spiritual knowledge and exercises can help to restore the flow of energy.</p>
-      <p>&nbsp;</p>
-      <p></p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
+		<div>
+		<a href="seven-chakras.php" class="btn btn-primary">Previous</a>
+		<a href="five-principles.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

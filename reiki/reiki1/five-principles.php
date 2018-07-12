@@ -190,7 +190,10 @@ then put one hand in throat chakra and another at heart chakra
       <p>
 
 How people treat you is their karma and how you react is yours.</p>
-      <p>&nbsp;</p>
+		<div>
+		<a href="seven-chakras-short.php" class="btn btn-primary">Previous</a>
+		<a href="attunement-process.php" class="btn btn-primary">Next</a>
+		</div>
       <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable --></div>

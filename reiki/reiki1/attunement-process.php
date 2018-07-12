@@ -115,7 +115,10 @@ Your browser does not support the audio element.
       <hr>
       <p>Reiki is never sent, it is always drawn through the channel.</p>
       <p>Gradually leading to a new balanced existence.</p>
-      <p>&nbsp;</p>
+		<div>
+		<a href="five-principles.php" class="btn btn-primary">Previous</a>
+		<a href="self-healing.php" class="btn btn-primary">Next</a>
+		</div>
       <p>&nbsp;  </p>
   </div>
 <!-- InstanceEndEditable -->

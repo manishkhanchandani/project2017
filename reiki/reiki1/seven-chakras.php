@@ -291,7 +291,10 @@ When Reiki is performed, this chakra becomes unblocked and allows us to be in mo
 	  </p>
 	  <hr>
       <hr>
-      <p>&nbsp; </p>
+		<div>
+		<a href="history-of-reiki.php" class="btn btn-primary">Previous</a>
+		<a href="seven-chakras-short.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

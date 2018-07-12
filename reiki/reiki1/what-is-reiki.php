@@ -120,7 +120,10 @@ Your browser does not support the audio element.
       <p>Reiki 1 healer are for primarily for <strong>self healing</strong>.<br>
           Also healing others who are <strong>physically present</strong>.</p>
       <hr>
-      <p>&nbsp;</p>
+		<div>
+		<a href="index.php" class="btn btn-primary">Previous</a>
+		<a href="how-reiki-works.php" class="btn btn-primary">Next</a>
+		</div>
       <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->

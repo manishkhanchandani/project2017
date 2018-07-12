@@ -108,7 +108,10 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
       <p>5. 2 types of diseases: Acute and chronic</p>
       <p>6. Science does not recognise reiki, homeopathy, acupuncture, why?</p>
       <p>7. Science looks at objective perspective, and reiki, homeopathy, acupuncture is based on subjective perspective.</p>
-      <p>&nbsp;</p>
+		<div>
+		<a href="quiz.php" class="btn btn-primary">Previous</a>
+		<a href="what-is-reiki.php" class="btn btn-primary">Next</a>
+		</div>
       <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->

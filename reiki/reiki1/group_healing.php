@@ -108,12 +108,10 @@ Your browser does not support the audio element.
       <p>Don't forget tissues.</p>
       <p>A wonderful way to treat many people quickly and ideal for therapy days.</p>
       <p>Remember to wash your hands before and after each treatment under cold running water to dissipate any negative energy and assist grounding for each member of the team.  </p>
-      <p>&nbsp; </p>
-      <p>&nbsp;  </p>
-      <p>&nbsp;  </p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
+		<div>
+		<a href="treat_others.php" class="btn btn-primary">Previous</a>
+		<a href="levels-of-health.php" class="btn btn-primary">Next</a>
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>
