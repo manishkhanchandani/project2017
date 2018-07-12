@@ -29,6 +29,7 @@
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/index.php">Admin</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/users.php">Users</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/quiz.php">Quiz Results</a></li>
               </ul>
             </li>
@@ -88,9 +89,9 @@
                     <li><a href="" onClick="signOut(); return false;">Signout</a></li>
                 <?php } else { ?>
                     <li><a href="" onClick="googleLogin(); return false;">Google</a></li>
-                    <li><a href="" onClick="facebookLogin(); return false;">Facebook</a></li>
+                    <!--<li><a href="" onClick="facebookLogin(); return false;">Facebook</a></li>
                     <li><a href="" onClick="twitterLogin(); return false;">Twitter</a></li>
-                    <li><a href="" onClick="gitHubLogin(); return false;">Github</a></li>
+                    <li><a href="" onClick="gitHubLogin(); return false;">Github</a></li> -->
                 <?php } ?>
               </ul>
             </li>

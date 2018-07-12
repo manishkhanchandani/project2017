@@ -19,8 +19,7 @@
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
-<!-- InstanceBeginEditable name="head" -->
-<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -94,8 +93,8 @@ Move closer to your student and place your NON dominant hand on your students sh
 
 Place tongue behind your top front teeth at the roof of your mouth and contract the Hui Yin to boost the flow of Reiki in and around your body.
 </p>
-<p>
-Step 3: Opening student up to receive Reiki (crown chakra)</p>
+<p><strong>
+Step 3: Opening student up to receive Reiki (crown chakra)</strong></p>
 <p>
 
 Standing behind the Reiki student.</p>
@@ -132,9 +131,9 @@ Draw a small ckr over the student's Throat chakra to open the student's throat c
 <p>
 
 Now with your right hand a few inches in front of the student's throat chakra and your left hand a few inches behind the student's neack beam the three previously drawn reiki symbols (dkm, hszsn, ckr) into the student's throat chakra filling their throat center with Reiki energy. Remember to silently intone the names of each of the symbols three times.</p>
-<p>
+<p><strong>
 
-Step 6: Opening student up to receive Reiki (Heart chakra)</p>
+Step 6: Opening student up to receive Reiki (Heart chakra)</strong></p>
 <p>
 
 Move so you are standing in front of the Reiki student.</p>

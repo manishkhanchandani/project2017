@@ -85,7 +85,13 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Pulse Diagnosis</h1>
 
-  <div id="content" class="visual">Coming soon...
+  <div id="content" class="visual">
+      <p>&nbsp;</p>
+      <p><img src="images/pulse3.jpg" class="img-responsive"></p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->
 </div>

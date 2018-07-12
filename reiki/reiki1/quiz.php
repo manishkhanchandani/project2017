@@ -172,7 +172,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Quiz</h1>
 
-  <div id="content" class="visual">
+  <div id="content" class="visual visualSmall">
       <p>Fill the following quiz answers: </p>
       <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
           <div class="table-responsive">

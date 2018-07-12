@@ -84,6 +84,11 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header"> How Reiki Works?</h1>
+<audio controls>
+  <source src="audio/how-reiki-works.ogg" type="audio/ogg">
+Your browser does not support the audio element.
+</audio>
+<hr />
 
   <div id="content" class="visual">
       <p>50 trillion cells with omniscient wisdom          </p>

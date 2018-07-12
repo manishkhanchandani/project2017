@@ -82,6 +82,18 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $queryString_rsView);
+
+
+$quiz = array(
+	array('title' => 'Root Chakra', 'name' => 'root_chakra', 'category_id' => 61, 'questions' => array('I feel emotionally stable and grounded.', 'I rarely go a day without being in nature.', 'I feel safe, confident and secure.', 'I trust my natural instincts to make decisions.')),
+	array('title' => 'Sacral Chakra', 'name' => 'sacral_chakra', 'category_id' => 62, 'questions' => array('I embrace my sensual/sexual nature.', 'I am full of energy each day.', 'It is easy for me to express my creativity.', 'I regularly have sex with people/a person I trust.')),
+	array('title' => 'Solar Plexus Chakra', 'name' => 'solar_plexus_chakra', 'category_id' => 63, 'questions' => array('I find it easy to forgive myself of my flaws and mistakes.', 'I have a vibrant sense of humor.', 'I accept responsibility for my actions (e.g. I don\' t blame, criticize or judge others).', 'I actively try to fix my problems rather than wallowing in the misery of my failure.')),
+	array('title' => 'Heart Chakra', 'name' => 'heart_chakra', 'category_id' => 64, 'questions' => array('I love the person I am.', 'I have empathy for others (even those who harm me).', 'When I give I don\' t expect anything in return.', 'I can forgive other people easily.')),
+	array('title' => 'Throat Chakra', 'name' => 'throat_chakra', 'category_id' => 65, 'questions' => array('I can speak up for myself and my own needs.', 'I respect my boundaries and know when to say "no" or "yes".', 'When I speak, I ensure that I am heard and understood clearly.', 'I am a good listener.')),
+	array('title' => 'Third Eye Chakra', 'name' => 'third_eye_chakra', 'category_id' => 66, 'questions' => array('When it comes to issues in my life I can see the big picture rather than getting lost in the details.', 'My intuition is well-developed.', 'It is easy for me to open to new perceptions, opinions, beliefs and ideas.', 'My thoughts are clear, focused and directed (i.e. I don\' t get stuck in intellectual ruts or cycles).')),
+	array('title' => 'Crown Chakra', 'name' => 'crown_chakra', 'category_id' => 68, 'questions' => array('I feel as though my life has a great purpose.', 'I feel a sense of connection to God/Divinity/Consciousness.', 'I have hope.', 'I don\' t take myself too seriously (lovingly).')),
+
+);
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -127,37 +139,69 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
   <div id="content" class="visual">
       <h3>Results</h3>
       <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
-          <div class="table-responsive">
-  <table class="table">
-                  <tr>
-                      <td valign="top"><strong>Picture</strong></td>
-                      <td valign="top"><strong>Quiz Date </strong></td>
-                          <td valign="top"><strong>Root Chakra </strong></td>
-                          <td valign="top"><strong>Sacral Chakra </strong></td>
-                          <td valign="top"><strong>Solar Plexus Chakra </strong></td>
-                          <td valign="top"><strong>Heart Chakra </strong></td>
-                          <td valign="top"><strong>Throat Chakra </strong></td>
-                          <td valign="top"><strong>Third Eye Chakra </strong></td>
-                          <td valign="top"><strong>Crown Chakra </strong></td>
-                          <td valign="top"><strong>Total Points </strong></td>
-                        </tr>
+	  
                   <?php do { ?>
-                          <tr>
-                              <td valign="top"><img src="<?php echo $row_rsView['profile_img']; ?>" class="img-responsive" style="max-width: 100px" /><br>
-                                  <?php echo $row_rsView['display_name']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['quiz_date']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['root_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['sacral_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['solar_plexus_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['heart_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['throat_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['third_eye_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['crown_chakra']; ?></td>
-                              <td valign="top"><?php echo $row_rsView['total_points']; ?></td>
-                            </tr>
-                          <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
-          </table>
-		  </div>
+				  <?php $quiz_result = json_decode($row_rsView['quiz_result'], true); 
+				  
+				  ?>
+					<div class="row">
+						<div class="col-md-8">
+						
+						<div class="table-responsive">
+							<table class="table">
+							  <tr>
+								  <td valign="top"><strong>Picture</strong></td>
+								  <td valign="top"><strong>Quiz Date </strong></td>
+									  <td valign="top"><strong>Root Chakra </strong></td>
+									  <td valign="top"><strong>Sacral Chakra </strong></td>
+									  <td valign="top"><strong>Solar Plexus Chakra </strong></td>
+									  <td valign="top"><strong>Heart Chakra </strong></td>
+									  <td valign="top"><strong>Throat Chakra </strong></td>
+									  <td valign="top"><strong>Third Eye Chakra </strong></td>
+									  <td valign="top"><strong>Crown Chakra </strong></td>
+									</tr>
+									  <tr>
+										  <td valign="top"><img src="<?php echo $row_rsView['profile_img']; ?>" class="img-responsive" style="max-width: 100px" /><br>
+											  <?php echo $row_rsView['display_name']; ?><br>
+												<?php echo $row_rsView['total_points']; ?>
+											</td>
+										  <td valign="top"><?php echo $row_rsView['quiz_date']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['root_chakra']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['sacral_chakra']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['solar_plexus_chakra']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['heart_chakra']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['throat_chakra']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['third_eye_chakra']; ?></td>
+										  <td valign="top"><?php echo $row_rsView['crown_chakra']; ?></td>
+										</tr>
+						  </table>
+						  </div>
+						
+						
+						</div>
+						<div class="col-md-4">
+							<div class="table-responsive">
+  								<table width="50%" border="1" cellspacing="5" cellpadding="5">
+									<?php
+									for ($i = 0; $i <= 6; $i++) {
+									foreach ($quiz_result['data'][$i] as $k => $v) {
+									?>
+										<tr>
+											<td style="padding:10px;"><?php echo ($k === 1) ? $quiz[$i]['title'] : ''; ?></td>
+											<td style="padding:10px;"><?php echo $quiz[$i]['questions'][$k]; ?></td>
+											<td style="padding:10px;"><?php echo $v; ?></td>
+										</tr>
+									<?php
+										}
+									}
+									?>
+								</table>
+							</div>
+						</div>
+					</div>
+	  
+          
+          <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
           <p> Records <?php echo ($startRow_rsView + 1) ?> to <?php echo min($startRow_rsView + $maxRows_rsView, $totalRows_rsView) ?> of <?php echo $totalRows_rsView ?></p>
           <table border="0" width="50%" align="center">
                         <tr>
