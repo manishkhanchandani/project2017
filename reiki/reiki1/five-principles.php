@@ -84,7 +84,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Five Principles of Reiki</h1>
 
-  <div class="visual">
+  <div id="content" class="visual">
       <p>1. Just for today I will <strong>not be angry</strong> </p>
       <p>2. Just for today I will <strong>not worry          </strong></p>
       <p>3. Just for today I will do <strong>my work honestly</strong>, (make an honest living)          </p>

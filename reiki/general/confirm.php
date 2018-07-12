@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -10,18 +7,18 @@ session_start();
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki</title>
+<title>Confirmation</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/dashboard.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/firebase_4_1_5.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/firebase_4_1_5.js"></script>
 
-<link href="library/wysiwyg/summernote.css" rel="stylesheet">
-<script src="library/wysiwyg/summernote.js"></script>
-<?php include('head.php'); ?>
+<link href="../library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="../library/wysiwyg/summernote.js"></script>
+<?php include('../head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -33,18 +30,17 @@ session_start();
 
 <body>
 
-<?php include('nav.php'); ?>
+<?php include('../nav.php'); ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <?php include('nav_side.php'); ?>
+      <?php include('../nav_side.php'); ?>
     </div>
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">Dashboard</h1>
-
-  <div>Go to quiz page (<a href="reiki1/quiz.php">click here</a>)  </div>
+  <h1 class="page-header">Confirmation</h1>
+<div>New profile successfully added to the database. Admin will review it and publish it to the public.</div>
 <!-- InstanceEndEditable -->
 </div>
 

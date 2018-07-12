@@ -51,7 +51,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki : What is Reiki?</title>
+<title>Rei-ki : Reiki Treatment</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -82,9 +82,33 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
+  <h1 class="page-header">Anatomic Illustrations for Reiki</h1>
+  <div id="content" class="visual">
+      <p>Reiki goes to where the body requires healing.</p>
+      <p>Reiki is so easy to learn and apply.</p>
+      <p>No need to learn anatomy to apply Reiki.</p>
+      <hr>
+      <p>Simply Place your hands on the body and channel the energy.</p>
+      <p>Reiki will do the rest.   </p>
+      <hr>
+      <p>However, it will be helpful to know where the major organs are, lymphatic and endocrine systems are present.</p>
+      <p>To treat specific problems or organs quicly and easily.</p>
+      <p>You can search on internet to know about the location of each organs. </p>
+      <hr>
+      <p><strong>Endocrine System   </strong></p>
+      <p>Ductless glands that release hormones.</p>
+      <p>Works together with the nervous system &amp; regulates metabolic activities maintaining homeostasis. </p>
+      <p><img src="images/endocrine-system1-.jpg" class="img-responsive" /></p>
+      <hr>
+      <p><strong>Lymphatic System</strong></p>
+      <p>System of thin tubes that runs throughout the body.</p>
+      <p>Lymph plays an important role in the immune system &amp; in absorbing fats from the intestines.   </p>
+      <p>Lymphatic system takes colorless liquid called as lymph. </p>
+      <p><img src="images/lymphatic.png" class="img-responsive" /></p>
+      <p>&nbsp;</p>
+  </div>
   <h1 class="page-header">How Often Do I Need to Get a Reiki Treatment?</h1>
-
-  <div class="visual">
+  <div id="content" class="visual">
       <p>Reiki is a simple, natural and safe method of spiritual healing and self-improvement that everyone can use. It has been effective in helping virtually every known illness and malady and always creates a beneficial effect. It also works in conjunction with all other medical or therapeutic techniques to relieve side effects and promote recovery.          </p>
       <p>A treatment feels like a wonderful glowing radiance that flows through and around you. Reiki treats the whole person including body, emotions, mind and spirit creating many beneficial effects that include relaxation and feelings of peace, security and wellbeing. Many have reported miraculous results. </p>
       <p>The answer is, “<strong>It depends</strong>.” It depends on a number of things. Here are some of the considerations:</p>

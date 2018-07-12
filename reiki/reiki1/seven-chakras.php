@@ -84,7 +84,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Seven Chakras & Endocrinology</h1>
 
-  <div>
+  <div id="content" class="visual">
       <p><strong>Seven Chakras</strong> are:</p>
       <ol>
           <li><strong><a href="#root">Root chakra</a></strong> (Muladhara) — base of the spine — <strong>red</strong> <br>
@@ -103,10 +103,10 @@ The sixth one to the point between the eyebrows or “third eye” </li>
 The seventh one to the top of the cranium</li>
           </ol>
       <hr>
-      <p><img src="images/seven-chakras.jpg" width="840" height="400"></p>
-      <p><img src="images/endocrine-system1-.jpg" width="448" height="500"></p>
-      <p><img src="images/chakraendocrine.PNG" width="400" height="530"></p>
-      <p>&nbsp;</p>
+      <p><img src="images/seven-chakras.jpg" class="img-responsive"></p>
+      <p><img src="images/endocrine-system1-.jpg" class="img-responsive"></p>
+      <p><img src="images/chakraendocrine.PNG" class="img-responsive"></p>
+
       <hr>
       <p>&nbsp;</p>
       <p>The 7 chakras are part of the most commonly known chakra system made of seven energy centers located along the spine and ending in the brain, from the perineum area to the top of the head.</p>
@@ -114,6 +114,14 @@ The seventh one to the top of the cranium</li>
       <p>Balancing chakras and healing with the chakra energy system requires a working knowledge of chakras and their functions.</p>
       <hr>
       <p><strong>ROOT CHAKRA</strong><a name="root"></a></p>
+	  <p>Located between the genitals and the anus, the Root Chakra deals with the issues surrounding identity, survival, connection to Earth, and tribal issues. When this chakra is imbalanced, there are fears around survival, being provided for, and financial and family (or group) security.</p>
+	  <p>
+
+Blockage in this area often happens following traumatic events, family problems, and major life changes. There may also be chronic lower back pain, sciatica, immune-related disorders, addictions, varicose veins, constipation, diarrhea, rectal/anal problems, impotence, water retention, and problems with groin, hips, legs, knees, calves, ankles, and feet.</p>
+	  <p>
+
+When Reiki is performed at the Root Chakra, we have a better sense of feeling grounded and supported and begin to find relief from many of these chronic ailments.</p>
+	<hr />
       <p>The root chakra is the first chakra. Its energy is based on the earth element. It’s associated with the feeling of safety and grounding. It’s at the base of the chakra system and lays the foundation for expansion in your life.</p>
       <p><strong>Where is the Root Chakra?</strong><br>
           The first chakra or root chakra is located at the base of the spine. The corresponding body locations are the perineum, along the first three vertebrae, at the pelvic plexus. This chakra is often represented as a cone of energy starting at the base of the spine and going downward and then slight bent up.</p>
@@ -186,6 +194,11 @@ The seventh one to the top of the cranium</li>
       <p>The downward-pointing triangle is a symbol of spirit connecting with matter, grounding on the earth and our earthly existence, in our bodies. It’s seen as the center of our vital life force and is the seat where kundalini stays coiled, dormant, until is wakes up to distribute its energy through all the other chakras.</p>
       <hr>
       <p><strong>SACRAL CHAKRA</strong></p>
+	  <p>This chakra is located about 1-2 inches below the navel. It is the chakra that deals with sex, power, money, gender, emotions, creativity, and procreation. When this chakra is imbalanced, there may lower back, pelvic, or hip problems, ob/gyn imbalances (including fibroids, cysts, etc.), issues around sexual potency, relationships, abundance, power and control.</p>
+	  <p>
+
+This chakra is also linked to how we express our creativity, and is also related to the Throat Chakra. Sexual abuse or trauma can create an energy block in this chakra. Reiki can help bring these deeply suppressed emotions to the surface (especially anger) and allow us to finally, fully heal.</p>
+<hr>
       <p>The sacral chakra is the second chakra. It is associated with the emotional body, sensuality, and creativity. Its element is water and as such, its energy is characterized by flow and flexibility. The function of the sacral chakra is directed by the principle of pleasure. Let’s have a look at this energy center’s basics, including its location, color, symbol, potential signs of imbalance, and what to do heal your sacral chakra.</p>
       <p><strong>Sacral chakra location</strong><br>
           The most common location for the sacral chakra is about three inches below the navel, at the center of your lower belly. In the back, it’s located at the level of the lumbar vertebrae.</p>
@@ -231,19 +244,54 @@ The seventh one to the top of the cranium</li>
       <p>Furthermore, the symbolism of the moon relates to the feminine menstrual cycle that takes the same number of days to complete and the connection of the sacral chakra with sexual organs and reproduction.</p>
       <hr>
       <p>SOLAR PLEXUS CHAKRA</p>
+	  <p>
+	  Located 1-2 inches above the navel, the Solar Plexus Chakra is our power center, and where we are connected to our self-esteem and self-protection. When we feel scattered and direct our energies outward, it is usually a sign that we have given our power away. When this happens, sometimes one can feel discomfort, or a whirling sensation, in the Solar Plexus Chakra.</p>
+	  <p>
+
+Physical imbalances may manifest as anorexia or bulimia, liver or adrenal dysfunction, fatigue, stomach ulcers, diabetes, or indigestion. Emotionally, we may be afraid to step into our power, have issues around self-confidence, self-respect, feel easily intimidated, weak, closed, depressed. When Reiki is performed and these blockages are lifted, we've cleared the way to take action in our life.
+	  </p>
+	  <hr>
       <hr>
       <p>HEART CHAKRA</p>
+	  <p>
+	  Located at the center of the chest, the Heart Chakra is how we tap into our Higher Selves, self-love, divine love, and Christ Consciousness. When it is imbalanced, we may physically experience imbalances in that area of the body, such as: heart issues (like congestive heart failure or heart attacks), asthma/allergies, lung cancer, breast cancer, or bronchial pneumonia.</p>
+	  <p>
+
+Emotionally, we may feel lonely, disconnected from ourselves and others, resentful, depressed (due to lack of hope), grief, distrust in love, and lack of compassion. Reiki can not only help make us more compassionate, but by clearing these blockages we might also become more open to accepting love from others.
+	  </p>
+	  <hr>
       <hr>
       <p>THROAT CHAKRA</p>
+	  <p>
+	  Located in the base of the throat, the Throat Chakra helps us to speak our truth. It deals with the issues of creativity, communication, and the will to live. Physical manifestation of this chakra's imbalances may show up as thyroid problems, TMJ, sore throat, swollen glands, or scoliosis.</p>
+	  <p>
+
+Emotionally, we are afraid of silence, fearful of being judged and rejected, and imbalances in this chakra can also be connected to addiction. When Reiki is performed to help clear this chakra, we become more able to express ourselves or follow our dreams.
+	  </p>
+	  <hr>
       <hr>
       <p>THIRD EYE CHAKRA</p>
+	  <p>
+	  Located between the eyebrows, the Third Eye helps us see that which is not physical. This is where our intuition lies, as well as clairvoyance and psychic perception. When this chakra is imbalanced, this may physically manifest as brain issues, such as stroke, brain tumor/hemorrhage, neurological disturbances and seizures.</p>
+	  <p>
+
+Emotionally, we do not trust our insights or intuition, and may become afraid of it. Reiki can help unblock this chakra and allow us to hone in on the power of our intuition.
+	  </p>
+	  <hr>
       <hr>
       <p>CROWN CHAKRA    </p>
+	  <p>
+	  Located at the top and center of the head, this chakra is our connection to the Universe, our spirituality, and our trust in life. This is the chakra from which we receive divine guidance from Source/Goddess/Higher Power. When this chakra is imbalanced, this manifests physically as depression, or as chronic exhaustion that is not linked to physical disorders.</p>
+	  <p>
+
+Emotionally, we are unable to let go of anxiety and fear and there is a lack of trust in God or life.</p>
+	  <p>
+
+When Reiki is performed, this chakra becomes unblocked and allows us to be in more touch with Divine guidance, and have more trust in life.
+	  </p>
+	  <hr>
       <hr>
       <p>&nbsp; </p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->
 </div>

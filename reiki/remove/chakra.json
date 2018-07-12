@@ -1,0 +1,15 @@
+{
+                id: '#wpProQuiz_54',
+                init: {
+                    quizId: 54,
+                    mode: 1,
+                    globalPoints: 140,
+                    timelimit: 0,
+                    resultsGrade: [0],
+                    bo: 7,
+                    qpp: 0,
+                    catPoints: {"61":20,"62":20,"63":20,"64":20,"65":20,"66":20,"68":20},
+                    formPos: 0,
+                    lbn: "Finish quiz",
+                    json: {"1160":{"type":"assessment_answer","id":1160,"catId":61,"points":[1]},"1161":{"type":"assessment_answer","id":1161,"catId":61,"points":[1]},"1162":{"type":"assessment_answer","id":1162,"catId":61,"points":[1]},"1163":{"type":"assessment_answer","id":1163,"catId":61,"points":[1]},"1164":{"type":"assessment_answer","id":1164,"catId":62,"points":[1]},"1165":{"type":"assessment_answer","id":1165,"catId":62,"points":[1]},"1166":{"type":"assessment_answer","id":1166,"catId":62,"points":[1]},"1167":{"type":"assessment_answer","id":1167,"catId":62,"points":[1]},"1168":{"type":"assessment_answer","id":1168,"catId":63,"points":[1]},"1169":{"type":"assessment_answer","id":1169,"catId":63,"points":[1]},"1170":{"type":"assessment_answer","id":1170,"catId":63,"points":[1]},"1171":{"type":"assessment_answer","id":1171,"catId":63,"points":[1]},"1172":{"type":"assessment_answer","id":1172,"catId":64,"points":[1]},"1173":{"type":"assessment_answer","id":1173,"catId":64,"points":[1]},"1174":{"type":"assessment_answer","id":1174,"catId":64,"points":[1]},"1175":{"type":"assessment_answer","id":1175,"catId":64,"points":[1]},"1176":{"type":"assessment_answer","id":1176,"catId":65,"points":[1]},"1177":{"type":"assessment_answer","id":1177,"catId":65,"points":[1]},"1178":{"type":"assessment_answer","id":1178,"catId":65,"points":[1]},"1179":{"type":"assessment_answer","id":1179,"catId":65,"points":[1]},"1180":{"type":"assessment_answer","id":1180,"catId":66,"points":[1]},"1181":{"type":"assessment_answer","id":1181,"catId":66,"points":[1]},"1182":{"type":"assessment_answer","id":1182,"catId":66,"points":[1]},"1183":{"type":"assessment_answer","id":1183,"catId":66,"points":[1]},"1184":{"type":"assessment_answer","id":1184,"catId":68,"points":[1]},"1185":{"type":"assessment_answer","id":1185,"catId":68,"points":[1]},"1186":{"type":"assessment_answer","id":1186,"catId":68,"points":[1]},"1187":{"type":"assessment_answer","id":1187,"catId":68,"points":[1]}}                }
+            }

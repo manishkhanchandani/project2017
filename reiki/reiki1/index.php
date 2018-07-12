@@ -84,21 +84,33 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Reiki Level 1</h1>
 
-  <div class="visual">
+  <div id="content" class="visual">
       <ul>
-          <li><strong>What is</strong> Reiki?, </li>
-          <li>How Reiki <strong>Works</strong>? </li>
-          <li><strong>History</strong> of Reiki?              </li>
-          <li> <strong>Levels of Health</strong>?              </li>
-          <li><strong> Pulse Diagnosis              </strong></li>
-          <li> Seven <strong>Chakras</strong></li>
-          <li>Five <strong>Principles</strong></li>
+          <li><strong><a href="what-is-reiki.php">What</a> is</strong> Reiki?, </li>
+          <li>How Reiki <strong><a href="how-reiki-works.php">Works</a></strong>? </li>
+          <li><strong><a href="history-of-reiki.php">History</a></strong> of Reiki?              </li>
+          <li> <strong><a href="levels-of-health.php">Levels of Health</a></strong>?              </li>
+          <li><strong> <a href="pulse_diagnosis.php">Pulse Diagnosis</a> </strong></li>
+          <li> Seven <strong><a href="seven-chakras.php">Chakras</a></strong></li>
+          <li> Seven <strong><a href="seven-chakras-short.php">Chakras Short </a></strong></li>
+          <li>Five <strong><a href="five-principles.php">Principles</a></strong></li>
           <li>Meditation</li>
-          <li><strong>Attunement</strong> Process</li>
-          <li>How to <strong>Heal Others</strong></li>
-          <li><strong>Group</strong> Healing </li>
-      </ul>
-      </div>
+          <li><strong><a href="attunement-process.php">Attunement</a></strong> Process</li>
+          <li>How to <strong><a href="reiki-treatment.php">Heal Others</a></strong> and <a href="treat_others.php"><strong>treating</strong></a> others </li>
+          <li><strong><a href="group_healing.php">Group</a></strong> Healing </li>
+          </ul>
+      <p>&nbsp;</p>
+      <p>Questions:</p>
+      <p>1. Who believes in God?</p>
+      <p>2. Who believes in Reiki, who believes in alternative medicines like ayurveda, homeopathy, acupunctuure, who believes in only modern medicine?</p>
+      <p>3. Did God created human being or it was created by evolution?</p>
+      <p>4. Natural line of treatment.</p>
+      <p>5. 2 types of diseases: Acute and chronic</p>
+      <p>6. Science does not recognise reiki, homeopathy, acupuncture, why?</p>
+      <p>7. Science looks at objective perspective, and reiki, homeopathy, acupuncture is based on subjective perspective.</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+  </div>
 <!-- InstanceEndEditable -->
 </div>
 

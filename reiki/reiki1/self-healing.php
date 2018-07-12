@@ -51,7 +51,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki : What is Reiki?</title>
+<title>Rei-ki : Self Healing</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -63,8 +63,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
-<!-- InstanceBeginEditable name="head" -->
-<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -83,9 +82,33 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">What is Reiki?</h1>
+  <h1 class="page-header">Reiki Self Treatment </h1>
 
-  <div>Coming soon...
+  <div id="content" class="visual">
+      <p>After the attunement you can work with Reiki properly.</p>
+      <p>1st Heal yourself then family, friends &amp; others.</p>
+      <hr>
+      <p>Takes time to practice &amp; experience to master Reiki skills &amp; techniques.</p>
+      <p>Similar to apprenticeship.  </p>
+      <hr>
+      <p>Self healing is the starting point.</p>
+      <p>Reiki is always available to you.</p>
+      <p>Possibilities are endless, the benefits immeasurable.</p>
+      <hr>
+      <p><strong>How Reiki can help you?</strong></p>
+      <p>Reiki works holistically on the mind, body and spirit.</p>
+      <p>More you use, more stronger it becomes </p>
+      <p>e.g. it improves health, energizes you, relax you, bring deep relaxation, calms you, focuses your mind, releases pain, accelerates natural healing, detoxifies the body, dissovles energy blockages, etc. </p>
+      <hr>
+      <p><strong>How to treat yourself with Reiki?</strong></p>
+      <p>No right or wrong way.</p>
+      <p>hand positions are only a guide - use your intuition.</p>
+      <p>3 to 5 minutes on each position. Apply reiki on 7 chakras. Also apply reiki to positions based on weakness in any of 5 principles of reiki.</p>
+      <p>Drink large glass of water after each treatment.</p>
+      <p>Try to recollect all the experiences you felt during the session and note it down.</p>
+      <p>&nbsp;  </p>
+      <p>&nbsp;   </p>
+      <p>&nbsp;       </p>
   </div>
 <!-- InstanceEndEditable -->
 </div>

@@ -1,5 +1,5 @@
 <?php
-define('HOST', 'http://'.$_SERVER['HTTP_HOST']);
+define('HOST', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST']);
 if ($_SERVER['HTTP_HOST'] === 'localhost') {
     define('HTTP_PATH', '/project2017/reiki/');
 } else {
@@ -7,6 +7,13 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
 }
 
 define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
+
+$MM_redirectLoginSuccess = COMPLETE_HTTP_PATH;
+
+if (isset($_GET['accesscheck'])) {
+  $MM_redirectLoginSuccess = $_GET['accesscheck'];	
+}
+
 
 ?>
 <script>
@@ -32,7 +39,7 @@ define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
 		userData.profileUID = user.providerData[0].uid;
 		userData.refreshToken = user.refreshToken;
 		userData.uid = user.uid;
-          console.log('userData is ', userData);
+        //console.log('userData is ', userData);
 		
 	  } else {
 		console.log('user is logged out');
@@ -42,14 +49,14 @@ define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
 	
 	//if i have to post json data to server
 	function postJson(postUrl, params) {
-	console.log('postUrl: ', postUrl);
+		//console.log('postUrl: ', postUrl);
 		var jqxhr = $.ajax({
 			url: postUrl,
 			type: 'POST',
 			data: JSON.stringify(params),
 			constenType: 'application/json; charset=utf-8'
 		}).done(function(response) {
-			window.location.href = homeUrl;
+			window.location.href = '<?php echo $MM_redirectLoginSuccess; ?>';
 		}).fail(function(jqxhr, settings, ex) {
 			console.log('jqxhr is ', jqxhr);
 			console.log('settings is ', settings);

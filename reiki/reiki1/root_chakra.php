@@ -84,8 +84,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Root Chakra </h1>
 
-  <div>
-      <p><a href="images/Root-Chakra-Healing-1.jpg" target="_blank"><img src="images/Root-Chakra-Healing-1.jpg" width="300" height="300" border="0"></a></p>
+  <div id="content" class="visual">
+      <p><a href="images/Root-Chakra-Healing-1.jpg" target="_blank"><img src="images/Root-Chakra-Healing-1.jpg"  class="img-responsive"></a></p>
       <p>Root chakra healing fosters proper energy flow throughout the body giving the chakra system a firm foundation on which the other energy centers may function. When the first chakra is blocked or somehow off balance, it is not uncommon to exhibit uncharacteristic behaviors, like paranoia, being short-tempered or aggressive. Healing your root chakra empowers you to confidently face whatever life may bring.</p>
       <p>In this article, you’ll learn about:</p>
       <ul>
@@ -115,7 +115,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
       </ul>
       <p><strong><br>
           Root Chakra Healing Cheat Sheet</strong></p>
-      <p><img src="images/root-chakra-healing-chart.jpg" width="900" height="750"></p>
+      <p><img src="images/root-chakra-healing-chart.jpg" class="img-responsive"></p>
       <p>&nbsp;</p>
       <p><strong>Common Symptoms Addressed By Root Chakra Healing</strong></p>
       <p><strong>1. Being constantly challenged in getting your primary needs met</strong></p>
@@ -127,7 +127,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
       <p><strong>3. Fear is your main motivating factor</strong><br>
           If you notice that your life is based on fear, root chakra healing could help. It aims at bringing a more balanced perspective, so your decision-making is more well-rounded and not based exclusively on survival instinct or “fight or flight” responses.</p>
       <p>First chakra preoccupations regarding survival can often spin out of control when your support system and resources are not strong enough. By working at reinforcing your foundations and rooting yourself in stronger perceptions of safety, your can gain a greater awareness of your real needs and aspirations, and what needs to be done in order to fulfill them.</p>
-      <p><img src="images/Root-Chakra-Healing-2.jpg" width="626" height="700"></p>
+      <p><img src="images/Root-Chakra-Healing-2.jpg" class="img-responsive"></p>
       <p><strong>Root Chakra Healing</strong></p>
       <p>Key steps for in-depth healing of the root chakra<br>
           <strong>1. Anchoring yourself in your environment</strong></p>

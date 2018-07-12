@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsTrading" value="name:fx_id;datatype:int,name:fx_date;datatype:timestamp,name:deleted;datatype:int,name:symbol;datatype:string,name:order_type;datatype:int,name:order_price;datatype:string,name:order_sl;datatype:string,name:order_tp;datatype:string,name:order_comment;datatype:string,name:order_magic;datatype:int,name:order_expiration;datatype:string,name:include_accounts;datatype:blob,name:exclude_accounts;datatype:blob,name:order_lots;datatype:real" />
-</info>

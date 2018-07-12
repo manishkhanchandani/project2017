@@ -84,7 +84,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">What is Reiki?</h1>
 
-  <div class="visual">
+  <div id="content" class="visual">
       <p>Reiki is a form of <strong>hands on healing</strong></p>
       <p>Origins in <strong>india</strong> and east</p>
       <p>Original <strong>knowledge lost</strong>, <strong>Rediscovered</strong> by Dr. Mikao usui</p>

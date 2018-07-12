@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsView" value="name:element_id;datatype:int,name:issue;datatype:string,name:elements;datatype:blob,name:rule;datatype:blob,name:created_dt;datatype:timestamp,name:subject;datatype:string" />
-</info>

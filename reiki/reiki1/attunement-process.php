@@ -84,7 +84,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Attunement Process</h1>
 
-  <div class="visual">
+  <div id="content" class="visual">
       <p><strong>Preparing for Reiki 1</strong></p>
       <p>The path to Reiki</p>
       <p>People are drawn to Reiki for many different reasons</p>

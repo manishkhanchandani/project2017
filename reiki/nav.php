@@ -18,26 +18,63 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Practitioner<span class="caret"></span></a>
               
               <ul class="dropdown-menu">
-            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>directory.php">Directory</a></li>
-                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>real-cases.php">Real Cases?</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/practitioner.php">Add New Practitioner</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/directory.php">Directory</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/real-cases.php">Real Solved Cases</a></li>
               </ul>
             </li>
+			<?php if (!empty($_SESSION['MM_UserGroup']) && $_SESSION['MM_UserGroup'] === 'admin') { ?>
+			<li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+              
+              <ul class="dropdown-menu">
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/index.php">Admin</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/quiz.php">Quiz Results</a></li>
+              </ul>
+            </li>
+			<?php } ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 1 <span class="caret"></span></a>
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/">Reiki Level 1</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/quiz.php">Quiz</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/what-is-reiki.php">What is Reiki?</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/how-reiki-works.php">How Reiki Works?</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/history-of-reiki.php">History of Reiki</a></li>
-                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/seven-chakras.php">Seven Chakras & Endocrinology?</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/seven-chakras.php">Seven Chakras & Endocrinology</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/seven-chakras-short.php">Seven Chakras Short</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/five-principles.php">Five Principles</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/attunement-process.php">Attunement Process</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/self-healing.php">Self Healing</a></li>
-                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/reiki-treatment.php">How to Give Reiki Treatment</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/reiki-treatment.php">How to Give Reiki Treatment</a>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/treat_others.php">Treat Others</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/group_healing.php">Group Healing</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/levels-of-health.php">Levels Of Health</a></li>
-                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/pulse_diagnosis.php">Pulse Diagnosis?</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/pulse_diagnosis.php">Pulse Diagnosis</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 2 <span class="caret"></span></a>
+              
+              <ul class="dropdown-menu">
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>">Reiki Level 2</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master<span class="caret"></span></a>
+              
+              <ul class="dropdown-menu">
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>">Master Level</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visual<span class="caret"></span></a>
+              
+              <ul class="dropdown-menu">
+                <li><a href="#" id="bigfonts">Big Fonts</a></li>
+                <li><a href="#" id="normalfonts">Normal Fonts</a></li>
               </ul>
             </li>
           </ul>
@@ -64,4 +101,14 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    
+
+<script>
+$( document ).ready(function() {
+    $( "#bigfonts" ).click(function() {
+	  $('#content').removeClass('visual').addClass('visualBig');
+	});
+    $( "#normalfonts" ).click(function() {
+	  $('#content').removeClass('visualBig').addClass('visual');
+	});
+});
+</script>

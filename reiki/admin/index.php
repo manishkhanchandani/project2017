@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "reiki1,admin,reiki12,reiki123";
+$MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
@@ -51,7 +51,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki : What is Reiki?</title>
+<title>Administrator</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -83,9 +83,11 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">What is Reiki?</h1>
+  <h1 class="page-header">Administrator</h1>
 
-  <div id="content" class="visual">Coming soon...
+  <div id="content" class="visual">
+      <p><a href="quiz.php">Quiz Result  </a></p>
+      <p>&nbsp;    </p>
   </div>
 <!-- InstanceEndEditable -->
 </div>

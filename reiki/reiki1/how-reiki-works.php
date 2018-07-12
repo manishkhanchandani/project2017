@@ -85,7 +85,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header"> How Reiki Works?</h1>
 
-  <div class="visual">
+  <div id="content" class="visual">
       <p>50 trillion cells with omniscient wisdom          </p>
       <p>Every living thing in the universe is connected.          </p>
       <p>Reiki is part of our genetic structure          </p>

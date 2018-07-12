@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsView" value="name:id;datatype:int,name:user_id;datatype:int,name:category_id;datatype:int,name:question;datatype:blob,name:explanation;datatype:blob,name:quiz_dt;datatype:timestamp,name:status;datatype:int,name:answers;datatype:blob,name:correct;datatype:int,name:topic;datatype:string,name:laws;datatype:string,name:essence;datatype:blob,name:level_type;datatype:string,name:seconds_assigned;datatype:int,name:q_desc;datatype:blob,name:issue_id;datatype:int,name:subject;datatype:string,name:title;datatype:string,name:description;datatype:blob,name:essay_related;datatype:blob,name:mbe_related;datatype:blob,name:own_words;datatype:blob,name:created_issue_dt;datatype:timestamp,name:user_id;datatype:int,name:issue_key;datatype:string,name:issue_sorting;datatype:int" />
-	<infoitem key="UD_rsCat" value="name:cat_id;datatype:int,name:category;datatype:string,name:parent_id;datatype:int,name:user_id;datatype:int" />
-	<infoitem key="UD_rsIssues" value="name:issue_id;datatype:int,name:subject;datatype:string,name:title;datatype:string,name:description;datatype:blob,name:essay_related;datatype:blob,name:mbe_related;datatype:blob,name:own_words;datatype:blob,name:created_issue_dt;datatype:timestamp,name:user_id;datatype:int,name:issue_key;datatype:string,name:issue_sorting;datatype:int" />
-</info>

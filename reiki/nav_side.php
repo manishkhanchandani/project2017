@@ -1,30 +1,8 @@
 <?php
-$leftSideBar = array();
-//$fetchSubjects = curlget(COMPLETE_HTTP_PATH.'apis/baby_bar_subjects.php');
-if (!empty($fetchSubjects['output'])) {
-    $res = json_decode($fetchSubjects['output'], 1);
-    if ($res['success'] === 1) {
-        $leftSideBar = $res['data'];
-    }
+if (!empty($xtraText)) {
+	echo $xtraText;
 }
-
 ?>
-<!--<ul class="nav nav-sidebar">
-  <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-  <li><a href="#">Reports</a></li>
-  <li><a href="#">Analytics</a></li>
-  <li><a href="#">Export</a></li>
-</ul>-->
-<?php if (!empty($leftSideBar)) { ?>
-<?php foreach ($leftSideBar as $k => $v) { ?>
-    <h4>Year: <?php echo $k; ?></h4>
-    <ul class="nav nav-sidebar">
-            <?php foreach ($v as $k1 => $v2) { ?>
-            <li><a href="<?php echo HTTP_PATH; ?>subjects/?id=<?php echo $v2['subject_id']; ?>"><?php echo $v2['subject']; ?></a></li>
-            <?php } ?>
-    </ul>
-<?php } ?>
-<?php } ?>
 <h4><?php if (!empty($_SESSION['MM_DisplayName'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?></h4>
 <ul class="nav nav-sidebar">
   <?php if (!empty($_SESSION['MM_DisplayName'])) { ?>

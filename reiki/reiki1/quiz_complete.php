@@ -2,8 +2,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "reiki1,admin,reiki12,reiki123";
-$MM_donotCheckaccess = "false";
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -24,14 +24,14 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
     if (in_array($UserGroup, $arrGroups)) { 
       $isValid = true; 
     } 
-    if (($strUsers == "") && false) { 
+    if (($strUsers == "") && true) { 
       $isValid = true; 
     } 
   } 
   return $isValid; 
 }
 
-$MM_restrictGoTo = "../users/access-denied.php";
+$MM_restrictGoTo = "../users/login.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
@@ -51,7 +51,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki : What is Reiki?</title>
+<title>Rei-ki : Quiz Completed</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -83,9 +83,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">What is Reiki?</h1>
+  <h1 class="page-header">Quiz Completed</h1>
 
-  <div id="content" class="visual">Coming soon...
+  <div id="content" class="visual">You have successfully completed the quiz.
   </div>
 <!-- InstanceEndEditable -->
 </div>
