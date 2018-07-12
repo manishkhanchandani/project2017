@@ -2,6 +2,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+include('../init.php');
+
 $MM_authorizedUsers = "reiki1,admin,reiki12,reiki123";
 $MM_donotCheckaccess = "false";
 
@@ -100,7 +102,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
           <li><strong><a href="group_healing.php">Group</a></strong> Healing </li>
           </ul>
       <p>&nbsp;</p>
-      <p>Questions:</p>
+      <p><strong>MY MAIN AIM: </strong>TO HELP PEOPLE RELY ON REIKI AND STOP TAKING MEDICINES </p>
+      <p><strong>Questions:</strong></p>
       <p>1. Who believes in God?</p>
       <p>2. Who believes in Reiki, who believes in alternative medicines like ayurveda, homeopathy, acupunctuure, who believes in only modern medicine?</p>
       <p>3. Did God created human being or it was created by evolution?</p>

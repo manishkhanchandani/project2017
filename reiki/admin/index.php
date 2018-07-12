@@ -2,6 +2,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+include('../init.php');
+
 $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 

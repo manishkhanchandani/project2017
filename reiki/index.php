@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('init.php');
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->

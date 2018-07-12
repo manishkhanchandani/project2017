@@ -3,6 +3,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+include('../init.php');
+
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 

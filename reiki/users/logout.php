@@ -4,6 +4,18 @@ $logoutGoTo = "../";
 if (!isset($_SESSION)) {
   session_start();
 }
+
+$time = time() - 3600;
+setcookie('MM_Username', '', $time, '/');
+setcookie('MM_Email', '', $time, '/');
+setcookie('MM_UserGroup', '', $time, '/');
+setcookie('MM_UserId', '', $time, '/');
+setcookie('MM_DisplayName', '', $time, '/');
+setcookie('MM_ProfileImg', '', $time, '/');
+setcookie('MM_UID', '', $time, '/');
+setcookie('MM_LoggedInTime', '', $time, '/');
+setcookie('MM_ProfileUID', '', $time, '/');
+	
 $_SESSION['MM_Username'] = NULL;
 $_SESSION['MM_UserGroup'] = NULL;
 $_SESSION['MM_UserId'] = NULL;

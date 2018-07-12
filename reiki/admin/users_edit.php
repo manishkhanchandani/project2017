@@ -2,6 +2,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+include('../init.php');
+
 $MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
@@ -185,7 +187,6 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
                       <option value="reiki3" <?php if (!(strcmp("reiki3", $row_rsEdit['access_level']))) {echo "selected=\"selected\"";} ?>>reiki3</option>
                       <option value="reiki12" <?php if (!(strcmp("reiki12", $row_rsEdit['access_level']))) {echo "selected=\"selected\"";} ?>>reiki12</option>
                       <option value="reiki123" <?php if (!(strcmp("reiki123", $row_rsEdit['access_level']))) {echo "selected=\"selected\"";} ?>>reiki123</option>
-                      <option value="reiki23" <?php if (!(strcmp("reiki23", $row_rsEdit['access_level']))) {echo "selected=\"selected\"";} ?>>reiki23</option>
                       </select>                  </td>
               </tr>
               <tr valign="baseline">

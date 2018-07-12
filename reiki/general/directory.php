@@ -1,6 +1,8 @@
 <?php require_once('../../Connections/conn.php'); ?>
 <?php
 session_start();
+include('../init.php');
+
 
 $currentPage = $_SERVER["PHP_SELF"];
 

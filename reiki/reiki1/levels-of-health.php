@@ -2,6 +2,8 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+include('../init.php');
+
 $MM_authorizedUsers = "reiki1,admin,reiki12,reiki123";
 $MM_donotCheckaccess = "false";
 
