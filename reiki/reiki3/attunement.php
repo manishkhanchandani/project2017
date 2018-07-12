@@ -206,7 +206,32 @@ Silently set an intention of gratitude of Reiki.</p>
 
 Say to the student: "You can now come back to full awareness in your own time whenever you are ready". or "This concludes the first degree attunement."</p>
 <p>&nbsp;</p>
+<hr>
+<p><strong>Attunement method 2</strong><br>
+    https://www.youtube.com/watch?v=_vmxNQ7ox2E</p>
+<p>1. Thanks to all</p>
+<p>2. Open the crown chakra</p>
+<p>3. draw chk over crown chakra and press it in</p>
+<p>4. draw shk and press it in</p>
+<p>5. draw hszsn and press it in</p>
+<p>6. come front blow symbols in crown chakra by hold hands of student</p>
+<p>7. draw dkm over crown chakra and press it</p>
+<p>8. come to front</p>
+<p>9. blow dkm in crown by holding hand of student</p>
+<p>10. draw chk, press into heart</p>
+<p>11. draw shk, press into heart</p>
+<p>12. draw hszsn, press into heart</p>
+<p>13. dkm, press into heart</p>
+<p>14. take palms down, draw chk (level 1), tap 3 times, on both palms</p>
+<p>15. level 2, add shk and hszsn, tap 3 times, on both palms</p>
+<p>16. add dkm, for master level, tap 3 times on both palms</p>
+<p>17. take hands of student into prayer position and holding it with both hands, blow all symbols in all chakras from top to bottom</p>
+<p>18. go back</p>
+<p>19. close crown chakra like book</p>
+<p>20. back in prayer position, you are attuned to level x.<br>
+</p>
 <p>&nbsp;</p>
+<p></p>
 <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->

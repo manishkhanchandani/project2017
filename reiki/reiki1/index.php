@@ -103,6 +103,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
           </ul>
       <p>&nbsp;</p>
       <p><strong>MY MAIN AIM: </strong>TO HELP PEOPLE RELY ON REIKI AND STOP TAKING MEDICINES </p>
+      <p>After this session, your life will change, your thinking about disease and health will change. You will look at health and disease in a different perspective.</p>
       <p><strong>Questions:</strong></p>
       <p>1. Who believes in God?</p>
       <p>2. Who believes in Reiki, who believes in alternative medicines like ayurveda, homeopathy, acupunctuure, who believes in only modern medicine?</p>
