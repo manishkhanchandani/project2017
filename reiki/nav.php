@@ -13,7 +13,15 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           
-            <li class="active"><a href="index.php">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">General<span class="caret"></span></a>
+              
+              <ul class="dropdown-menu">
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/personal.php">Add Personal Info</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/personal_view.php">View Personal Info</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/quiz.php">Quiz</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Practitioner<span class="caret"></span></a>
               
@@ -29,17 +37,18 @@
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/index.php">Admin</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/lecture.php">Lecture level 1</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/users.php">Users</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/quiz.php">Quiz Results</a></li>
               </ul>
             </li>
 			<?php } ?>
+			<?php if (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '1') !== false) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 1 <span class="caret"></span></a>
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/">Reiki Level 1</a></li>
-                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/quiz.php">Quiz</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/what-is-reiki.php">What is Reiki?</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/how-reiki-works.php">How Reiki Works?</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/history-of-reiki.php">History of Reiki</a></li>
@@ -54,8 +63,11 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/levels-of-health.php">Levels Of Health</a></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/pulse_diagnosis.php">Pulse Diagnosis</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/pulse_diagnosis_view.php">Pulse Diagnosis View</a></li>
               </ul>
             </li>
+			<?php } ?>
+			<?php if (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '2') !== false) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 2 <span class="caret"></span></a>
               
@@ -63,6 +75,8 @@
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>">Reiki Level 2</a></li>
               </ul>
             </li>
+			<?php } ?>
+			<?php if (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '3') !== false) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master<span class="caret"></span></a>
               
@@ -70,6 +84,7 @@
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>">Master Level</a></li>
               </ul>
             </li>
+			<?php } ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visual<span class="caret"></span></a>
               

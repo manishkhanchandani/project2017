@@ -1,4 +1,48 @@
-<!doctype html>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "admin";
+$MM_donotCheckaccess = "false";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && false) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "../users/access-denied.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
+  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 
@@ -157,8 +201,9 @@ Leaving the student's hands in the prayer position, step back slightly, and draw
 Now with your cupped hands side by side with thumbs together facing towards your student's solar plexus, sacral and root chakras, beam the three previously drawn Reiki symbols (dkm, hszsn, ckr) into the student's solar plexus, sacral and root chakras filling their three energy centers with Reiki energy. Remember to silently intone the names of each of the symbols three times.</p>
 <p>
 
-Next beam/channel the three previously drawn Reiki symbols (dmk, hszsn, ckr) into student's arms, chest, abdomen, thighs, legs and feet. Visualize Reiki energy filling every muscle, organ, tissue and cell of their body. Remember to silently intone the names of each of the symbols three times.
-</p>
+Next beam/channel the three previously drawn Reiki symbols (dmk, hszsn, ckr) into student's arms, chest, abdomen, thighs, legs and feet. Visualize Reiki energy filling every muscle, organ, tissue and cell of their body. Remember to silently intone the names of each of the symbols three times.</p>
+<p><strong>Additional: </strong>Hands in prayer position, left hand wrapping his folded hand, tip of my hand to tip of his hand, channel all three symbol. </p>
+<p>Left thumb on top of the fingers, grab hand with left hand, right third and fourth finger on over thumb of the student, channel all three symbols. </p>
 <p>
 <strong>Step 8: Attuning the student to the symbols</strong></p>
 <p>
@@ -172,8 +217,8 @@ Level 2: Draw ckr, shk, hszsn, in both palms and tap three times.</p>
 Level 3: Draw ckr, shk, hszsn and dkm and tap three times.</p>
 <p>
 
-Fold the student's hands back into prayer position.
-</p>
+Fold the student's hands back into prayer position.</p>
+<p>&nbsp;</p>
 <p>
 
 <strong>Step 9: Violet Breath</strong></p>
@@ -185,6 +230,7 @@ NOw place your hands around the student's hands and move them so that their fing
 <p>
 
 Blow the Violet Breath from the root chakra to the crown chakra.</p>
+<p><strong>Additonal: </strong>Blow breath of life into heart , 3rd eye, crown, take hands upto heart chakra, blow into heart chakra, take hand till third eye, blow into third eye, take hand till crown, blow in the crown. </p>
 <p>
 
 <strong>Step 10: Closing the ceremony</strong></p>

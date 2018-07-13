@@ -53,7 +53,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki : Reiki Level 1</title>
+<title>Rei-ki : Diet</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -84,31 +84,17 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">Usui Reiki Level 1</h1>
+  <h1 class="page-header">Diet </h1>
 
   <div id="content" class="visual">
-      <ul>
-          <li><strong><a href="what-is-reiki.php">What</a> is</strong> Reiki?, </li>
-          <li>How Reiki <strong><a href="how-reiki-works.php">Works</a></strong>? </li>
-          <li><strong><a href="history-of-reiki.php">History</a></strong> of Reiki?              </li>
-          <li> <strong><a href="levels-of-health.php">Levels of Health</a></strong>?              </li>
-          <li><strong> <a href="pulse_diagnosis.php">Pulse Diagnosis</a> </strong></li>
-          <li> Seven <strong><a href="seven-chakras.php">Chakras</a></strong></li>
-          <li> Seven <strong><a href="seven-chakras-short.php">Chakras Short </a></strong></li>
-          <li>Five <strong><a href="five-principles.php">Principles</a></strong></li>
-          <li>Meditation</li>
-          <li><strong><a href="attunement-process.php">Attunement</a></strong> Process</li>
-          <li>How to <strong><a href="reiki-treatment.php">Heal Others</a></strong> and <a href="treat_others.php"><strong>treating</strong></a> others </li>
-          <li><strong><a href="group_healing.php">Group</a></strong> Healing </li>
-          <li><a href="diet.php"><strong>Diet </strong></a>for healthy living </li>
-      </ul>
+      <p>Two things to remember  </p>
+      <p>FASTING and Alkaline Diet     </p>
       <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <div>
-		<a href="quiz.php" class="btn btn-primary">Previous</a>
-		<a href="what-is-reiki.php" class="btn btn-primary">Next</a>
+	<p>&nbsp;</p>
+	<div>
+		<a href="levels-of-health.php" class="btn btn-primary">Previous</a>
+		<a href="pulse_diagnosis.php" class="btn btn-primary">Next</a>
 		</div>
-      <p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->
 </div>

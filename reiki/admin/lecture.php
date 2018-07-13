@@ -3,8 +3,7 @@ if (!isset($_SESSION)) {
   session_start();
 }
 include('../init.php');
-
-$MM_authorizedUsers = "reiki1,admin,reiki12,reiki123";
+$MM_authorizedUsers = "admin";
 $MM_donotCheckaccess = "false";
 
 // *** Restrict Access To Page: Grant or deny access to this page
@@ -53,7 +52,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Rei-ki : Reiki Level 1</title>
+<title>Reiki 3 : Lecture</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -84,31 +83,29 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">Usui Reiki Level 1</h1>
+  <h1 class="page-header">Lecture</h1>
 
-  <div id="content" class="visual">
-      <ul>
-          <li><strong><a href="what-is-reiki.php">What</a> is</strong> Reiki?, </li>
-          <li>How Reiki <strong><a href="how-reiki-works.php">Works</a></strong>? </li>
-          <li><strong><a href="history-of-reiki.php">History</a></strong> of Reiki?              </li>
-          <li> <strong><a href="levels-of-health.php">Levels of Health</a></strong>?              </li>
-          <li><strong> <a href="pulse_diagnosis.php">Pulse Diagnosis</a> </strong></li>
-          <li> Seven <strong><a href="seven-chakras.php">Chakras</a></strong></li>
-          <li> Seven <strong><a href="seven-chakras-short.php">Chakras Short </a></strong></li>
-          <li>Five <strong><a href="five-principles.php">Principles</a></strong></li>
-          <li>Meditation</li>
-          <li><strong><a href="attunement-process.php">Attunement</a></strong> Process</li>
-          <li>How to <strong><a href="reiki-treatment.php">Heal Others</a></strong> and <a href="treat_others.php"><strong>treating</strong></a> others </li>
-          <li><strong><a href="group_healing.php">Group</a></strong> Healing </li>
-          <li><a href="diet.php"><strong>Diet </strong></a>for healthy living </li>
-      </ul>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <div>
-		<a href="quiz.php" class="btn btn-primary">Previous</a>
-		<a href="what-is-reiki.php" class="btn btn-primary">Next</a>
-		</div>
-      <p>&nbsp;</p>
+  <div id="contents" class="visual">
+  <p>
+      My name is Manish Khanchandani, my email is manishkk74@gmail.com and my phone number is 4085052726.</p>
+  <p>I am a Reiki Master Teacher and I did that in year 1999. I taught about reiki to about 200 people in India.</p>
+  <p>Now my mission is to teach reiki to every person in the US to reduce the medical cost of every individual.</p>
+  <p>Reiki is divided into Reiki 1, Reiki 2, Reiki 3a and Reiki 3b, In some countries people add Reiki Grandmaster name for name sake.</p>
+  <p>After this session, your life will change, your thinking about disease and health will change. You will look at health and disease in a different perspective. You will no longer take modern medicines (unless in emergency).</p>
+  <p><strong>MY MAIN AIM: </strong>TO HELP PEOPLE RELY ON REIKI AND STOP TAKING MEDICINES </p>
+  <p><strong>Questions:</strong></p>
+  <p>1. Who believes in God?</p>
+  <p>2. Who believes in Reiki, who believes in alternative medicines like ayurveda, homeopathy, acupunctuure, who believes in only modern medicine?</p>
+  <p>3. Did God created human being or it was created by evolution?</p>
+  <p>4. Natural line of treatment.</p>
+  <p>5. 2 types of diseases: Acute and chronic</p>
+  <p>6. Science does not recognise reiki, homeopathy, acupuncture, why?</p>
+  <p>7. Science looks at objective perspective, and reiki, homeopathy, acupuncture is based on subjective perspective.</p>
+  <p>&nbsp;</p>
+  <p><strong>Regarding History of Reiki, In short,</strong></p>
+  <p>He read many  Buddhist texts, and then he meditate for 21 days in one mountain, after 21 days he felt a bright light stuck in his third eye and he was able to see many symbols, he assumed he got some power to heal, and he was able to heal when he came back to his home as he healed one girl with toothache. He then treated many people and he taught reiki to many students, one of them was Dr. Hyashi and Dr. Hyashi taught to Dr. Takata who brought Reiki to western world i.e. USA. </p>
+  <p></p>
+<p>&nbsp;</p>
   </div>
 <!-- InstanceEndEditable -->
 </div>

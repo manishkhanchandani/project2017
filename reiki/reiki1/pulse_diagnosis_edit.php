@@ -46,60 +46,23 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 }
 ?>
 <?php
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
-
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
-
-$editFormAction = $_SERVER['PHP_SELF'];
-if (isset($_SERVER['QUERY_STRING'])) {
-  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
-}
-
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['pulse_data'] = json_encode($_POST['data']);
 }
 
-
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO reiki_pulse_diagnosis (user_id, name, gender, age, case_date, pulse_data) VALUES (%s, %s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['user_id'], "int"),
-                       GetSQLValueString($_POST['name'], "text"),
-                       GetSQLValueString($_POST['gender'], "text"),
-                       GetSQLValueString($_POST['age'], "text"),
-                       GetSQLValueString($_POST['case_date'], "text"),
-                       GetSQLValueString($_POST['pulse_data'], "text"));
-
-  mysql_select_db($database_conn, $conn);
-  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
-
-  $insertGoTo = "pulse_diagnosis_view.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
-    $insertGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $insertGoTo));
+$colid_rsEdit = "-1";
+if (isset($_GET['case_id'])) {
+  $colid_rsEdit = (get_magic_quotes_gpc()) ? $_GET['case_id'] : addslashes($_GET['case_id']);
 }
+$colname_rsEdit = "-1";
+if (isset($_SESSION['MM_UserId'])) {
+  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsEdit = sprintf("SELECT * FROM reiki_pulse_diagnosis WHERE user_id = %s and case_id = %s", $colname_rsEdit,$colid_rsEdit);
+$rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
+$row_rsEdit = mysql_fetch_assoc($rsEdit);
+$totalRows_rsEdit = mysql_num_rows($rsEdit);
  
 include('pulse_data.php');
 ?>
@@ -144,10 +107,10 @@ include('pulse_data.php');
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">Pulse Diagnosis</h1>
+  <h1 class="page-header">Pulse Diagnosis Edit </h1>
 
   <div id="content" class="visual">
-      <form name="form1" method="POST" action="<?php echo $editFormAction; ?>">
+      <form name="form1" method="POST">
       <div class="row">
 	  	<div class="col-md-4">
 			<div class="table-responsive">
@@ -217,35 +180,34 @@ include('pulse_data.php');
 					<td align="right">
 						<strong>Name</strong>					</td>
 					<td>
-						<input name="name" type="text" id="name">					</td>
+						<input name="name" type="text" id="name" value="<?php echo $row_rsEdit['name']; ?>">					
+					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<strong>Gender</strong>					</td>
 					<td>
-						<input name="gender" type="text" id="gender">					</td>
+						<input name="gender" type="text" id="gender" value="<?php echo $row_rsEdit['gender']; ?>">					
+					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<strong>Age</strong>					</td>
 					<td>
-						<input name="age" type="text" id="age">					</td>
+						<input name="age" type="text" id="age" value="<?php echo $row_rsEdit['age']; ?>">					
+					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<strong>Date</strong>					</td>
 					<td>
-						<input name="case_date" type="text" id="case_date">					</td>
+						<input name="case_date" type="text" id="case_date" value="<?php echo $row_rsEdit['case_date']; ?>">					
+					</td>
 				</tr>
-				<tr>
-				    <td align="right">&nbsp;</td>
-				    <td><input name="submit" type="submit" value="Submit"></td>
-				    </tr>
 			</table>
 		</div>
-	  <input type="hidden" name="user_id" value="<?php echo $_SESSION['MM_UserId']; ?>">
-	  <input name="pulse_data" type="hidden" id="pulse_data">
-      <input type="hidden" name="MM_insert" value="form1">
+	    <input type="submit" value="Submit">
+      <input name="pulse_data" type="hidden" id="pulse_data">
       </form>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
@@ -263,3 +225,6 @@ include('pulse_data.php');
 </div>
 </body>
 <!-- InstanceEnd --></html>
+<?php
+mysql_free_result($rsEdit);
+?>
