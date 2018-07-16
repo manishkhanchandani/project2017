@@ -84,7 +84,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">Anatomic Illustrations for Reiki</h1>
+  <h1 class="page-header">How to give reiki treatment</h1>
 <audio controls class="my-audio">
   <source src="audio/reiki-treatment.ogg" type="audio/ogg">
   <source src="audio/reiki-treatment.mp3" type="audio/mpeg">
@@ -92,6 +92,15 @@ Your browser does not support the audio element.
 </audio>
 <hr />
   <div id="content" class="visual">
+  <h3>Prayer</h3>
+  <p>Thanks God for being here</p>
+  <p>Thanks Reiki for being here</p>
+  <p>Thanks Myself for being here</p>
+  <p>Thanks Student/Friend/Family member being here (to whom you are giving reiki)</p>
+  <p>&nbsp;</p>
+  <p>Do No cross legs when giving or reciving reiki.</p>
+  <p>&nbsp;  </p>
+  <h3>Anatomic Illustrations for Reiki</h3>
       <p>Reiki goes to where the body requires healing.</p>
       <p>Reiki is so easy to learn and apply.</p>
       <p>No need to learn anatomy to apply Reiki.</p>
@@ -114,9 +123,7 @@ Your browser does not support the audio element.
       <p>Lymphatic system takes colorless liquid called as lymph. </p>
       <p><img src="images/lymphatic.png" class="img-responsive" /></p>
       <p>&nbsp;</p>
-  </div>
-  <h1 class="page-header">How Often Do I Need to Get a Reiki Treatment?</h1>
-  <div id="content" class="visual">
+  <h3 class="page-header">How Often Do I Need to Get a Reiki Treatment?</h3>
       <p>Reiki is a simple, natural and safe method of spiritual healing and self-improvement that everyone can use. It has been effective in helping virtually every known illness and malady and always creates a beneficial effect. It also works in conjunction with all other medical or therapeutic techniques to relieve side effects and promote recovery.          </p>
       <p>A treatment feels like a wonderful glowing radiance that flows through and around you. Reiki treats the whole person including body, emotions, mind and spirit creating many beneficial effects that include relaxation and feelings of peace, security and wellbeing. Many have reported miraculous results. </p>
       <p>The answer is, “<strong>It depends</strong>.” It depends on a number of things. Here are some of the considerations:</p>

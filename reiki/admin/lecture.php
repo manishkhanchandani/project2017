@@ -64,7 +64,15 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
-<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><style type="text/css">
+<!--
+.style1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: rgb(51, 51, 51);
+}
+-->
+</style><!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -86,12 +94,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   <h1 class="page-header">Lecture</h1>
 
   <div id="contents" class="visual">
-  <p>
-      My name is Manish Khanchandani, my email is manishkk74@gmail.com and my phone number is 4085052726.</p>
+  <p><strong>
+      My Info</strong></p>
+  <p>My name is Manish Khanchandani, my email is manishkk74@gmail.com and my phone number is 4085052726.</p>
   <p>I am a Reiki Master Teacher and I did that in year 1999. I taught about reiki to about 200 people in India.</p>
   <p>Now my mission is to teach reiki to every person in the US to reduce the medical cost of every individual.</p>
   <p>Reiki is divided into Reiki 1, Reiki 2, Reiki 3a and Reiki 3b, In some countries people add Reiki Grandmaster name for name sake.</p>
   <p>After this session, your life will change, your thinking about disease and health will change. You will look at health and disease in a different perspective. You will no longer take modern medicines (unless in emergency).</p>
+  <hr>
   <p><strong>MY MAIN AIM: </strong>TO HELP PEOPLE RELY ON REIKI AND STOP TAKING MEDICINES </p>
   <p><strong>Questions:</strong></p>
   <p>1. Who believes in God?</p>
@@ -101,9 +111,26 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   <p>5. 2 types of diseases: Acute and chronic</p>
   <p>6. Science does not recognise reiki, homeopathy, acupuncture, why?</p>
   <p>7. Science looks at objective perspective, and reiki, homeopathy, acupuncture is based on subjective perspective.</p>
-  <p>&nbsp;</p>
+  <p>8. How many of you like to do meditation. </p>
   <p><strong>Regarding History of Reiki, In short,</strong></p>
-  <p>He read many  Buddhist texts, and then he meditate for 21 days in one mountain, after 21 days he felt a bright light stuck in his third eye and he was able to see many symbols, he assumed he got some power to heal, and he was able to heal when he came back to his home as he healed one girl with toothache. He then treated many people and he taught reiki to many students, one of them was Dr. Hyashi and Dr. Hyashi taught to Dr. Takata who brought Reiki to western world i.e. USA. </p>
+  <p>Dr. Mikao Usui  read many  Buddhist texts, and then he meditate for 21 days in one mountain of kurama, after 21 days he felt a bright light stuck in his third eye and he was able to see many symbols, he assumed he got some power to heal, and he was able to heal when he came back to his home as he healed one girl with toothache. He then treated many people and he taught reiki to many students, one of them was Dr. Hyashi and Dr. Hyashi taught to Dr. Takata who brought Reiki to western world i.e. USA. </p>
+  <hr>
+  <p>&nbsp;</p>
+  <p><strong>We will be studying following sections in Reiki</strong></p>
+  <p>what is reiki, how reiki works, history of reiki, levels of health, pulse diagnosis, seven chakras, five principles, meditation in reiki,  attunement process, how to heal others, self healing, group healing, diet for healthy living.</p>
+  <hr>
+  <p><strong>What is Reiki?</strong></p>
+  <p>Reiki is made up of two words Rei and ki, rei means universal or divine and ki means energy. so it is a universal energy or universal life force or divine life force or divine energy.</p>
+  <p>it is also called chi in china, prana in india, </p>
+  <p>This ki energy is activated for the purpose of healing.</p>
+  <p>&nbsp;</p>
+  <hr>
+  <p><strong>How Reiki Works?</strong></p>
+  <p>Reiki stimulates a persons own natural healing abilities to cure the disease. upon receiving the first attunement, receiver becomes the channel for this energy. and he can heal with his hands. </p>
+  <p><span style="font-variant-ligatures:normal; font-variant-caps:normal; letter-spacing:normal; orphans:2; text-align:start; text-indent:0px; text-transform:none; white-space:normal; widows:2; word-spacing:0px; -webkit-text-stroke-width:0px; background-color:rgb(255, 255, 255); text-decoration-style:initial; text-decoration-color:initial; display:inline !important; float:none; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:14px; color:rgb(51, 51, 51); font-style:normal; font-weight:400; ">There are </span><strong style="box-sizing: border-box; font-weight: 700; color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">7 main energy centers</strong><span style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:14px; color:rgb(51, 51, 51); font-style:normal; font-weight:400; "> in the body called Chakras. Reiki restores the balance in these chakras which help in treating the disorders. Reiki stimulates the immune system and remove toxins.</span></p>
+  <p><span class="style1">Reik is pure energy. <span style="font-variant-ligatures:normal; font-variant-caps:normal; letter-spacing:normal; orphans:2; text-align:start; text-indent:0px; text-transform:none; white-space:normal; widows:2; word-spacing:0px; -webkit-text-stroke-width:0px; background-color:rgb(255, 255, 255); text-decoration-style:initial; text-decoration-color:initial; display:inline !important; float:none; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:14px; color:rgb(51, 51, 51); font-style:normal; font-weight:400; ">The best way to understand how Reiki works is to </span><strong style="box-sizing: border-box; font-weight: 700; color: rgb(51, 51, 51); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">experience it</strong><span style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:14px; color:rgb(51, 51, 51); font-style:normal; font-weight:400; ">.</span></span></p>
+  <hr>
+  <p>&nbsp;  </p>
   <p></p>
 <p>&nbsp;</p>
   </div>

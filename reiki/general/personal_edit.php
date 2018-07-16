@@ -2,6 +2,10 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+header("Location: personal_view.php"); 
+exit;
+
+
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 

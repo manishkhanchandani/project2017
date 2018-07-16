@@ -198,11 +198,11 @@ function handleError( error ) {
   displayLocation(latitude, longitude);*/
 }
 function initialize() {
-    /*var newlat = parseFloat('<?php //echo !empty($latitude) ? $latitude : 0; ?>');
-    var newlon = parseFloat('<?php //echo !empty($longitude) ? $longitude : 0; ?>');
+    var newlat = parseFloat('<?php echo !empty($latitude) ? $latitude : ''; ?>');
+    var newlon = parseFloat('<?php echo !empty($longitude) ? $longitude : ''; ?>');
     if (newlat && newlon) {
       displayLocation(newlat, newlon);
-    } else */if ( navigator.geolocation ) {
+    } else if ( navigator.geolocation ) {
       navigator.geolocation.getCurrentPosition( displaySelfLocation, handleError );
     }/* else {
       var latitude = '<?php //echo !empty($latitude) ? $latitude : 0; ?>';

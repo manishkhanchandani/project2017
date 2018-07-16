@@ -85,26 +85,31 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Seven Chakras & Endocrinology</h1>
+<audio controls class="my-audio">
+  <source src="audio/seven_chakras.ogg" type="audio/ogg">
+Your browser does not support the audio element.
+</audio>
+<hr />
 
   <div id="content" class="visual">
       <p><strong>Seven Chakras</strong> are:</p>
       <ol>
-          <li><strong><a href="#root">Root chakra</a></strong> (Muladhara) — base of the spine — <strong>red</strong> <br>
+          <li><strong><a href="#root">Root chakra</a></strong> (<a href="chakras_root.php">Muladhara</a>) — base of the spine — <strong>red</strong> <br>
               The first one to the perineum, in the coccyx area</li>
-          <li><strong><a href="#sacral">Sacral chakra</a></strong> (Svadhishthana) — just below the navel — <strong>orange</strong> <br>
+          <li><strong><a href="#sacral">Sacral chakra</a></strong> (<a href="chakras_sacral.php">Svadhishthana</a>) — just below the navel — <strong>orange</strong> <br>
 The second one to the lower belly, seen a few inches below the navel </li>
-          <li><strong><a href="#solarplexus">Solar Plexus chakra</a></strong> (Manipura) — stomach area — <strong>yellow</strong> <br>
+          <li><strong><a href="#solarplexus">Solar Plexus chakra</a></strong> (<a href="chakras_solarplexus.php">Manipura</a>) — stomach area — <strong>yellow</strong> <br>
 The third one to the solar plexus (actually few inches below real solar plexus) </li>
-          <li><strong><a href="#heart">Heart chakra</a></strong> (Anahata) — center of the chest — <strong>green</strong> <br>
+          <li><strong><a href="#heart">Heart chakra</a></strong> (<a href="chakras_heart.php">Anahata</a>) — center of the chest — <strong>green</strong> <br>
 The fourth one to the center of the chest, slightly to the left of the physical heart</li>
-          <li><strong><a href="#throat">Throat chakra</a></strong> (Vishuddha) — base of the throat — <strong>blue</strong> <br>
+          <li><strong><a href="#throat">Throat chakra</a></strong> (<a href="chakras_throat.php">Vishuddha</a>) — base of the throat — <strong>blue</strong> <br>
 The fifth one to the throat, at the carotid plexus </li>
-          <li><strong><a href="#thirdeye">Third Eye chakra</a> </strong> (Ajna) — forehead, just above area between the eyes — <strong>indigo</strong> <br>
+          <li><strong><a href="#thirdeye">Third Eye chakra</a> </strong> (<a href="chakras_thirdeye.php">Ajna</a>) — forehead, just above area between the eyes — <strong>indigo</strong> <br>
 The sixth one to the point between the eyebrows or “third eye” </li>
-          <li><strong><a href="#crown">Crown chakra</a></strong> (Sahasrara) — top of the head — <strong>violet</strong> <br>
+          <li><strong><a href="#crown">Crown chakra</a></strong> (<a href="chakras_crown.php">Sahasrara</a>) — top of the head — <strong>violet</strong> <br>
 The seventh one to the top of the cranium</li>
           </ol>
-      <p><a href="#opening">Opening Your Chakras </a></p>
+      <p><a href="#opening">Opening Your Chakras </a>(<a href="chakras_opening.php">Another Link</a>) </p>
       <hr>
       <p><img src="images/seven-chakras.jpg" class="img-responsive"></p>
       <p><img src="images/endocrine-system1-.jpg" class="img-responsive"></p>

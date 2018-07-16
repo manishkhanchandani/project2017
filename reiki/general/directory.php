@@ -3,6 +3,49 @@
 session_start();
 include('../init.php');
 
+if (!function_exists('GetSQLValueString')) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$sql = '';
+$sqlSelect = '';
+$order = 'name ASC';
+if (!empty($_GET['slat']) && !empty($_GET['slng'])) {
+	$radius = 100;
+	$sqlSelect .= ", (ROUND(
+	DEGREES(ACOS(SIN(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * SIN(RADIANS(lat)) + COS(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * COS(RADIANS(lat)) * COS(RADIANS(".GetSQLValueString($_GET['slng'], 'double')." -(lng)))))*60*1.1515,2)) as distance";
+	$sql .= " AND (ROUND(
+	DEGREES(ACOS(SIN(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * SIN(RADIANS(lat)) + COS(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * COS(RADIANS(lat)) * COS(RADIANS(".GetSQLValueString($_GET['slng'], 'double')." -(lng)))))*60*1.1515,2)) <= ".GetSQLValueString($radius, 'int');
+	$order = 'distance ASC, name ASC';
+}
+
+
+if (!empty($_GET['keyword'])) {
+	$sql .= sprintf(" AND (name like %s OR description like %s OR teacher like %s OR address like %s OR phone like %s OR email like %s)", GetSQLValueString('%'.$_GET['keyword'].'%', 'text'), GetSQLValueString('%'.$_GET['keyword'].'%', 'text'), GetSQLValueString('%'.$_GET['keyword'].'%', 'text'), GetSQLValueString('%'.$_GET['keyword'].'%', 'text'), GetSQLValueString('%'.$_GET['keyword'].'%', 'text'), GetSQLValueString('%'.$_GET['keyword'].'%', 'text'));
+}
 
 $currentPage = $_SERVER["PHP_SELF"];
 
@@ -14,7 +57,7 @@ if (isset($_GET['pageNum_rsView'])) {
 $startRow_rsView = $pageNum_rsView * $maxRows_rsView;
 
 mysql_select_db($database_conn, $conn);
-$query_rsView = "SELECT * FROM reiki_practitioners WHERE status = 1 ORDER BY name ASC";
+$query_rsView = "SELECT * $sqlSelect FROM reiki_practitioners WHERE status = 1 $sql ORDER BY $order ";
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);
@@ -56,7 +99,7 @@ $xtraText = ob_get_clean();
 <meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Directory</title>
+<title>Reiki Practitioner's Directory</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -87,7 +130,7 @@ $xtraText = ob_get_clean();
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <h1 class="page-header">Practitioner's Directory</h1>
+  <h1 class="page-header">Reiki Practitioner's Directory</h1>
   <div>      
                 <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
                     <div class="table-responsive">
@@ -101,14 +144,38 @@ $xtraText = ob_get_clean();
                             </tr>
                             <?php do { ?>
                                   <tr>
-                                      <td valign="top"><?php echo $row_rsView['name']; ?></td>
+                                      <td valign="top"><?php echo $row_rsView['name']; ?>
+									  <?php if (!empty($row_rsView['distance'])) { ?>
+									  	<br /><strong>Distance: </strong><?php echo $row_rsView['distance']; ?> mi.
+									  <?php } ?>
+									  <?php if ($row_rsView['user_id'] === $_SESSION['MM_UserId']) {
+									  ?>
+									  
+									  <br /><br />
+									  <a href="practitioner_edit.php?id=<?php echo $row_rsView['id']; ?>">Edit</a>
+									  <?php 
+									  } ?></td>
                                       <td valign="top"><?php echo $row_rsView['gender']; ?></td>
                                       <td valign="top"><?php echo $row_rsView['highest_level']; ?></td>
-                                      <td valign="top"><strong>Do you practice Distance Healing:</strong> <?php echo $row_rsView['distance_healing']; ?><br>
-                                          <strong>Do you practice Distance Attunement: </strong><?php echo $row_rsView['distance_attunement']; ?><br>
-                                      <strong>Do you teach Reiki:</strong> <?php echo $row_rsView['teach_reiki']; ?><br>
-                                      <strong>Do you do Reiki treatment:</strong> <?php echo $row_rsView['treatment_reiki']; ?></td>
-                                      <td valign="top"><?php echo $row_rsView['description']; ?></td>
+                                      <td valign="top"><strong>Do you practice Distance Healing:</strong> <?php echo $row_rsView['distance_healing'] ? 'Yes' : 'No'; ?><br>
+                                          <strong>Do you practice Distance Attunement: </strong><?php echo $row_rsView['distance_attunement'] ? 'Yes' : 'No'; ?><br>
+                                      <strong>Do you teach Reiki:</strong> <?php echo $row_rsView['teach_reiki'] ? 'Yes' : 'No'; ?><br>
+                                      <strong>Do you do Reiki treatment:</strong> <?php echo $row_rsView['treatment_reiki'] ? 'Yes' : 'No'; ?></td>
+                                      <td valign="top">
+									  <?php if (!empty($row_rsView['description'])) { ?>
+									  <?php echo $row_rsView['description']; ?><hr />
+									  <?php } ?>
+									  <?php if (!empty($row_rsView['address'])) { ?>
+                                      <?php echo $row_rsView['address']; ?>
+									  <?php } ?>
+									  <?php if (!empty($row_rsView['email'])) { ?>
+									  <br />
+									  <?php echo $row_rsView['email']; ?>
+									  <?php } ?>
+									  <?php if (!empty($row_rsView['phone'])) { ?>
+									  <br />
+									  <?php echo $row_rsView['phone']; ?></td>
+									  <?php } ?>
                                   </tr>
                                   <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
                         </table>

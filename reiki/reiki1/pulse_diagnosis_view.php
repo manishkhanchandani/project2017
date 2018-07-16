@@ -1,4 +1,5 @@
-<?php require_once('../../Connections/conn.php'); ?><?php
+<?php require_once('../../Connections/conn.php'); ?>
+<?php
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -44,7 +45,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   header("Location: ". $MM_restrictGoTo); 
   exit;
 }
-
 ?>
 <?php
 $currentPage = $_SERVER["PHP_SELF"];
@@ -139,6 +139,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
                     <div class="table-responsive">
   				<table class="table">
                         <tr>
+                            <td><strong>Edit</strong></td>
+                            <td><strong>Delete</strong></td>
                             <td><strong>Name of Patient </strong></td>
                       <td><strong>Gender</strong></td>
                       <td><strong>Age</strong></td>
@@ -147,6 +149,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
                   </tr>
                         <?php do { ?>
                             <tr>
+                                <td><a href="pulse_diagnosis_edit.php?case_id=<?php echo $row_rsView['case_id']; ?>">Edit</a></td>
+                                <td><a href="pulse_diagnosis_delete.php?case_id=<?php echo $row_rsView['case_id']; ?>" onClick="var a = confirm('do you really want to delete this?'); return a;">Delete</a></td>
                                 <td><?php echo $row_rsView['name']; ?></td>
                                 <td><?php echo $row_rsView['gender']; ?></td>
                                 <td><?php echo $row_rsView['age']; ?></td>
@@ -154,8 +158,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
                                 <td><?php echo $row_rsView['pulse_data']; ?></td>
                             </tr>
                             <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
-                                </table>
-						</div>
+                        </table>
+					</div>
                     <p> Records <?php echo ($startRow_rsView + 1) ?> to <?php echo min($startRow_rsView + $maxRows_rsView, $totalRows_rsView) ?> of <?php echo $totalRows_rsView ?>      </p>
               <table border="0" width="50%" align="center">
                         <tr>
@@ -172,7 +176,7 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
                                     <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, $totalPages_rsView, $queryString_rsView); ?>">Last</a>
                                     <?php } // Show if not last page ?>                            </td>
                         </tr>
-                          </table>
+                    </table>
               <?php } // Show if recordset not empty ?>
       <p>&nbsp;</p>
   </div>

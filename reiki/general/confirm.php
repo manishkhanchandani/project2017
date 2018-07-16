@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+include('../init.php');
+
+?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>

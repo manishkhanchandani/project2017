@@ -1,11 +1,11 @@
-<?php require_once('../../Connections/conn.php'); ?><?php
+<?php require_once('../../Connections/conn.php'); ?>
+<?php
 if (!isset($_SESSION)) {
   session_start();
 }
 include('../init.php');
-
-$MM_authorizedUsers = "reiki1,admin,reiki12,reiki123";
-$MM_donotCheckaccess = "false";
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
 
 // *** Restrict Access To Page: Grant or deny access to this page
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
@@ -26,14 +26,14 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
     if (in_array($UserGroup, $arrGroups)) { 
       $isValid = true; 
     } 
-    if (($strUsers == "") && false) { 
+    if (($strUsers == "") && true) { 
       $isValid = true; 
     } 
   } 
   return $isValid; 
 }
 
-$MM_restrictGoTo = "../users/access-denied.php";
+$MM_restrictGoTo = "../users/login.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
@@ -183,10 +183,10 @@ include('pulse_data.php');
   				<table class="table">
 				<tr>
 					<td>
-						Superficial
+						Deep
 					</td>
 					<td>
-						Deep
+						Superficial
 					</td>
 				</tr>
 				<?php foreach ($pulse['left'] as $k => $v) { ?>

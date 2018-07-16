@@ -154,36 +154,20 @@ $queryString_rsUsers = sprintf("&totalRows_rsUsers=%d%s", $totalRows_rsUsers, $q
   <table class="table">
 		          <tr>
 		              <td><strong>Edit</strong></td>
-		              <td>Delete</td>
 		              <td><strong>user_id</strong></td>
                           <td><strong>display_name</strong></td>
                           <td><strong>profile_img</strong></td>
                           <td><strong>email</strong></td>
-                          <td><strong>provider_id</strong></td>
-                          <td><strong>password</strong></td>
                           <td><strong>access_level</strong></td>
-                          <td><strong>user_created_dt</strong></td>
-                          <td><strong>uid</strong></td>
-                          <td><strong>logged_in_time</strong></td>
-                          <td><strong>profile_uid</strong></td>
-                          <td><strong>website</strong></td>
-                  </tr>
+                          </tr>
 		          <?php do { ?>
 		              <tr>
 		                  <td><a href="users_edit.php?user_id=<?php echo $row_rsUsers['user_id']; ?>">Edit</a></td>
-		                  <td>&nbsp;</td>
 		                  <td><?php echo $row_rsUsers['user_id']; ?></td>
 		                  <td><?php echo $row_rsUsers['display_name']; ?></td>
-		                  <td><?php echo $row_rsUsers['profile_img']; ?></td>
+		                  <td><img src="<?php echo $row_rsUsers['profile_img']; ?>" class="img-responsive" style="max-width: 50px;" /></td>
 		                  <td><?php echo $row_rsUsers['email']; ?></td>
-		                  <td><?php echo $row_rsUsers['provider_id']; ?></td>
-		                  <td><?php echo $row_rsUsers['password']; ?></td>
 		                  <td><?php echo $row_rsUsers['access_level']; ?></td>
-		                  <td><?php echo $row_rsUsers['user_created_dt']; ?></td>
-		                  <td><?php echo $row_rsUsers['uid']; ?></td>
-		                  <td><?php echo $row_rsUsers['logged_in_time']; ?></td>
-		                  <td><?php echo $row_rsUsers['profile_uid']; ?></td>
-		                  <td><?php echo $row_rsUsers['website']; ?></td>
 		                  </tr>
 		              <?php } while ($row_rsUsers = mysql_fetch_assoc($rsUsers)); ?>
                     </table>

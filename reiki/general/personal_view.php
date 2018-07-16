@@ -105,8 +105,7 @@ $totalRows_rsView = mysql_num_rows($rsView);
                 <div class="table-responsive">
   			<table class="table">
                   <tr>
-                      <td valign="top"><strong>Edit</strong></td>
-                          <td valign="top"><strong>Name</strong></td>
+                      <td valign="top"><strong>Name</strong></td>
                           <td valign="top"><strong>Email</strong></td>
                           <td valign="top"><strong>Phone</strong></td>
                           <td valign="top"><strong>Place</strong></td>
@@ -120,8 +119,7 @@ $totalRows_rsView = mysql_num_rows($rsView);
                         </tr>
                   <?php do { ?>
                           <tr>
-                              <td valign="top"><a href="personal_edit.php?personal_id=<?php echo $row_rsView['personal_id']; ?>">Edit</a></td>
-                                <td valign="top"><?php echo $row_rsView['name']; ?></td>
+                              <td valign="top"><?php echo $row_rsView['name']; ?></td>
                                 <td valign="top"><?php echo $row_rsView['email']; ?></td>
                                 <td valign="top"><?php echo $row_rsView['phone']; ?></td>
                                 <td valign="top"><?php echo $row_rsView['place']; ?></td>

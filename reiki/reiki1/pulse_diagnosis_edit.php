@@ -46,9 +46,60 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 }
 ?>
 <?php
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	$_POST['pulse_data'] = json_encode($_POST['data']);
 }
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
+  $updateSQL = sprintf("UPDATE reiki_pulse_diagnosis SET name=%s, gender=%s, age=%s, case_date=%s, pulse_data=%s WHERE case_id=%s",
+                       GetSQLValueString($_POST['name'], "text"),
+                       GetSQLValueString($_POST['gender'], "text"),
+                       GetSQLValueString($_POST['age'], "text"),
+                       GetSQLValueString($_POST['case_date'], "text"),
+                       GetSQLValueString($_POST['pulse_data'], "text"),
+                       GetSQLValueString($_POST['case_id'], "int"));
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
+
+  $updateGoTo = "pulse_diagnosis_view.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+    $updateGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $updateGoTo));
+}
+
 
 $colid_rsEdit = "-1";
 if (isset($_GET['case_id'])) {
@@ -108,9 +159,9 @@ include('pulse_data.php');
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Pulse Diagnosis Edit </h1>
-
+<?php $pulse_data = json_decode(stripslashes($row_rsEdit['pulse_data']), true); ?>
   <div id="content" class="visual">
-      <form name="form1" method="POST">
+      <form action="<?php echo $editFormAction; ?>" name="form1" method="POST">
       <div class="row">
 	  	<div class="col-md-4">
 			<div class="table-responsive">
@@ -130,7 +181,7 @@ include('pulse_data.php');
 						<div><strong><?php echo $v1['name']; ?></strong></div>
 						<div>
 							<?php foreach ($quality as $k2 => $v2) { ?>
-								<input name="data[<?php echo $k1; ?>]" type="radio" id="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>" value="<?php echo $v2['label']; ?>" <?php if ($v2['label'] === '+-') echo 'checked="checked"'; ?>> <label for="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>"><?php echo $v2['label']; ?></label> 
+								<input name="data[<?php echo $k1; ?>]" type="radio" id="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>" value="<?php echo $v2['label']; ?>" <?php if ($v2['label'] === $pulse_data[$v1['key']]) echo 'checked="checked"'; ?>> <label for="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>"><?php echo $v2['label']; ?></label> 
 							<?php } ?>
 						</div></td>
 					<?php } ?>
@@ -159,7 +210,7 @@ include('pulse_data.php');
 						<div><strong><?php echo $v1['name']; ?></strong></div>
 						<div>
 							<?php foreach ($quality as $k2 => $v2) { ?>
-								<input name="data[<?php echo $k1; ?>]" type="radio" id="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>" value="<?php echo $v2['label']; ?>" <?php if ($v2['label'] === '+-') echo 'checked="checked"'; ?>> <label for="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>"><?php echo $v2['label']; ?></label> 
+								<input name="data[<?php echo $k1; ?>]" type="radio" id="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>" value="<?php echo $v2['label']; ?>" <?php if ($v2['label'] === $pulse_data[$v1['key']]) echo 'checked="checked"'; ?>> <label for="data_<?php echo $k1; ?>_<?php echo $v2['name']; ?>"><?php echo $v2['label']; ?></label> 
 							<?php } ?>
 						</div></td>
 					<?php } ?>
@@ -180,43 +231,36 @@ include('pulse_data.php');
 					<td align="right">
 						<strong>Name</strong>					</td>
 					<td>
-						<input name="name" type="text" id="name" value="<?php echo $row_rsEdit['name']; ?>">					
-					</td>
+						<input name="name" type="text" id="name" value="<?php echo $row_rsEdit['name']; ?>">					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<strong>Gender</strong>					</td>
 					<td>
-						<input name="gender" type="text" id="gender" value="<?php echo $row_rsEdit['gender']; ?>">					
-					</td>
+						<input name="gender" type="text" id="gender" value="<?php echo $row_rsEdit['gender']; ?>">					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<strong>Age</strong>					</td>
 					<td>
-						<input name="age" type="text" id="age" value="<?php echo $row_rsEdit['age']; ?>">					
-					</td>
+						<input name="age" type="text" id="age" value="<?php echo $row_rsEdit['age']; ?>">					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<strong>Date</strong>					</td>
 					<td>
-						<input name="case_date" type="text" id="case_date" value="<?php echo $row_rsEdit['case_date']; ?>">					
-					</td>
+						<input name="case_date" type="text" id="case_date" value="<?php echo $row_rsEdit['case_date']; ?>">					</td>
 				</tr>
+				<tr>
+				    <td align="right">&nbsp;</td>
+				    <td><input name="submit" type="submit" value="Submit">
+                        <input name="pulse_data" type="hidden" id="pulse_data">
+                        <input name="case_id" type="hidden" id="case_id" value="<?php echo $row_rsEdit['case_id']; ?>"></td>
+				    </tr>
 			</table>
 		</div>
-	    <input type="submit" value="Submit">
-      <input name="pulse_data" type="hidden" id="pulse_data">
+	    <input type="hidden" name="MM_update" value="form1">
       </form>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-      <p>&nbsp;</p>
-  
-		<div>
-		<a href="levels-of-health.php" class="btn btn-primary">Previous</a>
-		<a href="certification.php" class="btn btn-primary">Next</a>
-		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

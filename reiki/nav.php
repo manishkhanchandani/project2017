@@ -37,9 +37,10 @@
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/index.php">Admin</a></li>
-            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/lecture.php">Lecture level 1</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/users.php">Users</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/personal_info.php">Personal Info</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/quiz.php">Quiz Results</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/lecture.php">Lecture level 1</a></li>
               </ul>
             </li>
 			<?php } ?>
@@ -82,6 +83,7 @@
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>">Master Level</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki3/attunement.php">Attunement Process</a></li>
               </ul>
             </li>
 			<?php } ?>
