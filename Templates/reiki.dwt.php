@@ -14,7 +14,12 @@
 <link rel="stylesheet" href="../reiki/css/dashboard.css">
 <script src="../reiki/js/jquery.min.js"></script>
 <script src="../reiki/js/bootstrap.min.js"></script>
-<script src="../reiki/js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../reiki/js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="../reiki/js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../reiki/js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="../reiki/library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../reiki/library/wysiwyg/summernote.js"></script>

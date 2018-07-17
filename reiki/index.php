@@ -18,7 +18,12 @@ include('init.php');
 <link rel="stylesheet" href="css/dashboard.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="library/wysiwyg/summernote.js"></script>
@@ -45,7 +50,10 @@ include('init.php');
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Dashboard</h1>
 
-  <div>Go to quiz page (<a href="reiki1/quiz.php">click here</a>)  </div>
+  <div>
+      <p><a href="general/directory.php">Directory</a> | <a href="general/practitioner.php">Add New Practitioner</a> </p>
+      <p>Go to quiz page (<a href="reiki1/quiz.php">click here</a>) </p>
+  </div>
 <!-- InstanceEndEditable -->
 </div>
 

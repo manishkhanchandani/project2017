@@ -19,6 +19,7 @@
               <ul class="dropdown-menu">
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/personal.php">Add Personal Info</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/personal_view.php">View Personal Info</a></li>
+                <li role="separator" class="divider"></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki1/quiz.php">Quiz</a></li>
               </ul>
             </li>
@@ -28,6 +29,8 @@
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/practitioner.php">Add New Practitioner</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/directory.php">Directory</a></li>
+            	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/directory.php?my=1">My Practitioner's Records</a></li>
+                <li role="separator" class="divider"></li>
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>general/real-cases.php">Real Solved Cases</a></li>
               </ul>
             </li>
@@ -37,14 +40,16 @@
               
               <ul class="dropdown-menu">
                 <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/index.php">Admin</a></li>
+                <li role="separator" class="divider"></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/users.php">Users</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/personal_info.php">Personal Info</a></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/quiz.php">Quiz Results</a></li>
+                <li role="separator" class="divider"></li>
             	<li><a href="<?php echo COMPLETE_HTTP_PATH; ?>admin/lecture.php">Lecture level 1</a></li>
               </ul>
             </li>
 			<?php } ?>
-			<?php if (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '1') !== false) { ?>
+			<?php if (isset($_SESSION['MM_UserGroup']) && (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '1') !== false)) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 1 <span class="caret"></span></a>
               
@@ -68,7 +73,7 @@
               </ul>
             </li>
 			<?php } ?>
-			<?php if (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '2') !== false) { ?>
+			<?php if (isset($_SESSION['MM_UserGroup']) && (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '2') !== false)) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 2 <span class="caret"></span></a>
               
@@ -77,7 +82,7 @@
               </ul>
             </li>
 			<?php } ?>
-			<?php if (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '3') !== false) { ?>
+			<?php if (isset($_SESSION['MM_UserGroup']) && (strpos($_SESSION['MM_UserGroup'], 'admin') !== false || strpos($_SESSION['MM_UserGroup'], '3') !== false)) { ?>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master<span class="caret"></span></a>
               

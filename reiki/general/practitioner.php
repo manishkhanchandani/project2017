@@ -113,7 +113,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO reiki_practitioners (user_id, lat, lng, name, address, highest_level, distance_healing, distance_attunement, teach_reiki, treatment_reiki, gender, teacher, address2, description, email, phone) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO reiki_practitioners (user_id, lat, lng, name, address, highest_level, distance_healing, distance_attunement, teach_reiki, treatment_reiki, gender, teacher, address2, description, email, phone, facebook) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['user_id'], "int"),
                        GetSQLValueString($_POST['lat'], "double"),
                        GetSQLValueString($_POST['lng'], "double"),
@@ -129,7 +129,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_POST['address2'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['email'], "text"),
-                       GetSQLValueString($_POST['phone'], "text"));
+                       GetSQLValueString($_POST['phone'], "text"),
+                       GetSQLValueString($_POST['facebook'], "text"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
@@ -157,7 +158,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 <link rel="stylesheet" href="../css/dashboard.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="../js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
@@ -271,6 +277,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
         <tr valign="baseline">
             <td align="right" valign="top" nowrap><strong>Phone: </strong></td>
             <td valign="top"><input name="phone" type="text" id="phone" size="32"></td>
+        </tr>
+        <tr valign="baseline">
+            <td align="right" valign="top" nowrap><strong>Facebook Page: </strong></td>
+            <td valign="top"><input name="facebook" type="text" id="facebook" size="32"></td>
         </tr>
         
         <tr valign="baseline">

@@ -8,6 +8,8 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
 
 define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
 
+define('FIREBASE_BASEPATH', 'rei-ki_us');
+
 $MM_redirectLoginSuccess = COMPLETE_HTTP_PATH;
 
 if (isset($_GET['accesscheck'])) {
@@ -30,6 +32,51 @@ if (isset($_GET['accesscheck'])) {
 </script>
 <script>
 	var homeUrl = '<?php echo COMPLETE_HTTP_PATH; ?>'; //'/project2017/reiki/';
+	var firebaseDatabase = firebase.database();
+	var userLocation = {};
+	
+	function addInFb(obj) {
+		let url = '<?php echo FIREBASE_BASEPATH; ?>/trackPages/<?php echo date('Y-m-d'); ?>';
+		let uniqueID = firebaseDatabase.ref(url).push(obj).key;
+		firebaseDatabase.ref(url).child(uniqueID).child('id').set(uniqueID);
+	}
+	function trackPage() {
+		let obj = {
+			page: '<?php echo $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>',
+			user_id: <?php echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : -1; ?>,
+			ip: '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
+			datetime: firebase.database.ServerValue.TIMESTAMP,
+			type: '<?php echo !empty($_POST) ? "post" : "get"; ?>',
+			get: '<?php echo json_encode($_GET); ?>',
+			post: '<?php echo json_encode($_POST); ?>'
+		};
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				userLocation.lat = position.coords.latitude;
+				userLocation.lng = position.coords.longitude;
+				obj.userLocation = userLocation;
+				addInFb(obj);
+			});
+		} else {
+			addInFb(obj);
+		}
+	}
+	trackPage();
+	/*
+	let url = '<?php //echo FIREBASE_BASEPATH; ?>/somepath';
+	firebaseDatabase.ref(url).child(this.state.deleteIssueModalData.id).set(null);
+
+	ref.off();
+	ref.on('value', (snapshot) => {
+		var result = snapshot.val();
+	});
+	let ref = firebaseDatabase.ref(url).limitToLast(500);
+	var current = firebase.database.ServerValue.TIMESTAMP;
+	
+	var url = FirebaseConstant.basePath + '/data/posts';
+	var uniqueID = firebaseDatabase.ref(url).push(obj).key;
+	firebaseDatabase.ref(url).child(uniqueID).child('id').set(uniqueID);
+	*/
 	firebase.auth().onAuthStateChanged(function(user) {
 	  if (user) {
 		var userData = {};

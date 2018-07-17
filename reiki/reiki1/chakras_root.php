@@ -60,7 +60,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <link rel="stylesheet" href="../css/dashboard.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="../js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
@@ -388,7 +393,8 @@ When Reiki is performed at the Root Chakra, we have a better sense of feeling gr
 		<a href="seven-chakras.php" class="btn btn-primary">Previous</a>
 		<a href="chakras_sacral.php" class="btn btn-primary">Next</a>		</div>
   </div>
-<!-- InstanceEndEditable --></div>
+<!-- InstanceEndEditable -->
+</div>
 
   </div>
 </div>

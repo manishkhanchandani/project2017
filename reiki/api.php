@@ -131,16 +131,17 @@ $totalRows_rsUserExist = mysql_num_rows($rsUserExist);
 	$_SESSION['MM_LoggedInTime'] = $row_rsUserExist['logged_in_time'];
 	$_SESSION['MM_ProfileUID'] = $row_rsUserExist['profile_uid'];
 	
-	$time = time() + (60* 60* 24);
-	setcookie('MM_Username', $_SESSION['MM_Username'], $time, '/');
-	setcookie('MM_Email', $_SESSION['MM_Email'], $time, '/');
-	setcookie('MM_UserGroup', $_SESSION['MM_UserGroup'], $time, '/');
-	setcookie('MM_UserId', $_SESSION['MM_UserId'], $time, '/');
-	setcookie('MM_DisplayName', $_SESSION['MM_DisplayName'], $time, '/');
-	setcookie('MM_ProfileImg', $_SESSION['MM_ProfileImg'], $time, '/');
-	setcookie('MM_UID', $_SESSION['MM_UID'], $time, '/');
-	setcookie('MM_LoggedInTime', $_SESSION['MM_LoggedInTime'], $time, '/');
-	setcookie('MM_ProfileUID', $_SESSION['MM_ProfileUID'], $time, '/');
+	$time = time() + (60* 60* 24 * 3);
+	$suffix = '_V1';
+	setcookie('MM_Username'.$suffix, $_SESSION['MM_Username'], $time, '/');
+	setcookie('MM_Email'.$suffix, $_SESSION['MM_Email'], $time, '/');
+	setcookie('MM_UserGroup'.$suffix, $_SESSION['MM_UserGroup'], $time, '/');
+	setcookie('MM_UserId'.$suffix, $_SESSION['MM_UserId'], $time, '/');
+	setcookie('MM_DisplayName'.$suffix, $_SESSION['MM_DisplayName'], $time, '/');
+	setcookie('MM_ProfileImg'.$suffix, $_SESSION['MM_ProfileImg'], $time, '/');
+	setcookie('MM_UID'.$suffix, $_SESSION['MM_UID'], $time, '/');
+	setcookie('MM_LoggedInTime'.$suffix, $_SESSION['MM_LoggedInTime'], $time, '/');
+	setcookie('MM_ProfileUID'.$suffix, $_SESSION['MM_ProfileUID'], $time, '/');
 	//$return['sess'] = $_SESSION;
 
 } catch(Exception $e) {

@@ -30,9 +30,13 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$sql = '';
+$sql = 'status = 1';
 $sqlSelect = '';
 $order = 'name ASC';
+if (!empty($_GET['my'])) {
+	$sql = sprintf("user_id = %s", $_SESSION['MM_UserId']);
+}
+
 if (!empty($_GET['slat']) && !empty($_GET['slng'])) {
 	$radius = 100;
 	$sqlSelect .= ", (ROUND(
@@ -57,7 +61,7 @@ if (isset($_GET['pageNum_rsView'])) {
 $startRow_rsView = $pageNum_rsView * $maxRows_rsView;
 
 mysql_select_db($database_conn, $conn);
-$query_rsView = "SELECT * $sqlSelect FROM reiki_practitioners WHERE status = 1 $sql ORDER BY $order ";
+$query_rsView = "SELECT * $sqlSelect FROM reiki_practitioners WHERE $sql ORDER BY $order ";
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);
@@ -106,7 +110,12 @@ $xtraText = ob_get_clean();
 <link rel="stylesheet" href="../css/dashboard.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="../js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
@@ -152,7 +161,7 @@ $xtraText = ob_get_clean();
 									  ?>
 									  
 									  <br /><br />
-									  <a href="practitioner_edit.php?id=<?php echo $row_rsView['id']; ?>">Edit</a>
+									  <a href="practitioner_edit.php?id=<?php echo $row_rsView['id']; ?>">Edit</a> | <a href="practitioner_delete.php?id=<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record? you cannot undo this.'); return a;">Delete</a>
 									  <?php 
 									  } ?></td>
                                       <td valign="top"><?php echo $row_rsView['gender']; ?></td>
@@ -174,8 +183,13 @@ $xtraText = ob_get_clean();
 									  <?php } ?>
 									  <?php if (!empty($row_rsView['phone'])) { ?>
 									  <br />
-									  <?php echo $row_rsView['phone']; ?></td>
+									  <?php echo $row_rsView['phone']; ?>
 									  <?php } ?>
+									  <?php if (!empty($row_rsView['facebook'])) { ?>
+									  <br />
+									  <a href="<?php echo $row_rsView['facebook']; ?>" target="_blank">Facebook</a>
+									  <?php } ?>
+									  </td>
                                   </tr>
                                   <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
                         </table>

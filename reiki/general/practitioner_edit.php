@@ -108,7 +108,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "formEdit")) {
 
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "formEdit")) {
-  $updateSQL = sprintf("UPDATE reiki_practitioners SET lat=%s, lng=%s, address=%s, name=%s, highest_level=%s, distance_healing=%s, distance_attunement=%s, teach_reiki=%s, treatment_reiki=%s, gender=%s, teacher=%s, address2=%s, description=%s, email=%s, phone=%s WHERE id=%s",
+  $updateSQL = sprintf("UPDATE reiki_practitioners SET lat=%s, lng=%s, address=%s, name=%s, highest_level=%s, distance_healing=%s, distance_attunement=%s, teach_reiki=%s, treatment_reiki=%s, gender=%s, teacher=%s, address2=%s, description=%s, email=%s, phone=%s, facebook=%s WHERE id=%s",
                        GetSQLValueString($_POST['lat'], "double"),
                        GetSQLValueString($_POST['lng'], "double"),
                        GetSQLValueString($_POST['address'], "text"),
@@ -124,12 +124,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "formEdit")) {
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['email'], "text"),
                        GetSQLValueString($_POST['phone'], "text"),
+                       GetSQLValueString($_POST['facebook'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 
-  $updateGoTo = "directory.php";
+  $updateGoTo = "directory.php?my=1";
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
@@ -171,7 +172,12 @@ $longitude = $row_rsEdit['lng'];
 <link rel="stylesheet" href="../css/dashboard.css">
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="../js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="../library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../library/wysiwyg/summernote.js"></script>
@@ -276,7 +282,7 @@ $longitude = $row_rsEdit['lng'];
             <td valign="top"><select name="gender">
                 <option value="Male" <?php if (!(strcmp("Male", $row_rsEdit['gender']))) {echo "selected=\"selected\"";} ?>>Male</option>
                 <option value="Female" <?php if (!(strcmp("Female", $row_rsEdit['gender']))) {echo "selected=\"selected\"";} ?>>Female</option>
-            </select>            </td>
+            </select></td>
         </tr>
         <tr valign="baseline">
             <td align="right" valign="top" nowrap><strong>Email:</strong></td>
@@ -285,6 +291,10 @@ $longitude = $row_rsEdit['lng'];
         <tr valign="baseline">
             <td align="right" valign="top" nowrap><strong>Phone: </strong></td>
             <td valign="top"><input name="phone" type="text" id="phone" value="<?php echo $row_rsEdit['phone']; ?>" size="32"></td>
+        </tr>
+        <tr valign="baseline">
+            <td align="right" valign="top" nowrap><strong>Facebook Page: </strong></td>
+            <td valign="top"><input name="facebook" type="text" id="facebook" value="<?php echo $row_rsEdit['facebook']; ?>" size="32"></td>
         </tr>
         <tr valign="baseline">
             <td align="right" valign="top" nowrap><strong>Who Taught You:</strong></td>
