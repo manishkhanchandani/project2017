@@ -10,7 +10,12 @@
 <link rel="stylesheet" href="../babybar/css/dashboard.css">
 <script src="../babybar/js/jquery.min.js"></script>
 <script src="../babybar/js/bootstrap.min.js"></script>
-<script src="../babybar/js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../babybar/js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="../babybar/js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../babybar/js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="../babybar/library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="../babybar/library/wysiwyg/summernote.js"></script>

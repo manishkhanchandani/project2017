@@ -4,7 +4,7 @@
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+  
 }
 
 
@@ -102,4 +102,22 @@ body {
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+.visual {
+	
+}
+
+
+.visualBig {
+	font-size: 36px;
+}
+
+.visualSmall {
+	
+}
+
+.my-audio {
+	/*position: fixed;
+    right: 0px;*/
 }

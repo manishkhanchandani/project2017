@@ -1,0 +1,9 @@
+RewriteEngine on
+Options +FollowSymLinks
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !=/favicon.ico
+
+RewriteRule ^(.*)\/(.*)$ index.php?subjectUrl=$1&id=$2 [NC,L,QSA]
+

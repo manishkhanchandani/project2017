@@ -19,7 +19,7 @@ try {
 	
 	$post = file_get_contents('php://input');
 	$userData = json_decode($post, true);//true is use to make it in array, else it will object	
-
+	//$return['userData'] = $userData;
 	/*$userData = array();
 	$userData['displayName'] = 'Manish Khanchandani 2';
 	$userData['email'] = 'manishkk74@gmail.com';
@@ -40,6 +40,7 @@ try {
 	
 	$result = curlpostjson($url, $postParams);
 	$output = json_decode($result['output'], true);
+	//$return['output'] = $output;
 	if (empty($output['user_id'])) {
 		throw new Exception('no valid user');
 	}
@@ -69,24 +70,30 @@ $totalRows_rsUserExist = mysql_num_rows($rsUserExist);
            if (!is_array($website)) {
                 $website = array();    
            }
-           array_push($website, 'babybar');
+           array_push($website, 'calbabybar.com');
            $website = array_unique($website);
-			$updateSQL = sprintf("UPDATE users_auth SET display_name=%s, profile_img=%s, email=%s, logged_in_time=%s, website=%s WHERE user_id=%s",
+		   $row_rsUserExist['website'] = $website;
+			$updateSQL = sprintf("UPDATE users_auth SET display_name=%s, profile_img=%s, email=%s, logged_in_time=%s, website=%s, profile_uid=%s WHERE user_id=%s",
                        GetSQLValueString($userData['displayName'], "text"),
                        GetSQLValueString($userData['photoURL'], "text"),
                        GetSQLValueString($userData['email'], "text"),
                        GetSQLValueString(time(), "int"),
                        GetSQLValueString(json_encode($website), "text"),
+                       GetSQLValueString($userData['profileUID'], "text"),
                        GetSQLValueString($row_rsUserExist['user_id'], "int"));
 
 			  mysql_select_db($database_conn, $conn);
 			  $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
+			  
+			  	$rsUserExist = mysql_query($query_rsUserExist, $conn) or die(mysql_error());
+				$row_rsUserExist = mysql_fetch_assoc($rsUserExist);
+				$totalRows_rsUserExist = mysql_num_rows($rsUserExist);
 		}
 		
 		// THE USER WILL NOT BE IN MY DATABASE - NO
 		if ($totalRows_rsUserExist == 0) {
 			//INSERT THE USER IN THE DATABASE
-            $website = array('babybar');
+            $website = array('calbabybar.com');
 			 $insertSQL = sprintf("INSERT INTO users_auth (display_name, profile_img, email, provider_id, user_created_dt, uid, logged_in_time, profile_uid, website) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($userData['displayName'], "text"),
                        GetSQLValueString($userData['photoURL'], "text"),
@@ -95,8 +102,8 @@ $totalRows_rsUserExist = mysql_num_rows($rsUserExist);
                        GetSQLValueString(date('Y-m-d H:i:s'), "date"),
                        GetSQLValueString($userData['uid'], "text"),
                        GetSQLValueString(time(), "int"),
-                       GetSQLValueString(json_encode($website), "text"),
-                       GetSQLValueString($userData['profileUID'], "text"));
+                       GetSQLValueString($userData['profileUID'], "text"),
+                       GetSQLValueString(json_encode($website), "text"));
 
 			  mysql_select_db($database_conn, $conn);
 			  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
@@ -114,8 +121,8 @@ $totalRows_rsUserExist = mysql_num_rows($rsUserExist);
 
 	unset($row_rsUserExist['password']);
 	$return['user'] = $row_rsUserExist;
-	
-	$_SESSION['MM_Username'] = $row_rsUserExist['email'];
+	$_SESSION['MM_Username'] = $row_rsUserExist['display_name'];
+	$_SESSION['MM_Email'] = $row_rsUserExist['email'];
     $_SESSION['MM_UserGroup'] = $row_rsUserExist['access_level'];
 	$_SESSION['MM_UserId'] = $row_rsUserExist['user_id'];
 	$_SESSION['MM_DisplayName'] = $row_rsUserExist['display_name'];
@@ -123,6 +130,19 @@ $totalRows_rsUserExist = mysql_num_rows($rsUserExist);
 	$_SESSION['MM_UID'] = $row_rsUserExist['uid'];
 	$_SESSION['MM_LoggedInTime'] = $row_rsUserExist['logged_in_time'];
 	$_SESSION['MM_ProfileUID'] = $row_rsUserExist['profile_uid'];
+	
+	$time = time() + (60* 60* 24 * 3);
+	$suffix = '_V1';
+	setcookie('MM_Username'.$suffix, $_SESSION['MM_Username'], $time, '/');
+	setcookie('MM_Email'.$suffix, $_SESSION['MM_Email'], $time, '/');
+	setcookie('MM_UserGroup'.$suffix, $_SESSION['MM_UserGroup'], $time, '/');
+	setcookie('MM_UserId'.$suffix, $_SESSION['MM_UserId'], $time, '/');
+	setcookie('MM_DisplayName'.$suffix, $_SESSION['MM_DisplayName'], $time, '/');
+	setcookie('MM_ProfileImg'.$suffix, $_SESSION['MM_ProfileImg'], $time, '/');
+	setcookie('MM_UID'.$suffix, $_SESSION['MM_UID'], $time, '/');
+	setcookie('MM_LoggedInTime'.$suffix, $_SESSION['MM_LoggedInTime'], $time, '/');
+	setcookie('MM_ProfileUID'.$suffix, $_SESSION['MM_ProfileUID'], $time, '/');
+	//$return['sess'] = $_SESSION;
 
 } catch(Exception $e) {
 	$return['success'] = 0;

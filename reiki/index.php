@@ -1,6 +1,12 @@
 <?php
 session_start();
 include('init.php');
+include_once('library/rss.php');
+
+$myRss = new RSSParser("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&q=Reiki&cf=all&output=rss"); 
+$itemNum=0;
+$myRss_RSSmax=0;
+if($myRss_RSSmax==0 || $myRss_RSSmax>count($myRss->titles)) $myRss_RSSmax=count($myRss->titles);
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -51,8 +57,60 @@ include('init.php');
   <h1 class="page-header">Dashboard</h1>
 
   <div>
-      <p><a href="general/directory.php">Directory</a> | <a href="general/practitioner.php">Add New Practitioner</a> </p>
-      <p>Go to quiz page (<a href="reiki1/quiz.php">click here</a>) </p>
+  		<p>Reiki is a gentle and deeply relaxing hands-on healing technique.</p>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Links</h3>
+					</div>
+					<div class="panel-body">
+					
+     			 		<p><a href="general/directory.php">Directory</a> <br /><br /><a href="general/practitioner.php">Add New Practitioner</a> </p>
+					</div>
+				</div>
+
+			
+			</div>
+			
+			
+			
+			<div class="col-md-6">
+
+
+
+  	<?php if ($myRss_RSSmax > 0) { ?>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Reiki News</h3>
+					</div>
+					<div class="panel-body">
+						<ul>
+							<?php
+								for($itemNum=1;$itemNum<$myRss_RSSmax;$itemNum++){
+							?>
+								<li><a href="<?php echo $myRss->links[$itemNum]; ?>" target="_blank"><?php echo $myRss->titles[$itemNum]; ?></a><br>
+									<small><?php echo $desc = $myRss->descriptions[$itemNum];  /*echo strip_tags($desc, '<b><strong><br>');if (isset($_GET['t'])) { echo htmlentities($myRss->descriptions[$itemNum]); }*/?></small>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+      <?php } ?>
+
+
+
+
+
+			</div>
+			
+			
+			
+		</div>
   </div>
 <!-- InstanceEndEditable -->
 </div>

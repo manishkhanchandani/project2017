@@ -1,21 +1,27 @@
 <?php
 session_start();
-include_once('config.php');
-include_once('../functions.php');
+include_once('init.php');
 ?>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/babybar.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="UTF-8">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Baby Bar &amp; Bar Examination</title>
+<title>Untitled Document</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/NavMulti.css">
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/firebase_4_1_5.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="js/firebase/5.2.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="js/firebase/5.2.0/firebase-database.js"></script>
 
 <link href="library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="library/wysiwyg/summernote.js"></script>
@@ -31,7 +37,7 @@ include_once('../functions.php');
 
 <body>
 
-<?php include('nav.php'); ?>
+<?php include('NavMulti.php'); ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
@@ -40,7 +46,7 @@ include_once('../functions.php');
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-<h1 class="page-header">Dashboard</h1>
+  <h1 class="page-header">Dashboard</h1>
 
   <div class="row placeholders">
     <div class="col-xs-6 col-sm-3 placeholder">

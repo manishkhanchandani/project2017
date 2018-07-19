@@ -26,15 +26,20 @@ $nodesData = $rowNodes['data'];
 <title>Subject - <?php echo $subjectData['subject']; ?></title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/dashboard.css">
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/firebase_4_1_5.js"></script>
+<link rel="stylesheet" href="../../babybar/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../babybar/css/dashboard.css">
+<script src="../../babybar/js/jquery.min.js"></script>
+<script src="../../babybar/js/bootstrap.min.js"></script>
+<!-- Firebase App is always required and must be first -->
+<script src="../../babybar/js/firebase/5.2.0/firebase-app.js"></script>
 
-<link href="../library/wysiwyg/summernote.css" rel="stylesheet">
-<script src="../library/wysiwyg/summernote.js"></script>
-<?php include('../head.php'); ?>
+<!-- Add additional services that you want to use -->
+<script src="../../babybar/js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="../../babybar/js/firebase/5.2.0/firebase-database.js"></script>
+
+<link href="../../babybar/library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="../../babybar/library/wysiwyg/summernote.js"></script>
+<?php include('../../babybar/head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,11 +51,11 @@ $nodesData = $rowNodes['data'];
 
 <body>
 
-<?php include('../nav.php'); ?>
+<?php include('../../babybar/nav.php'); ?>
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <?php include('../nav_side.php'); ?>
+      <?php include('../../babybar/nav_side.php'); ?>
     </div>
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
