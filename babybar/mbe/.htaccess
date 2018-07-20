@@ -5,5 +5,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !=/favicon.ico
 
-RewriteRule ^(.*)\/(.*)$ index.php?subjectUrl=$1&id=$2 [NC,L,QSA]
+RewriteRule ^(.*)\/(.*)\/create$ create.php?subjectUrl=$1&id=$2&node_type=mbe [NC,L,QSA]
+RewriteRule ^(.*)\/(.*)\/detail\/(.*)$ detail.php?subjectUrl=$1&id=$2&node_type=mbe&detail_id=$3 [NC,L,QSA]
+RewriteRule ^(.*)\/(.*)\/edit$ edit.php?subjectUrl=$1&id=$2&node_type=mbe [NC,L,QSA]
+RewriteRule ^(.*)\/(.*)\/delete$ delete.php?subjectUrl=$1&id=$2&node_type=mbe [NC,L,QSA]
+RewriteRule ^(.*)\/(.*)$ index.php?subjectUrl=$1&id=$2&node_type=mbe [NC,L,QSA]
 

@@ -2,30 +2,30 @@
 session_start();
 ?>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/reiki.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset="UTF-8">
-<meta property="fb:app_id" content="168072164626"/>
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>Access Denied</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/dashboard.css">
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/dashboard.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/NavMulti.css">
+
+<script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
 <!-- Firebase App is always required and must be first -->
-<script src="../js/firebase/5.2.0/firebase-app.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
-<script src="../js/firebase/5.2.0/firebase-auth.js"></script>
-<script src="../js/firebase/5.2.0/firebase-database.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>
 
-<link href="../library/wysiwyg/summernote.css" rel="stylesheet">
-<script src="../library/wysiwyg/summernote.js"></script>
+<link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
@@ -38,14 +38,8 @@ session_start();
 
 <body>
 
-<?php include('../nav.php'); ?>
+<?php include('../NavMulti.php'); ?>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <?php include('../nav_side.php'); ?>
-    </div>
-    
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Access Denied</h1>
   <div>
@@ -69,9 +63,6 @@ session_start();
 </ul>
   </div>
 <!-- InstanceEndEditable -->
-</div>
-
-  </div>
 </div>
 </body>
 <!-- InstanceEnd --></html>

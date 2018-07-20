@@ -17,14 +17,14 @@ if (!empty($barSubjects)) {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="">Library1</a>
+				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">California Bar</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 
 				</ul>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="">Home</a></li>
+					<li class="active"><a href="<?php echo HTTP_PATH; ?>">Home</a></li>
 					<?php if (!empty($leftSideBar)) { ?>
 					<li>
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Subjects<b class="caret"></b></a>
@@ -37,15 +37,67 @@ if (!empty($barSubjects)) {
 									<li class="dropdown-submenu">
 										<a href="" class="dropdown-toggle" data-toggle="dropdown"><?php echo $v1['subject']; ?></a>
 										<ul class="dropdown-menu">
-											<li><a href="<?php echo HTTP_PATH; ?>defs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Definitions</a></li>
-											<li><a href="<?php echo HTTP_PATH; ?>casebriefs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Case-Briefs</a></li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>defs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Definitions</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>defs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>defs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>defs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Definitions</a></li>
+												</ul>
+											</li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>casebriefs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Case-Briefs</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>casebriefs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>casebriefs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>casebriefs/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Case-Briefs</a></li>
+												</ul>
+											</li>
 											<li class="divider"></li>
-											<li><a href="<?php echo HTTP_PATH; ?>midterma/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Mid-Term A</a></li>
-											<li><a href="<?php echo HTTP_PATH; ?>midtermb/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Mid-Term B</a></li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>midterma/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Mid-Term A</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>midterma/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>midterma/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>midterma/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Mid-Term A</a></li>
+												</ul>
+											</li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>midtermb/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Mid-Term B</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>midtermb/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>midtermb/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>midtermb/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Mid-Term B</a></li>
+												</ul>
+											</li>
 											<li class="divider"></li>
-											<li><a href="<?php echo HTTP_PATH; ?>issues/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Issues</a></li>
-											<li><a href="<?php echo HTTP_PATH; ?>essays/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Bar Essays</a></li>
-											<li><a href="<?php echo HTTP_PATH; ?>mbe/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">MBE</a></li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>issues/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Issues</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>issues/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>issues/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>issues/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Issues</a></li>
+												</ul>
+											</li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>essays/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Essays</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>essays/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>essays/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>essays/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Essays</a></li>
+												</ul>											
+											</li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>mbe/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">MBE</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>mbe/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>mbe/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>mbe/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My MBE</a></li>
+												</ul>
+											</li>
+											<?php if ($v1['id'] <= 4) { ?>
+											<li class="divider"></li>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>quizes/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Quizes</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>quizes/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>quizes/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>quizes/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My Definitions</a></li>
+												</ul>
+											</li>
+											<?php } ?>
 										</ul>
 									</li>
 									<?php } ?>
@@ -56,7 +108,7 @@ if (!empty($barSubjects)) {
 					</li>
 					<?php } ?>
 					
-					<li>
+					<!--<li>
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="">Action</a></li>
@@ -95,8 +147,28 @@ if (!empty($barSubjects)) {
 								</ul>
 							</li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
+				  <ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<?php if (!empty($_SESSION['MM_UserId'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?><span class="caret"></span></a>
+					  
+					  <ul class="dropdown-menu">
+						<?php if (!empty($_SESSION['MM_UserId'])) { ?>
+							<li><a href="" onClick="signOut(); return false;">Signout</a></li>
+						<?php } else { ?>
+							<li><a href="" onClick="googleLogin(); return false;">Google</a></li>
+							<!--<li><a href="" onClick="facebookLogin(); return false;">Facebook</a></li>
+							<li><a href="" onClick="twitterLogin(); return false;">Twitter</a></li>
+							<li><a href="" onClick="gitHubLogin(); return false;">Github</a></li> -->
+						<?php } ?>
+					  </ul>
+					</li>
+				  </ul>
+				  <form class="navbar-form navbar-right" method="get" action="<?php echo HTTP_PATH; ?>">
+					<input type="search" name="kw" class="form-control" placeholder="Search...">
+				  </form>
 			</div>
 		</div>
 	</div>

@@ -1,26 +1,28 @@
 <!doctype html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset="UTF-8">
+<meta name="theme-color" content="#000000">
 <!-- TemplateBeginEditable name="doctitle" -->
 <title>Untitled Document</title>
 <!-- TemplateEndEditable -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="../babybar/css/bootstrap.min.css">
-<link rel="stylesheet" href="../babybar/css/dashboard.css">
-<link rel="stylesheet" href="../babybar/css/NavMulti.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/dashboard.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/NavMulti.css">
 
-<script src="../babybar/js/jquery.min.js"></script>
-<script src="../babybar/js/bootstrap.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
 <!-- Firebase App is always required and must be first -->
-<script src="../babybar/js/firebase/5.2.0/firebase-app.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
-<script src="../babybar/js/firebase/5.2.0/firebase-auth.js"></script>
-<script src="../babybar/js/firebase/5.2.0/firebase-database.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>
 
-<link href="../babybar/library/wysiwyg/summernote.css" rel="stylesheet">
-<script src="../babybar/library/wysiwyg/summernote.js"></script>
+<link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include('../babybar/head.php'); ?>
 <!-- TemplateBeginEditable name="head" -->
 <!-- TemplateEndEditable -->
@@ -35,13 +37,13 @@
 
 <?php include('../babybar/NavMulti.php'); ?>
 <div class="container-fluid">
+<!-- TemplateBeginEditable name="EditRegion3" -->
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <?php include('../babybar/nav_side.php'); ?>
     </div>
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<!-- TemplateBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Dashboard</h1>
 
   <div class="row placeholders">
@@ -195,10 +197,10 @@
       </tbody>
     </table>
   </div>
-<!-- TemplateEndEditable -->
 </div>
 
   </div>
+<!-- TemplateEndEditable -->
 </div>
 </body>
 </html>

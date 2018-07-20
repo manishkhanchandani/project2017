@@ -29,6 +29,9 @@ define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
 
 define('FIREBASE_BASEPATH', 'babybarphp');
 
+$nodeTypes = array('defs' => 'Definitions','casebriefs' => 'Case Briefs','midterma' => 'Mid Term A','midtermb' => 'Mid Term B','issues' => 'Issues','essays' => 'Essays','mbe' => 'MBE', 'assignments' => 'Assignments', 'quizes' => 'Quizes');
+
+
 $barSubjects = array(
 	1 => array('subject' => 'Contracts', 'year' => '1L', 'url' => 'contracts', 'id' => 1),
 	3 => array('subject' => 'Torts', 'year' => '1L', 'url' => 'torts', 'id' => 3),

@@ -1,30 +1,63 @@
+<?php require_once('../Connections/conn.php'); ?>
 <?php
 session_start();
 include_once('init.php');
+
+$max = 10;
+$sql = '';
+if (!empty($_GET['kw'])) {
+	$sql .= sprintf(" AND (title like %s OR description like %s OR description2 like %s OR sub_topic like %s)", GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'), GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'), GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'), GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'));
+	$max = 500;
+}
+
+
+$maxRows_rsView = $max;
+$pageNum_rsView = 0;
+if (isset($_GET['pageNum_rsView'])) {
+  $pageNum_rsView = $_GET['pageNum_rsView'];
+}
+$startRow_rsView = $pageNum_rsView * $maxRows_rsView;
+
+mysql_select_db($database_conn, $conn);
+$query_rsView = "SELECT * FROM calbabybar_nodes WHERE current_status = 1 AND deleted = 0 $sql ORDER BY id DESC";
+$query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
+$rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
+$row_rsView = mysql_fetch_assoc($rsView);
+
+if (isset($_GET['totalRows_rsView'])) {
+  $totalRows_rsView = $_GET['totalRows_rsView'];
+} else {
+  $all_rsView = mysql_query($query_rsView);
+  $totalRows_rsView = mysql_num_rows($all_rsView);
+}
+$totalPages_rsView = ceil($totalRows_rsView/$maxRows_rsView)-1;
+
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset="UTF-8">
+<meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Untitled Document</title>
+<title>California Bar</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/dashboard.css">
-<link rel="stylesheet" href="css/NavMulti.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/dashboard.css">
+<link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/NavMulti.css">
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
 <!-- Firebase App is always required and must be first -->
-<script src="js/firebase/5.2.0/firebase-app.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
-<script src="js/firebase/5.2.0/firebase-auth.js"></script>
-<script src="js/firebase/5.2.0/firebase-database.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>
 
-<link href="library/wysiwyg/summernote.css" rel="stylesheet">
-<script src="library/wysiwyg/summernote.js"></script>
+<link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
+<script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include('head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
@@ -39,16 +72,16 @@ include_once('init.php');
 
 <?php include('NavMulti.php'); ?>
 <div class="container-fluid">
+<!-- InstanceBeginEditable name="EditRegion3" -->
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <?php include('nav_side.php'); ?>
     </div>
     
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<!-- InstanceBeginEditable name="EditRegion3" -->
   <h1 class="page-header">Dashboard</h1>
 
-  <div class="row placeholders">
+  <!--<div class="row placeholders">
     <div class="col-xs-6 col-sm-3 placeholder">
       <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
       <h4>Label</h4>
@@ -69,140 +102,40 @@ include_once('init.php');
       <h4>Label</h4>
       <span class="text-muted">Something else</span>
     </div>
-  </div>
+  </div> -->
 
-  <h2 class="sub-header">Section title</h2>
+  <h2 class="sub-header">Latest Entries </h2>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
           <th>#</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
+          <th>Year</th>
+          <th>Subject</th>
+          <th>Title</th>
+          <th>Sub Topic </th>
+          <th>Created On </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
-        </tr>
-        <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>Integer</td>
-          <td>nec</td>
-          <td>odio</td>
-          <td>Praesent</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>libero</td>
-          <td>Sed</td>
-          <td>cursus</td>
-          <td>ante</td>
-        </tr>
-        <tr>
-          <td>1,004</td>
-          <td>dapibus</td>
-          <td>diam</td>
-          <td>Sed</td>
-          <td>nisi</td>
-        </tr>
-        <tr>
-          <td>1,005</td>
-          <td>Nulla</td>
-          <td>quis</td>
-          <td>sem</td>
-          <td>at</td>
-        </tr>
-        <tr>
-          <td>1,006</td>
-          <td>nibh</td>
-          <td>elementum</td>
-          <td>imperdiet</td>
-          <td>Duis</td>
-        </tr>
-        <tr>
-          <td>1,007</td>
-          <td>sagittis</td>
-          <td>ipsum</td>
-          <td>Praesent</td>
-          <td>mauris</td>
-        </tr>
-        <tr>
-          <td>1,008</td>
-          <td>Fusce</td>
-          <td>nec</td>
-          <td>tellus</td>
-          <td>sed</td>
-        </tr>
-        <tr>
-          <td>1,009</td>
-          <td>augue</td>
-          <td>semper</td>
-          <td>porta</td>
-          <td>Mauris</td>
-        </tr>
-        <tr>
-          <td>1,010</td>
-          <td>massa</td>
-          <td>Vestibulum</td>
-          <td>lacinia</td>
-          <td>arcu</td>
-        </tr>
-        <tr>
-          <td>1,011</td>
-          <td>eget</td>
-          <td>nulla</td>
-          <td>Class</td>
-          <td>aptent</td>
-        </tr>
-        <tr>
-          <td>1,012</td>
-          <td>taciti</td>
-          <td>sociosqu</td>
-          <td>ad</td>
-          <td>litora</td>
-        </tr>
-        <tr>
-          <td>1,013</td>
-          <td>torquent</td>
-          <td>per</td>
-          <td>conubia</td>
-          <td>nostra</td>
-        </tr>
-        <tr>
-          <td>1,014</td>
-          <td>per</td>
-          <td>inceptos</td>
-          <td>himenaeos</td>
-          <td>Curabitur</td>
-        </tr>
-        <tr>
-          <td>1,015</td>
-          <td>sodales</td>
-          <td>ligula</td>
-          <td>in</td>
-          <td>libero</td>
-        </tr>
+              <?php do { ?>
+          <tr>
+                  <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong>ID: <?php echo $row_rsView['id']; ?></strong></a></td>
+                  <td><?php echo $barSubjects[$row_rsView['subject_id']]['year']; ?></td>
+                  <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $barSubjects[$row_rsView['subject_id']]['subject']; ?></a></td>
+                  <td><?php echo $row_rsView['title']; ?></td>
+                  <td><?php echo $row_rsView['sub_topic']; ?></td>
+                  <td><?php echo time_elapsed_string($row_rsView['topic_created']); ?></td>
+                  </tr><?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
       </tbody>
     </table>
   </div>
-<!-- InstanceEndEditable -->
-</div>
-
   </div>
+</div>
+<!-- InstanceEndEditable -->
 </div>
 </body>
 <!-- InstanceEnd --></html>
+<?php
+mysql_free_result($rsView);
+?>

@@ -349,9 +349,10 @@ Order Type:
 	
 	</div>
 </div>
-<!-- InstanceEndEditable --></div>
-</body><!-- InstanceEnd -->
-</html>
+<!-- InstanceEndEditable -->
+</div>
+</body>
+<!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsView);
 ?>
