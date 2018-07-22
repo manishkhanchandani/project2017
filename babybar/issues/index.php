@@ -174,13 +174,18 @@ $endtime = microtime(true);
 
   <div>
 		<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
-		    <div class="table-responsive">
-		            <table class="table">
-                      <!--<tr>
-                              <td valign="top"><strong><?php echo $reference; ?></strong></td>
-                              <td valign="top"><strong>Description</strong></td>
-                              <td valign="top"><strong>ID</strong></td>
-                      </tr> -->
+		    <div>
+											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+											<strong><?php echo $reference; ?></strong>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+											<strong>Description</strong>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 hideMobile">
+											<strong>ID</strong>
+											</div>
+											<br />
+											<hr />
                       <?php do { ?>
 <?php
 $images = json_decode($row_rsView['view_images'], true);
@@ -188,23 +193,14 @@ $videos = json_decode($row_rsView['view_videos'], true);
 $links = json_decode($row_rsView['view_links'], true);
 $node_id = $row_rsView['id'];
 ?>
-                              <tr>
-                                    <td valign="top">
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-											
+											<p><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong><?php echo $row_rsView['title']; ?></strong></a></p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>
+                                            <?php //echo $row_rsView['topic_created']; ?>
+                                    </p>
 											</div>
 											<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-											
-											</div>
-											<div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 sidebar">
-											
-											</div>
-										</div>
-									<p><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong><?php echo $row_rsView['title']; ?></strong></a></p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>
-                                            <?php //echo $row_rsView['topic_created']; ?>
-                                    </p></td>
-                                  <td valign="top"><?php echo $row_rsView['description']; 
+											<?php echo $row_rsView['description']; 
 								  	//echo substr(strip_tags($row_rsView['description']), 0, 255); 
 								  	//if (strlen($row_rsView['description']) > 255) echo '....';
 								   ?>
@@ -217,11 +213,13 @@ $node_id = $row_rsView['id'];
 										<?php } */ ?>
 										
 										<?php //include('../common/media.php'); ?>
-										</td>
-                                  <td valign="top"><?php echo $row_rsView['id']; ?></td>
-                              </tr>
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 hideMobile">
+											<?php echo $row_rsView['id']; ?>
+											</div>
+										</div>
+										<hr />
                               <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
-                              </table>
 		        </div>
 		    <p>Records <?php echo ($startRow_rsView + 1) ?> to <?php echo min($startRow_rsView + $maxRows_rsView, $totalRows_rsView) ?> of <?php echo $totalRows_rsView ?> </p>
 		    <table border="0" width="50%" align="center">

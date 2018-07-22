@@ -97,11 +97,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <div class="row">
-    <div class="col-sm-12 col-xs-12 col-md-2 ">
-      <?php include('nav_side.php'); ?>
-    </div>
     
-<div class="col-sm-12 col-xs-12 col-md-10 main">
+<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 main">
   <h1 class="page-header">Dashboard</h1>
 
   <!--<div class="row placeholders">
@@ -127,11 +124,6 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
     </div>
   </div> -->
 
-	<h3 class="sub-header">Aim of This Website!! </h3>
-	<div>
-	    <p>User Generated Contents for California Bar Course. All the contents are inserted by the users. A social networking framework for LAW STUDENTS.</p>
-	    <p>You can resubmit the data on any topic as every student has different views and let readers should read everybody's view on every topic. For example: Assault can be resubmitted by many students to let others know the idea of assault. </p>
-	    </div>
   <h3 class="sub-header">Latest Entries </h3>
       <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
           <div class="table-responsive">
@@ -139,10 +131,10 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
                   <thead>
                       <tr>
                           <th>#</th>
-                          <th>Year</th>
-                          <th>Subject</th>
                           <th>Title</th>
                           <th>Sub Topic </th>
+                          <th>Year</th>
+                          <th>Subject</th>
                           <th>Created On </th>
                       </tr>
                   </thead>
@@ -150,10 +142,10 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
                       <?php do { ?>
                           <tr>
                               <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong>ID: <?php echo $row_rsView['id']; ?></strong></a></td>
+                              <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $row_rsView['title']; ?></a></td>
+                              <td><?php echo $row_rsView['sub_topic']; ?></td>
                               <td><?php echo $barSubjects[$row_rsView['subject_id']]['year']; ?></td>
                               <td><?php echo $row_rsView['node_type']; ?> / <a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $barSubjects[$row_rsView['subject_id']]['subject']; ?></a></td>
-                              <td><?php echo $row_rsView['title']; ?></td>
-                              <td><?php echo $row_rsView['sub_topic']; ?></td>
                               <td><?php echo time_elapsed_string($row_rsView['topic_created']); ?></td>
                           </tr>
                           <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
@@ -186,6 +178,12 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
       <p>No Record Found.</p>
               <?php } // Show if recordset empty ?>
  
+<hr />
+	<h3 class="sub-header">Aim of This Website!! </h3>
+	<div>
+	    <p>User Generated Contents for California Bar Course. All the contents are inserted by the users. A social networking framework for LAW STUDENTS.</p>
+	    <p>You can resubmit the data on any topic as every student has different views and let readers should read everybody's view on every topic. For example: Assault can be resubmitted by many students to let others know the idea of assault. </p>
+	    </div>
 <hr />
 <?php if ($myRss_RSSmax > 0) { ?>
 		<div class="row">

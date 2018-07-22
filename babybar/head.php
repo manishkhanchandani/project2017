@@ -41,19 +41,16 @@ if (isset($_GET['accesscheck'])) {
 	var userLocation = {};
 	
 	function addInFb(obj) {
-		let url = '<?php echo FIREBASE_BASEPATH; ?>/trackPages/<?php echo date('Y-m-d'); ?>';
+		let url = '<?php echo FIREBASE_BASEPATH; ?>/trackPages/<?php echo date('Y-m-d'); ?>/user_<?php echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : ''; ?>';
 		let uniqueID = firebaseDatabase.ref(url).push(obj).key;
 		firebaseDatabase.ref(url).child(uniqueID).child('id').set(uniqueID);
 	}
 	function trackPage() {
 		let obj = {
-			page: '<?php echo $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>',
+			page: '<?php echo $_SERVER['REQUEST_URI']; ?>',
 			user_id: <?php echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : -1; ?>,
 			ip: '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
 			datetime: firebase.database.ServerValue.TIMESTAMP,
-			type: '<?php echo !empty($_POST) ? "post" : "get"; ?>',
-			get: '<?php echo json_encode($_GET); ?>',
-			post: '<?php echo json_encode($_POST); ?>',
 			useragent: '<?php echo $_SERVER['HTTP_USER_AGENT']; ?>'
 		};
 

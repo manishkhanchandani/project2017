@@ -125,6 +125,14 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	if ($_SESSION['MM_UserId'] <= 0) {
 		$error = 'Invalid User';
 	}
+	
+	$_POST['view_images'] = array_filter($_POST['view_images']);
+	$_POST['view_videos'] = array_filter($_POST['view_videos']);
+	$_POST['view_links'] = array_filter($_POST['view_links']);
+	
+	$_POST['view_images'] = json_encode($_POST['view_images']);
+	$_POST['view_videos'] = json_encode($_POST['view_videos']);
+	$_POST['view_links'] = json_encode($_POST['view_links']);
 
 	if (!empty($error)) {
 		unset($_POST['MM_update']);
@@ -139,18 +147,21 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	$num = 1;
 	if ($rec['revision_number'] >= 1) $num = $rec['revision_number'] + 1;
 
-	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Edited' from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_POST['id'];
+	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action, status) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Edited', status from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_POST['id'];
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
 
 
-  $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s WHERE user_id = %s AND id = %s",
+  $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s, view_images=%s, view_videos=%s, view_links=%s WHERE user_id = %s AND id = %s",
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['description2'], "text"),
                        GetSQLValueString($_POST['sub_topic'], "text"),
                        GetSQLValueString($_POST['node_type'], "text"),
+                       GetSQLValueString($_POST['view_images'], "text"),
+                       GetSQLValueString($_POST['view_videos'], "text"),
+                       GetSQLValueString($_POST['view_links'], "text"),
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['id'], "int"));
 
@@ -190,6 +201,13 @@ $description = !empty($_POST['description']) ? $_POST['description'] : $row_rsEd
 $description2 = !empty($_POST['description2']) ? $_POST['description2'] : $row_rsEdit['description2'];
 $sub_topic = !empty($_POST['sub_topic']) ? $_POST['sub_topic'] : $row_rsEdit['sub_topic'];
 $nt = !empty($_POST['node_type']) ? $_POST['node_type'] : $row_rsEdit['node_type'];
+
+$images = json_decode($row_rsEdit['view_images'], true);
+$videos = json_decode($row_rsEdit['view_videos'], true); 
+$links = json_decode($row_rsEdit['view_links'], true);
+$node_id = $row_rsEdit['id'];
+
+
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -319,17 +337,69 @@ do {
                   <td><textarea name="description2" id="description2" rows="5"><?php echo $description2; ?></textarea>                  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right">&nbsp;</td>
-                  <td>&nbsp;</td>
+                  <td nowrap align="right"><strong>Images:</strong></td>
+                  <td><div id="images">
+                          <input name="view_images[]" type="text" id="view_images[]" size="55" placeholder="Add Image URL" />
+                          <input name="moreImage" type="button" id="moreImage" value="Add More Images" onClick="addMoreImages();" />
+							<?php if (!empty($images)) { ?>
+								<?php foreach ($images as $image) { ?> <br />
+									 <input name="view_images[]" type="text" id="view_images[]" size="55" placeholder="Add Image URL" value="<?php echo $image; ?>" />
+								<?php } ?>
+							<?php }?>
+                      </div>
+                          <div id="images2" style="display:none;"> <br />
+                                  <input name="view_images[]" type="text" id="view_images[]" size="55" placeholder="Add Image URL" />
+                          </div>
+                      <script>
+							function addMoreImages() {
+								$('#images').append($('#images2').html());
+							}
+						</script>
+                  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right">&nbsp;</td>
-                  <td>&nbsp;</td>
+                  <td nowrap align="right"><strong>Videos (Youtube URL):</strong></td>
+                  <td><div id="videos">
+                          <input name="view_videos[]" type="text" id="view_videos[]" size="55" placeholder="Add Youtube URLS" />
+                          <input name="moreVideos" type="button" id="moreVideos" value="Add More Videos" onClick="addMoreVideos();" />
+						  <?php if (!empty($videos)) { ?>
+								<?php foreach ($videos as $video) { ?> <br />
+									 <input name="view_videos[]" type="text" id="view_videos[]" size="55" placeholder="Add Youtube URLs" value="<?php echo $video; ?>" />
+								<?php } ?>
+							<?php }?>
+                      </div>
+                          <div id="videos2" style="display:none;"> <br />
+                                  <input name="view_videos[]" type="text" id="view_videos[]" size="55" placeholder="Add Youtube URLS" />
+                          </div>
+                      <script>
+							function addMoreVideos() {
+								$('#videos').append($('#videos2').html());
+							}
+						</script>
+                  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right">&nbsp;</td>
-                  <td>&nbsp;</td>
+                  <td nowrap align="right"><strong>Links / PDF / Document:</strong></td>
+                  <td><div id="links">
+                          <input name="view_links[]" type="text" id="view_links[]" size="55" placeholder="Add Links" />
+                          <input name="moreLinks" type="button" id="moreLinks" value="Add More Links" onClick="addMoreLinks();" />
+						  <?php if (!empty($links)) { ?>
+								<?php foreach ($links as $link) { ?> <br />
+									 <input name="view_links[]" type="text" id="view_links[]" size="55" placeholder="Add Links" value="<?php echo $link; ?>" />
+								<?php } ?>
+							<?php }?>
+                      </div>
+                          <div id="links2" style="display:none;"> <br />
+                                  <input name="view_links[]" type="text" id="view_links[]" size="55" placeholder="Add Links" />
+                          </div>
+                      <script>
+						function addMoreLinks() {
+							$('#links').append($('#links2').html());
+						}
+					</script>
+                  </td>
               </tr>
+              
               <tr valign="baseline">
                   <td nowrap align="right"><strong>Node Type: </strong></td>
                   <td><select name="node_type" id="node_type" class="form-control">

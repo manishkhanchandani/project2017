@@ -83,7 +83,7 @@ if ((isset($_GET['node_id'])) && ($_GET['node_id'] != "")) {
 	$num = 1;
 	if ($rec['revision_number'] >= 1) $num = $rec['revision_number'] + 1;
 
-	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Deleted' from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_GET['node_id'];
+	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action, status) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Deleted', status from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_GET['node_id'];
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());

@@ -1,8 +1,8 @@
 <div style="margin:0px; padding:0px;">
 <?php if ($images || $links || $videos) { ?>	
 <hr />
-<div><a onclick="toggleContent('content_<?php echo $node_id; ?>'); return false;">Toggle Content</a></div>	
-<div id="content_<?php echo $node_id; ?>" style="display:none;">
+<div><a onclick="toggleContent('content_<?php echo $node_id; ?>'); return false;">Toggle Media Content</a></div>	
+<div id="content_<?php echo $node_id; ?>" style="display:;">
 <?php if (!empty($images)) { ?>
 <hr />
 <h3 class="page-header">Images</h3>
