@@ -43,10 +43,7 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
 $MM_restrictGoTo = HTTP_PATH."users/login.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
-  $MM_referrer = $_SERVER['PHP_SELF'];
-  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_referrer = $_SERVER['REQUEST_URI'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -123,9 +120,10 @@ $endtime = microtime(true);
     
     
 <div class="col-sm-12 col-md-9 ">
+<div><a href="<?php echo $mainUrl; ?>">Back to Subject Page</a> | <a href="<?php echo HTTP_PATH; ?>">Back to Home Page</a></div>
 <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
   <h1 class="page-header"><?php echo $row_rsView['title']; ?></h1>
-  <div><small>(<?php echo $subject; ?> <?php echo $reference; ?>) <?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit?node_id=<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete?node_id=<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?><br /><br /></small>
+  <div><small>(<?php echo $subject; ?> <?php echo $reference; ?>) <?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?><br /><br /></small>
   <hr /></div>
   
   <div><?php echo $row_rsView['description']; ?></div>

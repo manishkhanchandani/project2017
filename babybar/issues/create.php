@@ -84,6 +84,17 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+
+$sql = '';
+
+
+if (empty($_SESSION['MM_UserId'])) {
+	$sql .= " AND current_status = 1";
+} else {
+	$sql .= sprintf(" AND (current_status = 1 OR (current_status = 0 AND user_id=%s))", $_SESSION['MM_UserId']);
+}
+
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$error = '';
 	if ($_POST['type'] === 'existing') {
@@ -102,6 +113,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 		$error = 'Empty subtopic';
 	}
 	
+	if ($_SESSION['MM_UserId'] <= 0) {
+		$error = 'Invalid User';
+	}
+	
 	$_POST['view_images'] = array_filter($_POST['view_images']);
 	$_POST['view_videos'] = array_filter($_POST['view_videos']);
 	$_POST['view_links'] = array_filter($_POST['view_links']);
@@ -117,7 +132,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                       GetSQLValueString($_POST['user_id'], "int"),
+                       GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['subject_id'], "int"),
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
@@ -140,7 +155,7 @@ if (isset($_GET['id'])) {
   $colname_rsDistinctTitle = (get_magic_quotes_gpc()) ? $_GET['id'] : addslashes($_GET['id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsDistinctTitle = sprintf("SELECT DISTINCT title FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' ORDER BY title ASC", $colname_rsDistinctTitle, $node_type);
+$query_rsDistinctTitle = sprintf("SELECT DISTINCT title FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' $sql AND deleted = 0 ORDER BY title ASC", $colname_rsDistinctTitle, $node_type);
 $rsDistinctTitle = mysql_query($query_rsDistinctTitle, $conn) or die(mysql_error());
 $row_rsDistinctTitle = mysql_fetch_assoc($rsDistinctTitle);
 $totalRows_rsDistinctTitle = mysql_num_rows($rsDistinctTitle);
@@ -151,7 +166,7 @@ if (isset($_GET['id'])) {
   $colname_rsDistinctSubtopic = (get_magic_quotes_gpc()) ? $_GET['id'] : addslashes($_GET['id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsDistinctSubtopic = sprintf("SELECT DISTINCT sub_topic FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' ORDER BY sub_topic ASC", $colname_rsDistinctSubtopic, $node_type);
+$query_rsDistinctSubtopic = sprintf("SELECT DISTINCT sub_topic FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' $sql AND deleted = 0 ORDER BY sub_topic ASC", $colname_rsDistinctSubtopic, $node_type);
 $rsDistinctSubtopic = mysql_query($query_rsDistinctSubtopic, $conn) or die(mysql_error());
 $row_rsDistinctSubtopic = mysql_fetch_assoc($rsDistinctSubtopic);
 $totalRows_rsDistinctSubtopic = mysql_num_rows($rsDistinctSubtopic);
@@ -260,19 +275,18 @@ do {
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right" valign="top"><strong>
-                      <input name="type2" type="radio" id="new" value="new" checked>
+                      <input name="type2" type="radio" id="new" value="new" <?php if ($totalRows_rsDistinctSubtopic === 0) { ?>checked="checked"<?php } ?>>
                       <label for="existing">New</label>
                   </strong></td>
                   <td><input name="sub_topic" type="text" class="form-control" id="sub_topic"  value="<?php echo $sub_topic; ?>"></td>
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right" valign="top"><strong>
-                      <input name="type2" id="existing" type="radio" value="existing">
+                      <input name="type2" id="existing" type="radio" value="existing" <?php if ($totalRows_rsDistinctSubtopic > 0) { ?>checked="checked"<?php } ?>>
                       <label for="existing">Existing</label>
                   </strong></td>
                   <td><label>
                       <select name="sub_topic_existing" id="sub_topic_existing" class="form-control">
-                          <option value="">Select <?php echo $reference; ?></option>
                           <?php
 do {  
 ?>

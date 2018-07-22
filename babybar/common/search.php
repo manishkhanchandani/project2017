@@ -1,6 +1,6 @@
 <?php
-$sort = !empty($_GET['sort']) ? $_GET['sort'] : '1';
-$sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : 'ASC';
+$sort = !empty($_GET['sort']) ? $_GET['sort'] : '3';
+$sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : 'DESC';
 ?>
 <form name="form1" method="get" action="">
 	<h3>Search</h3>
@@ -12,8 +12,9 @@ $sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : 'ASC';
 		<label for="sort">Sorting: </label>
 		<select name="sort" id="sort" class="form-control">
 		    <option value="" <?php if (!(strcmp("", $sort))) {echo "selected=\"selected\"";} ?>>Select</option>
-<option value="1" <?php if (!(strcmp(1, $sort))) {echo "selected=\"selected\"";} ?>>Created Date</option>
+		    <option value="1" <?php if (!(strcmp(1, $sort))) {echo "selected=\"selected\"";} ?>>Created Date</option>
 		    <option value="2" <?php if (!(strcmp(2, $sort))) {echo "selected=\"selected\"";} ?>>Title</option>
+		    <option value="3" <?php if (!(strcmp(3, $sort))) {echo "selected=\"selected\"";} ?>>ID</option>
         </select>
 	</div>
 	<div class="form-group">

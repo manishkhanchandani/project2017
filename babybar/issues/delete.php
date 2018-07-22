@@ -43,10 +43,7 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
 $MM_restrictGoTo = "../users/login.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
-  $MM_referrer = $_SERVER['PHP_SELF'];
-  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_referrer = $_SERVER['REQUEST_URI'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -79,6 +76,19 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 if ((isset($_GET['node_id'])) && ($_GET['node_id'] != "")) {
+	$q = "select revision_number from calbabybar_nodes_revision WHERE user_id = ".$_SESSION['MM_UserId']." AND ref_id = ".$_GET['node_id']." Order by revision_number DESC LIMIT 1";
+  mysql_select_db($database_conn, $conn);
+	$r = mysql_query($q, $conn) or die(mysql_error());
+	$rec = mysql_fetch_array($r);
+	$num = 1;
+	if ($rec['revision_number'] >= 1) $num = $rec['revision_number'] + 1;
+
+	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Deleted' from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_GET['node_id'];
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+
+
 	$date = date('Y-m-d H:i:s');
   $deleteSQL = sprintf("UPDATE calbabybar_nodes SET deleted = 1, deleted_dt = %s WHERE id=%s AND user_id=%s",
                        GetSQLValueString($date, "date"),

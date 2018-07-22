@@ -3,6 +3,7 @@ if (!empty($xtraText)) {
 	echo $xtraText;
 }
 ?>
+<?php /*
 <h4><?php if (!empty($_SESSION['MM_DisplayName'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?></h4>
 <ul class="nav nav-sidebar">
   <?php if (!empty($_SESSION['MM_DisplayName'])) { ?>
@@ -14,3 +15,4 @@ if (!empty($xtraText)) {
       <li><a href="" onClick="gitHubLogin(); return false;">Github Login</a></li> -->
   <?php } ?>
 </ul>
+*/ ?>

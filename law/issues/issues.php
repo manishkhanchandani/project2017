@@ -328,7 +328,11 @@ $issuesContracts = array(
 			'defense_incapacity' => array(
 				'title' => 'Defense of Incapacity',
 				'elements' => array(
-					''
+					'k cannot be enforced against who lacks capacity',
+					'exception: for provision of Necessities of Life',
+					'if legal capacity is removed, he has repudiate the contract withing reasonable time',
+					'or else they have to affirm it',
+					'party lacking capacity can enforce the contract against the party that does not lack'
 				)
 			),
 			'defense_illegality' => array(

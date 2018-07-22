@@ -42,10 +42,7 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
 $MM_restrictGoTo = HTTP_PATH."users/login.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
-  $MM_referrer = $_SERVER['PHP_SELF'];
-  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_referrer = $_SERVER['REQUEST_URI'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -53,10 +50,10 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 ?>
 <?php
 $starttime = microtime(true);
-$currentPage = $_SERVER["PHP_SELF"];
+$currentPage = $mainUrl;
 
 $sql = '';
-$order = 'id ASC';
+$order = 'id DESC';
 $sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : 'ASC';
 if (!empty($_GET['my']) && !empty($_SESSION['MM_UserId'])) {
 	$sql .= sprintf(" AND user_id=%s", $_SESSION['MM_UserId']);
@@ -109,7 +106,10 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   $newParams = array();
   foreach ($params as $param) {
     if (stristr($param, "pageNum_rsView") == false && 
-        stristr($param, "totalRows_rsView") == false) {
+        stristr($param, "totalRows_rsView") == false && 
+        stristr($param, "subjectUrl") == false && 
+        stristr($param, "id") == false && 
+        stristr($param, "node_type") == false) {
       array_push($newParams, $param);
     }
   }
@@ -160,7 +160,7 @@ $endtime = microtime(true);
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
+    <div class="col-sm-12 col-xs-12 col-md-2">
 <div><a href="<?php echo $mainUrl; ?>/create">Create New <?php echo $reference; ?></a><hr />
 
 <?php include('../common/search.php'); ?>
@@ -169,18 +169,18 @@ $endtime = microtime(true);
       <?php include('../nav_side.php'); ?>
     </div><!-- ending col -->
     
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-12 col-xs-12 col-md-10 main">
   <h1 class="page-header"><?php echo $subject; ?> <?php echo $reference; ?></h1>
 
   <div>
 		<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
 		    <div class="table-responsive">
 		            <table class="table">
-                      <tr>
-                              <td valign="top" style="min-width: 165px;"><strong><?php echo $reference; ?></strong></td>
+                      <!--<tr>
+                              <td valign="top"><strong><?php echo $reference; ?></strong></td>
                               <td valign="top"><strong>Description</strong></td>
                               <td valign="top"><strong>ID</strong></td>
-                      </tr>
+                      </tr> -->
                       <?php do { ?>
 <?php
 $images = json_decode($row_rsView['view_images'], true);
@@ -189,19 +189,32 @@ $links = json_decode($row_rsView['view_links'], true);
 $node_id = $row_rsView['id'];
 ?>
                               <tr>
-                                    <td valign="top" style="min-width: 165px;"><p><strong><?php echo $row_rsView['title']; ?></strong></p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit?node_id=<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete?node_id=<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>
-                                            <?php //echo $row_rsView['topic_created']; ?>
-                                    </p></td>
-                                  <td valign="top"><?php echo $row_rsView['description']; ?>
+                                    <td valign="top">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+											
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+											
+											</div>
+											<div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 sidebar">
+											
+											</div>
+										</div>
+									</td>
+                                  <td valign="top"><?php echo $row_rsView['description']; 
+								  	//echo substr(strip_tags($row_rsView['description']), 0, 255); 
+								  	//if (strlen($row_rsView['description']) > 255) echo '....';
+								   ?>
                                         <?php 
-										$d2 = trim(strip_tags($row_rsView['description2']));
+										/*$d2 = trim(strip_tags($row_rsView['description2']));
 										if (!empty($d2)) { ?>
                                         <hr />
-                                        <p><strong>Analysis</strong></p>
+                                        <p><strong>Analysis / Description 2</strong></p>
                                     	<div><?php echo $row_rsView['description2']; ?></div>                                      
-										<?php } ?>
+										<?php } */ ?>
 										
-										<?php include('../common/media.php'); ?>
+										<?php //include('../common/media.php'); ?>
 										</td>
                                   <td valign="top"><?php echo $row_rsView['id']; ?></td>
                               </tr>

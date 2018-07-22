@@ -78,7 +78,24 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Level 2 <span class="caret"></span></a>
               
               <ul class="dropdown-menu">
-                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>">Reiki Level 2</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/">Reiki Level 1</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/intro.php">Introduction to the 2nd degree</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/gassho.php">Gassho</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/reiji.php">Reiji-Ho</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/chiryo.php">Chiryo</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/namaste.php">Namaste</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/new_possibilities.php">New Possibilities</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/symbols.php">Reiki Symbols</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/chokurei.php">Cho ku Rei</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/seiheiki.php">Sei Heiki</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/honshazeshonen.php">Hon Sha Ze Sho Nen</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/distant.php">Distant or Absent Reiki Healing</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/traditional_distant.php">Traditional Distant Healing</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/examples.php">Examples Distant Healing</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/working.php">Working with Reiki 2</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/additional_symbols.php">Additional Non Traditional Reiki Symbols</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/other_healing.php">Reiki with other healing technique</a></li>
+                <li><a href="<?php echo COMPLETE_HTTP_PATH; ?>reiki2/animal.php">Animal Reiki Technique</a></li>
               </ul>
             </li>
 			<?php } ?>

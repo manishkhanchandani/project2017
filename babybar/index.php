@@ -1,17 +1,24 @@
 <?php require_once('../Connections/conn.php'); ?>
 <?php
+$currentPage = $_SERVER["PHP_SELF"];
+
 session_start();
 include_once('init.php');
+include_once('library/rss.php');
 
-$max = 10;
+$myRss = new RSSParser("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&q=California+law&cf=all&output=rss"); 
+$itemNum=0;
+$myRss_RSSmax=0;
+if($myRss_RSSmax==0 || $myRss_RSSmax>count($myRss->titles)) $myRss_RSSmax=count($myRss->titles);
+
 $sql = '';
 if (!empty($_GET['kw'])) {
+	$_GET['kw'] = trim($_GET['kw']);
 	$sql .= sprintf(" AND (title like %s OR description like %s OR description2 like %s OR sub_topic like %s)", GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'), GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'), GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'), GetSQLValueString('%%'.$_GET['kw'].'%%', 'text'));
-	$max = 500;
 }
 
 
-$maxRows_rsView = $max;
+$maxRows_rsView = 10;
 $pageNum_rsView = 0;
 if (isset($_GET['pageNum_rsView'])) {
   $pageNum_rsView = $_GET['pageNum_rsView'];
@@ -31,6 +38,22 @@ if (isset($_GET['totalRows_rsView'])) {
   $totalRows_rsView = mysql_num_rows($all_rsView);
 }
 $totalPages_rsView = ceil($totalRows_rsView/$maxRows_rsView)-1;
+
+$queryString_rsView = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_rsView") == false && 
+        stristr($param, "totalRows_rsView") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_rsView = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $queryString_rsView);
 
 ?>
 <!doctype html>
@@ -74,11 +97,11 @@ $totalPages_rsView = ceil($totalRows_rsView/$maxRows_rsView)-1;
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
+    <div class="col-sm-12 col-xs-12 col-md-2 ">
       <?php include('nav_side.php'); ?>
     </div>
     
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-12 col-xs-12 col-md-10 main">
   <h1 class="page-header">Dashboard</h1>
 
   <!--<div class="row placeholders">
@@ -104,33 +127,91 @@ $totalPages_rsView = ceil($totalRows_rsView/$maxRows_rsView)-1;
     </div>
   </div> -->
 
-  <h2 class="sub-header">Latest Entries </h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Year</th>
-          <th>Subject</th>
-          <th>Title</th>
-          <th>Sub Topic </th>
-          <th>Created On </th>
-        </tr>
-      </thead>
-      <tbody>
-              <?php do { ?>
-          <tr>
-                  <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong>ID: <?php echo $row_rsView['id']; ?></strong></a></td>
-                  <td><?php echo $barSubjects[$row_rsView['subject_id']]['year']; ?></td>
-                  <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $barSubjects[$row_rsView['subject_id']]['subject']; ?></a></td>
-                  <td><?php echo $row_rsView['title']; ?></td>
-                  <td><?php echo $row_rsView['sub_topic']; ?></td>
-                  <td><?php echo time_elapsed_string($row_rsView['topic_created']); ?></td>
-                  </tr><?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
-      </tbody>
-    </table>
-  </div>
-  </div>
+	<h3 class="sub-header">Aim of This Website!! </h3>
+	<div>
+	    <p>User Generated Contents for California Bar Course. All the contents are inserted by the users. A social networking framework for LAW STUDENTS.</p>
+	    <p>You can resubmit the data on any topic as every student has different views and let readers should read everybody's view on every topic. For example: Assault can be resubmitted by many students to let others know the idea of assault. </p>
+	    </div>
+  <h3 class="sub-header">Latest Entries </h3>
+      <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
+          <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Year</th>
+                          <th>Subject</th>
+                          <th>Title</th>
+                          <th>Sub Topic </th>
+                          <th>Created On </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php do { ?>
+                          <tr>
+                              <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong>ID: <?php echo $row_rsView['id']; ?></strong></a></td>
+                              <td><?php echo $barSubjects[$row_rsView['subject_id']]['year']; ?></td>
+                              <td><?php echo $row_rsView['node_type']; ?> / <a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $barSubjects[$row_rsView['subject_id']]['subject']; ?></a></td>
+                              <td><?php echo $row_rsView['title']; ?></td>
+                              <td><?php echo $row_rsView['sub_topic']; ?></td>
+                              <td><?php echo time_elapsed_string($row_rsView['topic_created']); ?></td>
+                          </tr>
+                          <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
+                  </tbody>
+              </table>
+          </div>
+          <p> Records <?php echo ($startRow_rsView + 1) ?> to <?php echo min($startRow_rsView + $maxRows_rsView, $totalRows_rsView) ?> of <?php echo $totalRows_rsView ?></p>
+          <table border="0" width="50%" align="center">
+              <tr>
+                  <td width="23%" align="center"><?php if ($pageNum_rsView > 0) { // Show if not first page ?>
+                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, 0, $queryString_rsView); ?>">First</a>
+                              <?php } // Show if not first page ?>
+                  </td>
+                  <td width="31%" align="center"><?php if ($pageNum_rsView > 0) { // Show if not first page ?>
+                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, max(0, $pageNum_rsView - 1), $queryString_rsView); ?>">Previous</a>
+                              <?php } // Show if not first page ?>
+                  </td>
+                  <td width="23%" align="center"><?php if ($pageNum_rsView < $totalPages_rsView) { // Show if not last page ?>
+                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, min($totalPages_rsView, $pageNum_rsView + 1), $queryString_rsView); ?>">Next</a>
+                              <?php } // Show if not last page ?>
+                  </td>
+                  <td width="23%" align="center"><?php if ($pageNum_rsView < $totalPages_rsView) { // Show if not last page ?>
+                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, $totalPages_rsView, $queryString_rsView); ?>">Last</a>
+                              <?php } // Show if not last page ?>
+                  </td>
+              </tr>
+          </table>
+          <?php } // Show if recordset not empty ?>
+  <?php if ($totalRows_rsView == 0) { // Show if recordset empty ?>
+      <p>No Record Found.</p>
+              <?php } // Show if recordset empty ?>
+ 
+<hr />
+<?php if ($myRss_RSSmax > 0) { ?>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">California Law News</h3>
+					</div>
+					<div class="panel-body">
+						<ul>
+							<?php
+								for($itemNum=1;$itemNum<$myRss_RSSmax;$itemNum++){
+							?>
+								<li><a href="<?php echo $myRss->links[$itemNum]; ?>" target="_blank"><?php echo $myRss->titles[$itemNum]; ?></a><br>
+									<small><?php echo $desc = $myRss->descriptions[$itemNum];  /*echo strip_tags($desc, '<b><strong><br>');if (isset($_GET['t'])) { echo htmlentities($myRss->descriptions[$itemNum]); }*/?></small>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+      <?php } ?>
+<p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
 </div>
 <!-- InstanceEndEditable -->
 </div>

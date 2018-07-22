@@ -167,7 +167,7 @@ if (!empty($barSubjects)) {
 					</li>
 				  </ul>
 				  <form class="navbar-form navbar-right" method="get" action="<?php echo HTTP_PATH; ?>">
-					<input type="search" name="kw" class="form-control" placeholder="Search...">
+					<input type="search" name="kw" class="form-control" placeholder="Search..." value="<?php echo !empty($_GET['kw']) ? $_GET['kw'] : ''; ?>">
 				  </form>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once('../init.php');
+
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->

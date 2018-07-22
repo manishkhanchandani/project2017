@@ -17,9 +17,9 @@ define('FIREBASE_BASEPATH', 'babybarphp');*/
 
 $MM_redirectLoginSuccess = COMPLETE_HTTP_PATH;
 
-/*if (isset($_GET['accesscheck'])) {
+if (isset($_GET['accesscheck'])) {
   $MM_redirectLoginSuccess = $_GET['accesscheck'];	
-}*/
+}
 
 
 ?>
@@ -53,15 +53,17 @@ $MM_redirectLoginSuccess = COMPLETE_HTTP_PATH;
 			datetime: firebase.database.ServerValue.TIMESTAMP,
 			type: '<?php echo !empty($_POST) ? "post" : "get"; ?>',
 			get: '<?php echo json_encode($_GET); ?>',
-			post: '<?php echo json_encode($_POST); ?>'
+			post: '<?php echo json_encode($_POST); ?>',
+			useragent: '<?php echo $_SERVER['HTTP_USER_AGENT']; ?>'
 		};
+
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				userLocation.lat = position.coords.latitude;
 				userLocation.lng = position.coords.longitude;
 				obj.userLocation = userLocation;
 				addInFb(obj);
-			});
+			}, (d) => {addInFb(obj);console.log('error is ', d);});
 		} else {
 			addInFb(obj);
 		}

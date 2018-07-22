@@ -43,10 +43,7 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
 $MM_restrictGoTo = "../users/login.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
-  $MM_referrer = $_SERVER['PHP_SELF'];
-  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_referrer = $_SERVER['REQUEST_URI'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -83,6 +80,30 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+$colid_rsEdit = "-1";
+if (isset($_GET['node_id'])) {
+  $colid_rsEdit = (get_magic_quotes_gpc()) ? $_GET['node_id'] : addslashes($_GET['node_id']);
+}
+$colname_rsEdit = "-1";
+if (isset($_SESSION['MM_UserId'])) {
+  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsEdit = sprintf("SELECT * FROM calbabybar_nodes WHERE user_id = %s AND id = %s", $colname_rsEdit,$colid_rsEdit);
+$rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
+$row_rsEdit = mysql_fetch_assoc($rsEdit);
+$totalRows_rsEdit = mysql_num_rows($rsEdit);
+
+
+$sql = '';
+
+
+if (empty($_SESSION['MM_UserId'])) {
+	$sql .= " AND current_status = 1";
+} else {
+	$sql .= sprintf(" AND (current_status = 1 OR (current_status = 0 AND user_id=%s))", $_SESSION['MM_UserId']);
+}
+
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	$error = '';
 	if ($_POST['type'] === 'existing') {
@@ -100,12 +121,30 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	if (empty($_POST['sub_topic'])) {
 		$error = 'Empty subtopic';
 	}
+	
+	if ($_SESSION['MM_UserId'] <= 0) {
+		$error = 'Invalid User';
+	}
+
 	if (!empty($error)) {
 		unset($_POST['MM_update']);
 	}
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
+	$q = "select revision_number from calbabybar_nodes_revision WHERE user_id = ".$_SESSION['MM_UserId']." AND ref_id = ".$_POST['id']." Order by revision_number DESC LIMIT 1";
+  mysql_select_db($database_conn, $conn);
+	$r = mysql_query($q, $conn) or die(mysql_error());
+	$rec = mysql_fetch_array($r);
+	$num = 1;
+	if ($rec['revision_number'] >= 1) $num = $rec['revision_number'] + 1;
+
+	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Edited' from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_POST['id'];
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+
+
   $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s WHERE user_id = %s AND id = %s",
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
@@ -128,7 +167,7 @@ if (isset($_GET['id'])) {
   $colname_rsDistinctTitle = (get_magic_quotes_gpc()) ? $_GET['id'] : addslashes($_GET['id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsDistinctTitle = sprintf("SELECT DISTINCT title FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' ORDER BY title ASC", $colname_rsDistinctTitle, $node_type);
+$query_rsDistinctTitle = sprintf("SELECT DISTINCT title FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' $sql AND deleted = 0 ORDER BY title ASC", $colname_rsDistinctTitle, $node_type);
 $rsDistinctTitle = mysql_query($query_rsDistinctTitle, $conn) or die(mysql_error());
 $row_rsDistinctTitle = mysql_fetch_assoc($rsDistinctTitle);
 $totalRows_rsDistinctTitle = mysql_num_rows($rsDistinctTitle);
@@ -139,24 +178,11 @@ if (isset($_GET['id'])) {
   $colname_rsDistinctSubtopic = (get_magic_quotes_gpc()) ? $_GET['id'] : addslashes($_GET['id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsDistinctSubtopic = sprintf("SELECT DISTINCT sub_topic FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' ORDER BY sub_topic ASC", $colname_rsDistinctSubtopic, $node_type);
+$query_rsDistinctSubtopic = sprintf("SELECT DISTINCT sub_topic FROM calbabybar_nodes WHERE subject_id = %s AND node_type = '%s' $sql AND deleted = 0 ORDER BY sub_topic ASC", $colname_rsDistinctSubtopic, $node_type);
 $rsDistinctSubtopic = mysql_query($query_rsDistinctSubtopic, $conn) or die(mysql_error());
 $row_rsDistinctSubtopic = mysql_fetch_assoc($rsDistinctSubtopic);
 $totalRows_rsDistinctSubtopic = mysql_num_rows($rsDistinctSubtopic);
 
-$colid_rsEdit = "-1";
-if (isset($_GET['node_id'])) {
-  $colid_rsEdit = (get_magic_quotes_gpc()) ? $_GET['node_id'] : addslashes($_GET['node_id']);
-}
-$colname_rsEdit = "-1";
-if (isset($_SESSION['MM_UserId'])) {
-  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
-}
-mysql_select_db($database_conn, $conn);
-$query_rsEdit = sprintf("SELECT * FROM calbabybar_nodes WHERE user_id = %s AND id = %s", $colname_rsEdit,$colid_rsEdit);
-$rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
-$row_rsEdit = mysql_fetch_assoc($rsEdit);
-$totalRows_rsEdit = mysql_num_rows($rsEdit);
 
 
 $title = !empty($_POST['title']) ? $_POST['title'] : $row_rsEdit['title'];

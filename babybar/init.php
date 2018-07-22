@@ -29,6 +29,14 @@ define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
 
 define('FIREBASE_BASEPATH', 'babybarphp');
 
+$isCrawler = getIsCrawler($_SERVER['HTTP_USER_AGENT']);
+if ($isCrawler) {
+	$_SESSION['MM_Username'] = 'User';
+	$_SESSION['MM_UserGroup'] = 'member';
+	$_SESSION['MM_UserId'] = -1;
+	$_SESSION['MM_DisplayName'] = 'User';
+}
+
 $nodeTypes = array('defs' => 'Definitions','casebriefs' => 'Case Briefs','midterma' => 'Mid Term A','midtermb' => 'Mid Term B','issues' => 'Issues','essays' => 'Essays','mbe' => 'MBE', 'assignments' => 'Assignments', 'quizes' => 'Quizes');
 
 
