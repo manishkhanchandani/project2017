@@ -201,7 +201,9 @@ $node_id = $row_rsView['id'];
 											
 											</div>
 										</div>
-									</td>
+									<p><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong><?php echo $row_rsView['title']; ?></strong></a></p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>
+                                            <?php //echo $row_rsView['topic_created']; ?>
+                                    </p></td>
                                   <td valign="top"><?php echo $row_rsView['description']; 
 								  	//echo substr(strip_tags($row_rsView['description']), 0, 255); 
 								  	//if (strlen($row_rsView['description']) > 255) echo '....';
