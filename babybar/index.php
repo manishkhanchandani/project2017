@@ -2,6 +2,7 @@
 <?php
 $currentPage = $_SERVER["PHP_SELF"];
 
+$starttime = microtime(true);
 session_start();
 include_once('init.php');
 include_once('library/rss.php');
@@ -55,6 +56,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $queryString_rsView);
 
+$endtime = microtime(true);
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -124,7 +126,7 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
     </div>
   </div> -->
 
-  <h3 class="sub-header">Latest Entries </h3>
+  <h3 class="sub-header">Latest Entries </h3><?php //echo $query_rsView; ?>
       <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
           <div class="table-responsive">
               <table class="table table-striped">
@@ -207,7 +209,9 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 			</div>
 		</div>
       <?php } ?>
-<p>&nbsp;</p>
+<!--<?php echo $query_rsView; echo "\n\nTime Taken:"; echo $duration = $endtime - $starttime; 
+
+?> -->
   <p>&nbsp;</p>
 </div>
 </div>

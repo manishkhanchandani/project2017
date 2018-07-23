@@ -172,7 +172,7 @@ $endtime = microtime(true);
 <div class="col-sm-12 col-xs-12 col-md-10 main">
   <h1 class="page-header"><?php echo $subject; ?> <?php echo $reference; ?></h1>
 
-  <div>
+  <div><?php //echo $query_rsView; ?>
 		<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
 		    <div>
 											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
