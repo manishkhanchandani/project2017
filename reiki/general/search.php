@@ -9,6 +9,12 @@
 		<input type="text" class="form-control addressBox" id="autocomplete" name="autocomplete" onFocus="geolocate()" placeholder="enter address" value="<?php echo !empty($_GET['autocomplete']) ? $_GET['autocomplete'] : ''; ?>">
 	</div>
 	<input name="slat" id="slat" type="hidden" value="<?php echo !empty($_GET['slat']) ? $_GET['slat'] : ''; ?>" /> <input name="slng" id="slng" type="hidden" value="<?php echo !empty($_GET['slng']) ? $_GET['slng'] : ''; ?>" />
+	
+	<input type="hidden" name="scountry" id="scountry" value="" />
+	<input type="hidden" name="sstate" id="sstate" value="" />
+	<input type="hidden" name="scounty" id="scounty" value="" />
+	<input type="hidden" name="scity" id="scity" value="" />
+	<input type="hidden" name="saddr" id="saddr" value="" />
 	<button type="submit" class="btn btn-default">Search</button>
 </form>
 <hr />
@@ -52,8 +58,25 @@
   function fillInAddress() {
 	// Get the place details from the autocomplete object.
 	var place = autocomplete.getPlace();
+	console.log('place is ', place);
 	document.getElementById('slat').value = place.geometry.location.lat();
 	document.getElementById('slng').value = place.geometry.location.lng();
+	if (place.address_components) {
+		for (let k in place.address_components) {
+			let p = place.address_components[k];
+			
+			if (p.types[0] === 'locality') {
+			} else if (p.types[0] === 'administrative_area_level_2') {
+				document.getElementById('scounty').value = p.long_name;
+			} else if (p.types[0] === 'administrative_area_level_1') {
+				document.getElementById('sstate').value = p.long_name;
+			} else if (p.types[0] === 'country') {
+				document.getElementById('scountry').value = p.long_name;
+			}
+			console.log('addr is ', p.types[0], p.short_name, p.long_name);
+		}
+	}
+	document.getElementById('saddr').value = place.formatted_address;
   }
 
   // Bias the autocomplete object to the user's geographical location,

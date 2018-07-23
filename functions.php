@@ -195,11 +195,11 @@ function time_elapsed_string($datetime, $full = false) {
 
 if (!function_exists('getIsCrawler')) {
 	function getIsCrawler($userAgent) {
-		$crawlers = 'Googlebot|bot';
+		$crawlers = 'Googlebot|bot|Facebook';
 		/*'Google|msnbot|Rambler|Yahoo|AbachoBOT|accoona|' .
 		'AcioRobot|ASPSeek|CocoCrawler|Dumbot|FAST-WebCrawler|' .
 		'GeonaBot|Gigabot|Lycos|MSRBOT|Scooter|AltaVista|IDBot|eStyle|Scrubby';*/
-		$isCrawler = (preg_match("/$crawlers/", $userAgent) > 0);
+		$isCrawler = (preg_match("/$crawlers/si", $userAgent) > 0);
 		return $isCrawler;
 	}
 }

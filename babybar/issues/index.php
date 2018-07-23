@@ -54,15 +54,17 @@ $currentPage = $mainUrl;
 
 $sql = '';
 $order = 'id DESC';
-$sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : 'ASC';
+$sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : (!empty($_COOKIE['sorttype']) ? $_COOKIE['sorttype'] : 'DESC');
 if (!empty($_GET['my']) && !empty($_SESSION['MM_UserId'])) {
 	$sql .= sprintf(" AND user_id=%s", $_SESSION['MM_UserId']);
 }
 
 
-if (!empty($_GET['sort'])) {
-	$sort = ($_GET['sort'] == 2) ? 'title' : 'topic_created';
+if (!empty($_GET['sort']) || !empty($_COOKIE['sort'])) {
+	$sort = !empty($_GET['sort']) ? $_GET['sort'] : (!empty($_COOKIE['sort']) ? $_COOKIE['sort'] : 'id');
 	$order = $sort.' '.$sorttype;
+	setcookie('sort', $sort, time() + 60*60*24*7, '/');
+	setcookie('sorttype', $sorttype, time() + 60*60*24*7, '/');
 }
 
 if (empty($_SESSION['MM_UserId'])) {
@@ -127,7 +129,7 @@ $endtime = microtime(true);
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title><?php echo $reference; ?></title>
+<title><?php echo $subject; ?> : <?php echo $reference; ?></title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
@@ -146,7 +148,14 @@ $endtime = microtime(true);
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
-<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<meta name="description" content="<?php echo $subject; ?> <?php echo $reference; ?>" />
+<meta name="keywords" content="<?php echo $subject; ?>,<?php echo $reference; ?>" />
+
+<meta name="author" content="" />
+<meta name="copyright" content="CalBabyBar.com" />
+<meta name="application-name" content="Cal Baby Bar" />
+<!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -173,6 +182,7 @@ $endtime = microtime(true);
   <h1 class="page-header"><?php echo $subject; ?> <?php echo $reference; ?></h1>
 
   <div><?php //echo $query_rsView; ?>
+<?php $tmp = ''; ?>
 		<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
 		    <div>
 											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
@@ -193,6 +203,13 @@ $videos = json_decode($row_rsView['view_videos'], true);
 $links = json_decode($row_rsView['view_links'], true);
 $node_id = $row_rsView['id'];
 ?>
+
+<?php if ($tmp !== $row_rsView['sub_topic']) { 
+$tmp = $row_rsView['sub_topic'];
+
+?>
+<h3 class="text-center page-header"><strong>SubTopic:</strong> <?php echo $row_rsView['sub_topic']; ?></h3>
+<?php } ?>
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 											<p><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong><?php echo $row_rsView['title']; ?></strong></a></p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>

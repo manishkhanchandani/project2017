@@ -39,10 +39,8 @@ if (!empty($_GET['my'])) {
 
 if (!empty($_GET['slat']) && !empty($_GET['slng'])) {
 	$radius = 100;
-	$sqlSelect .= ", (ROUND(
-	DEGREES(ACOS(SIN(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * SIN(RADIANS(lat)) + COS(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * COS(RADIANS(lat)) * COS(RADIANS(".GetSQLValueString($_GET['slng'], 'double')." -(lng)))))*60*1.1515,2)) as distance";
-	$sql .= " AND (ROUND(
-	DEGREES(ACOS(SIN(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * SIN(RADIANS(lat)) + COS(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * COS(RADIANS(lat)) * COS(RADIANS(".GetSQLValueString($_GET['slng'], 'double')." -(lng)))))*60*1.1515,2)) <= ".GetSQLValueString($radius, 'int');
+	$sqlSelect .= ", (ROUND(DEGREES(ACOS(SIN(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * SIN(RADIANS(lat)) + COS(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * COS(RADIANS(lat)) * COS(RADIANS(".GetSQLValueString($_GET['slng'], 'double')." -(lng)))))*60*1.1515,2)) as distance";
+	//$sql .= " AND (ROUND(DEGREES(ACOS(SIN(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * SIN(RADIANS(lat)) + COS(RADIANS(".GetSQLValueString($_GET['slat'], 'double').")) * COS(RADIANS(lat)) * COS(RADIANS(".GetSQLValueString($_GET['slng'], 'double')." -(lng)))))*60*1.1515,2)) <= ".GetSQLValueString($radius, 'int');
 	$order = 'distance ASC, name ASC';
 }
 

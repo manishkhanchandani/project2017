@@ -168,11 +168,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
               </tr>
               <tr valign="baseline">
                   <td align="right" valign="top" nowrap><strong>Place (Where you are taking training)</strong></td>
-                  <td valign="top"><input type="text" name="place" value="San Jose Public Library (Room no 255)" size="32"></td>
+                  <td valign="top"><input type="text" name="place" value="" size="32"></td>
               </tr>
               <tr valign="baseline">
                   <td align="right" valign="top" nowrap><strong>Training Date</strong></td>
-                  <td valign="top"><input type="text" name="class_date" value="14th / 15th July, 2018" size="32"></td>
+                  <td valign="top"><input type="text" name="class_date" value="" size="32"></td>
               </tr>
               <tr valign="baseline">
                   <td align="right" valign="top" nowrap><strong>Year of birth:</strong></td>

@@ -84,7 +84,7 @@ $endtime = microtime(true);
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title><?php echo $reference; ?></title>
+<title><?php echo $reference; ?> : <?php echo $row_rsView['title']; ?></title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
@@ -103,7 +103,14 @@ $endtime = microtime(true);
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
-<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<meta name="description" content="<?php echo strip_tags($row_rsView['description']); ?>" />
+<meta name="keywords" content="<?php echo $reference; ?>,<?php echo $row_rsView['title']; ?>" />
+
+<meta name="author" content="" />
+<meta name="copyright" content="CalBabyBar.com" />
+<meta name="application-name" content="Cal Baby Bar" />
+<!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
