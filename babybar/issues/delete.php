@@ -76,14 +76,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 if ((isset($_GET['node_id'])) && ($_GET['node_id'] != "")) {
-	$q = "select revision_number from calbabybar_nodes_revision WHERE user_id = ".$_SESSION['MM_UserId']." AND ref_id = ".$_GET['node_id']." Order by revision_number DESC LIMIT 1";
+	$q = "select revision_number from calbabybar_nodes_revision WHERE user_id = ".$_SESSION['MM_UserId']." AND node_id = ".$_GET['node_id']." Order by revision_number DESC LIMIT 1";
   mysql_select_db($database_conn, $conn);
 	$r = mysql_query($q, $conn) or die(mysql_error());
 	$rec = mysql_fetch_array($r);
 	$num = 1;
 	if ($rec['revision_number'] >= 1) $num = $rec['revision_number'] + 1;
 
-	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action, status) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Deleted', status from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_GET['node_id'];
+	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, node_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action, status, ref_id) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Deleted', status, ref_id from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_GET['node_id'];
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());

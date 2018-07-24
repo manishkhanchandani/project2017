@@ -131,7 +131,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, status, ref_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['subject_id'], "int"),
                        GetSQLValueString($_POST['title'], "text"),
@@ -141,10 +141,27 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_POST['sub_topic'], "text"),
                        GetSQLValueString($_POST['view_images'], "text"),
                        GetSQLValueString($_POST['view_videos'], "text"),
-                       GetSQLValueString($_POST['view_links'], "text"));
+                       GetSQLValueString($_POST['view_links'], "text"),
+                       GetSQLValueString($_POST['status'], "int"),
+                       GetSQLValueString($_POST['ref_id'], "text"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+  
+  
+  if (!empty($_POST['ref_id'])) {
+  	$id = mysql_insert_id();
+  	$tmp = explode(',', $_POST['ref_id']);
+	foreach ($tmp as $k => $v) {
+		$ref_id = trim($v);
+		$sql = sprintf("INSERT INTO calbabybar_ref (id, ref_id) VALUES (%s, %s)",
+                       GetSQLValueString($id, "int"),
+                       GetSQLValueString($ref_id, "int"));
+
+	  mysql_select_db($database_conn, $conn);
+	  mysql_query($sql, $conn) or die(mysql_error());
+	}
+  }
 
   $insertGoTo = $mainUrl;
   header(sprintf("Location: %s", $insertGoTo));
@@ -176,6 +193,7 @@ $title = !empty($_POST['title']) ? $_POST['title'] : '';
 $description = !empty($_POST['description']) ? $_POST['description'] : '';
 $description2 = !empty($_POST['description2']) ? $_POST['description2'] : '';
 $sub_topic = !empty($_POST['sub_topic']) ? $_POST['sub_topic'] : '';
+$ref_id = !empty($_POST['ref_id']) ? $_POST['ref_id'] : '';
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -307,7 +325,7 @@ do {
                   <td><textarea name="description" id="description"  rows="5"><?php echo $description; ?></textarea>                  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right" valign="top"><strong>Sample Analysis:</strong></td>
+                  <td nowrap align="right" valign="top"><strong>More Explanation :</strong></td>
                   <td><textarea name="description2" id="description2" rows="5"><?php echo $description2; ?></textarea>                  </td>
               </tr>
               <tr valign="baseline">
@@ -368,6 +386,20 @@ do {
 					  <option value="<?php echo $k; ?>" <?php if ($node_type === $k) { ?>selected<?php } ?>><?php echo $v; ?></option>
 					  <?php } ?>
                   </select></td>
+              </tr>
+              <tr valign="baseline">
+                  <td nowrap align="right"><strong>Show / Hide:</strong> </td>
+                  <td><label>
+                      <input  name="status" type="radio" value="1" checked>
+                      Public
+                      <input   name="status" type="radio" value="0">
+                      Private </label></td>
+              </tr>
+              <tr valign="baseline">
+                  <td nowrap align="right"><strong>References:<br>
+					(Comma separated ids)
+					</strong> </td>
+                  <td><input type="text" name="ref_id" class="form-control" value="<?php echo $ref_id; ?>"></td>
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right">&nbsp;</td>

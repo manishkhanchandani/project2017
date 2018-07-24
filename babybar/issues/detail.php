@@ -76,7 +76,30 @@ $rsView = mysql_query($query_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);
 $totalRows_rsView = mysql_num_rows($rsView);
 
+$colname_rsMyRef = "-1";
+if (isset($_GET['detail_id'])) {
+  $colname_rsMyRef = (get_magic_quotes_gpc()) ? $_GET['detail_id'] : addslashes($_GET['detail_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsMyRef = sprintf("SELECT b.* FROM calbabybar_ref as a LEFT JOIN calbabybar_nodes as b ON a.ref_id = b.id WHERE a.id = %s", $colname_rsMyRef);
+$rsMyRef = mysql_query($query_rsMyRef, $conn) or die(mysql_error());
+$row_rsMyRef = mysql_fetch_assoc($rsMyRef);
+$totalRows_rsMyRef = mysql_num_rows($rsMyRef);
+
+$colname_rsIamRelated = "-1";
+if (isset($_GET['detail_id'])) {
+  $colname_rsIamRelated = (get_magic_quotes_gpc()) ? $_GET['detail_id'] : addslashes($_GET['detail_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsIamRelated = sprintf("SELECT b.*  FROM calbabybar_ref as a LEFT JOIN calbabybar_nodes as b ON a.id = b.id WHERE a.ref_id = %s", $colname_rsIamRelated);
+$rsIamRelated = mysql_query($query_rsIamRelated, $conn) or die(mysql_error());
+$row_rsIamRelated = mysql_fetch_assoc($rsIamRelated);
+$totalRows_rsIamRelated = mysql_num_rows($rsIamRelated);
+
+
 $endtime = microtime(true);
+
+
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -126,7 +149,7 @@ $endtime = microtime(true);
   <div class="row">
     
     
-<div class="col-sm-12 col-md-9 ">
+<div class="col-sm-12 col-md-12 ">
 <div><a href="<?php echo $mainUrl; ?>">Back to Subject Page</a> | <a href="<?php echo HTTP_PATH; ?>">Back to Home Page</a></div>
 <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
   <h1 class="page-header"><?php echo $row_rsView['title']; ?></h1>
@@ -139,7 +162,7 @@ $endtime = microtime(true);
 	$d2 = trim(strip_tags($row_rsView['description2']));
 	if (!empty($d2)) { ?>
 	<hr />
-	<p><strong>Analysis</strong></p>
+	<p><strong>More Explanation</strong></p>
 	<div><?php echo $row_rsView['description2']; ?><hr /></div>                                      
 	<?php } ?></div>
 	
@@ -153,11 +176,148 @@ $node_id = $row_rsView['id'];
 		<?php include('../common/media.php'); ?>
 	</div>
 
-	<div><small><hr /><strong>ID:</strong> <?php echo $row_rsView['id']; ?> (<strong><?php echo time_elapsed_string($row_rsView['topic_created']); ?></strong>)</small></div>
+	<div><small><hr /><strong>ID:</strong> <?php echo $row_rsView['id']; ?> (<strong><?php echo timeAgo($row_rsView['topic_created']); ?></strong>)</small></div>
 <?php } // Show if recordset not empty ?>
 <?php if ($totalRows_rsView === 0) { // Show if recordset not empty ?>
 <p>No Record Found. </p>
 <?php } // Show if recordset not empty ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php if ($totalRows_rsMyRef > 0) { // Show if recordset not empty ?>
+
+<hr />
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Current Article needs following knowledge</h3>
+	</div>
+	<div class="panel-body">
+<?php do { ?>
+		
+		
+		
+		
+		
+	<div class="page-header"><strong><?php echo $row_rsMyRef['title']; ?></strong></div>
+  <div><small><a href="<?php echo HTTP_PATH.$row_rsMyRef['node_type'].'/'.$barSubjects[$row_rsMyRef['subject_id']]['url'].'/'.$row_rsMyRef['subject_id']; ?>/detail/<?php echo $row_rsMyRef['id']; ?>">Detail</a><br /></small>
+  <hr /></div>
+  
+  <div><?php echo $row_rsMyRef['description']; ?></div>
+  
+  <div><?php 
+	$d2 = trim(strip_tags($row_rsMyRef['description2']));
+	if (!empty($d2)) { ?>
+	<hr />
+	<p><strong>More Explanation</strong></p>
+	<div><?php echo $row_rsMyRef['description2']; ?><hr /></div>                                      
+	<?php } ?></div>
+	
+	<div>
+<?php
+$images = json_decode($row_rsMyRef['view_images'], true);
+$videos = json_decode($row_rsMyRef['view_videos'], true); 
+$links = json_decode($row_rsMyRef['view_links'], true);
+$node_id = $row_rsMyRef['id'];
+?>
+		<?php include('../common/media.php'); ?>
+	</div>
+
+	<div><small><hr /><strong>ID:</strong> <?php echo $row_rsMyRef['id']; ?> (<strong><?php echo timeAgo($row_rsMyRef['topic_created']); ?></strong>)</small></div>	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+<?php } while ($row_rsMyRef = mysql_fetch_assoc($rsMyRef)); ?>
+
+	</div>
+</div>
+<?php } // Show if recordset not empty ?>
+
+
+
+
+
+
+
+<?php if ($totalRows_rsIamRelated > 0) { // Show if recordset not empty ?>
+
+<hr />
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">Following articles need above knowledge</h3>
+	</div>
+	<div class="panel-body">
+<?php do { ?>
+
+<div class="page-header"><strong><?php echo $row_rsIamRelated['title']; ?></strong></div>
+  <div><small><a href="<?php echo HTTP_PATH.$row_rsIamRelated['node_type'].'/'.$barSubjects[$row_rsIamRelated['subject_id']]['url'].'/'.$row_rsIamRelated['subject_id']; ?>/detail/<?php echo $row_rsIamRelated['id']; ?>">Detail</a><br /></small>
+  <hr /></div>
+  
+  <div><?php echo $row_rsIamRelated['description']; ?></div>
+  
+  <div><?php 
+	$d2 = trim(strip_tags($row_rsIamRelated['description2']));
+	if (!empty($d2)) { ?>
+	<hr />
+	<p><strong>More Explanation</strong></p>
+	<div><?php echo $row_rsIamRelated['description2']; ?><hr /></div>                                      
+	<?php } ?></div>
+	
+	<div>
+<?php
+$images = json_decode($row_rsIamRelated['view_images'], true);
+$videos = json_decode($row_rsIamRelated['view_videos'], true); 
+$links = json_decode($row_rsIamRelated['view_links'], true);
+$node_id = $row_rsIamRelated['id'];
+?>
+		<?php include('../common/media.php'); ?>
+	</div>
+
+	<div><small><hr /><strong>ID:</strong> <?php echo $row_rsIamRelated['id']; ?> (<strong><?php echo timeAgo($row_rsIamRelated['topic_created']); ?></strong>)</small></div>
+<?php } while ($row_rsIamRelated = mysql_fetch_assoc($rsIamRelated)); ?>
+
+	</div>
+</div>
+<?php } // Show if recordset not empty ?>
+
+
+
+
+
+
+
+
+
 
 </div><!-- ending col -->
 <!--<?php echo $query_rsView; echo "\n\nTime Taken:"; echo $duration = $endtime - $starttime; 
@@ -170,4 +330,8 @@ $node_id = $row_rsView['id'];
 <!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsView);
+
+mysql_free_result($rsMyRef);
+
+mysql_free_result($rsIamRelated);
 ?>

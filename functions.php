@@ -193,6 +193,43 @@ function time_elapsed_string($datetime, $full = false) {
 }
 
 
+if (!function_exists('timeAgo')) {
+function timeAgo($datetime) {
+	$now = time();
+	$ago = strtotime($datetime);
+	$ago = $ago - (60 * 60 * 3);//5
+    $seconds = $now - $ago;
+	if ($seconds < 0 ) $seconds = 0;
+	$interval = floor($seconds / 31536000);
+	if ($interval > 1) {
+	  return $interval . " years ago";
+	}
+	
+	$interval = floor($seconds / 2592000);
+	if ($interval > 1) {
+	  return $interval . " months ago";
+	}
+	
+	$interval = floor($seconds / 86400);
+	if ($interval > 1) {
+	  return $interval . " days ago";
+	}
+	
+	$interval = floor($seconds / 3600);
+	if ($interval > 1) {
+	  return $interval . " hours ago";
+	}
+	
+	$interval = floor($seconds / 60);
+	if ($interval > 1) {
+	  return $interval . " minutes ago";
+	}
+	
+	return 'just now';
+}
+}
+
+
 if (!function_exists('getIsCrawler')) {
 	function getIsCrawler($userAgent) {
 		$crawlers = 'Googlebot|bot|Facebook';

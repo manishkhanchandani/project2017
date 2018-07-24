@@ -1,11 +1,11 @@
 <?php require_once('../Connections/conn.php'); ?>
 <?php
-$currentPage = $_SERVER["PHP_SELF"];
 
 $starttime = microtime(true);
 session_start();
 include_once('init.php');
 include_once('library/rss.php');
+$currentPage = HTTP_PATH;
 
 $myRss = new RSSParser("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&q=California+law&cf=all&output=rss"); 
 $itemNum=0;
@@ -27,7 +27,7 @@ if (isset($_GET['pageNum_rsView'])) {
 $startRow_rsView = $pageNum_rsView * $maxRows_rsView;
 
 mysql_select_db($database_conn, $conn);
-$query_rsView = "SELECT * FROM calbabybar_nodes WHERE current_status = 1 AND deleted = 0 $sql ORDER BY id DESC";
+$query_rsView = "SELECT * FROM calbabybar_nodes WHERE current_status = 1 AND deleted = 0 AND status = 1 $sql ORDER BY id DESC";
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);
@@ -148,7 +148,7 @@ $endtime = microtime(true);
                               <td><?php echo $row_rsView['sub_topic']; ?></td>
                               <td><?php echo $barSubjects[$row_rsView['subject_id']]['year']; ?></td>
                               <td><?php echo $row_rsView['node_type']; ?> / <a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $barSubjects[$row_rsView['subject_id']]['subject']; ?></a></td>
-                              <td><?php echo time_elapsed_string($row_rsView['topic_created']); ?></td>
+                              <td><?php echo timeAgo($row_rsView['topic_created']); ?></td>
                           </tr>
                           <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
                   </tbody>

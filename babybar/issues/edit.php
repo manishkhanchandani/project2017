@@ -140,20 +140,20 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-	$q = "select revision_number from calbabybar_nodes_revision WHERE user_id = ".$_SESSION['MM_UserId']." AND ref_id = ".$_POST['id']." Order by revision_number DESC LIMIT 1";
+	$q = "select revision_number from calbabybar_nodes_revision WHERE user_id = ".$_SESSION['MM_UserId']." AND node_id = ".$_POST['id']." Order by revision_number DESC LIMIT 1";
   mysql_select_db($database_conn, $conn);
 	$r = mysql_query($q, $conn) or die(mysql_error());
 	$rec = mysql_fetch_array($r);
 	$num = 1;
 	if ($rec['revision_number'] >= 1) $num = $rec['revision_number'] + 1;
 
-	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, ref_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action, status) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Edited', status from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_POST['id'];
+	$insertSQL = "INSERT INTO  calbabybar_nodes_revision (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, node_id, revision_number, topic_created, current_status, deleted, deleted_dt, revision_action, status, ref_id) SELECT user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, id, ".$num.", topic_created, current_status, deleted, deleted_dt, 'Edited', status, ref_id from calbabybar_nodes WHERE user_id = ".$_SESSION['MM_UserId']." AND id = ".$_POST['id'];
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
 
 
-  $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s, view_images=%s, view_videos=%s, view_links=%s WHERE user_id = %s AND id = %s",
+  $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s, view_images=%s, view_videos=%s, view_links=%s, status=%s, ref_id=%s WHERE user_id = %s AND id = %s",
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['description2'], "text"),
@@ -162,11 +162,31 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['view_images'], "text"),
                        GetSQLValueString($_POST['view_videos'], "text"),
                        GetSQLValueString($_POST['view_links'], "text"),
+                       GetSQLValueString($_POST['status'], "int"),
+                       GetSQLValueString($_POST['ref_id'], "text"),
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['id'], "int"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
+  
+  
+  	$id = $_POST['id'];
+	$sql = sprintf("DELETE FROM calbabybar_ref WHERE id=%s",
+                       GetSQLValueString($id, "int"));
+	   mysql_query($sql, $conn) or die(mysql_error());
+  if (!empty($_POST['ref_id'])) {
+	
+  	$tmp = explode(',', $_POST['ref_id']);
+	foreach ($tmp as $k => $v) {
+		$ref_id = trim($v);
+		$sql = sprintf("INSERT INTO calbabybar_ref (id, ref_id) VALUES (%s, %s)",
+                       GetSQLValueString($id, "int"),
+                       GetSQLValueString($ref_id, "int"));
+
+	  mysql_query($sql, $conn) or die(mysql_error());
+	}
+  }
 
   $updateGoTo = $mainUrl;
   header(sprintf("Location: %s", $updateGoTo));
@@ -202,6 +222,7 @@ $description2 = !empty($_POST['description2']) ? $_POST['description2'] : $row_r
 $sub_topic = !empty($_POST['sub_topic']) ? $_POST['sub_topic'] : $row_rsEdit['sub_topic'];
 $nt = !empty($_POST['node_type']) ? $_POST['node_type'] : $row_rsEdit['node_type'];
 
+$ref_id = !empty($_POST['ref_id']) ? $_POST['ref_id'] : $row_rsEdit['ref_id'];
 $images = json_decode($row_rsEdit['view_images'], true);
 $videos = json_decode($row_rsEdit['view_videos'], true); 
 $links = json_decode($row_rsEdit['view_links'], true);
@@ -333,7 +354,7 @@ do {
                   <td><textarea name="description" id="description"  rows="5"><?php echo $description; ?></textarea>                  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right" valign="top"><strong>Sample Analysis:</strong></td>
+                  <td nowrap align="right" valign="top"><strong>More Explanation :</strong></td>
                   <td><textarea name="description2" id="description2" rows="5"><?php echo $description2; ?></textarea>                  </td>
               </tr>
               <tr valign="baseline">
@@ -354,8 +375,7 @@ do {
 							function addMoreImages() {
 								$('#images').append($('#images2').html());
 							}
-						</script>
-                  </td>
+						</script>                  </td>
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right"><strong>Videos (Youtube URL):</strong></td>
@@ -375,8 +395,7 @@ do {
 							function addMoreVideos() {
 								$('#videos').append($('#videos2').html());
 							}
-						</script>
-                  </td>
+						</script>                  </td>
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right"><strong>Links / PDF / Document:</strong></td>
@@ -396,8 +415,7 @@ do {
 						function addMoreLinks() {
 							$('#links').append($('#links2').html());
 						}
-					</script>
-                  </td>
+					</script>                  </td>
               </tr>
               
               <tr valign="baseline">
@@ -408,6 +426,20 @@ do {
                           <option value="<?php echo $k; ?>" <?php if ($nt === $k) { ?>selected<?php } ?>><?php echo $v; ?></option>
                           <?php } ?>
                   </select></td>
+              </tr>
+              <tr valign="baseline">
+                  <td nowrap align="right"><strong>Show / Hide:</strong> </td>
+                  <td><label>
+                      <input <?php if (!(strcmp($row_rsEdit['status'],"1"))) {echo "checked=\"checked\"";} ?> name="status" type="radio" value="1">
+                      Public
+                      <input <?php if (!(strcmp($row_rsEdit['status'],"0"))) {echo "checked=\"checked\"";} ?> name="status" type="radio" value="0">
+                  Private
+                  </label></td>
+              </tr>
+              <tr valign="baseline">
+                  <td nowrap align="right"><strong>References:<br>
+                      (Comma separated ids) </strong> </td>
+                  <td><input type="text" name="ref_id" class="form-control" value="<?php echo $ref_id; ?>"></td>
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right">&nbsp;</td>
