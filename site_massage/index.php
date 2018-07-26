@@ -7,7 +7,7 @@ include_once('init.php');
 include_once('library/rss.php');
 $currentPage = HTTP_PATH;
 
-$myRss = new RSSParser("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&q=massage&cf=all&output=rss"); 
+$myRss = new RSSParser("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&q=california+massage&cf=all&output=rss"); 
 $itemNum=0;
 $myRss_RSSmax=0;
 if($myRss_RSSmax==0 || $myRss_RSSmax>count($myRss->titles)) $myRss_RSSmax=count($myRss->titles);
@@ -19,47 +19,10 @@ if (!empty($_GET['kw'])) {
 }
 
 
-$maxRows_rsView = 10;
-$pageNum_rsView = 0;
-if (isset($_GET['pageNum_rsView'])) {
-  $pageNum_rsView = $_GET['pageNum_rsView'];
-}
-$startRow_rsView = $pageNum_rsView * $maxRows_rsView;
-
-mysql_select_db($database_conn, $conn);
-$query_rsView = "SELECT * FROM calbabybar_nodes WHERE current_status = 1 AND deleted = 0 AND status = 1 $sql ORDER BY id DESC";
-$query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
-$rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
-$row_rsView = mysql_fetch_assoc($rsView);
-
-if (isset($_GET['totalRows_rsView'])) {
-  $totalRows_rsView = $_GET['totalRows_rsView'];
-} else {
-  $all_rsView = mysql_query($query_rsView);
-  $totalRows_rsView = mysql_num_rows($all_rsView);
-}
-$totalPages_rsView = ceil($totalRows_rsView/$maxRows_rsView)-1;
-
-$queryString_rsView = "";
-if (!empty($_SERVER['QUERY_STRING'])) {
-  $params = explode("&", $_SERVER['QUERY_STRING']);
-  $newParams = array();
-  foreach ($params as $param) {
-    if (stristr($param, "pageNum_rsView") == false && 
-        stristr($param, "totalRows_rsView") == false) {
-      array_push($newParams, $param);
-    }
-  }
-  if (count($newParams) != 0) {
-    $queryString_rsView = "&" . htmlentities(implode("&", $newParams));
-  }
-}
-$queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $queryString_rsView);
-
 $endtime = microtime(true);
 ?>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/newSite.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/ineedmassage.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset="UTF-8">
@@ -81,8 +44,6 @@ $endtime = microtime(true);
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>
 
-<link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
-<script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include(BASE_DIR.DIRECTORY_SEPARATOR.'head.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
@@ -126,65 +87,9 @@ $endtime = microtime(true);
     </div>
   </div> -->
 
-  <h3 class="sub-header">Latest Entries </h3><?php //echo $query_rsView; ?>
-      <?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
-          <div class="table-responsive">
-              <table class="table table-striped">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>Title</th>
-                          <th>Sub Topic </th>
-                          <th>Year</th>
-                          <th>Subject</th>
-                          <th>Created On </th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <?php do { ?>
-                          <tr>
-                              <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong>ID: <?php echo $row_rsView['id']; ?></strong></a></td>
-                              <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $row_rsView['title']; ?></a></td>
-                              <td><?php echo $row_rsView['sub_topic']; ?></td>
-                              <td><?php echo $row_rsView['subject_id']; ?></td>
-                              <td><?php echo $row_rsView['node_type']; ?> / <a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $row_rsView['subject_id']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $row_rsView['subject_id']; ?></a></td>
-                              <td><?php echo timeAgo($row_rsView['topic_created']); ?></td>
-                          </tr>
-                          <?php } while ($row_rsView = mysql_fetch_assoc($rsView)); ?>
-                  </tbody>
-              </table>
-          </div>
-          <p> Records <?php echo ($startRow_rsView + 1) ?> to <?php echo min($startRow_rsView + $maxRows_rsView, $totalRows_rsView) ?> of <?php echo $totalRows_rsView ?></p>
-          <table border="0" width="50%" align="center">
-              <tr>
-                  <td width="23%" align="center"><?php if ($pageNum_rsView > 0) { // Show if not first page ?>
-                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, 0, $queryString_rsView); ?>">First</a>
-                              <?php } // Show if not first page ?>
-                  </td>
-                  <td width="31%" align="center"><?php if ($pageNum_rsView > 0) { // Show if not first page ?>
-                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, max(0, $pageNum_rsView - 1), $queryString_rsView); ?>">Previous</a>
-                              <?php } // Show if not first page ?>
-                  </td>
-                  <td width="23%" align="center"><?php if ($pageNum_rsView < $totalPages_rsView) { // Show if not last page ?>
-                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, min($totalPages_rsView, $pageNum_rsView + 1), $queryString_rsView); ?>">Next</a>
-                              <?php } // Show if not last page ?>
-                  </td>
-                  <td width="23%" align="center"><?php if ($pageNum_rsView < $totalPages_rsView) { // Show if not last page ?>
-                              <a href="<?php printf("%s?pageNum_rsView=%d%s", $currentPage, $totalPages_rsView, $queryString_rsView); ?>">Last</a>
-                              <?php } // Show if not last page ?>
-                  </td>
-              </tr>
-          </table>
-          <?php } // Show if recordset not empty ?>
-  <?php if ($totalRows_rsView == 0) { // Show if recordset empty ?>
-      <p>No Record Found.</p>
-              <?php } // Show if recordset empty ?>
- 
-<hr />
 	<h3 class="sub-header">Aim of This Website!! </h3>
 	<div>
-	    <p>User Generated Contents for California Bar Course. All the contents are inserted by the users. A social networking framework for LAW STUDENTS.</p>
-	    <p>You can resubmit the data on any topic as every student has different views and let readers should read everybody's view on every topic. For example: Assault can be resubmitted by many students to let others know the idea of assault. </p>
+	   coming soon...
 	    </div>
 <hr />
 <?php if ($myRss_RSSmax > 0) { ?>
@@ -192,7 +97,7 @@ $endtime = microtime(true);
 			<div class="col-lg-12">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">California Law News</h3>
+						<h3 class="panel-title">California Massage News</h3>
 					</div>
 					<div class="panel-body">
 						<ul>
@@ -219,6 +124,3 @@ $endtime = microtime(true);
 </div>
 </body>
 <!-- InstanceEnd --></html>
-<?php
-mysql_free_result($rsView);
-?>

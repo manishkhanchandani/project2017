@@ -88,8 +88,8 @@ description
 TRAVEL PREFERENCE
 
 Where do you work?
-	I travel to my customers (travel radius and main location) check box
-	My customers travel to me  checkbox
+	I travel to my customers (travel radius and main location) check box work_travel
+	My customers travel to me  checkbox work_business
 	
 Note
 We embrace our diverse community of pros and customers.
@@ -132,13 +132,13 @@ PRICES
 	
 
 Which session lengths work for you?
-	60 minutes
-	90 minutes
-	180 minutes
+	60 minutes price_60_min
+	90 minutes price_90_min
+	180 minutes price_120_min
 	
 What types of massage do you offer?
-	Individual massage
-	Couples massage
+	Individual massage mas_type_ind
+	Couples massage mas_type_cpl
 
 How much do you charge for massage therapy jobs?
 
@@ -155,7 +155,7 @@ Discount for session packages
 	
 		
 BUSINESS HOURS
-Check box
+Check box business_hours
 	sun		time 1: 12 am to 11.59 pm, time 2, time 3
 	mon		time 1: 12 am to 11.59 pm, time 2, time 3
 	tue		time 1: 12 am to 11.59 pm, time 2, time 3
@@ -165,6 +165,8 @@ Check box
 	sat		time 1: 12 am to 11.59 pm, time 2, time 3
 	
 
+Appointment
+	same day / from next day
 	
 Time Zone
 	pacific
@@ -259,6 +261,100 @@ Hot stone massage
 
 
 
+Page 1, After Login
+Check Email and if email is missing send user to update email page
+(pending)
+
+Page 2: 
+Enter as Client
+Enter as Business
+(navigation also to choose)
+(pending)
+
+Page 3:
+Enter as Business
+	Create Profile ( can create multiple profiles in different location) - each profile has to pay $10 per month
+	Step 1: Business Information
+	Step 2: TRAVEL PREFERENCE
+	Step 3: Job Preference
+	Step 4: Prices
+	Step 5: Business Hours
+	Step 6: Read charges and other information
+	Step 7: Go Online
+				edit, new, delete
+	
+Page 4:
+Enter as Client
+	Create Profile ( to be massaged), create profile for different person as different profile,
+		Name, Age, Gender, pics, videos, links, Massage Type (Swedish/DeepTissue or any other), Parts to be massaged: (head and scalp, ears, forehead, eyebrows, cheeks, nose, upper lips, chin, neck, shoulder, back, lower back, chest, abdomen, pelvis and surrounding area, buttocks, space between buttocks, thighs, knees, calf & lower leg, ankle, feet), you need massage at your location or business location of massage practitioner (travel miles), do you need male or female massagist, special request or comments, do you like massage oil, or body lotion or dry, location (main), do you prefer 60 min, 90 min, 120 min massage, do you need hard pressure or medium pressure or soft pressure, 
+			edit, new, delete
+
+		Find Matches based on above profile
+		
+			Message any professional, or schedule the appointment (one time, weekly, cancel appointment) 
+				edit, new, delete
+			Note all charges are to be given to professional, we are not taking any charges on behalf of the professional.
+			
+	
+	
+
+
+
+Appointment system (https://app.youcanbook.me/#/editProfile?id=9d605f99-bdac-4e43-a9ee-36bedc37ecfa&section=appointmentTypes)
+Preview while booking
+
+1. URL for booking
+2. Different Templates
+3. Select days and times you want to be available for bookings.
+4. Questions to be asked before booking
+5. Notifications
+
+
+
+A. General
+1. Url for booking
+2. Booking page title 
+3. Booking instructions (Click on any time to make a booking.)
+4. Upload logo or an image
+5. Password protect the booking page
+
+Display
+Image
+Page Title
+Booking Instructions
+
+
+B. Days and Times
+
+a. Availability
+
+Mon from time to end time
+Tue from time to end time
+Wed from time to end time
+Thu from time to end time
+Fri from time to end time
+Sat from time to end time
+Sun from time to end time
+
+Break Start Time and Break End time
+
+Fixes start time and Fixed End time
+Set a start and end date to restrict your availability to a specific date range. 
+
+b. Duration & display
+
+Show availability in increments of
+60 mins or 30 mins
+
+Booking duration
+Fixed or Flexible (phase 2)
+
+
+c. Appointment times (phase 2)
+
+d. Language and Timezone (phase 2)
+
+e. Booking questions (phase 2)
 
 
 
