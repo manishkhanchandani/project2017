@@ -108,7 +108,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	
 	$bh = array(
 		'startTime' => $_POST['startTime'],
-		'endTime' => $_POST['endTime']
+		'endTime' => $_POST['endTime'],
+		'hstatus' => $_POST['hstatus']
 	);
 	
 	$_POST['business_hours'] = json_encode($bh);
@@ -219,11 +220,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 <link href="<?php echo HTTP_PATH; ?>js/timepicker/1.2.17/jquery.timepicker.min.css" rel="stylesheet" type="text/css">
 <script src="<?php echo HTTP_PATH; ?>js/timepicker/1.2.17/jquery.timepicker.min.js"></script>
 <link href="<?php echo HTTP_PATH; ?>js/businessHours/jquery.businessHours.css" rel="stylesheet" type="text/css">
-<script src="<?php echo HTTP_PATH; ?>js/businessHours/jquery.businessHours.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/businessHours/jquery.businessHours.js"></script>
 
 <style type="text/css">
 	.colorBox.WorkingDayState {
-		background-color: #337AB7;
+		background-color: #4caf50;
 	}
 </style>
 <!-- InstanceEndEditable -->
@@ -670,7 +671,7 @@ $("#businessHoursContainer").businessHours({
 	defaultOperationTimeFrom: '9:00',
 	defaultOperationTimeTill: '17:00',
 	dayTmpl:'<div class="dayContainer" style="width: 80px;">' +
-		'<div data-original-title="" class="colorBox"><input type="checkbox" class="invisible operationState"></div>' +
+		'<div data-original-title="" class="colorBox"><input type="checkbox" class="invisible operationState" name="hstatus[]"></div>' +
 		'<div class="weekday"></div>' +
 		'<div class="operationDayTimeContainer">' +
 		'<div class="operationTime input-group"><span class="input-group-addon"><i class="far fa-sun"></i></span><input type="text" name="startTime[]" class="mini-time form-control operationTimeFrom" value=""></div>' +

@@ -1,6 +1,7 @@
 /**
  jquery.businessHours v1.0.1
  https://github.com/gEndelf/jquery.businessHours
+ https://gendelf.github.io/jquery.businessHours/
 
  requirements:
  - jQuery 1.7+
@@ -112,6 +113,7 @@
 
                     var isWorkingDay = $this.getValueOrDefault(day.isActive, options.defaultActive);
                     operationDayNode.find('.operationState').prop('checked', isWorkingDay);
+					operationDayNode.find('.operationState').prop('name', 'hstatus['+pos+']');
 
                     var timeFrom = $this.getValueOrDefault(day.timeFrom, options.defaultOperationTimeFrom);
                     initTimeBox(operationDayNode.find('[name="startTime[]"]'), timeFrom, options.inputDisabled);
