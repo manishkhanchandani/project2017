@@ -32,6 +32,7 @@ $endtime = microtime(true);
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
+<link href="<?php echo HTTP_PATH; ?>fontawesome-5.1.1/css/all.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/dashboard.css">
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/NavMulti.css">
 
