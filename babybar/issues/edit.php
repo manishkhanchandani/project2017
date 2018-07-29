@@ -7,7 +7,7 @@ include_once('../init.php');
 $id = $_GET['id'];
 $subjectUrl = $_GET['subjectUrl'];
 $node_type = $_GET['node_type'];
-$reference = $nodeTypes[$node_type];
+$reference = $nodeTypes[$node_type]['name'];
 $mainUrl = HTTP_PATH.$node_type.'/'.$subjectUrl.'/'.$id;
 $subject = $barSubjects[$_GET['id']]['subject'];
 
@@ -423,7 +423,7 @@ do {
                   <td><select name="node_type" id="node_type" class="form-control">
                           <option value="">Select Node</option>
                           <?php foreach ($nodeTypes as $k => $v) { ?>
-                          <option value="<?php echo $k; ?>" <?php if ($nt === $k) { ?>selected<?php } ?>><?php echo $v; ?></option>
+                          <option value="<?php echo $k; ?>" <?php if ($nt === $k) { ?>selected<?php } ?>><?php echo $v['name']; ?></option>
                           <?php } ?>
                   </select></td>
               </tr>

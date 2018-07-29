@@ -49,7 +49,7 @@ if (isset($_GET['accesscheck'])) {
 			addInFb(obj);
 		}
 	}
-	//trackPage();
+	trackPage();
 	/*
 	let url = '<?php //echo FIREBASE_BASEPATH; ?>/somepath';
 	firebaseDatabase.ref(url).child(this.state.deleteIssueModalData.id).set(null);

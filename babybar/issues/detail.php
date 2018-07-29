@@ -7,7 +7,7 @@ $id = $_GET['id'];
 $subjectUrl = $_GET['subjectUrl'];
 $node_type = $_GET['node_type'];
 $detail_id = $_GET['detail_id'];
-$reference = $nodeTypes[$node_type];
+$reference = $nodeTypes[$node_type]['name'];
 $mainUrl = HTTP_PATH.$node_type.'/'.$subjectUrl.'/'.$id;
 $subject = $barSubjects[$_GET['id']]['subject'];
 

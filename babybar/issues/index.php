@@ -6,7 +6,7 @@ include_once('../init.php');
 $id = $_GET['id'];
 $subjectUrl = $_GET['subjectUrl'];
 $node_type = $_GET['node_type'];
-$reference = $nodeTypes[$node_type];
+$reference = $nodeTypes[$node_type]['name'];
 $mainUrl = HTTP_PATH.$node_type.'/'.$subjectUrl.'/'.$id;
 $subject = $barSubjects[$_GET['id']]['subject'];
 
@@ -63,6 +63,11 @@ if (!empty($_GET['my']) && !empty($_SESSION['MM_UserId'])) {
 if (!empty($_GET['sort']) || !empty($_COOKIE['sort'])) {
 	$sort = !empty($_GET['sort']) ? $_GET['sort'] : (!empty($_COOKIE['sort']) ? $_COOKIE['sort'] : 'id');
 	$order = $sort.' '.$sorttype;
+	if ($sort === "4") {
+		$order = 'sub_topic '.$sorttype.', id '.$sorttype;
+	} else if ($sort === "5") {
+		$order = 'sub_topic '.$sorttype.', title '.$sorttype;
+	}
 	setcookie('sort', $sort, time() + 60*60*24*7, '/');
 	setcookie('sorttype', $sorttype, time() + 60*60*24*7, '/');
 }

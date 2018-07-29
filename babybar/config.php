@@ -5,7 +5,7 @@ define('LOCAL_FOLDER', '/project2017/babybar/');
 define('SERVER_FOLDER', '/');
 define('FIREBASE_BASEPATH', 'babybarphp');
 
-$nodeTypes = array('defs' => 'Definitions','casebriefs' => 'Case Briefs','midterma' => 'Mid Term A','midtermb' => 'Mid Term B','issues' => 'Issues','essays' => 'Essays','mbe' => 'MBE', 'assignments' => 'Assignments', 'quizes' => 'Quizes');
+$nodeTypes = array('defs' => array('name' => 'Definitions', 'flashcard' => true), 'casebriefs' =>  array('name' => 'Case Briefs', 'flashcard' => false),'midterma' =>  array('name' => 'Mid Term A', 'flashcard' => false), 'midtermb' =>  array('name' => 'Mid Term B', 'flashcard' => false), 'issues' =>  array('name' => 'Issues', 'flashcard' => true), 'essays' =>  array('name' => 'Essays', 'flashcard' => false), 'mbe' =>  array('name' => 'MBE', 'flashcard' => false),  'assignments' =>  array('name' => 'Assignments', 'flashcard' => false),  'quizes' => array('name' => 'Quizes', 'flashcard' => false));
 
 
 $barSubjects = array(

@@ -12,9 +12,11 @@ $sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : (!empty($_COOKIE['so
 		<label for="sort">Sorting: </label>
 		<select name="sort" id="sort" class="form-control">
 		    <option value="" <?php if (!(strcmp("", $sort))) {echo "selected=\"selected\"";} ?>>Select</option>
-		    <option value="topic_created" <?php if (!(strcmp('topic_created', $sort))) {echo "selected=\"selected\"";} ?>>Created Date</option>
-		    <option value="title" <?php if (!(strcmp('title', $sort))) {echo "selected=\"selected\"";} ?>>Title</option>
-		    <option value="id" <?php if (!(strcmp('id', $sort))) {echo "selected=\"selected\"";} ?>>ID</option>
+		    <option value="topic_created" <?php if (!(strcmp("topic_created", $sort))) {echo "selected=\"selected\"";} ?>>Created Date</option>
+		    <option value="title" <?php if (!(strcmp("title", $sort))) {echo "selected=\"selected\"";} ?>>Title</option>
+		    <option value="id" <?php if (!(strcmp("id", $sort))) {echo "selected=\"selected\"";} ?>>ID</option>
+		    <option value="4" <?php if (!(strcmp(4, $sort))) {echo "selected=\"selected\"";} ?>>Subtopic, ID</option>
+		    <option value="5" <?php if (!(strcmp(5, $sort))) {echo "selected=\"selected\"";} ?>>Subtopic, Title</option>
         </select>
 	</div>
 	<div class="form-group">
@@ -25,5 +27,6 @@ $sorttype = !empty($_GET['sorttype']) ? $_GET['sorttype'] : (!empty($_COOKIE['so
 		    <option value="DESC" <?php if (!(strcmp("DESC", $sorttype))) {echo "selected=\"selected\"";} ?>>DESC</option>
         </select>
 	</div>
+	<input name="my" type="hidden" value="<?php echo !empty($_GET['my']) ? $_GET['my'] : ''; ?>" />
 	<button type="submit" class="btn btn-default">Search</button>
 </form>
