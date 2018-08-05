@@ -139,6 +139,7 @@ body {
 	display: block;
 	padding: 6px 12px;
 	position:relative;
+	font-weight: normal;
 }
 
 .myLabel input[type=checkbox] {

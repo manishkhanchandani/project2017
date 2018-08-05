@@ -85,7 +85,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <body>
 
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'NavMulti.php'); ?>
-<div class="container-fluid">
+<div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <div class="provider_create">
 	<h1 class="page-header">Create New Provider Profile</h1>

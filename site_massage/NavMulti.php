@@ -20,7 +20,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="<?php echo HTTP_PATH; ?>">Home</a></li>
 					<li>
-						<a href="" class="dropdown-toggle" data-toggle="dropdown">Client <b class="caret"></b></a>
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="">Action</a></li>
 							<li><a href="">Another action</a></li>
@@ -59,6 +59,7 @@
 							</li>
 						</ul>
 					</li>
+					<!--
 					<li>
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Provider <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -98,8 +99,7 @@
 								</ul>
 							</li>
 						</ul>
-					</li>
-					<!--<li>
+					</li><li>
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="">Action</a></li>

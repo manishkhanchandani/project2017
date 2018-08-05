@@ -4,7 +4,7 @@ define('BASE_DIR', dirname(dirname(__FILE__)));
 include_once(BASE_DIR.DIRECTORY_SEPARATOR.'functions.php');
 include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'config.php');
 
-$suffix = '_V1';
+$suffix = SUFFIX;
 if (empty($_SESSION['MM_UserId']) && !empty($_COOKIE['MM_UserId'.$suffix])) {
 	$_SESSION['MM_Username'] = $_COOKIE['MM_Username'.$suffix];
 	$_SESSION['MM_Email'] = $_COOKIE['MM_Email'.$suffix];

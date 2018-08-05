@@ -261,7 +261,7 @@ $ref_id = !empty($_POST['ref_id']) ? $_POST['ref_id'] : '';
                       <input name="type" type="radio" id="new" value="new" checked>
                       <label for="existing">New</label>
                       </strong></td>
-                  <td><input type="text" name="title" class="form-control" value="<?php echo $title; ?>"></td>
+                  <td><input type="text" name="title" class="form-control" value="<?php echo $title; ?>" maxlength="255"></td>
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right" valign="top">
@@ -293,7 +293,7 @@ do {
               </tr>
               <tr valign="baseline">
                   <td nowrap align="right" valign="top"><strong>
-                      <input name="type2" type="radio" id="new" value="new" <?php if ($totalRows_rsDistinctSubtopic === 0) { ?>checked="checked"<?php } ?>>
+                      <input name="type2" type="radio" id="new" value="new" maxlength="200" <?php if ($totalRows_rsDistinctSubtopic === 0) { ?>checked="checked"<?php } ?>>
                       <label for="existing">New</label>
                   </strong></td>
                   <td><input name="sub_topic" type="text" class="form-control" id="sub_topic"  value="<?php echo $sub_topic; ?>"></td>

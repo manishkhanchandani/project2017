@@ -238,7 +238,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($
 <body>
 
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'NavMulti.php'); ?>
-<div class="container-fluid">
+<div class="container">
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <div class="provider_create">
 	<h1 class="page-header">Create New Provider Profile</h1>

@@ -122,8 +122,8 @@ $totalRows_rsUserExist = mysql_num_rows($rsUserExist);
 	$_SESSION['MM_LoggedInTime'] = $row_rsUserExist['logged_in_time'];
 	$_SESSION['MM_ProfileUID'] = $row_rsUserExist['profile_uid'];
 	
-	$time = time() + (60* 60* 24 * 3);
-	$suffix = '_V1';
+	$time = time() + (60* 60* 24 * 7);
+	$suffix = SUFFIX;
 	setcookie('MM_Username'.$suffix, $_SESSION['MM_Username'], $time, '/');
 	setcookie('MM_Email'.$suffix, $_SESSION['MM_Email'], $time, '/');
 	setcookie('MM_UserGroup'.$suffix, $_SESSION['MM_UserGroup'], $time, '/');

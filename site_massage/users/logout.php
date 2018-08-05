@@ -4,9 +4,10 @@ $logoutGoTo = "../";
 if (!isset($_SESSION)) {
   session_start();
 }
+include_once('../init.php');
 
 $time = time() - 3600;
-$suffix = '_V1';
+$suffix = SUFFIX;
 setcookie('MM_Username'.$suffix, '', $time, '/');
 setcookie('MM_Email'.$suffix, '', $time, '/');
 setcookie('MM_UserGroup'.$suffix, '', $time, '/');
