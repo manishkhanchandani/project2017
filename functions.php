@@ -240,4 +240,11 @@ if (!function_exists('getIsCrawler')) {
 		return $isCrawler;
 	}
 }
+
+
+
+function yearToAge($year) {
+  $currentYear = date('Y');
+  return $currentYear - $year;
+}
 ?>

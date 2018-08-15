@@ -127,6 +127,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 	if (!empty($error)) {
 		unset($_POST['MM_insert']);
+	} else {
+		setcookie('sub_topic_'.$id, $_POST['sub_topic'], (time() + 60*60*24), '/');
 	}
 }
 
@@ -192,7 +194,7 @@ $totalRows_rsDistinctSubtopic = mysql_num_rows($rsDistinctSubtopic);
 $title = !empty($_POST['title']) ? $_POST['title'] : '';
 $description = !empty($_POST['description']) ? $_POST['description'] : '';
 $description2 = !empty($_POST['description2']) ? $_POST['description2'] : '';
-$sub_topic = !empty($_POST['sub_topic']) ? $_POST['sub_topic'] : '';
+$sub_topic = !empty($_POST['sub_topic']) ? $_POST['sub_topic'] : (!empty($_COOKIE['sub_topic_'.$id]) ? $_COOKIE['sub_topic_'.$id] : '');
 $ref_id = !empty($_POST['ref_id']) ? $_POST['ref_id'] : '';
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/babybarV2.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -308,7 +310,7 @@ do {
                           <?php
 do {  
 ?>
-                          <option value="<?php echo $row_rsDistinctSubtopic['sub_topic']?>"><?php echo $row_rsDistinctSubtopic['sub_topic']?></option>
+                          <option value="<?php echo $row_rsDistinctSubtopic['sub_topic']?>" <?php if ($sub_topic === $row_rsDistinctSubtopic['sub_topic']) { ?>selected="selected"<?php } ?> ><?php echo $row_rsDistinctSubtopic['sub_topic']?></option>
                           <?php
 } while ($row_rsDistinctSubtopic = mysql_fetch_assoc($rsDistinctSubtopic));
   $rows = mysql_num_rows($rsDistinctSubtopic);

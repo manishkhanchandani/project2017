@@ -1,0 +1,29 @@
+{
+  "name": "combofb",
+  "version": "1.0.0",
+  "description": "Firebase Api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manish Khanchandani",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "*",
+    "btoa": "^1.1.2",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-jwt": "^5.3.0",
+    "express-session": "*",
+    "express-validator": "*",
+    "firebase": "*",
+    "firebase-admin": "^5.5.1",
+    "jsonwebtoken": "^8.1.0",
+    "morgan": "*",
+    "multer": "*",
+    "path": "*"
+  }
+}

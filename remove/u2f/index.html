@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <!-- The original u2f-api.js code can be found here:
+    https://github.com/google/u2f-ref-code/blob/master/u2f-gae-demo/war/js/u2f-api.js 
+    <script type="text/javascript" src="https://demo.yubico.com/js/u2f-api.js"></script>-->
+    <script type="text/javascript" src="u2f-api.js"></script>
+
+<script language="javascript">
+console.log(u2f);
+</script>
+<script>
+const regreq = 'https://localhost:3483/registerRequest';
+const regres = 'https://localhost:3483/registerResponse';
+const signreq = 'https://localhost:3483/signRequest';
+const signres = 'https://localhost:3483/signResponse';
+  function serverError(data) {
+    console.log(data);
+    alert('Server error code ' + data.status + ': ' + data.responseText);
+  }
+  function checkError(resp) {
+    if (!('errorCode' in resp)) {
+      return false;
+    }
+    if (resp.errorCode === u2f.ErrorCodes['OK']) {
+      return false;
+    }
+    var msg = 'U2F error code ' + resp.errorCode;
+    for (name in u2f.ErrorCodes) {
+      if (u2f.ErrorCodes[name] === resp.errorCode) {
+        msg += ' (' + name + ')';
+      }
+    }
+    if (resp.errorMessage) {
+      msg += ': ' + resp.errorMessage;
+    }
+    console.log(msg);
+    alert(msg);
+    return true;
+  }
+  function u2fRegistered(resp) {
+    console.log(resp);
+    if (checkError(resp)) {
+      return;
+    }
+    $.post(regres, JSON.stringify(resp)).success(function() {
+      alert('Success');
+    }).fail(serverError);
+  }
+  function register() {
+    $.getJSON(regreq).success(function(req) {
+      console.log(req);
+      u2f.register(req.appId, req.registerRequests, req.registeredKeys, u2fRegistered, 30);
+    }).fail(serverError);
+  }
+  function u2fSigned(resp) {
+    console.log(resp);
+    if (checkError(resp)) {
+      return;
+    }
+    $.post(signres, JSON.stringify(resp)).success(function() {
+      alert('Success');
+    }).fail(serverError);
+  }
+  function sign() {
+    $.getJSON(signreq).success(function(req) {
+      console.log(req);
+      u2f.sign(req.appId, req.challenge, req.registeredKeys, u2fSigned, 30);
+    }).fail(serverError);
+  }
+    </script>
+</head>
+
+<body>
+<h1>FIDO U2F Go Library Demo</h1>
+    <ul>
+      <li><a href="javascript:register();">Register token</a></li>
+      <li><a href="javascript:sign();">Authenticate</a></li>
+    </ul>
+    <p>Open Chrome Developer Tools to see debug console logs.</p>
+	
+
+</body>
+</html>

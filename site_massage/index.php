@@ -5,6 +5,10 @@ $starttime = microtime(true);
 session_start();
 include_once('init.php');
 $currentPage = HTTP_PATH;
+if (empty($_SESSION['MM_UserGroup']) || $_SESSION['MM_UserGroup'] !== 'admin') {
+echo 'coming soon';
+exit;
+}
 
 if (!empty($_SESSION['MM_UserId']) && empty($_SESSION['MM_Email'])) {
 	header("Location: users/update_email.php");
@@ -56,8 +60,10 @@ $endtime = microtime(true);
 	<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4 main">
 		<div>
 			<h3>Like <strong>Massage</strong>?</h3>
-			<h3>Free Massage Exchange <strong></strong>! </h3>
-			</div>
+			<h3>Fixed Price  Massage Service <strong></strong>!</h3>
+			<h3>Near your home!</h3>
+			<h3>Someone available all the time 24 hr / 7 days a week!   </h3>
+		</div>
 	</div>
 	<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
 		<h3 class="sub-header"><strong>Create Massage Request</strong> </h3>
