@@ -11,7 +11,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">INeedService.US</a>
+				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">Donation</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
