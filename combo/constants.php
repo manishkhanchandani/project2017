@@ -78,17 +78,23 @@ pr($_SESSION);
 $modelGeneral = new General($connMainAdodb);
 
 define('DEFAULT_IMAGE', HTTPPATH.'images/no-image-available.jpg');
+define('COMMON_CODE', ROOT_DIR.DIRECTORY_SEPARATOR.'sites'.DIRECTORY_SEPARATOR.'common');
+
 $domainConfig = array();
 
-switch ($host) {
+$overWrite = $host;
+if (!empty($_GET['siteo'])) {
+	$overWrite = $_GET['siteo'];
+}
+switch ($overWrite) {
 	case 'donation.mkgalaxy.com':
 		$domainConfig = array(
 			'site_url' => 'd',
 			'site_name' => 'Donation',
 			'site_email' => 'donation@mkgalaxy.com',
-			'template_file' => 'd/template.php',
+			'template_file' => 'template.php',
 			'firebase_dir' => '/d',
-  			'homeUrl' => 'd/home',
+  			'homeUrl' => 'home',
 			'pageTitle' => 'Donation'
 		);
 		break;
@@ -97,9 +103,9 @@ switch ($host) {
 			'site_url' => 's',
 			'site_name' => 'I Need Service',
 			'site_email' => 'ineedservice@mkgalaxy.com',
-			'template_file' => 's/template.php',
+			'template_file' => 'template.php',
 			'firebase_dir' => '/s',
-  			'homeUrl' => 's/home',
+  			'homeUrl' => 'home',
 			'pageTitle' => 'Service'
 		);
 		break;
@@ -108,9 +114,9 @@ switch ($host) {
 			'site_url' => 'g',
 			'site_name' => 'City Groups',
 			'site_email' => 'citygroups@mkgalaxy.com',
-			'template_file' => 'g/template.php',
+			'template_file' => 'template.php',
 			'firebase_dir' => '/g',
-  			'homeUrl' => 'g/home',
+  			'homeUrl' => 'home',
 			'pageTitle' => 'City'
 		);
 		break;

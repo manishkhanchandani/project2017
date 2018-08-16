@@ -3,10 +3,17 @@
 # FileName="Connection_php_mysql.htm"
 # Type="MYSQL"
 # HTTP="true"
-$hostname_connMain = "localhost";
-$database_connMain = "alaw";
-$username_connMain = "root";
-$password_connMain = "";
+if ($_SERVER['HTTP_HOST'] === "localhost") {
+	$hostname_connMain = "localhost";
+	$database_connMain = "alaw";
+	$username_connMain = "root";
+	$password_connMain = "";
+} else {
+	$hostname_connMain = "localhost";
+	$database_connMain = "consultl_project2017";
+	$username_connMain = "consultl_prj17";
+	$password_connMain = "passwords1234567";
+}
 //$connMain = mysql_connect($hostname_connMain, $username_connMain, $password_connMain) or trigger_error(mysql_error(),E_USER_ERROR);
 
 //mysql_select_db($database_connMain, $connMain) or die('could not select db: '.mysql_error());
