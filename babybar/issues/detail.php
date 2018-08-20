@@ -10,6 +10,7 @@ $detail_id = $_GET['detail_id'];
 $reference = $nodeTypes[$node_type]['name'];
 $mainUrl = HTTP_PATH.$node_type.'/'.$subjectUrl.'/'.$id;
 $subject = $barSubjects[$_GET['id']]['subject'];
+$detailUrl = HTTP_PATH.$node_type.'/'.$subjectUrl.'/'.$id.'/detail/'.$detail_id;
 
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
@@ -146,41 +147,47 @@ $endtime = microtime(true);
 <?php include('../NavMulti.php'); ?>
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
-  <div class="row">
-    
-    
-<div class="col-sm-12 col-md-12 ">
-<div><a href="<?php echo $mainUrl; ?>">Back to Subject Page</a> | <a href="<?php echo HTTP_PATH; ?>">Back to Home Page</a></div>
-<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
-  <h1 class="page-header"><?php echo $row_rsView['title']; ?></h1>
-  <div><small>(<?php echo $subject; ?> <?php echo $reference; ?>) <?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?><br /><br /></small>
-  <hr /></div>
-  
-  <div><?php echo $row_rsView['description']; ?></div>
-  
-  <div><?php 
-	$d2 = trim(strip_tags($row_rsView['description2']));
-	if (!empty($d2)) { ?>
-	<hr />
-	<p><strong>More Explanation</strong></p>
-	<div><?php echo $row_rsView['description2']; ?><hr /></div>                                      
-	<?php } ?></div>
-	
-	<div>
-<?php
-$images = json_decode($row_rsView['view_images'], true);
-$videos = json_decode($row_rsView['view_videos'], true); 
-$links = json_decode($row_rsView['view_links'], true);
-$node_id = $row_rsView['id'];
-?>
-		<?php include('../common/media.php'); ?>
+	<div class="row">
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 ">
+			<div><a href="<?php echo $mainUrl; ?>">Back to Subject Page</a> | <a href="<?php echo HTTP_PATH; ?>">Back to Home Page</a></div>
+		</div>
+		<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
+			<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 ">
+  				<h3 class="page-header"><?php echo $row_rsView['title']; ?></h3>
+				<div><small>(<?php echo $subject; ?> <?php echo $reference; ?>) <?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?><br /><br /></small><hr /></div>
+				<div><?php echo $row_rsView['description']; ?></div>
+				<div>
+					<?php 
+					$d2 = trim(strip_tags($row_rsView['description2']));
+					if (!empty($d2)) { ?>
+						<hr />
+						<p><strong>More Explanation</strong></p>
+						<div><?php echo $row_rsView['description2']; ?><hr /></div>                                      
+					<?php } ?>
+				</div>	
+				<?php
+					$images = json_decode($row_rsView['view_images'], true);
+					$videos = json_decode($row_rsView['view_videos'], true); 
+					$links = json_decode($row_rsView['view_links'], true);
+					$node_id = $row_rsView['id'];
+					include('../common/media.php');
+				?>
+			</div><!-- ending col -->
+			
+			<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 ">
+				<?php 
+					if ($node_type === 'essays') { 
+						include(ROOT_DIR.'/common/essay_issues.php');
+					}
+				?>				
+			</div><!-- ending col -->
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12"><small><hr /><strong>ID:</strong> <?php echo $row_rsView['id']; ?> (<strong><?php echo timeAgo($row_rsView['topic_created']); ?></strong>)</small></div>
+		<?php } // Show if recordset not empty ?>
+		<?php if ($totalRows_rsView === 0) { // Show if recordset not empty ?>
+			<p>No Record Found. </p>
+		<?php } // Show if recordset not empty ?>
 	</div>
 
-	<div><small><hr /><strong>ID:</strong> <?php echo $row_rsView['id']; ?> (<strong><?php echo timeAgo($row_rsView['topic_created']); ?></strong>)</small></div>
-<?php } // Show if recordset not empty ?>
-<?php if ($totalRows_rsView === 0) { // Show if recordset not empty ?>
-<p>No Record Found. </p>
-<?php } // Show if recordset not empty ?>
 
 
 
@@ -207,7 +214,7 @@ $node_id = $row_rsView['id'];
 
 
 
-<?php if ($totalRows_rsMyRef > 0) { // Show if recordset not empty ?>
+<?php /*if ($totalRows_rsMyRef > 0) { // Show if recordset not empty ?>
 
 <hr />
 <div class="panel panel-primary">
@@ -261,7 +268,7 @@ $node_id = $row_rsMyRef['id'];
 
 	</div>
 </div>
-<?php } // Show if recordset not empty ?>
+<?php } // Show if recordset not empty */ ?>
 
 
 
@@ -269,7 +276,7 @@ $node_id = $row_rsMyRef['id'];
 
 
 
-<?php if ($totalRows_rsIamRelated > 0) { // Show if recordset not empty ?>
+<?php /*if ($totalRows_rsIamRelated > 0) { // Show if recordset not empty ?>
 
 <hr />
 <div class="panel panel-primary">
@@ -308,7 +315,8 @@ $node_id = $row_rsIamRelated['id'];
 
 	</div>
 </div>
-<?php } // Show if recordset not empty ?>
+
+<?php } // Show if recordset not empty */?>
 
 
 
@@ -319,11 +327,10 @@ $node_id = $row_rsIamRelated['id'];
 
 
 
-</div><!-- ending col -->
 <!--<?php echo $query_rsView; echo "\n\nTime Taken:"; echo $duration = $endtime - $starttime; 
 
 ?> -->
-  </div>
+
 <!-- InstanceEndEditable -->
 </div>
 </body>

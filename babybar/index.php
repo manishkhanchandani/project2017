@@ -6,12 +6,12 @@ session_start();
 include_once('init.php');
 include_once('library/rss.php');
 $currentPage = HTTP_PATH;
-
+/*
 $myRss = new RSSParser("http://news.google.com/news?pz=1&cf=all&ned=us&hl=en&q=California+law&cf=all&output=rss"); 
 $itemNum=0;
 $myRss_RSSmax=0;
 if($myRss_RSSmax==0 || $myRss_RSSmax>count($myRss->titles)) $myRss_RSSmax=count($myRss->titles);
-
+*/
 $sql = '';
 if (!empty($_GET['kw'])) {
 	$_GET['kw'] = trim($_GET['kw']);
@@ -144,7 +144,7 @@ $endtime = microtime(true);
                       <?php do { ?>
                           <tr>
                               <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong>ID: <?php echo $row_rsView['id']; ?></strong></a></td>
-                              <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $row_rsView['title']; ?></a></td>
+                              <td><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>#id_<?php echo $row_rsView['id']; ?>"><?php echo $row_rsView['title']; ?></a></td>
                               <td><?php echo $row_rsView['sub_topic']; ?></td>
                               <td><?php echo $barSubjects[$row_rsView['subject_id']]['year']; ?></td>
                               <td><?php echo $row_rsView['node_type']; ?> / <a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>"><?php echo $barSubjects[$row_rsView['subject_id']]['subject']; ?></a></td>
@@ -187,7 +187,7 @@ $endtime = microtime(true);
 	    <p>You can resubmit the data on any topic as every student has different views and let readers should read everybody's view on every topic. For example: Assault can be resubmitted by many students to let others know the idea of assault. </p>
 	    </div>
 <hr />
-<?php if ($myRss_RSSmax > 0) { ?>
+<?php if (!empty($myRss_RSSmax) && $myRss_RSSmax > 0) { ?>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-primary">

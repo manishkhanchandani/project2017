@@ -98,6 +98,13 @@ if (!empty($barSubjects)) {
 												</ul>
 											</li>
 											<?php } ?>
+											<li class="dropdown-submenu"><a href="<?php echo HTTP_PATH; ?>practice/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">Practice</a>
+												<ul class="dropdown-menu">
+													<li><a href="<?php echo HTTP_PATH; ?>practice/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>">View All</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>practice/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>/create">Create New</a></li>
+													<li><a href="<?php echo HTTP_PATH; ?>practice/<?php echo $v1['url']; ?>/<?php echo $v1['id']; ?>?my=1">My MBE</a></li>
+												</ul>
+											</li>
 										</ul>
 									</li>
 									<?php } ?>

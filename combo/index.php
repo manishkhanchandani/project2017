@@ -4,8 +4,8 @@ session_start();
 define('ROOT_DIR', dirname(__FILE__));
 define('BASE_DIR', dirname(dirname(__FILE__)));
 include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'conn.php');
-include_once(BASE_DIR.DIRECTORY_SEPARATOR.'functions.php');
 include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'constants.php');
+include_once(BASE_DIR.DIRECTORY_SEPARATOR.'functions.php');
 include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'config.php');
 
 

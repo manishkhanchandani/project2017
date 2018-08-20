@@ -219,7 +219,8 @@ $tmp = $row_rsView['sub_topic'];
 <?php } ?>
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-											<p><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong><?php echo $row_rsView['title']; ?></strong></a></p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>
+											<a name="id_<?php echo $row_rsView['id']; ?>"></a>
+											<p><a href="<?php echo HTTP_PATH; ?><?php echo $row_rsView['node_type']; ?>/<?php echo $barSubjects[$row_rsView['subject_id']]['url']; ?>/<?php echo $row_rsView['subject_id']; ?>/detail/<?php echo $row_rsView['id']; ?>"><strong><?php echo $row_rsView['title']; ?></strong></a> </p>                                        <p><?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?>
                                             <?php //echo $row_rsView['topic_created']; ?>
                                     </p>
 											</div>

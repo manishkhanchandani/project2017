@@ -144,4 +144,7 @@ if (file_exists(ROOT_DIR.DIRECTORY_SEPARATOR.'sites'.DIRECTORY_SEPARATOR.$domain
 }
 
 
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
+
 ?>
