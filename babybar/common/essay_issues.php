@@ -51,6 +51,17 @@ $query_rsEditEssayIssue = sprintf("SELECT * FROM calbabybar_nodes WHERE id = %s 
 $rsEditEssayIssue = mysql_query($query_rsEditEssayIssue, $conn) or die(mysql_error());
 $row_rsEditEssayIssue = mysql_fetch_assoc($rsEditEssayIssue);
 $totalRows_rsEditEssayIssue = mysql_num_rows($rsEditEssayIssue);
+
+$xtras = array();
+if ($totalRows_rsEditEssayIssue) {
+	$xtras = $row_rsEditEssayIssue['xtras'];
+	$xtras = json_decode($xtras, 1);
+}
+
+if (!isset($xtras['copying'])) {
+	$xtras['copying'] = 1;
+}
+
 ?>
 <div class="row">
 	<div class="col-md-12">
@@ -73,18 +84,42 @@ $totalRows_rsEditEssayIssue = mysql_num_rows($rsEditEssayIssue);
 		<?php if ($totalRows_rsEditEssayIssue > 0) { ?>
 <script type="text/javascript" src="<?php echo HTTP_PATH; ?>js/jquerycountdown/jquery.countdownTimer.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo HTTP_PATH; ?>js/jquerycountdown/jquery.countdownTimer.css" />
+
 		<a name="edit"></a>
+<h3>Edit Issue</h3>
+<?php
+
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && !empty($_SESSION['MM_UserId'])) {
+	$xtras['timer'] = $_POST['timer'];
+	$xtras['copying'] = $_POST['copying'];
+	$xtras2 = json_encode($xtras);
+	$insertSQL = sprintf("UPDATE calbabybar_nodes set title=%s, description=%s, xtras=%s WHERE id=%s AND user_id=%s",
+                       GetSQLValueString($_POST['title'], "text"),
+                       GetSQLValueString($_POST['description'], "text"),
+                       GetSQLValueString($xtras2, "text"),
+                       GetSQLValueString($_POST['id'], "int"),
+                       GetSQLValueString($_SESSION['MM_UserId'], "int"));
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+  echo '<div class="alert alert-warning">Form Updated, Refreshing....<meta http-equiv="refresh" content="1;URL='.$detailUrl.'"></div>';
+  
+
+}
+?>
 		<form method="post" name="formEdit" onSubmit="return callme();">
-			<span id="s_timer"></span><br/>
+			<div>
+				<input id="pauseBtnhms" type="button" value="pause">&nbsp;&nbsp;<input type="button" id="stopBtnhms" value="start">&nbsp;&nbsp;
+				<span id="s_timer"></span><br/><br/><br/></div>
 			<div class="form-group">
-				<label for="currency_type">Edit Issue:</label>
+				<label for="currency_type">Issue Title:</label>
 				<input type="text" class="form-control" id="title" name="title" placeholder="Issue" value="<?php echo $row_rsEditEssayIssue['title']; ?>" />
 			</div>
 			<div class="form-group">
 				<label for="copying">Copying</label>
 				<select name="copying" id="copying" class="form-control">
-					<option value="1">Copying</option>
-					<option value="0">Writing Without Looking</option>
+				    <option value="1" <?php if (!(strcmp(1, $xtras['copying']))) {echo "selected=\"selected\"";} ?>>Copying</option>
+				    <option value="0" <?php if (!(strcmp(0, $xtras['copying']))) {echo "selected=\"selected\"";} ?>>Writing Without Looking</option>
 				</select>  
 			</div>	
 			<div class="form-group">
@@ -92,11 +127,10 @@ $totalRows_rsEditEssayIssue = mysql_num_rows($rsEditEssayIssue);
 				<textarea class="form-control" id="description" rows="5" name="description"><?php echo (!empty($row_rsEditEssayIssue['description'])) ? $row_rsEditEssayIssue['description'] : ''; ?></textarea>
 			</div> 
 			<div class="form-group">
-				<input id="pauseBtnhms" type="button" value="Pause">&nbsp;&nbsp;<input type="button" id="stopBtnhms" value="Stop">&nbsp;&nbsp;
 				<input type="submit" value="Update Issue">
-				<input type="text" value="" id="timer">
+				<input type="hidden" value="" id="timer" name="timer">
 				<input type="hidden" name="MM_update" value="form1" />
-				<input type="text" name="id" value="<?php echo $row_rsEditEssayIssue['id']; ?>" />
+				<input type="hidden" name="id" value="<?php echo $row_rsEditEssayIssue['id']; ?>" />
 			</div>
 			<script>
 				function callme() {
@@ -108,11 +142,12 @@ $totalRows_rsEditEssayIssue = mysql_num_rows($rsEditEssayIssue);
 			<script>
 				$(function(){
 					$('#s_timer').countdowntimer({
-						seconds :11,
+						seconds :<?php echo (!empty($xtras['timer'])) ? $xtras['timer'] : 11; ?>,
 						size : "xs",
 						reverseDir: true,
 						pauseButton : "pauseBtnhms",
-						stopButton : "stopBtnhms"
+						stopButton : "stopBtnhms",
+						stopInitially: true
 					});
 				});
 			</script>
@@ -127,9 +162,20 @@ $totalRows_rsEditEssayIssue = mysql_num_rows($rsEditEssayIssue);
 					<h3 class="panel-title">My Issues</h3>
 				</div>
 				<div class="panel-body">
+					<?php $totalTime = 0; ?>
 					<?php do { ?>
-					<div><a href=""><?php echo $row_rsMyEssayIssues['title']; ?></a> <span class=""><a href="<?php echo $detailUrl.'?update_id='.$row_rsMyEssayIssues['id']; ?>#edit"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $detailUrl.'?deleted_id='.$row_rsMyEssayIssues['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a></span></div>
+					<?php 
+						$xtrasEdit = $row_rsMyEssayIssues['xtras'];
+						$xtrasEdit = json_decode($xtrasEdit, 1);
+						if (empty($xtrasEdit)) {
+							$xtrasEdit['copying'] = 1;
+							$xtrasEdit['timer'] = 0;
+						}
+						$totalTime = $totalTime + $xtrasEdit['timer'];
+					?>
+					<div><a href=""><?php echo $row_rsMyEssayIssues['title']; ?></a> (<?php echo floor($xtrasEdit['timer'] / 60); ?> mins) <span class=""><a href="<?php echo $detailUrl.'?update_id='.$row_rsMyEssayIssues['id']; ?>#edit"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $detailUrl.'?deleted_id='.$row_rsMyEssayIssues['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a></span></div>
 					<?php } while ($row_rsMyEssayIssues = mysql_fetch_assoc($rsMyEssayIssues)); ?>
+					<div>Total Time: <?php echo floor($totalTime / 60); ?> mins</div>
 				</div>
 			</div>
 		<?php } // Show if recordset not empty ?>

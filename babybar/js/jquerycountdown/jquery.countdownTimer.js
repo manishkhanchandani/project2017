@@ -120,10 +120,12 @@
                 if (options.stopButton != undefined) {
                     stopTimer($this, "S", opts, onlySeconds);
                 }
-                onlySeconds($this, opts);
-                window['timer_S' + $this.attr('id')] = setInterval(function () {
-                    onlySeconds($this, opts)
-                }, opts.tickInterval * 1000);
+                onlySeconds($this, opts);				
+				if (!opts.stopInitially) {
+					window['timer_S' + $this.attr('id')] = setInterval(function () {
+						onlySeconds($this, opts)
+					}, opts.tickInterval * 1000);
+				}
             } else if (options.hours != undefined && options.minutes != undefined && options.seconds == undefined) {
                 hours_HM = "";
                 minutes_HM = "";
@@ -802,7 +804,8 @@
         regexpReplaceWith: null,
         pauseButton: null,
         stopButton: null,
-		reverseDir: false
+		reverseDir: false,
+		stopInitially: false
     };
 
 }(jQuery));

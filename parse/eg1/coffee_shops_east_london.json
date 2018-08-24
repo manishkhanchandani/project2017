@@ -1,0 +1,2084 @@
+
+[
+  {
+    "id": "counter-cafe-london",
+    "phone": "+447834275920",
+    "review_count": 64,
+    "name": "Counter Cafe",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/counter-cafe-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 7834 275920",
+    "distance": 505.68447862733956,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/-IFqNuNGonfJ6l6yiyFswQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/jRWZE4HDnFOKkcd1cTiJzw/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.021057535920606,
+        "latitude": 51.540051244933
+      },
+      "city": "London",
+      "postal_code": "E3 2PA",
+      "address": [
+        "7 Roach Road"
+      ],
+      "display_address": [
+        "7 Roach Road",
+        "Stratford",
+        "London E3 2PA",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Stratford",
+        "Bow"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/counter-cafe-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Great food and location. The staff are very friendly and they also accept dogs! Make sure you check in early as it can get a bit busy.",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ],
+      [
+        "Caterers",
+        "catering"
+      ]
+    ]
+  },
+  {
+    "id": "the-pavilion-cafe-london",
+    "phone": "+442089800030",
+    "review_count": 48,
+    "name": "The Pavilion Cafe",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/the-pavilion-cafe-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 8980 0030",
+    "distance": 1887.9271510703848,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/Hi_GkO3Rl4c5MLXLU-nKzA/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/hFNI28o3sZ94D59YH_ESBg/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.042769,
+        "latitude": 51.532749
+      },
+      "city": "London",
+      "postal_code": "E9 7DE",
+      "address": [
+        "Victoria Park",
+        "Crown Gate W"
+      ],
+      "display_address": [
+        "Victoria Park",
+        "Crown Gate W",
+        "Bethnal Green",
+        "London E9 7DE",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Bethnal Green",
+        "Victoria Park",
+        "Mile End / Globe Town",
+        "Bow"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/the-pavilion-cafe-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Amazing! Great brunch- good for vegetarians and meat lovers alike. Their toast is perfection! Sat outside with the ducks until the rain came down and sought...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ]
+    ]
+  },
+  {
+    "id": "the-coffee-room-london",
+    "phone": "+447760108896",
+    "review_count": 13,
+    "name": "The Coffee Room",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/the-coffee-room-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 7760 108896",
+    "distance": 2178.464387988364,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/vup_RntULmPZp_hRMefs3w/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/JjDNx5FsNcyw_YI5lXajJQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0354996,
+        "latitude": 51.5264645
+      },
+      "city": "London",
+      "postal_code": "E3 5AX",
+      "address": [
+        "6A Grove Road"
+      ],
+      "display_address": [
+        "6A Grove Road",
+        "Mile End / Globe Town",
+        "London E3 5AX",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Mile End / Globe Town",
+        "Bow"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/the-coffee-room-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "more could you ask for? Great coffee, good cakes and a lovely little seating area hidden out the back. \n\nI stumbled across this place with friends on a...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "wilton-way-café-london-2",
+    "review_count": 11,
+    "name": "Wilton Way Café",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/wilton-way-caf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "distance": 2668.2191457636723,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/9T6UqbSZl3SZRJIPLvGePQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/brVHyKmpDPFh6cWIP2FF9g/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 8,
+      "coordinate": {
+        "longitude": -0.0615631,
+        "latitude": 51.5457306
+      },
+      "city": "London",
+      "postal_code": "E8 1BG",
+      "address": [
+        "63 Wilton Way"
+      ],
+      "display_address": [
+        "63 Wilton Way",
+        "Hackney Central",
+        "London E8 1BG",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Hackney Central"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/wilton-way-caf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "If you are looking for a nice place to have a coffee, grab a little snack to go or hang out and work for a while, Wilton Way is the place to be. \nNot too...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "bread-and-butter-london",
+    "phone": "+442079230047",
+    "review_count": 17,
+    "name": "Bread & Butter",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/bread-and-butter-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7923 0047",
+    "distance": 3791.1216891578456,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/m1HPw5xCv8i9pNr2NTnkLQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/1SaKUSKF7-bMXhWz8QSx7A/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.07725894294631,
+        "latitude": 51.5396907022005
+      },
+      "city": "London",
+      "postal_code": "N1 5EN",
+      "address": [
+        "5 Enfield Road"
+      ],
+      "display_address": [
+        "5 Enfield Road",
+        "De Beauvoir",
+        "London N1 5EN",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "De Beauvoir"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/bread-and-butter-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "I totally fell in love with this place! I assume it was the best breakfast I had in England.",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ]
+    ]
+  },
+  {
+    "id": "tina-we-salute-you-london",
+    "phone": "+442031190047",
+    "review_count": 38,
+    "name": "Tina, We Salute You",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/tina-we-salute-you-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 20 3119 0047",
+    "distance": 3930.807173853023,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/m9uwonihKybYepojuBOV_w/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/pxd8aVb6aupBqSW8UKPenw/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0793435863740797,
+        "latitude": 51.5490027097006
+      },
+      "city": "London",
+      "postal_code": "N1 4NH",
+      "address": [
+        "47 King Henry's Walk",
+        "Islington"
+      ],
+      "display_address": [
+        "47 King Henry's Walk",
+        "Islington",
+        "Newington Green",
+        "London N1 4NH",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Newington Green",
+        "De Beauvoir",
+        "Kingsland"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/tina-we-salute-you-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "One of my favourite places for coffee.  The only downside for me is that I live *just* too far away to make this a regular haunt.  Consequently, I tend to...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "brick-lane-coffee-london",
+    "phone": "+442077292667",
+    "review_count": 87,
+    "name": "Brick Lane Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/brick-lane-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 20 7729 2667",
+    "distance": 4053.0708182066296,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/TgGHwMO8OsOI9oxwT8owvQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/qkRgPixuNcVVfKwvEGFgoQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0719261169433594,
+        "latitude": 51.5244053595317
+      },
+      "city": "London",
+      "postal_code": "E1 6SB",
+      "address": [
+        "157 Brick Lane",
+        "London"
+      ],
+      "display_address": [
+        "157 Brick Lane",
+        "London",
+        "Bethnal Green",
+        "London E1 6SB",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Bethnal Green",
+        "Shoreditch",
+        "Brick Lane"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/brick-lane-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Yay! I'm a fan.\nOh - I have to write more apparently!\nOK, so continuing my mission to sample every coffee place in my local area, I was doing the \"stride of...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "towpath-café-london-2",
+    "phone": "+442072547606",
+    "review_count": 30,
+    "name": "Towpath Café",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/towpath-caf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7254 7606",
+    "distance": 4107.822075777315,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/dXIcVKaqebk5SYTv9ZIGzQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/DGmASwZN9GvxzCAJrBsJJw/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0812172889709473,
+        "latitude": 51.5371934005833
+      },
+      "city": "London",
+      "postal_code": "N1 5SB",
+      "address": [
+        "42 De Beauvoir Crescent"
+      ],
+      "display_address": [
+        "42 De Beauvoir Crescent",
+        "De Beauvoir",
+        "London N1 5SB",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "De Beauvoir"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/towpath-caf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Fantastic little place tucked away on the canal north of Shoreditch.  Great changing menu with seating right on the canal.  Had the fried egg with mojo...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Mediterranean",
+        "mediterranean"
+      ],
+      [
+        "Modern European",
+        "modern_european"
+      ]
+    ]
+  },
+  {
+    "id": "paper-and-cup-london-2",
+    "review_count": 11,
+    "name": "Paper and Cup",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/paper-and-cup-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "distance": 4239.429321474781,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/o0FjksSbyGRypKfwBfSf7w/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/OukujXwGoTaqFg4p_HBSpQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.076815,
+        "latitude": 51.5262201
+      },
+      "city": "London",
+      "postal_code": "E2 7JP",
+      "address": [
+        "18 Calvert Avenue"
+      ],
+      "display_address": [
+        "18 Calvert Avenue",
+        "Shoreditch",
+        "London E2 7JP",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Shoreditch"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/paper-and-cup-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Another coffee shop I pass on my walk to work. I feel like this could be a great place to escape from the office environment and work here instead.... in...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "curious-yellow-kafé-london-2",
+    "phone": "+442072516018",
+    "review_count": 56,
+    "name": "Curious Yellow Kafé",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/curious-yellow-kaf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7251 6018",
+    "distance": 4522.148714580255,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/kOHX8UEEfPEAzJWiXt1oIw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/j_Kn8c-SfZehR-bPWIukLg/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0838136672973633,
+        "latitude": 51.52954503532
+      },
+      "city": "London",
+      "postal_code": "N1 6BT",
+      "address": [
+        "77 Pitfield Street",
+        "Hoxton"
+      ],
+      "display_address": [
+        "77 Pitfield Street",
+        "Hoxton",
+        "Hoxton",
+        "London N1 6BT",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Hoxton"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/curious-yellow-kaf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "A cafe just across the road from where I was staying on my brief visit. The staff were warm and friendly but not intrusive. The farmers breakfast was...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Scandinavian",
+        "scandinavian"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ]
+    ]
+  },
+  {
+    "id": "friends-of-ours-london",
+    "phone": "+447545939751",
+    "review_count": 32,
+    "name": "Friends of Ours",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/friends-of-ours-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png",
+    "display_phone": "+44 7545 939751",
+    "distance": 4532.738001828865,
+    "rating_img_url_large": "https://s3-media3.fl.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/cF7QLcJ90WO_5wBRbIuPNQ/ms.jpg",
+    "is_closed": false,
+    "rating": 5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/mnhgDfqOIAakWlMKsc-xww/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 8,
+      "coordinate": {
+        "longitude": -0.0837832,
+        "latitude": 51.5290794
+      },
+      "city": "London",
+      "postal_code": "N1 6BU",
+      "address": [
+        "61 Pitfield Street"
+      ],
+      "display_address": [
+        "61 Pitfield Street",
+        "Hoxton",
+        "London N1 6BU",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Hoxton"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/friends-of-ours-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "I can't believe I forgot to do a review of that place. \nFrom the outside it looks like your normal cafe, but the food here is much more than regular.\nI...",
+    "rating_img_url_small": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ]
+    ]
+  },
+  {
+    "id": "exmouth-coffee-company-london",
+    "phone": "+442073771010",
+    "review_count": 53,
+    "name": "Exmouth Coffee Company",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/exmouth-coffee-company-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7377 1010",
+    "distance": 4559.307195458233,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/VDgqzHml-Hl_KGNK3WEVkQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/zzAU5-Hm5WbgIUVoB1QfzQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 5,
+      "coordinate": {
+        "longitude": -0.070496,
+        "latitude": 51.515994
+      },
+      "city": "London",
+      "postal_code": "E1 7QX",
+      "address": [
+        "83 Whitechapel High Street"
+      ],
+      "display_address": [
+        "83 Whitechapel High Street",
+        "Shoreditch",
+        "London E1 7QX",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Shoreditch",
+        "Whitechapel"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/exmouth-coffee-company-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "One of my favorite things to do when traveling is to wake up early (not my favorite part), go running, and end up in a local coffee shop that makes...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Bakeries",
+        "bakeries"
+      ]
+    ]
+  },
+  {
+    "id": "ozone-coffee-london-2",
+    "phone": "+442074901039",
+    "review_count": 112,
+    "name": "Ozone Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/ozone-coffee-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "snippet_text": "A lovely place to go for breakfast or brunch. Their soy chai latte is amazing and a must try if you like chai tea. I had their eggs any style (I chose...",
+    "display_phone": "+44 20 7490 1039",
+    "distance": 4923.294543445339,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/PPrrWApofLEf37Ysjn34Sw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/m2hDu4xe2KE5AkwC-_0RCA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.086674106560876,
+        "latitude": 51.524683689256
+      },
+      "city": "London",
+      "postal_code": "EC2A 4AQ",
+      "address": [
+        "11 Leonard Street"
+      ],
+      "display_address": [
+        "11 Leonard Street",
+        "Liverpool Street / Broadgate",
+        "London EC2A 4AQ",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Liverpool Street / Broadgate"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/ozone-coffee-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "menu_date_updated": 1425924543,
+    "menu_provider": "yelp",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ]
+    ]
+  },
+  {
+    "id": "shoreditch-grind-london",
+    "phone": "+442074907490",
+    "review_count": 96,
+    "name": "Shoreditch Grind",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/shoreditch-grind-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 20 7490 7490",
+    "distance": 4948.305139926243,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/sHlbI7NZ-6SKu1ICcQh6gA/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/U2rZg6E-upczyoenJ9Ke8A/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0879659656067133,
+        "latitude": 51.5258391235513
+      },
+      "city": "London",
+      "postal_code": "EC1V 9NR",
+      "address": [
+        "213 Old Street"
+      ],
+      "display_address": [
+        "213 Old Street",
+        "Barbican",
+        "London EC1V 9NR",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Barbican"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/shoreditch-grind-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "I live nearby and would walk by every day thinking, what is this grungy, hipster place, without giving it further thought. As I started to get more into the...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cocktail Bars",
+        "cocktailbars"
+      ]
+    ]
+  },
+  {
+    "id": "cinnamon-coffee-shop-london",
+    "phone": "+442977022323",
+    "review_count": 18,
+    "name": "Cinnamon Coffee Shop",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/cinnamon-coffee-shop-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 29 7702 2323",
+    "distance": 4999.448269518174,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/HIAim02vysMYvwdoniluMg/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/yRzfHk4yuwPW7_jNBFrgmQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0571632385253906,
+        "latitude": 51.5048292310893
+      },
+      "city": "London",
+      "postal_code": "E1W 2RW",
+      "address": [
+        "103 Wapping Lane"
+      ],
+      "display_address": [
+        "103 Wapping Lane",
+        "Wapping",
+        "London E1W 2RW",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Wapping"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/cinnamon-coffee-shop-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "This is the perfect neighborhood coffee shop in Wapping. It's small, but friendly. The staff doesn't have a lot of turnover so it's nice to see familiar...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ],
+      [
+        "Sandwiches",
+        "sandwiches"
+      ]
+    ]
+  },
+  {
+    "id": "association-coffee-london",
+    "phone": "+442072831155",
+    "review_count": 13,
+    "name": "Association Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/association-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7283 1155",
+    "distance": 5178.558486238583,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/_eUc-BWqPn-KucxXtha41Q/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/OKUcYukICiAl3jtSLA70cA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0791895389556885,
+        "latitude": 51.5136852664621
+      },
+      "city": "London",
+      "postal_code": "EC3A 5AY",
+      "address": [
+        "10-12 Creechurch Lane"
+      ],
+      "display_address": [
+        "10-12 Creechurch Lane",
+        "Aldgate",
+        "London EC3A 5AY",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Aldgate"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/association-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "It's no fair that the City gets so many good coffee shops which close promptly at 5pm and don't open at weekends :(  I managed to pop into Association...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "new-london-cafe-london",
+    "phone": "+442073547321",
+    "review_count": 15,
+    "name": "New London Cafe",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/new-london-cafe-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7354 7321",
+    "distance": 5221.507134291051,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/G4cmzLP5IYFX0yzBykZMlA/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/IDVtytrFyqZwdCCDWRW0cA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0983781045074466,
+        "latitude": 51.546910711
+      },
+      "city": "London",
+      "postal_code": "N1 2LL",
+      "address": [
+        "216 St Paul's Road",
+        "Islington"
+      ],
+      "display_address": [
+        "216 St Paul's Road",
+        "Islington",
+        "Highbury",
+        "London N1 2LL",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Highbury"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/new-london-cafe-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "I had the pancake with roasted vegetables and I fell in love. Delicious! It is a very cute and dinky cafe. I can't wait to go back!",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ],
+      [
+        "Burgers",
+        "burgers"
+      ]
+    ]
+  },
+  {
+    "id": "maison-d-être-london-6",
+    "phone": "+442072264711",
+    "review_count": 37,
+    "name": "Maison D'être",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/maison-d-%C3%AAtre-london-6?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "snippet_text": "Stopped by this cute little coffee shop the other day. It is everything that a coffee shop should be and attracts quite a big crowd. I can't imagine how...",
+    "display_phone": "+44 20 7226 4711",
+    "distance": 5470.53723513235,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/FbxJO5RBvHggD08F7HoWYQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/dysFsUvkLVfFE2hGgFY_iQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.102052688598633,
+        "latitude": 51.5458012795971
+      },
+      "city": "London",
+      "postal_code": "N1 2UP",
+      "address": [
+        "154 Canonbury Road"
+      ],
+      "display_address": [
+        "154 Canonbury Road",
+        "Islington",
+        "London N1 2UP",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Islington"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/maison-d-%C3%AAtre-london-6?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "menu_date_updated": 1425927599,
+    "menu_provider": "yelp",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ]
+    ]
+  },
+  {
+    "id": "the-coffeeworks-project-london",
+    "phone": "+442074245020",
+    "review_count": 48,
+    "name": "The CoffeeWorks Project",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/the-coffeeworks-project-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 20 7424 5020",
+    "distance": 5754.828628786456,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/H5O9qW909PNC_Z-my-h1Bg/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/PhzPtkOamq69ILXOJAUTNQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 5,
+      "coordinate": {
+        "longitude": -0.10443,
+        "latitude": 51.534263
+      },
+      "city": "London",
+      "postal_code": "N1 8EG",
+      "address": [
+        "96-98 Islington High Street"
+      ],
+      "display_address": [
+        "96-98 Islington High Street",
+        "Islington",
+        "London N1 8EG",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Islington",
+        "Angel"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/the-coffeeworks-project-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "This place is located close to both the Tube and bus stops that frequently go by Angel. It's an easy place to meet up with friends any time of the day. It's...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "le-peche-mignon-london",
+    "phone": "+442076071826",
+    "review_count": 21,
+    "name": "Le Peche Mignon",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/le-peche-mignon-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7607 1826",
+    "distance": 5906.213463761768,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/1VfK-xajH5h2FDAQXplq-Q/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/HZu14wxuQcU474SA3I_TbA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.107909992126366,
+        "latitude": 51.5500471393663
+      },
+      "city": "London",
+      "postal_code": "N5 1XH",
+      "address": [
+        "6 Ronalds Road",
+        "Highbury"
+      ],
+      "display_address": [
+        "6 Ronalds Road",
+        "Highbury",
+        "Lower Holloway",
+        "London N5 1XH",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Lower Holloway"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/le-peche-mignon-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "This is a great little place. They have eggscellent breakfasts, a cozy interior, and an œufsome outdoor space in the rear. Also, they make the best soy flat...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "French",
+        "french"
+      ]
+    ]
+  },
+  {
+    "id": "dose-london",
+    "phone": "+442076000382",
+    "review_count": 54,
+    "name": "Dose",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/dose-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7600 0382",
+    "distance": 5963.631685630465,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/ML5WHFTCHSibPYTodBgV_A/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/eDFGMcXvql8WXpuW9n_ekQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 8,
+      "coordinate": {
+        "longitude": -0.099306,
+        "latitude": 51.5193787
+      },
+      "city": "London",
+      "postal_code": "EC1A 9EJ",
+      "address": [
+        "70 Long Lane"
+      ],
+      "display_address": [
+        "70 Long Lane",
+        "Farringdon",
+        "London EC1A 9EJ",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Farringdon"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/dose-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Nice hole in the wall coffee shop...great cold brew. Has drip, press in addition to espresso.",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "workshop-coffee-london",
+    "phone": "+442072535754",
+    "review_count": 139,
+    "name": "Workshop Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/workshop-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 20 7253 5754",
+    "distance": 6013.516602122781,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/P__2hVrecKequqYokAOUrw/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/18AZyyO1SVAfHScys5f1kQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.102396011352539,
+        "latitude": 51.5224427848126
+      },
+      "city": "London",
+      "postal_code": "EC1M 5RN",
+      "address": [
+        "27 Clerkenwell Road"
+      ],
+      "display_address": [
+        "27 Clerkenwell Road",
+        "Farringdon",
+        "London EC1M 5RN",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Farringdon"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/workshop-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Wow. So I fell in love with this place within minutes. Large two floor open space, friendly welcoming staff, long wooden tables, cool open bar/service area...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ]
+    ]
+  },
+  {
+    "id": "saint-espresso-london",
+    "review_count": 18,
+    "name": "Saint Espresso",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/saint-espresso-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "distance": 6019.312328001648,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/GKAOIcWw7rC-xBvKpdlNLg/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/JRPM2V7-VLi4StvBH4SBFg/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.107646644852006,
+        "latitude": 51.5319222528293
+      },
+      "city": "London",
+      "postal_code": "N1 9LA",
+      "address": [
+        "26 Pentonville Road"
+      ],
+      "display_address": [
+        "26 Pentonville Road",
+        "Islington",
+        "London N1 9LA",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Islington",
+        "Angel"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/saint-espresso-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "It's really hard to impress these days with coffee in London. However, there are pockets where this is still possible. And one of those is in Angel. And one...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "monmouth-coffee-london",
+    "phone": "+442072323010",
+    "review_count": 261,
+    "name": "Monmouth Coffee",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/monmouth-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7232 3010",
+    "distance": 6414.408765732442,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/qM5IOWjeN6v-DSHDOOkiuQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/oE6KHZQBL5NnHCzIjfKx1A/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.0914108272490202,
+        "latitude": 51.5055211849617
+      },
+      "city": "London",
+      "postal_code": "SE1 9AB",
+      "address": [
+        "2 Park Street",
+        "The Borough"
+      ],
+      "display_address": [
+        "2 Park Street",
+        "The Borough",
+        "London Bridge",
+        "London SE1 9AB",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "London Bridge"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/monmouth-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "After 3 days of drinking bad London coffee, I'd given up hope, to the point of believing that Nespresso was going to be as good as it gets until I visit...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "alchemy-london-4",
+    "phone": "+442073299904",
+    "review_count": 18,
+    "name": "Alchemy",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/alchemy-london-4?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7329 9904",
+    "distance": 6501.196543568223,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/sZeJPBiYB1X-3ZrnhKDqUA/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/us9DC3vHWOl-Vl1tj2tKbA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.102642286734127,
+        "latitude": 51.5134264160446
+      },
+      "city": "London",
+      "postal_code": "EC4V 6DU",
+      "address": [
+        "8 Ludgate Broadway"
+      ],
+      "display_address": [
+        "8 Ludgate Broadway",
+        "Blackfriars",
+        "London EC4V 6DU",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Blackfriars"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/alchemy-london-4?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Blackfriars: busy train station, Londoners hurrying left and right on Fleet Street, streets that wind up and around and get you lost. I love the area for...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ]
+    ]
+  },
+  {
+    "id": "department-of-coffee-and-social-affairs-london",
+    "phone": "+442074196906",
+    "review_count": 71,
+    "name": "Department of Coffee and Social Affairs",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/department-of-coffee-and-social-affairs-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7419 6906",
+    "distance": 6570.877583696164,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/yWOWvYurIa5HB-u84uaVQw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/hNJbIWW2okKaG9BbnZINmg/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 8,
+      "coordinate": {
+        "longitude": -0.1089855,
+        "latitude": 51.5194664
+      },
+      "city": "London",
+      "postal_code": "EC1N 7SU",
+      "address": [
+        "14-16 Leather Lane"
+      ],
+      "display_address": [
+        "14-16 Leather Lane",
+        "Farringdon",
+        "London EC1N 7SU",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Farringdon"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/department-of-coffee-and-social-affairs-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "It was a very nice and relax place! And coffee was absolutely amazing! It's the best coffee I ever dink in London! Definitely recommend to others!\n\nIt's a...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "prufrock-coffee-london-2",
+    "phone": "+442072420467",
+    "review_count": 81,
+    "name": "Prufrock Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/prufrock-coffee-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7242 0467",
+    "distance": 6580.731774773002,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/ZkfA0rskbErmKQgv8U2elA/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/jnn73BfYT3u64cb-XF0G3w/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 5,
+      "coordinate": {
+        "longitude": -0.109607,
+        "latitude": 51.519977
+      },
+      "city": "London",
+      "postal_code": "EC1N 7TE",
+      "address": [
+        "23-25 Leather Lane"
+      ],
+      "display_address": [
+        "23-25 Leather Lane",
+        "Farringdon",
+        "London EC1N 7TE",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Farringdon"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/prufrock-coffee-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "A Coffee Nerd's Heaven !!! They got coffee from all the popular European roasters (the barn, drop coffee, five elephant, square mile) Their baristas are...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "the-table-london-2",
+    "phone": "+442074012760",
+    "review_count": 167,
+    "name": "The Table",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/the-table-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "display_phone": "+44 20 7401 2760",
+    "distance": 6841.259922173493,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/t3PjwwDIuo1Zqc-bk9cP-Q/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/u9HbiaUEf7CU4YUAjEHkfQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.099671,
+        "latitude": 51.505604
+      },
+      "city": "London",
+      "postal_code": "SE1 0HX",
+      "address": [
+        "83 Southwark Street"
+      ],
+      "display_address": [
+        "83 Southwark Street",
+        "Southwark",
+        "London SE1 0HX",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Southwark"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/the-table-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "I already really enjoyed this brunch place when I checked it out for the first time in 2015. When I went back again a couple of weeks ago, it managed to...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "British",
+        "british"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ]
+    ]
+  },
+  {
+    "id": "free-state-coffee-london",
+    "phone": "+442079981017",
+    "review_count": 31,
+    "name": "Free State Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/free-state-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7998 1017",
+    "distance": 7370.517904186567,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/_BdF8bf9rwhyCUqI_0P1Jw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/uPieRtjwbY9dQk_zXm54Ag/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.120943723358626,
+        "latitude": 51.5183766676692
+      },
+      "city": "London",
+      "postal_code": "WC1B 5HJ",
+      "address": [
+        "23 Southampton Row"
+      ],
+      "display_address": [
+        "23 Southampton Row",
+        "Bloomsbury",
+        "London WC1B 5HJ",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Bloomsbury"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/free-state-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Conveniently located not far from Holborn Underground station, Freestate Coffee is a little oasis in a bustling environment with good coffee and delicious...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "bloomsbury-coffee-house-london",
+    "review_count": 28,
+    "name": "Bloomsbury Coffee House",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/bloomsbury-coffee-house-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+    "distance": 7424.378399676553,
+    "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/BCdfgFLV8xIqW39q7quCpw/ms.jpg",
+    "is_closed": false,
+    "rating": 4,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/fSxRBB4oj1avw3cojn3zTg/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 5,
+      "coordinate": {
+        "longitude": -0.12599,
+        "latitude": 51.525392
+      },
+      "city": "London",
+      "postal_code": "WC1H 9RE",
+      "address": [
+        "20 Tavistock Place"
+      ],
+      "display_address": [
+        "20 Tavistock Place",
+        "Bloomsbury",
+        "London WC1H 9RE",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Bloomsbury"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/bloomsbury-coffee-house-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "All during my trip throughout the United Kingdom, my lady and I stayed in guest houses that included breakfast.  And, of course, most of them were the Full...",
+    "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ]
+    ]
+  },
+  {
+    "id": "konditor-and-cook-london-4",
+    "phone": "+442076333333",
+    "review_count": 29,
+    "name": "Konditor & Cook",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/konditor-and-cook-london-4?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7633 3333",
+    "distance": 7502.030537770186,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/KFEBNe5B1iaxlM1B3WZo3w/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/QAd-P5AwtrefxGBatO0AZg/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.11055379594096,
+        "latitude": 51.504657438531
+      },
+      "city": "London",
+      "postal_code": "SE1 8TW",
+      "address": [
+        "22 Cornwall Road"
+      ],
+      "display_address": [
+        "22 Cornwall Road",
+        "Southwark",
+        "London SE1 8TW",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Southwark",
+        "Waterloo"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/konditor-and-cook-london-4?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "This location. And this location only. I can't even go to another one based on how amazing and pleasant they all are. But the desserts...\n\nCurly Whurly-...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Bakeries",
+        "bakeries"
+      ],
+      [
+        "Patisserie/Cake Shop",
+        "cakeshop"
+      ]
+    ]
+  },
+  {
+    "id": "monmouth-coffee-london-3",
+    "phone": "+442072323010",
+    "review_count": 235,
+    "name": "Monmouth Coffee",
+    "is_claimed": false,
+    "mobile_url": "http://m.yelp.com/biz/monmouth-coffee-london-3?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7232 3010",
+    "distance": 7920.194258546675,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/ux9bZFRwSrLKW_T9c2Cbyw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/NXl2yFUobASzLvuttxM5Ug/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 5,
+      "coordinate": {
+        "longitude": -0.126788,
+        "latitude": 51.514371
+      },
+      "city": "London",
+      "postal_code": "WC2H 9EU",
+      "address": [
+        "27 Monmouth Street"
+      ],
+      "display_address": [
+        "27 Monmouth Street",
+        "Covent Garden",
+        "London WC2H 9EU",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Covent Garden"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/monmouth-coffee-london-3?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Amazing filtered coffee.\n\nIn the midst of 100 different coffee shops in SOHO, this one really seperates itself from the competition with great coffee beans...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "four-corners-cafe-london-2",
+    "phone": "+442086179591",
+    "review_count": 19,
+    "name": "Four Corners Cafe",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/four-corners-cafe-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 8617 9591",
+    "distance": 7954.8943892111265,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/FxCSU7yZEJXtYDN_TCXrYw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/Rr5aoYckx1hFia1D0HfozQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.1135442,
+        "latitude": 51.5003689
+      },
+      "city": "London",
+      "postal_code": "SE1 7RJ",
+      "address": [
+        "12 Lower Marsh",
+        "Waterloo"
+      ],
+      "display_address": [
+        "12 Lower Marsh",
+        "Waterloo",
+        "Southwark",
+        "London SE1 7RJ",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Southwark",
+        "Waterloo"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/four-corners-cafe-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Great coffee shop close to Waterloo station . \nI was hunting a good flat white .... I discovered by chance Four Corners.\n\nExcellent flat white ! Staff...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ]
+    ]
+  },
+  {
+    "id": "timberyard-seven-dials-london-3",
+    "phone": "+442032172009",
+    "review_count": 101,
+    "name": "Timberyard - Seven Dials",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/timberyard-seven-dials-london-3?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 3217 2009",
+    "distance": 8026.5252403864,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/lDKdkogF_5pyFSoiss3CmQ/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/ai6HUDPeREczU3IE6uCwaw/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.127308054907987,
+        "latitude": 51.5128577362728
+      },
+      "city": "London",
+      "postal_code": "WC2H 9DL",
+      "address": [
+        "7 Upper St Martin's Lane"
+      ],
+      "display_address": [
+        "7 Upper St Martin's Lane",
+        "Covent Garden",
+        "London WC2H 9DL",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Covent Garden"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/timberyard-seven-dials-london-3?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Ever feel out of place at small coffeehouses that really don't want you to park yourself at a table and break out your laptop? Feel that way no more at...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "new-row-coffee-london",
+    "phone": "+442035836949",
+    "review_count": 36,
+    "name": "New Row Coffee",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/new-row-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 3583 6949",
+    "distance": 8066.851256434205,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/ttXxzq35ljRLiO9flibvWg/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media2.fl.yelpcdn.com/photo/X3ZeAqAQfKkfBKJpwingPQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.12658091537137,
+        "latitude": 51.511148970401
+      },
+      "city": "London",
+      "postal_code": "WC2N 4LA",
+      "address": [
+        "Covent Garden",
+        "24 New Row"
+      ],
+      "display_address": [
+        "Covent Garden",
+        "24 New Row",
+        "Strand",
+        "London WC2N 4LA",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Strand",
+        "Covent Garden"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/new-row-coffee-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Did you know this is owned by the same guy who owns Freestate Coffee? Amazing!\n\nThat's the reason I found this place - I was on the hunt for the amazing,...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "falla-and-mocaer-london",
+    "phone": "+442074287586",
+    "review_count": 26,
+    "name": "Falla & Mocaer",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/falla-and-mocaer-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png",
+    "display_phone": "+44 20 7428 7586",
+    "distance": 8513.824471925811,
+    "rating_img_url_large": "https://s3-media3.fl.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/4u59zvous8MgPMoq0st3iQ/ms.jpg",
+    "is_closed": false,
+    "rating": 5,
+    "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/QjkCziBLwzAo8AIoz79HEA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.1455513,
+        "latitude": 51.5373497
+      },
+      "city": "London",
+      "postal_code": "NW1 7AN",
+      "address": [
+        "82 Parkway"
+      ],
+      "display_address": [
+        "82 Parkway",
+        "Camden Town",
+        "London NW1 7AN",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Camden Town"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/falla-and-mocaer-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "The banana bread is AMAZING (they warm it up for you) and the latte is everything I could ever want in a coffee-based drink. There's a huge open space in...",
+    "rating_img_url_small": "https://s3-media1.fl.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Cafes",
+        "cafes"
+      ]
+    ]
+  },
+  {
+    "id": "cookies-and-scream-london",
+    "phone": "+447778691519",
+    "review_count": 53,
+    "name": "Cookies and Scream",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/cookies-and-scream-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "snippet_text": "Oh my!!!!\n\nIt's a small space that these people make magic in. \n\nStaff are so friendly and helpful. \n\nPrices are fab for the quality and quantity. Taste is...",
+    "display_phone": "+44 7778 691519",
+    "distance": 8540.87970981671,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/dNBTYtlw8BFa0irB3HX0LA/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/-GDVnhTfIT1RoErtnZ58Sw/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 6,
+      "coordinate": {
+        "longitude": -0.14635,
+        "latitude": 51.5415192
+      },
+      "city": "London",
+      "postal_code": "NW1 8AF",
+      "address": [
+        "Market Hall",
+        "Camden Lock Place"
+      ],
+      "display_address": [
+        "Market Hall",
+        "Camden Lock Place",
+        "Camden Town",
+        "London NW1 8AF",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Camden Town"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/cookies-and-scream-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "menu_date_updated": 1425496184,
+    "menu_provider": "yelp",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Bakeries",
+        "bakeries"
+      ],
+      [
+        "Gluten-Free",
+        "gluten_free"
+      ]
+    ]
+  },
+  {
+    "id": "kaffeine-london",
+    "phone": "+442075806755",
+    "review_count": 142,
+    "name": "Kaffeine",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/kaffeine-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7580 6755",
+    "distance": 8617.940092464323,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/kMaLpcj78iI7ceVkA4fMVw/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/dxraScYXl5-Oir8vkG0BzA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 5,
+      "coordinate": {
+        "longitude": -0.14037,
+        "latitude": 51.51848
+      },
+      "city": "London",
+      "postal_code": "W1W 7QJ",
+      "address": [
+        "66 Great Titchfield Street"
+      ],
+      "display_address": [
+        "66 Great Titchfield Street",
+        "Fitzrovia",
+        "London W1W 7QJ",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Fitzrovia"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/kaffeine-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "If you are a Caffeine Junkie like me this place is a must for you. The Coffee shop is small but the quality of the coffee makes up for the lack of seating...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "flat-cap-coffee-co-london",
+    "phone": "+447861425172",
+    "review_count": 19,
+    "name": "Flat Cap Coffee Co",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/flat-cap-coffee-co-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 7861 425172",
+    "distance": 9290.401234898221,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/KN_FtqQO1BQi_6xd2p1Jfg/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/p7GeYkqjITy0tupFdUzMcQ/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 8,
+      "coordinate": {
+        "longitude": -0.1340628,
+        "latitude": 51.4972687
+      },
+      "city": "London",
+      "postal_code": "SW1P 2HR",
+      "address": [
+        "4 Strutton Ground"
+      ],
+      "display_address": [
+        "4 Strutton Ground",
+        "Westminster",
+        "London SW1P 2HR",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Westminster"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/flat-cap-coffee-co-london?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "A street stall coffee stop that's got all your morning needs: coffee, pastries.  \n\nIt's a simple tent set up with an excellent coffee machine and very high...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ]
+    ]
+  },
+  {
+    "id": "regency-café-london-2",
+    "phone": "+442078216596",
+    "review_count": 212,
+    "name": "Regency Café",
+    "is_claimed": true,
+    "mobile_url": "http://m.yelp.com/biz/regency-caf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "rating_img_url": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "display_phone": "+44 20 7821 6596",
+    "distance": 9411.476770552226,
+    "rating_img_url_large": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/Djp1AgwSG-gd8bq9V1ftiA/ms.jpg",
+    "is_closed": false,
+    "rating": 4.5,
+    "snippet_image_url": "http://s3-media4.fl.yelpcdn.com/photo/uwp7QhK7DXyeN2BUqaqPpA/ms.jpg",
+    "location": {
+      "country_code": "GB",
+      "geo_accuracy": 9.5,
+      "coordinate": {
+        "longitude": -0.13222007974201,
+        "latitude": 51.4940143171
+      },
+      "city": "London",
+      "postal_code": "SW1P 4BY",
+      "address": [
+        "17-19 Regency Street"
+      ],
+      "display_address": [
+        "17-19 Regency Street",
+        "Westminster",
+        "London SW1P 4BY",
+        "UK"
+      ],
+      "state_code": "XGL",
+      "neighborhoods": [
+        "Westminster"
+      ]
+    },
+    "url": "http://www.yelp.com/biz/regency-caf%C3%A9-london-2?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=01NP2O5ev6ILXe3KudfrHA",
+    "snippet_text": "Having worked a short walk away from The Regency for over 7 years you'd think that I would've been here more than twice...but you'd be wrong. Today was my...",
+    "rating_img_url_small": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "categories": [
+      [
+        "Coffee & Tea",
+        "coffee"
+      ],
+      [
+        "Breakfast & Brunch",
+        "breakfast_brunch"
+      ],
+      [
+        "British",
+        "british"
+      ]
+    ]
+  }
+]

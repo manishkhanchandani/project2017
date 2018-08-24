@@ -2,7 +2,7 @@
 $MM_redirectLoginSuccess = COMPLETE_HTTP_PATH;
 
 if (isset($_GET['accesscheck'])) {
-  $MM_redirectLoginSuccess = $_GET['accesscheck'];	
+  //$MM_redirectLoginSuccess = $_GET['accesscheck'];	
 }
 
 
