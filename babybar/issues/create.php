@@ -87,6 +87,11 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 $sql = '';
 
+if (empty($_SESSION['MM_UserId'])) {
+	$sql .= " AND status = 1";
+} else {
+	$sql .= sprintf(" AND (status = 1 OR (status = 0 AND user_id=%s))", $_SESSION['MM_UserId']);
+}
 
 if (empty($_SESSION['MM_UserId'])) {
 	$sql .= " AND current_status = 1";

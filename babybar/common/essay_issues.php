@@ -11,7 +11,7 @@ if (!empty($_GET['deleted_id'])) {
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($deleteSQL, $conn) or die(mysql_error());
 }
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($_SESSION['MM_UserId'])) {
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($_SESSION['MM_UserId']) && !empty($_POST['title'])) {
   $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, node_type, sub_topic, related_id) VALUES (%s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['subject_id'], "int"),
@@ -89,7 +89,7 @@ if (!isset($xtras['copying'])) {
 <h3>Edit Issue</h3>
 <?php
 
-if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && !empty($_SESSION['MM_UserId'])) {
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && !empty($_SESSION['MM_UserId']) && !empty($_POST['title'])) {
 	$xtras['timer'] = $_POST['timer'];
 	$xtras['copying'] = $_POST['copying'];
 	$xtras2 = json_encode($xtras);
@@ -102,7 +102,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && !empty($
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
-  echo '<div class="alert alert-warning">Form Updated, Refreshing....<meta http-equiv="refresh" content="1;URL='.$detailUrl.'"></div>';
+  echo '<div class="alert alert-warning">Form Updated, Refreshing....<meta http-equiv="refresh" content="1;URL='.$detailUrl.'#_'.$_POST['id'].'"></div>';
   
 
 }
@@ -173,8 +173,14 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && !empty($
 						}
 						$totalTime = $totalTime + $xtrasEdit['timer'];
 					?>
-					<div><a href=""><?php echo $row_rsMyEssayIssues['title']; ?></a> (<?php echo floor($xtrasEdit['timer'] / 60); ?> mins) <span class=""><a href="<?php echo $detailUrl.'?update_id='.$row_rsMyEssayIssues['id']; ?>#edit"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $detailUrl.'?deleted_id='.$row_rsMyEssayIssues['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a></span></div>
+					<div>
+						<a name="_<?php echo $row_rsMyEssayIssues['id']; ?>"></a>
+						<div><strong><?php echo $row_rsMyEssayIssues['title']; ?></strong> (<?php echo floor($xtrasEdit['timer'] / 60); ?> mins) <span class=""><a href="<?php echo $detailUrl.'?update_id='.$row_rsMyEssayIssues['id']; ?>#edit"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $detailUrl.'?deleted_id='.$row_rsMyEssayIssues['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a></span><br /><br /></div>
+						<div><?php echo nl2br($row_rsMyEssayIssues['description']); ?></div>
+						<hr />
+					</div>
 					<?php } while ($row_rsMyEssayIssues = mysql_fetch_assoc($rsMyEssayIssues)); ?>
+
 					<div>Total Time: <?php echo floor($totalTime / 60); ?> mins</div>
 				</div>
 			</div>

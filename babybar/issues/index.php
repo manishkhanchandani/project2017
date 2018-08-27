@@ -84,6 +84,13 @@ if (!empty($_GET['keyword'])) {
 	$sql .= sprintf(" AND (title like %s OR description like %s OR description2 like %s OR sub_topic like %s)", GetSQLValueString('%%'.$_GET['keyword'].'%%', 'text'), GetSQLValueString('%%'.$_GET['keyword'].'%%', 'text'), GetSQLValueString('%%'.$_GET['keyword'].'%%', 'text'), GetSQLValueString('%%'.$_GET['keyword'].'%%', 'text'));
 }
 
+if (!empty($_GET['sub_topic']) && $_GET['sub_topic'] !== '%') {
+	$sql .= sprintf(" AND (sub_topic like %s)", GetSQLValueString('%%'.$_GET['sub_topic'].'%%', 'text'));
+}
+if (!empty($_GET['title']) && $_GET['title'] !== '%') {
+	$sql .= sprintf(" AND (title like %s)", GetSQLValueString('%%'.$_GET['title'].'%%', 'text'));
+}
+
 $maxRows_rsView = 25;
 $pageNum_rsView = 0;
 if (isset($_GET['pageNum_rsView'])) {

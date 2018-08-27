@@ -57,6 +57,12 @@ $currentPage = $_SERVER["PHP_SELF"];
 $sql = '';
 
 if (empty($_SESSION['MM_UserId'])) {
+	$sql .= " AND status = 1";
+} else {
+	$sql .= sprintf(" AND (status = 1 OR (status = 0 AND user_id=%s))", $_SESSION['MM_UserId']);
+}
+
+if (empty($_SESSION['MM_UserId'])) {
 	$sql .= " AND current_status = 1";
 } else {
 	$sql .= sprintf(" AND (current_status = 1 OR (current_status = 0 AND user_id=%s))", $_SESSION['MM_UserId']);
@@ -184,7 +190,9 @@ $endtime = microtime(true);
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12"><small><hr /><strong>ID:</strong> <?php echo $row_rsView['id']; ?> (<strong><?php echo timeAgo($row_rsView['topic_created']); ?></strong>)</small></div>
 		<?php } // Show if recordset not empty ?>
 		<?php if ($totalRows_rsView === 0) { // Show if recordset not empty ?>
-			<p>No Record Found. </p>
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 ">
+				<h1>No Record Found. </h1>
+			</div>
 		<?php } // Show if recordset not empty ?>
 	</div>
 
