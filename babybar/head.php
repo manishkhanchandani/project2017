@@ -163,4 +163,10 @@ if (isset($_GET['accesscheck'])) {
 	function toggleContent(id) {
 		$('#' + id).toggle();
 	}
-</script> 
+</script>
+<script src="<?php echo HTTP_PATH; ?>js/parse-latest.js"></script>
+
+<script>
+Parse.initialize("myAppID");
+Parse.serverURL = "https://parse-server-mk1.herokuapp.com/parse";
+</script>

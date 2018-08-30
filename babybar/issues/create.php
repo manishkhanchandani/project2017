@@ -137,6 +137,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	}
 }
 
+$redirect = false;
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, status, ref_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
@@ -172,6 +174,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
   $insertGoTo = $mainUrl;
   header(sprintf("Location: %s", $insertGoTo));
+  $redirect = true;
+  $error = "Posting successful. Redirecting you ....";
+  exit;
 }
 
 $colname_rsDistinctTitle = "-1";
@@ -227,7 +232,8 @@ $ref_id = !empty($_POST['ref_id']) ? $_POST['ref_id'] : '';
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include('../head.php'); ?>
-<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -254,6 +260,33 @@ $ref_id = !empty($_POST['ref_id']) ? $_POST['ref_id'] : '';
 <div class="alert alert-success">
   <?php echo $error; ?>
 </div>
+<?php } ?>
+<?php 
+if (!empty($redirect) && ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))) { ?>
+<script>
+var Post = Parse.Object.extend("BabyBarNodes");//create new class, table
+var post = new Post(); //new row
+post.set("user_id", "<?php echo $_SESSION['MM_UserId']; ?>");
+post.set("subject_id", "<?php echo $_POST['subject_id']; ?>");
+post.set("title", "<?php echo $_POST['title']; ?>");
+post.set("description", "<?php echo $_POST['description']; ?>");
+post.set("node_type", "<?php echo $_POST['node_type']; ?>");
+post.set("description2", "<?php echo $_POST['description2']; ?>");
+post.set("sub_topic", "<?php echo $_POST['sub_topic']; ?>");
+post.set("view_images", "<?php echo $_POST['view_images']; ?>");
+post.set("view_videos", "<?php echo $_POST['view_videos']; ?>");
+post.set("view_links", "<?php echo $_POST['view_links']; ?>");
+post.set("status", "<?php echo $_POST['status']; ?>");
+post.set("refer_id", "<?php echo $_POST['ref_id']; ?>");
+post.save(null, {
+	success: (obj) => {
+		console.log('successfully saved: ', obj.id);
+	},
+	error: (obj, err) => {console.log(' object: ', obj);console.log(' error: ', err);}
+});
+</script>
+<meta http-equiv="refresh" content="3;URL=<?php echo $mainUrl; ?>">
+
 <?php } ?>
           <div class="table-responsive">
  	 		<table class="table">

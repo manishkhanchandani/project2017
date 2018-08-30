@@ -132,6 +132,15 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1") && !empty($
 				<input type="hidden" name="MM_update" value="form1" />
 				<input type="hidden" name="id" value="<?php echo $row_rsEditEssayIssue['id']; ?>" />
 			</div>
+			
+<script>
+
+ 	$(document).ready(function() {
+        $('#description').summernote({
+			height: 150						   
+		});
+    });
+</script>
 			<script>
 				function callme() {
 					document.getElementById('timer').value = parseInt(document.getElementById('s_timer').innerHTML);

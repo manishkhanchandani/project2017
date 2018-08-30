@@ -1,0 +1,3 @@
+npm install -g parse-dashboard
+
+parse-dashboard --appId myAppID --masterKey myMasterKey --serverURL "https://parse-server-mk1.herokuapp.com/parse" --appName parseServer
