@@ -9,7 +9,9 @@
 
 <script>
 Parse.initialize("myAppID");
-Parse.serverURL = "https://parse-server-mk1.herokuapp.com/parse";
+//Parse.serverURL = "https://parse-server-mk1.herokuapp.com/parse";
+Parse.serverURL = "https://mkparse.info/parse";
+console.log(Parse.serverURL);
 
 var Post = Parse.Object.extend("Post");//create new class, table
 var post = new Post(); //new row

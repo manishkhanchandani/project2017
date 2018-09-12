@@ -27,7 +27,7 @@ if (isset($_GET['pageNum_rsView'])) {
 $startRow_rsView = $pageNum_rsView * $maxRows_rsView;
 
 mysql_select_db($database_conn, $conn);
-$query_rsView = "SELECT * FROM calbabybar_nodes WHERE current_status = 1 AND deleted = 0 AND status = 1 $sql ORDER BY id DESC";
+$query_rsView = "SELECT * FROM calbabybar_nodes WHERE current_status = 1 AND deleted = 0 AND node_type != 'essay_issues' AND status = 1 $sql ORDER BY id DESC";
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);

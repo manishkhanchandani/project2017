@@ -12,13 +12,14 @@ if (!empty($_GET['deleted_id'])) {
   $Result1 = mysql_query($deleteSQL, $conn) or die(mysql_error());
 }
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1") && !empty($_SESSION['MM_UserId']) && !empty($_POST['title'])) {
-  $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, node_type, sub_topic, related_id) VALUES (%s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, node_type, sub_topic, related_id, status, current_status) VALUES (%s, %s, %s, %s, %s, %s, 1, 1)",
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['subject_id'], "int"),
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['node_type'], "text"),
                        GetSQLValueString($_POST['sub_topic'], "text"),
-                       GetSQLValueString($_POST['related_id'], "text"));
+                       GetSQLValueString($_POST['related_id'], "text")
+					   );
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());

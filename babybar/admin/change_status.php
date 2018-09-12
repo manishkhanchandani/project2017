@@ -99,7 +99,7 @@ if (isset($_GET['current_status'])) {
   $colname_rsView = (get_magic_quotes_gpc()) ? $_GET['current_status'] : addslashes($_GET['current_status']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsView = sprintf("SELECT *, a.status as st FROM calbabybar_nodes as a INNER JOIN users_auth as b on a.user_id = b.user_id WHERE a.current_status = %s AND a.deleted = %s ORDER BY id DESC", $colname_rsView,$coldeleted_rsView);
+$query_rsView = sprintf("SELECT *, a.status as st FROM calbabybar_nodes as a INNER JOIN users_auth as b on a.user_id = b.user_id WHERE a.current_status = %s AND a.deleted = %s ORDER BY id ASC", $colname_rsView,$coldeleted_rsView);
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);

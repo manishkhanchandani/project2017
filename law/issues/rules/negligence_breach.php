@@ -45,7 +45,14 @@
     </li>
 </ol>
 <p>If Risk outweighs justification, there is negligence, and if justification outweighs risk, then there is no negligence. So based on above analysis of balance test, risk is more than justification so there is breach. </p>
-<p>&nbsp;  </p>
+<hr />
+<p><strong>Important</strong></p>
+<p>Using Hand formula and you have to figure out B, P, and L.</p>
+<p>B: the burden of taking the precaution &mdash; in this case the working radio &mdash; is $100.</p>
+<p>P: The <strong>probability of harm if the precaution is not taken</strong> is 5 percent (or .05), which is multiplied by the <strong>gravity of harm </strong>(L)  if an accident does occur, or $30,000.</p>
+<p>Thus, .05 &times; 30,000 = $1,500. Once you compute this figure, and know that the precaution cost is $100.</p>
+<hr />
+<p>&nbsp;</p>
 <p><strong>Analysis</strong></p>
 <p>Here D went to <u>great lengths to be sure his activities did not endanger anyone</u> (show care taken by D from hypo) because <u>he went to a "gravel bar" in the "middle of the river" with no one around so there would be no foreseeable danger to anyone. And once there he threw the firecrackers &quot;carefully&quot;</u>. (show what D did about taking the care from hypo)</p>
 <p>

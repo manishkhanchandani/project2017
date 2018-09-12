@@ -160,7 +160,7 @@ $endtime = microtime(true);
 		<?php if ($totalRows_rsView > 0) { // Show if recordset not empty ?>
 			<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 ">
   				<h3 class="page-header"><?php echo $row_rsView['title']; ?></h3>
-				<div><small>(<?php echo $subject; ?> <?php echo $reference; ?>) <?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?><br /><br /></small><hr /></div>
+				<div><small>(<?php echo $subject; ?> <?php echo $reference; ?>) <?php if (!empty($_SESSION['MM_UserId']) && $_SESSION['MM_UserId'] === $row_rsView['user_id']) { ?><?php if ((int) $row_rsView['status'] === 0) { ?><img src="<?php echo HTTP_PATH; ?>images/private.gif" /> <?php } ?><a href="<?php echo $mainUrl; ?>/edit/<?php echo $row_rsView['id']; ?>"><img src="<?php echo HTTP_PATH; ?>images/edit16.png" /></a> <a href="<?php echo $mainUrl; ?>/delete/<?php echo $row_rsView['id']; ?>" onClick="var a = confirm('do you really want to delete this record?'); return a;"><img src="<?php echo HTTP_PATH; ?>images/delete16.png" /></a><?php } ?><br /><br /></small><hr /></div>
 				<div><?php echo $row_rsView['description']; ?></div>
 				<div>
 					<?php 

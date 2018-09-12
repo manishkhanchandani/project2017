@@ -157,9 +157,19 @@ if (!empty($barSubjects)) {
 					</li> -->
 				</ul>
 				  <ul class="nav navbar-nav navbar-right">
+				  	<?php if (!empty($_SESSION['MM_UserGroup']) && $_SESSION['MM_UserGroup'] === 'admin') { ?>
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						<?php if (!empty($_SESSION['MM_UserId'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?><span class="caret"></span></a>
+						Admin<span class="caret"></span></a>
+					  
+					  <ul class="dropdown-menu">
+						<li><a href="<?php echo HTTP_PATH; ?>admin/change_status.php">Change Status</a></li>
+					  </ul>
+					</li>
+					<?php } ?>
+					<li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<?php if (!empty($_SESSION['MM_UserId']) && !empty($_SESSION['MM_DisplayName'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?><span class="caret"></span></a>
 					  
 					  <ul class="dropdown-menu">
 						<?php if (!empty($_SESSION['MM_UserId'])) { ?>

@@ -126,6 +126,13 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 		$error = 'Invalid User';
 	}
 	
+	
+	$sendMail = false;
+	if ((int) $_POST['status'] === 1) {
+		$_POST['current_status'] = 0;
+		$sendMail = true;
+	}
+	
 	$_POST['view_images'] = array_filter($_POST['view_images']);
 	$_POST['view_videos'] = array_filter($_POST['view_videos']);
 	$_POST['view_links'] = array_filter($_POST['view_links']);
@@ -153,7 +160,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
 
 
-  $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s, view_images=%s, view_videos=%s, view_links=%s, status=%s, ref_id=%s WHERE user_id = %s AND id = %s",
+  $updateSQL = sprintf("UPDATE calbabybar_nodes SET title=%s, description=%s, description2=%s, sub_topic=%s, node_type=%s, view_images=%s, view_videos=%s, view_links=%s, status=%s, current_status=%s, ref_id=%s WHERE user_id = %s AND id = %s",
                        GetSQLValueString($_POST['title'], "text"),
                        GetSQLValueString($_POST['description'], "text"),
                        GetSQLValueString($_POST['description2'], "text"),
@@ -163,6 +170,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['view_videos'], "text"),
                        GetSQLValueString($_POST['view_links'], "text"),
                        GetSQLValueString($_POST['status'], "int"),
+                       GetSQLValueString($_POST['current_status'], "int"),
                        GetSQLValueString($_POST['ref_id'], "text"),
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['id'], "int"));
@@ -188,7 +196,11 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 	}
   }
 
-  $updateGoTo = $mainUrl;
+  $updateGoTo = $mainUrl.'/detail/'.$_POST['id'];
+  if (!empty($sendMail)) {
+  	
+  	mail("mkgxy@mkgalaxy.com", "Edited content posted on calbabybar.com for id ".$_POST['id'], "View the content at http://calbabybar.com/admin/change_status.php", "From:admin of calbabybar.com<admin@calbabybar.com>");
+  }
   header(sprintf("Location: %s", $updateGoTo));
   exit;
 }
@@ -444,6 +456,7 @@ do {
               <tr valign="baseline">
                   <td nowrap align="right">&nbsp;</td>
                   <td><input type="submit" value="Update">
+                      <input name="current_status" type="hidden" id="current_status" value="<?php echo $row_rsEdit['current_status']; ?>">
                       <input name="id" type="hidden" id="id" value="<?php echo $row_rsEdit['id']; ?>"></td>
               </tr>
           </table>

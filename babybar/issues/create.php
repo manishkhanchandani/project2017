@@ -129,6 +129,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['view_images'] = json_encode($_POST['view_images']);
 	$_POST['view_videos'] = json_encode($_POST['view_videos']);
 	$_POST['view_links'] = json_encode($_POST['view_links']);
+	
+	$_POST['current_status'] = 1;
+	$sendMail = false;
+	if ((int) $_POST['status'] === 1) {
+		$_POST['current_status'] = 0;
+		$sendMail = true;
+	}
 
 	if (!empty($error)) {
 		unset($_POST['MM_insert']);
@@ -140,7 +147,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 $redirect = false;
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, status, ref_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO calbabybar_nodes (user_id, subject_id, title, description, node_type, description2, sub_topic, view_images, view_videos, view_links, status, ref_id, current_status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_SESSION['MM_UserId'], "int"),
                        GetSQLValueString($_POST['subject_id'], "int"),
                        GetSQLValueString($_POST['title'], "text"),
@@ -152,14 +159,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_POST['view_videos'], "text"),
                        GetSQLValueString($_POST['view_links'], "text"),
                        GetSQLValueString($_POST['status'], "int"),
-                       GetSQLValueString($_POST['ref_id'], "text"));
+                       GetSQLValueString($_POST['ref_id'], "text"),
+                       GetSQLValueString($_POST['current_status'], "int"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
   
   
+  $id = mysql_insert_id();
   if (!empty($_POST['ref_id'])) {
-  	$id = mysql_insert_id();
   	$tmp = explode(',', $_POST['ref_id']);
 	foreach ($tmp as $k => $v) {
 		$ref_id = trim($v);
@@ -172,7 +180,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	}
   }
 
-  $insertGoTo = $mainUrl;
+  $insertGoTo = $mainUrl.'/detail/'.$id;
+  if (!empty($sendMail)) {
+  		mail("mkgxy@mkgalaxy.com", "New content posted on calbabybar.com with id at ".$id, "View the content at http://calbabybar.com/admin/change_status.php", "From:admin of calbabybar.com<admin@calbabybar.com>");
+	}
   header(sprintf("Location: %s", $insertGoTo));
   $redirect = true;
   $error = "Posting successful. Redirecting you ....";
