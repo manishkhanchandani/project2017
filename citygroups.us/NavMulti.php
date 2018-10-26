@@ -11,7 +11,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">California Bar</a>
+				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">City Groups</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -71,9 +71,9 @@
 							<li><a href="" onClick="signOut(); return false;">Signout</a></li>
 						<?php } else { ?>
 							<li><a href="" onClick="googleLogin(); return false;">Google</a></li>
-							<!--<li><a href="" onClick="facebookLogin(); return false;">Facebook</a></li>
 							<li><a href="" onClick="twitterLogin(); return false;">Twitter</a></li>
-							<li><a href="" onClick="gitHubLogin(); return false;">Github</a></li> -->
+							<li><a href="" onClick="gitHubLogin(); return false;">Github</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/login.php">Email</a></li>
 						<?php } ?>
 					  </ul>
 					</li>

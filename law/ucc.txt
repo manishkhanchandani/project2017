@@ -1,0 +1,67 @@
+Question 1
+
+Kravat is a manufacturer of men's ties. Clothier operates a men's clothing store. Kravat telephoned Clothier and told him that he was closing out the stock of last year's ties. "I have six dozen silk ties of assortedpatterns. I will let you have them for $80 a dozen, F.O.B. destination." Clothier replied, "I'll take them."
+The next day Kravat mailed the following letter:
+This will confirm our contract for six dozen silk ties of assorted patterns at $80 per dozen, plus shipping charges,' for immediate shipment, payment on delivery. 
+(Signed) Kravat.
+Clothier dld not reply to this letter which he received two days after it was mailed.
+Kravat shipped the ties to Clothier's place of business and enclosed an invoice that billed Clothier for $507- six dozen ties at $80 a dozen, plus $27 shipping charges. Clothier accepted the ties, made no complaint about them or the charges, but he has refused to pay anything to Kravat.
+Amonth later, when Kravat complained about not having been paid, Clothier admitted that he owed lmn $480, but contended that he dld not owe the $27 because "I never 'agreed to pay the shipping charges."
+QUESTION:
+Discuss Clothier's contractual liability.
+
+Grading Sheet
+1. Since this transaction is for sale of the goods, it is governed by UCC.
+2. Statute of frauds applies when goods valued over $500.
+	2a. Recognize the issue that goods are valued over $500 only if one adds in shipping.
+3. Statute of frauds satisfied between merchants by subsequent writing.
+4. Both parties are merchants under the provisions of the UCC.
+5. F.O.B destination means that Kravat must bear the cost of shipment.
+6.
+
+Question 2
+
+Spud is a produce wholesaler who regularly does business with Dan's Diner, Inc. (Diner). On September 15, Diner's authorized buyer orally agreed with Spud to buy all the potatoes in "bin 15" at Spud's warehouse, to be delivered at Diner's place of business on October 1, for $1,000. The next day Diner received the following writing signed by Spud: "This confirms our sale to you of all the potatoes in our bin 1 15 for October 1 delivery." Diner did not reply to this writing.
+On October 2, Spud tendered all of the potatoes from bin 15 to Diner at Diner's place of business, but gave no reason for being a day late with the delivery. Diner refused to accept or pay for any of the potatoes.
+Between September 15 and October 2, the bottom dropped out of the potato market. On September 15 the market value of the potatoes in bin 15 was $1,000; on October 1, it was only $500. The one day delay in delivery did not harm Diner or its business in any way, and Diner admits that the price-drop was its only reason for refusing to accept the potatoes.
+Spud sued Diner for breach of contract.
+
+Question:
+Discuss the claims and defenses of the parties in this action.
+
+Question 3
+
+For several years, Arcane has sold goods to Billy Bob on thirty day credit terms. Recently, however, Arcane heard that Billy Bob was not paying suppliers and was about to go out of business. Arcane called Billy Bob to ask about the rumor and to seek payment for goods which Arcane had delivered to Billy Bob over thirty days ago. Billy Bob told Arcane not to worry, his business was good, so good, in fact, that he wanted to place a substantial new order. Arcane took the order, but only on the condition that Billy Bob pay C.O.D. for the new order, and at the same time pay all Arcane's outstanding invoices. Arcane also asked Billy Bob to send him a letter stating that he was not going out of business. Billy Bob agreed to the terms set out by Arcane.
+The new order was scheduled to be delivered in two shipments. When the first shipment was delivered, the delivery service neglected to get the C.O.D. payment. Five days later, but before the second shipment was delivered to Billy Bob, Arcane discovered that Billy Bob filed bankruptcy after he received the first shipment of goods. Billy Bob never sent the confirmation letter indicating his intent to stay in business.
+OUESTION:
+What rights and remedies are available to Arcane to recover the goods from Billy Bob, and what steps, if any, should be taken to preserve those rights and remedies?
+
+Question 4
+Sampson owned property on which he stored used mining equipment and some open barrels of chemicals. Sampson entered into a written contract, signed by both parties, to sell the equipment to ChemCo which specialized in the purchase and resale of mining equipment. The purchase price for the equipment was the transfer of a compressor from ChemCo to Sampson worth $1 7,500 and, in addition, ChemCo agreed to pick up and dispose of three of the barrels of chemicals on the property.
+After the contract was signed, ChemCo called Sampson and advised him that they would pick up the equipment but would not pick up the chemicals; that Sampson must deliver the chemicals to ChemCo's place of business. ChemCo delivered the compressor to Sampson and picked up the used mining equipment, but did not pick up the barrels of chemicals. Subsequently, Sampson loaded the open barrels onto one of his trucks to deliver them to ChemCo. On the way to ChemCo, Sampson's truck hit a pothole and the barrels tipped, dumping the chemicals into the street. Alone, the contents of the barrels were not dangerous, but when mixed, they produced an extremely toxic substance.
+ChemCo refused to accept the barrels with the remaining chemicals and the authorities determined they were Sampson's responsibility. Sampson expended $30,000 in legal fees defending an EPA claim for the improper transportation of hazardous wastes and $20,000 for the cost of cleaning up the spilled chemicals.
+OUESTION:
+Discuss whether Sampson can recover the cost of the cleanup and the amount he expended for legal fees from ChemCo.
+
+Question 5
+Subzero, a manufacturer of air conditioners, in response to an inquiry from Big Appliances, a retail seller of large appliances, sent the following letter:
+Per your request, we are pleased to quote you 1000 air conditioners at $1 75 each.
+Upon receiving this letter, Big sent Subzero its purchase order for 1000 air conditioners. Included on the back of the Purchase Order Form were the following provisions:
+1. By accepting this order, seller expressly warrants that the goods provided are fit for the ordinary purposes for which they are used.
+2. All disputes arising out of this agreement shall be submitted to binding arbitration.
+When Subzero received Big's Purchase Order Form, Subzero immediately returned an Acknowledgment of Order Form which included the following language:
+THANK YOU FOR YOUR ORDER. BEFORE ACCEPTING GOODS FROM CARRIER, MAKE SURE THAT EACH ARTICLE IS IN GOOD CONDITION. THIS IS NOT AN INVOICE. AN INVOICE WILL BE SENT TO YOU WITHIN A FEW DAYS. OUR ACCEPTANCE OF YOUR ORDER IS EXPRESSLY MADE CONDITIONAL ON YOUR ASSENT TO THE FOLLOWING TERMS. SELLER MAKES NO WARRANTY, EXPRESS OR IMPLIED, WITH RESPECT TO THE MATERIAL, WORKMANSHIP, OR QUALITY OF THE GOODS SPECFIED HEREIN.
+Big made no objection to Subzero's acknowledgment. Within two weeks, Big accepted and paid for the air conditioners. Almost all of the air conditioners proved to be defectively manufactured. Big gave notice of the defects and served a demand for arbitration. Subzero refused to arbitrate.
+OUESTION:
+Discuss the rights and obligations of each party, and any damages to which the parties may be entitled.
+
+Question 6
+In a signed writing, Wholesaler contracted to deliver to Baker "10,000 pounds of granulated cane sugar on the fifth day of each month during the calendar year," for Baker's use in his baking business. During the first four months of the year Wholesaler made the following deliveries:
+January 5------9,950 pounds
+February 5----9,960 pounds
+March 5-------10,010 pounds
+April 5---------9,980 pounds
+After each delivery, Wholesaler billed Baker only for the amount delivered, and Baker, without complaint, accepted each delivery and paid the amount billed.
+On May 4, Wholesaler attempted to deliver 9,700 pounds of sugar to Baker and explained to him that he would deliver the remaining 300 pounds the next day. Baker refused to accept the delivery. On May 5, Wholesaler again attempted to make a delivery. This time he had a total of 10,000 pounds of sugar. Baker refused to accept that delivery as well and canceled the contract.
+QUESTION:
+Discuss Wholesaler’s chances of success if he sues Baker for breach of contract.

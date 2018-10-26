@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule \.(html|htm)$ - [H=application/x-httpd-php5]
+#RewriteRule \.(html|htm)$ - [T=application/x-httpd-php5]

@@ -1,0 +1,672 @@
+Brandi McAlexander I use Finz and break them down based on the index. I would tackle about 10 at a time from a specific area and see how well I did. I would go area by area until I got an 80% in each area
+
+
+
+
+Question 1
+
+On Mayl, Buyer received the following letter:
+Dear Buyer: I have decided to give up my ranch and move to town. I thought that you might consider buying it from me. I will sell it to you for its current market value, $80,000. Call me by May 10. I will keep this proposal open, and will not withdraw it, until after that date.
+/s/ Seller
+The next day, Buyer mentioned to a friend, Mary, that he was considering buying the ranch. Mary responded that an acquaintance of hers, Jody, also had received an offer from Seller to purchase the ranch. Buyer immehately went home and prepared a letter of acceptance, addressed to Seller, and deposited it in the mail at 9:30 A.M.
+At 10:OO A.M. on May 2, Seller entered into a written agreement with Jody for the purchase of the ranch.
+At 2:00 P.M. on May 2, Buyer called Seller to arrange for a survey of the ranch. Seller informed Buyer that he had already sold the ranch. Upon hearing this, Buyer exclaimed, "We have a deal. I sent you an acceptance this morning by mail."
+QUESTION:
+Discuss whether there is a contract between Buyer and Seller and the basis for your conclusion.
+
+
+Grading Sheet
+1. An offer is an manifestation of present intention and willingness to enter into a bargain and be bound.
+2. Seller's letter is an offer under reasonable person standard.
+3. Seller's promise to keep the offer open was not supported by consideration, therefore the offer could be revoked.
+4. Indirect revocation occurs when Seller takes action inconsistent with intention to enter into contract and Buyer acquires reliable information to that effect.
+5. Offer to sell the same property to another not inconsistent with intention to enter into a contract; therefore, Buyer learning that Seller had made an offer to Jody would not result in an indirect revocation.
+6. Acceptance made as invited is operative.
+7. Offer stated that Buyer must telephone Seller by May 10. Therefore, placing the letter in the mail was not effective acceptance.
+8. A direct reovcation is a manifestation of intention by the Seller not to enter the contract. It is effective on receipt.
+10. Seller's statement made directly to the Buyer would be effective revocation.
+
+
+
+
+Question 2
+Beginning on September 1, and continuing through October 31, the Daily News published the following announcement each day in its newspaper:
+Attention Word Builders!
+In honor of its fiftieth anniversary, the Daily News is sponsoring a contest. Whoever finds the most words using the letters in the phrase HAPPY BIRTHDAY DAILY NEWS, and delivers the word list to us by November 1, will receive $2000! The word list should include only words that appear in the Standard English Dictionary, 2nd Edition. No proper nouns, foreign words, or contractions. Good luck! 
+On October 1, the Daily News received a word list from Alice Adams. Attached to the word list was a note in which Adams wrote that she had included proper nouns and foreign words because sometimes judges did not follow the rules and she wanted to have the longest list.
+On October 10, Barbara Burns delivered her word list to the Daily News. Her list conformed to the published rules.
+On October 20, Cathy Cook called the News and asked what would happen if two or more contestants tied for the longest word list. The receptionist checked with the publisher and then told Cook that, in that case, the winners would split the $2000. Cook then compiled her list, which conformed to the rules, and delivered it to the Daily News. 
+On November 1, the Daily News announced that Burns and Cook had tied for first place and that each wouldbe awarded $1000. Adams read the announcement, reviewed the winning lists, and discovered that, even without the improper words, her list had every word that appeared on the winning lists plus ten adhtional words. When she called the newspaper to complain, she was told that she had been disqualified from the contest because of her note and the paper had not counted the words in her list.
+QUESTION:
+Your law firm represents the Daily News. Adams, Burns, and Cook each claim to be entitled to $2000 under the rules of the contest. Please advise your client regardmg each claim.
+
+Grading Sheet
+1. Identify the elements of the contract (offer, acceptance and consideration)
+2. Recognize that this advertisement is an offer.
+3. Recognize unilateral contract: i.e. the offer could be accepted by performance of its terms.
+4. In a unilateral contract, performance as requested constitutes the consideration.
+Adams
+5. Because she deviated from the published rules, Adams did not accepted the offer.
+Burns
+6. By delivering conforming word lists to the Daily News by November 1, Burns/Cook accepted the offer.
+7. Identify issue as to whether the Daily News explained this offer or changed the terms of its offer when it said that $2000 would be split among tying winners.
+8. Contract will be enforced according to reasonable interpretation of its terms.
+9. Where both parties interpretations are reasonable, contract will be interpreted against the drafter.
+10. If the written offer is interpreted to mean that each winner is entitled to $2000, then Burns had fully performed before Daily News clarified the terms of her and thus can enforce the original contract.
+Cook
+11. Because the offer to Cook was not accepted until she was notified of the change, she accepted the change term by compiling and delivering her entry.
+
+
+
+Question 3
+
+On March 5, Vendor, who owned a piece of real estate called Nutacre, telephoned Byers : "Nutacre is for sale. I'll let you have it for $100,000 in cash. Although I've talked to other prospective buyers, I assure you that I won't sell it to anyone else before April 1. I'll hold the offer open exclusively for you until that time. Closing will be on April 15."
+On March 6, Byers, who was familiar with Nutacre, went to see Vendor. He told Vendor, "I need to look at some other property before I can decide. It will be the last week in March before I can get back to you. Here is $50 to keep your offer open until April 1."
+Vendor replied, during the same conversation, "Thank you for the $50. I will definitely keep the offer open until April 1." On March 21, Vendor sold Nutacre to Smith.
+On March 22, Byers first learned of the sale to Smith when he read about it in the local paper.
+On March 23, Byers hand delivered to Vendor a letter that read, "You gave me your word you would keep the offer open until April 1. I hereby accept your offer to sell Nutacre to me for $100,000 in cash. I will give you the cash on April 15. [Signed] Byers."
+On March 25, Vendor responded in a letter to Byers that he had already sold the land to Smith.
+On April 15, Byers tendered $100,000 in cash to Vendor, but Vendor refused to accept it.
+Question
+Discuss whether Byers has an enforceable contract with Vendor for the sale of Nutacre. Be sure to discuss whether Vendor's promises to keep his offer open are enforceable.
+
+Grading Sheet
+1. Vendor's March 5 phone call was an offer to sell Nutacre to Buyer.
+2. An offer is an manifestation to enter into a bargain, made to invite another to accept the invitation.
+	2a. An offer must contain all relevant terms such as: what is to be sold, for how much, and by when.
+3. An offer is not revoked until the offeror has communicated its revocation to the offeree. In other words, revocation occurs when the offeror takes action inconsistent with the offer and the offeree acquires reliable information to that effect.
+4. Thus, mere selling of Nutacre to Smith did not operate as revocation because Byers did not know about the sale.
+5. However, Byers reading about the sale on March 22 was a revocation which did terminate the offer.
+6. The offer could not be revoked if Vendor's assurance not to sell created an option contract.
+7. Recognition of statute of frauds issue.
+8. An option contract for the sale of real estate is created if it satisfies requirements which include:
+	8a. that the promise to keep the offer open must be in writing and signed, and
+	8b. that it must be supported by consideration.
+9. The problem here is that the contract option was not signed by Vendor. 
+
+
+Question 4
+
+Homeowner decided have a sprinkler system installed in his yard. He looked in the phone book for someone to do the work. Homeowner found an advertisement by Landscaper that read:
+Will install sprinkler systems. You buy the parts and we install them for you. Any residential lot under 1,000 square feet, less than $1,000, guaranteed!
+Homeowner thought Landscaper's price was good, so the next morning he faxed her the following note:
+I am thinking about installing a sprinkler system in my yard. I haven't decided what to do yet. The yard is 500 square feet. How much would it cost to have you do the work? If I buy the parts myself, can you install them for $500? If you can do it for $500, let's do it within the next two weeks.
+That same day, Landscaper sent Homeowner the following fax:
+Thank you for your interest. We look forward to installing your sprinkler system. Unfortunately, $500 will not cover our costs. We have a minimum charge of $750. We'll plan on showing up in two weeks to do the work for $750 unless I hear from you before then. Please have the parts ready for us.
+Two weeks later, Landscaper showed up at Homeowner's house. She knocked on the door, but no one answered. She saw the sprinkler parts sitting by the garage and installed them. At the end of the day, just as Landscaper was getting in her truck to drive off, Homeowner hve up and asked Landscaper what she was doing. After Landscaper explained, Homeowner told her that he had hired someone else to do the work for $500. Homeowner said he was not going to pay Landscaper a penny, much less the $750 that Landscaper wanted.
+QUESTION:
+Discuss potential claims that Landscaper may have and compensation to which she may be entitled.
+
+Grading Sheet
+1. In order to be an offer, a statement must contain terms that are reasonably certain.
+2. Generally, advertisements are not considered as offers.
+3. Homeowner's fax probably was an offer because it was specific as to all relevant terms.
+4. Homeowner's offer was rejected by Landscaper.
+	4a. Landscaper's reply was a counter offer, it had a different price.
+5. Homeowner did not accept Landscape's counteroffer, silence is not construed as acceptance.
+6. If Landscaper's fax was counter offer, however, the amount of the claim would be $750.
+7. Landscaper may claim that Homeowner's fax invited acceptance by performance within the two week period.
+	7a. If so, the amount of the claim would be $500, the amount offered by Homeowner.
+8. If Landscaper cannot prove either contract claim, she may still argue that she is entitled to some recovery on a quisi-contract theory (also called "quantum merit", "unjust enrichment", or even "quantum velebant").
+	8a. Under any of these, Landscaper's remedy is the reasonable value of his services.
+	
+	
+Question 5
+
+Father's adult child, Son, was seriously injured in a car accident. Doctor, a licensed physician, who happened by the scene of the accident, found Son unconscious, treated him at the scene, and took him to his hospital. A few days later Father came to the hospital and told Doctor, "If you continue treating Son, I'll pay all of your fees, those for the services you have already rendered and those you will deliver to Son in the future. " Doctor thanked Father and continued to treat Son until he died two days later, never having regained consciousness.
+The reasonable value of Doctor's services before his conversation with Father was $3,000; the reasonable value of the services after their conversation and before Son's death was $2,000. Father has refused to pay for any of Doctor's services.
+OUESIlON:
+Discuss:
+1. any theories that Doctor may have to recover for his services against Son's estate andlor Father; and
+2. the defenses which the Son's estate andlor Father may assert against Doctor's claim.
+
+Grading Sheet
+1. There can be no contract without a promise (offer and acceptance)
+2. Son made no promise to pay Doctor for his services.
+3. Doctor may be able to obtain payment under theory of quasi contract to prevent unjust enrichment.
+4. A promise is not enforceable unless it is supported by consideration.
+5. Consideration is defined as an act, forbearance, or return promise bargained for and given in exchange for the promise.
+6. The promise to pay for past services cannot alone serve as consideration, because services were not bargained for and given in exchange for the promise.
+7. The promise to pay for Doctor's future services is supported by consideration.
+	7a. Father need not have benefitted from Doctor's services; the consideration may move from the promisee to a third person.
+	7b. Courts are not concerned about the adequacy of the consideration.
+8. A promise to answer the debt of another is within the Statute of Frauds and must be in writing.
+9. Here, father's promise is an original promise, not a promise to answer for the son's debt, therefore it does not fall within the Statue of Frauds.
+10. The Doctor may assert that the Father is estopped from denying the existence of the contract because he reasonably relied upon the Father's statemetns.
+
+
+Question 6
+
+On May 1, Grandpa James wrote to Jesse, his unemployed adult granddaughter: "If you will come to Pleasantville and take care of me and my ranch, Outlaw's Roost, for the rest of my life, I will leave Outlaw's Roost to you in my will." (signed) Grandpa James. On May 3, Jesse moved to Pleasantville and began to take care of Grandpa and Outlaw's Roost.
+On May 10, Jesse met with Clyde and offered, in writing, to sell Outlaw's Roost to him for $100,000 when she received title to the property.
+On May 21, Grandpa told Jesse he no longer wanted her to take care of him. When Jesse protested, Grandpa ordered Jesse, at gunpoint, to leave Outlaw's Roost immediately.
+On May 22, Grandpa died suddenly.
+On May 23, Clyde wrote to Jesse accepting her offer to sell Outlaw's Roost for $100,000. The letter, although properly mailed, was never received by Jesse.
+In his will, Grandpa left his entire estate to the Wild Wild West Society.
+QUESTION:
+Discuss the rights of the parties, their legal relationships, and what remedies might be available to each. Do not discuss the validity of Grandpa's will.
+
+Grading Sheet
+1. A contract is formed when there is an offer, an acceptance, and adequate consideration.
+2. Grandpa's letter to Jesse was an offer to give her Outlaw's Roost in exchange for her taking care of Grandpa and the property.
+3. Jesse accepted the offer by moving to the Pleasantview and by beginning to take care of him and Outlaw's Roost.
+4. Once Jesse begin performance, Grandpa's offer become irrevocable.
+5. Jesse's taking care of Grandpa and Outlaw's Roost, even for a relatively short period of time, probably was adequately consideration to support Grandpa's promise to leave Outlaw's Roots to her.
+6. Grandpa may have breached his obligation of cooperation (good faith and fair dealing) when he prevented Jesse when taking care of him and his property.
+7. Jesse and Clyde may be entitled to specific performance.
+8. Clyde's power of acceptance was not terminatted by Grandpa's death because only the death of offeror or offeree will result in termination.
+9. Clyde's acceptance was effective despite the fact that Jesse never received it. (mailbox rule)
+10. Jesse or Clyde may be able to impose a constructive trust on Outlaw's Roost against the Wild Wild West Society.
+
+
+
+Question 7
+
+Pat agreed to purchase residential property fiom Dan. Dan drew up a contract of sale, whose tern were legally sufficient in all respects, and mailed it to Pat. Pat signed the contract and mailed it back to Dan along with the agreed-upon down payment. Dan received the contract, but never signed it. He did, however, deposit the down payment in his checking account.
+Despite that the contract was never signed by Dan, he allowed Pat to move into the house. Dan then received a better offer for the property, told Pat that he would not transfer the property to her, and told her she must move out.
+QUESTION:
+Discuss the issues raised by Dan's failure to honor the contract with Pat.
+
+Grading Sheet
+1. The Statute of Frauds is applicable to this contract or contracts for the conveyance of interests in real property must be in writing.
+2. The contract must be signed by Dan, the party against whom enforcement is sought.
+3. Identify partial performance as a way to make contract enforceable.
+4. To invoke partial performance, the performance must be substantial.
+5. Pat's down payment, coupled with possession, would probably be enough to trigger enforceability.
+6. Part performance permits the remedy of specific performance.
+7. Part performance does not permit the remedy of damages.
+8. Alternatively, Pat can seek restitution and reclaim the down payment.
+9. Pat can seek a vendee's lien on the property to help recover the down payment.
+
+Question 8
+
+During negotiations between Alice Author and Pat Publisher, Publisher stated to Author, "Because your last book was so successful, if you'll forgo your normal advance and write the Great American Novel, I promise to pay all your expenses and guarantee that you will receive a minimum of $500,000 in royalties." Author replied, "Sounds great!" At Publisher's request, Author then signed Publisher's standard form contract without reading it. The contract reads:
+Author agrees to write "Great American Novel" for Publisher. Publisher shall have the right to review Novel and determine, in its sole discretion, whether it is satisfactory for publication. If Novel is published, Publisher shall pay Author fifty cents ($0.50) per book published. Publisher shall have the exclusive right to publish the novel, and complete discretion as to the price and number of books published.
+(s) Author
+For months, Author lived off her savings and devoted her full time to writing the novel. She also declined several offers to write screenplays during this time. When the novel was complete, Author submitted her book to Publisher. On the same day he received it, Publisher called Author and told her the novel was unacceptable. When Author protested the decision, Publisher replied that the contract clearly states that he didn't have to publish or print any books if he didn't want to.
+OUESTION:
+Discuss Author's possible theories of recovery for her living expenses and $500,000 in royalties, as well as Publisher's defenses to Author's claims.
+
+Grading Sheet
+1. A contract may be either be express, implied or quasi.
+2. In order for a contract to be enforceable, there must be an offer and acceptance and adequate consideration.
+3. Author may argue that the parties had a valid oral contract.
+4. Author may argue that even if the written contract is enforceable, the parties did not intend it to be a full and final expression of their agreement and it is therefore not a complete integration of the terms to which the parties agreed.
+5. Author may argue that she also can recover under a theory of promissory estoppel.
+6. Elements of promissory estoppel: Reasonable expectation author would act on promise; and she in fact relied/acted on promise.
+7. Identification of concept of parol evidence rule.
+8. Parol evidence rule does not bar admission of evidence of prior agreements or promises when theory of recovery is promissory estoppel.
+9. Publisher may argue that the written form contract is enforceable.
+10. Author may argue that the written form contract is unenforceable due to lack of adequate consideration because Publisher's obligations thereunder are entirely optional and are therefore illusionary.
+11. Auther may argue that in rejecting the novel, Publisher has duty of good faith and fair dealing.
+
+
+
+Question 9
+
+Widow acquired title to Greenacre through her late husband's will. When Widow applied to Bank for a loan to be secured by a mortgage on Greenacre, Bank replied, "Because it is possible that husband's child by his first marriage, Son, has an interest in Greenacre we will give you the loan only if you obtain Son's quitclaim deed to the property before May 1st." Widow then wrote to Son telling him what Bank had said and added, "Although I know that you have no interest in Greenacre, I will pay you $800 if you agree to deliver to me a quitclaim deed to the property before May 1st." Widow had intended to offer Son $500, but mistakenly had typed $800 in the letter. Son had no reason to know that Widow intended the amount to be $500.
+Son, who knew that he had no interest in Greenacre, immediately replied, "I want to talk it over with my lawyer before I accept. If you don't hear from me before April 25th, however, you may assume that I have agreed to your offer." Widow replied, "O.K."
+On April 26th, Bank told Widow that the quitclaim deed would not be necessary, and Widow immediately wrote to Son revoking her offer. Son received this letter on April 28. There were no other communications between Widow and Son until April 30th on which date Son tendered to Widow a quitclaim deed to Greenacre and demanded payment of $800.
+OUESTION:
+Discuss whether Widow is obligated to pay Son the $800 for the quitclaim deed.
+
+Grading Sheet
+1. A contract requres a bargain and exchange (offer), and a manifestation of mutual assent (acceptance).
+2. An offer must contain all essential elements: parties, subject matter, time of performance, and price.
+3. A mistake of fact by only one party relating to the agreement will not necessarily prevent formation of contract.
+4. If a non-mistaken party (son) has no reason to know of the mistake by the other party (Widow), Widow cannot take advantage of the mistake to void the agreement.
+5. Son's letter was not an acceptance because he did not manifest his acceptance in the manner set forth in the offer.
+6. Ordinarily an offer cannot be accepted by silence.
+7. Because Widow agreed in his second letter, Son's silence through April 25th operated as an acceptance.
+8. A revocation is not effective until it has been communicated to and and received by the offeree.
+9. Widow's attempted revocation was not effective because it reached Son on April 28th, after the effective date of his acceptance (April 25th).
+10. Therefore, the contract price is $800.
+11. The Widow is obligated to pay the Son.
+
+Question 10
+Paula Hanson Dean, a well respected scientist who had just won the Nobel Prize in chemistry, became engaged in negotiations with Pfizer Kline, the president of Giant Drug Company. On May 1, Dean sent Kline a letter stating:
+I would agree to work as vice-president in charge of research for a period of four years at a salary of $500,000 per year. IS/ Paula H. Dean
+On May 3, Kline received Dean's letter and called Dean stating: "Your salary request is too high. Will you reduce it?" Dean replied: "You cheapskate! I am far too accomplished to work for peanuts. That's as low as I can go."
+Outraged by Dean's flip answer on the phone, Kline immediately sent Dean a letter (first letter) which read:
+Resented your statement. No longer interested in hiring you. IS/ Pfizer Kline
+Later that same day (May 3), Kline decided to accede to Dean's demands and sent a properly addressed, stamped express mail letter (second letter) to Dean which read: 
+Accept your terms, although I wish you would reconsider a lower salary. IS/ Pfizer Kline 
+On May 4, Dean's personal secretary received Kline's express mail letter (second letter) and placed it on Dean's desk. Kline's first letter had not yet arrived. That same day, before reading her mail, Dean entered into a contract to become Research Director for HealthCo Drugs, a competitor of Giant. She immediately called Kline and stated: "I just agreed to work for HealthCo Drugs." Kline replied: "You can't. I already accepted your offer."
+OUESTION:
+Discuss whether Giant has a valid contract with Dean and, if so, whether Giant can force Dean to work for them.
+
+Grading Sheet
+1. Dean's letter of May 1 was an offer.
+2. Kline's May 3 call was not a counter offer / or was mere negotiation.
+3. Kline's first letter was rejection.
+4. Kline's second letter was an acceptance.
+5. Recognition of rule that when rejection is followed by an acceptance, first to be received is effective.
+6. Receipt of letter by Dean's personal secretary constituted receipt by Dean.
+7. Contract was formed (either by mailbox rule or base on rule #5).
+8. The contract fell within the Statute of Frauds.
+9. The Statute of Frauds was satisfied (signed writing)
+10. Giant's employment contract with Dean is not specifically enforceable.
+
+
+
+Question 11
+Owner placed the following notice in the local newspaper:
+Help! My dog, Fluffy, is lost!
+Fluffy is a 100 pound, brown and black 4-year old Rottweiler-Doberman mix. I will pay $1,000 reward to whomever returns my beloved Fluffy to me.
+Finder came upon an illegal dog fight and rescued one of the dogs. Finder took the dog to a veterinarian for necessary treatment, and then, believing the dog to be a stray, took him home to keep him as a family pet. The veterinarian's bill, which Finder paid, was $100. Finder also spent $25 for food for the dog.
+A few days later, Owner saw the dog in Finder's yard. Owner explained to Finder that the dog was his beloved Fluffy and demanded that Finder return Fluffy to him. Finder could tell that Fluffy was Owner's dog by Fluffy's reaction to seeing Owner. He felt that returning Fluffy to Owner was the right thing to do, so he agreed.
+The next day Finder learned about the reward and demanded that Owner pay him $1,125; $1,000 as payment for the advertised reward and $125 as reimbursement for the cost of the dog food and the veterinarian's bill. Owner responded, "I don't owe you anything, but because you took care of Fluffy, I will pay you $500 if you are willing to wait until the first of the month." Finder agreed.
+On the first of the month, Finder asked Owner for the $500; Owner refused. Finder then sued Owner seeking $1,125.
+OUESTION:
+Discuss whether Finder is likely to recover any monetary damages from Owner.
+
+Grading Sheet
+$1000 Reward
+1. To establish a contract must establish mutual assent - offer and acceptance.
+2. Ad in paper constitutes unilateral contract.
+3. Only way to show acceptance is through performance.
+4. In order for Finder to get the reward, he must have acted with knowledge of the offer and been motivated by it.
+5. Finder did not know of the reward - no offer - no acceptance - no mutual assent.
+Quasi - Contract
+6. Identify quasi - contract.
+7. Avoid injustice by preventing unjust enrichment of one party at other's expense.
+8. Finder must show that he conferred a benefit on Owner.
+9. that he had reasonable expectation of being compensated; and 
+10. that the benefits were conferred at the expressed or implied request of Owner.
+11. Finder had no expectation of being compensated and benefits were not conferred at request of Owner. Therefore, no recovery.
+Promise to Pay $500
+12. A promise made in recognition of a past performance or moral obligation is enforceable.
+13. Finder, however, rendered the services voluntarily, therefore the subsequent promise to pay is not enforceable.
+14. Promise to pay $500 could be construed as an offer to compromise a disputed claim. (Consideration is surrender of Finder's claim).
+
+Question 12
+Bill Buyer and Susana Seller are both citizens of the State of Fiction, a jurisdiction which follows majority position common law. On a number of prior occasions, Buyer and Seller have had casual conversations regarding Buyer’s interest in purchasing Blackacre, a piece of real estate owned by Seller and located in Fiction. Recently, Buyer called Seller and asked Seller if she would be willing to meet later that evening and discuss the purchase of Blackacre. Seller initially declined, indicating that she was sick and on medication. After some additional coaxing from Buyer, Seller agreed.
+Later that evening, Buyer and Seller met at a local pub. Seller initially did not drink because she was not supposed to consume alcohol with her medication. As the evening progressed, Seller began drinking and ultimately consumed several beers. After a couple of hours, Buyer turned the discussion toward the potential purchase of Blackacre. Buyer asked Seller, “How much is it going to cost for me to buy Blackacre from you?” Seller, who had a glazed look on her face, asked Buyer to repeat the question. Buyer did so. Seller leaned back, gazed up at the ceiling, and told Buyer that she would sell Blackacre for $10,000. Buyer was shocked and excited because he believed the property to be worth at least $50,000. Buyer stuck out his hand to shake on the deal and exclaimed “you’ve got a deal.” Buyer took out a pen and wrote on the back of a cocktail napkin that Seller had agreed to sell Blackacre to Buyer for a total purchase price of $10,000. Buyer dated the napkin and showed it to Seller. Seller nodded her head in apparent agreement that the terms on the napkin accurately reflected the terms for the sale of Blackacre. Buyer offered Seller $100 as a down payment toward the property. Seller accepted the $100, then the two shook hands again and left the bar.
+The next morning Buyer called Seller to discuss a date to complete the transaction which they had negotiated the night before. Seller told Buyer that she did not know what Buyer was talking about; she did not recall any of the events from the preceding night; and she had no intention of selling Blackacre for $10,000.
+QUESTION:
+Discuss whether Seller must sell Blackacre to Buyer for $10,000.
+
+Grading Sheet
+1. Availability of specific performance for real estate / land sale contracts.
+2. Possibility of oral contract between buyer and seller.
+3. Necessary elements of contracts (offer, acceptance and consideration)
+4. A valid contract also requires a "meeting of the minds / mutual assent".
+5. Issue as to whether Seller possessed capacity to enter into a contract.
+	5a. Intoxication may eliminate Seller's capacity to contract.
+6. Real estate transactions (interests in land) are subject to Statute of Frauds.
+	6a. Buyer may claim that napkin is the writing that satisfies the Statute of Frauds.
+	6b. Writing is sufficient only if it contains every necessary material or essential term.
+	6c. Writing must be signed by a person against whom the contract is to be enforced or charged.
+7. Buyer may claim that his tender of $100 or partial performance of the contract statisfies the statute of frauds.
+8. Partial payment of a contract for the sale of real estate does not constitute partial performance alone - possession or valuable improvements are also required.
+
+Question 13
+
+Seller and Buyer had been negotiating the sale of property located at 200 N. Main Street in Smallville. On March 1, Seller sent the following letter to Buyer:
+I will sell you the 200 N. Main Street property for $100,000 cash, the deed to be delivered and the cash paid on June 1. If I do not hear from you by March 30, I will assume that you have accepted this offer. I would not sell this property for this price to anyone but you.
+(signed) Seller
+Buyer received the letter while he was ill and in bed. He showed the letter to his son and told him that he intended to accept Seller’s offer. Buyer died on March 25 without replying to Seller’s offer.
+On April 5, Seller learned that Buyer had died. Seller made no attempt to confer with anyone representing the Buyer about the property.
+On June 1, the executor of Buyer’s estate tendered $100,000 to Seller for 200 N. Main. (Assume that Buyer’s executor was the proper party to purchase the property if there was a contract for its sale.) Seller refused to accept the money or to execute and deliver a deed to the property.
+QUESTION:
+Discuss the issues involved in this dispute and the probable outcome.
+
+Grading Sheet
+1. A contract is formed if the subject matter is sufficiently identified; there is mutual consent (offer and acceptance); and consideration is given.
+2. Statute of Frauds requires a written document for the sale of real estate.
+	2a. It must be signed by the party sought to be bound (seller).
+	2b. It must contains essential terms (identity of party to be charged, subject matter, terms & conditions, consideration).
+3. The letter signed by Seller satisfies the requirement.
+4. Usually, silence may not constitute acceptance.
+	4a. Unless offeror (seller) has stated that assent may be manifested by silence, and,
+	4b. Offeree (buyer) by remaining silent intends to accept.
+5. Death occured Marth 25th and therefore the offer terminated prior to the effective date (march 30th).
+6. An offer may be accepted only by the person to whom it is given (here, buyer).
+7. Therefore, there was no contract for the sale of the property.
+
+Question 14
+Father wrote to his adult Son, “I want you to have my property Twelve Oaks as a wedding present, but I would need $50,000 from you to pay off the mortgage on the property.” Son replied in writing, “I will pay you $50,000 for Twelve Oaks on March 1, provided I can get a loan from the bank before that date.” Father replied by mail, “It's a deal.” Both Father and Son knew that Twelve Oaks was reasonably worth $100,000.
+Although he tried, Son could not obtain a loan from the bank. Instead, his mother-in-law lent him $50,000. Son then paid the $50,000 to Father on March 2 and explained that he was out-of-town on business on March 1, and returned too late to make payment on that date.
+Father accepted the money and discharged the mortgage. Later, however, having learned that Son obtained the $50,000 from his mother-in-law and not from the bank, Father changed his mind about the wedding present and the sale and refused to deed Twelve Oaks to Son. Father gave as his reasons: (1) that there was no consideration to support the deal; (2) that the condition of obtaining a loan from the bank had not occurred; and (3) that Son was late in paying the $50,000.
+QUESTION:
+Discuss the validity of Father’s reasons for not delivering the deed to Twelve Oaks to Son.
+
+Grading Sheet
+1. A valid contract between father and son exists, as all of the elements are present.
+	1a. Offer
+	1b. Acceptance
+	1c. Consideration
+2. Since this is a contract involving land, it must be writing to comply with the Statute of Frauds.
+3. Son has given valid consideration for the contract by his promise to pay $50,000.
+4. The adequacy of consideration to Father is not a concern under the law, only the existence of consideration.
+5. The obligation of obtaining loan from the Bank is not a condition of Father's duty to deliver the Deed.
+6. Unless the contract is clear that the date of payment is essential to protect the parties, late payment does not excuse performance.
+7. Father cannot refuse to deliver the Deed because payment is late; he can only recover for damages he can prove by the delay.
+8. Father closed on the contract and waived any condition that payment must be made by March 1 when he accepted payment on March 2.
+
+
+Contracts
+A. Formation of Contracts
+	1. Is UCC
+	2. Are Parties Merchants?
+	3. Offer
+	4. Mutual Assent
+	5. Merchant's Firm Offer
+	6. Option Contract
+	7. Unilateral Contract
+	8. Acceptance
+	9. Consideration
+	10. Varying terms
+	11. Offer Lapse
+	12. Effective Acceptance
+	13. Effective Revocation
+	14. Effective Rejection
+	15. Rejection
+	16. Revocation
+	17. Implied in fact Contract
+	18. Quasi Contract
+	19. Statute of Frauds
+B. Contract Terms
+	1. Basic Contract Terms
+	2. Time is Essence
+	3. Buyer's Satisfaction
+	4. Parol Evidence Rule
+	5. Requirement Contract
+	6. Output Contract
+C. Defenses
+	1. Lack of Intent
+	2. Lack of Consideration
+	3. Contract Modification
+	4. Unconsionable
+	5. Duress
+	6. Fraud
+	7. Incapacity
+	8. Illegality
+	9. Impossibility
+	10. Impracticability
+	11. Frustration of Purpose
+	12. Mutual Mistake
+	13. Unilateral Mistake
+D. Breach
+	1. Anticipatory Breach
+	2. Waiver of Breach
+	3. Breach of Implied Covenant (good faith, help others, don't hinder)
+	4. Breach Major or Minor
+	5. Breach on Divisible Contract
+	6. Waiver of Condition
+	7. Accord & Satisfaction
+E. Third party beneficiary
+	1. Third Party Beneficiary
+	2. Assignments
+	3. Delegation
+F. Remedies
+	Common law remedies of Non Breaching Party
+	1. Reliance Damage
+	2. Expected Damage
+	3. Incidental Damage
+	4. Consequential Damage
+	5. Common law remedies of Breaching Party
+	6. UCC remedy for non breaching buyer
+	7. UCC remedy for non breaching seller
+	8. UCC remedy for breaching seller
+	9. Liquidated Damages
+	10. Saving Doctrine for Unilateral Contracts
+	11. Implied in Law Contract
+	12. Promissory Estoppel
+	13. Detrimental Reliance
+	14. Equitible Restitution
+	15. Specific Performance
+	
+Rules
+
+Contracts
+A. Formation of Contracts
+	1. Is UCC
+	2. Are Parties Merchants?
+	3. Offer
+	4. Mutual Assent
+	5. Merchant's Firm Offer
+	6. Option Contract
+	7. Unilateral Contract
+	8. Acceptance
+	9. Consideration
+	10. Varying terms
+	11. Offer Lapse
+	12. Effective Acceptance
+	13. Effective Revocation
+	14. Effective Rejection
+	15. Rejection
+	16. Revocation
+	17. Implied in fact Contract
+	18. Quasi Contract
+	19. Statute of Frauds
+B. Contract Terms
+	1. Basic Contract Terms
+	2. Time is Essence
+	3. Buyer's Satisfaction
+	4. Parol Evidence Rule
+	5. Requirement Contract
+	6. Output Contract
+C. Defenses
+	1. Lack of Intent
+	2. Lack of Consideration
+	3. Contract Modification
+	4. Unconsionable
+	5. Duress
+	6. Fraud
+	7. Incapacity
+	8. Illegality
+	9. Impossibility
+	10. Impracticability
+	11. Frustration of Purpose
+	12. Mutual Mistake
+	13. Unilateral Mistake
+D. Breach
+	1. Anticipatory Breach
+	2. Waiver of Breach
+	3. Breach of Implied Covenant (good faith, help others, don't hinder)
+	4. Breach Major or Minor
+	5. Breach on Divisible Contract
+	6. Waiver of Condition
+	7. Accord & Satisfaction
+E. Third party beneficiary
+	1. Third Party Beneficiary
+	2. Assignments
+	3. Delegation
+F. Remedies
+	Common law remedies of Non Breaching Party
+	1. Reliance Damage
+	2. Expected Damage
+	3. Incidental Damage
+	4. Consequential Damage
+	5. Common law remedies of Breaching Party
+	6. UCC remedy for non breaching buyer
+	7. UCC remedy for non breaching seller
+	8. UCC remedy for breaching seller
+	9. Liquidated Damages
+	10. Saving Doctrine for Unilateral Contracts
+	11. Implied in Law Contract
+	12. Promissory Estoppel
+	13. Detrimental Reliance
+	14. Equitible Restitution
+	15. Specific Performance
+
+
+Essays
+
+Contracts
+A. Formation of Contracts
+	1. Is UCC
+	2. Are Parties Merchants?
+	3. Offer
+	4. Mutual Assent
+	5. Merchant's Firm Offer
+	6. Option Contract
+	7. Unilateral Contract
+	8. Acceptance
+	9. Consideration
+	10. Varying terms
+	11. Offer Lapse
+	12. Effective Acceptance
+	13. Effective Revocation
+	14. Effective Rejection
+	15. Rejection
+	16. Revocation
+	17. Implied in fact Contract
+	18. Quasi Contract
+	19. Statute of Frauds
+B. Contract Terms
+	1. Basic Contract Terms
+	2. Time is Essence
+	3. Buyer's Satisfaction
+	4. Parol Evidence Rule
+	5. Requirement Contract
+	6. Output Contract
+C. Defenses
+	1. Lack of Intent
+	2. Lack of Consideration
+	3. Contract Modification
+	4. Unconsionable
+	5. Duress
+	6. Fraud
+	7. Incapacity
+	8. Illegality
+	9. Impossibility
+	10. Impracticability
+	11. Frustration of Purpose
+	12. Mutual Mistake
+	13. Unilateral Mistake
+D. Breach
+	1. Anticipatory Breach
+	2. Waiver of Breach
+	3. Breach of Implied Covenant (good faith, help others, don't hinder)
+	4. Breach Major or Minor
+	5. Breach on Divisible Contract
+	6. Waiver of Condition
+	7. Accord & Satisfaction
+E. Third party beneficiary
+	1. Third Party Beneficiary
+	2. Assignments
+	3. Delegation
+F. Remedies
+	Common law remedies of Non Breaching Party
+	1. Reliance Damage
+	2. Expected Damage
+	3. Incidental Damage
+	4. Consequential Damage
+	5. Common law remedies of Breaching Party
+	6. UCC remedy for non breaching buyer
+	7. UCC remedy for non breaching seller
+	8. UCC remedy for breaching seller
+	9. Liquidated Damages
+	10. Saving Doctrine for Unilateral Contracts
+	11. Implied in Law Contract
+	12. Promissory Estoppel
+	13. Detrimental Reliance
+	14. Equitible Restitution
+	15. Specific Performance
+
+	
+MBE
+
+Contracts
+
+Valid Contract
+	Necessary elements of contract (offer, acceptance, and consideration.)
+
+A. Formation of Contracts
+	1. Is UCC
+	2. Are Parties Merchants?
+	3. Offer
+	4. Mutual Assent
+		A valid contract also requires a "meeting of the minds / mutual assent."
+	5. Merchant's Firm Offer
+	6. Option Contract
+	7. Unilateral Contract
+	8. Acceptance
+	9. Consideration
+	10. Varying terms
+	11. Offer Lapse
+	12. Effective Acceptance
+	13. Effective Revocation
+	14. Effective Rejection
+	15. Rejection
+	16. Revocation
+	17. Implied in fact Contract
+	18. Quasi Contract
+	19. Statute of Frauds
+	
+		Writing is sufficient only if it contains every necessary material or essential term.
+		Writing must be signed by the person against whom the contract is to be enforced or charged.
+		
+		
+		Indemnity contract: is not within the Statue of Frauds.
+	
+		Admission of Contract
+			If a person admit that there was a contract, takes promise out of the Statue of Frauds and renders the defense inapplicable.
+		
+		Special Made Goods
+			In order for the specially manufactured goods exception to apply (1) the goods must be specially manufactured for the buyer, (2) the seller must have started work on the goods or else entered into a commitment to purchase them from someone else, and (3) the goods must not be salable in the seller's ordinary course of business. All these three conditions is required in case special made goods.
+		
+		Partial Performance
+			Partial payment of a contract for the sale of real estate does not constitute partial performance
+alone – possession or valuable improvements are also required.
+	
+	
+B. Contract Terms
+	1. Basic Contract Terms
+	2. Time is Essence
+	3. Buyer's Satisfaction
+	4. Parol Evidence Rule
+	5. Requirement Contract
+	6. Output Contract
+C. Defenses
+	1. Lack of Intent
+	2. Lack of Consideration
+	3. Contract Modification
+	4. Unconsionable
+	5. Duress
+	6. Fraud
+	7. Incapacity
+		Intoxication may eliminate Seller's capacity to contract.
+	8. Illegality
+	9. Impossibility
+	10. Impracticability
+	11. Frustration of Purpose
+	12. Mutual Mistake
+	13. Unilateral Mistake
+D. Breach
+	1. Anticipatory Breach
+	2. Waiver of Breach
+	3. Breach of Implied Covenant (good faith, help others, don't hinder)
+	4. Breach Major or Minor
+	5. Breach on Divisible Contract
+	6. Waiver of Condition
+	7. Accord & Satisfaction
+E. Third party beneficiary
+	1. Third Party Beneficiary
+	2. Assignments
+	3. Delegation
+F. Remedies
+	Common law remedies of Non Breaching Party
+	1. Reliance Damage
+	2. Expected Damage
+	3. Incidental Damage
+	4. Consequential Damage
+	5. Common law remedies of Breaching Party
+	6. UCC remedy for non breaching buyer
+	7. UCC remedy for non breaching seller
+	8. UCC remedy for breaching seller
+	9. Liquidated Damages
+	10. Saving Doctrine for Unilateral Contracts
+	11. Implied in Law Contract
+	12. Promissory Estoppel
+	13. Detrimental Reliance
+	14. Equitible Restitution
+	15. Specific Performance
+
+
+
+
+
+ 

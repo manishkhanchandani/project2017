@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <div class="nav-multi">
 	<div class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -11,7 +10,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">California Bar</a>
+				<a class="navbar-brand" href="<?php echo HTTP_PATH; ?>">Courses</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -20,10 +19,15 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="<?php echo HTTP_PATH; ?>">Home</a></li>
 					
+					
+					
+					
 					<li>
-						<a href="" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="">Action</a></li>
+							<?php if (!empty($_SESSION['MM_UserGroup'] && $_SESSION['MM_UserGroup'] === 'admin')) { ?>
+							<li><a href="<?php echo HTTP_PATH; ?>admin/">Create New Course</a></li>
+							<?php } ?>
 							<li><a href="">Another action</a></li>
 							<li><a href="">Something else here</a></li>
 							<li class="divider"></li>
@@ -60,6 +64,22 @@
 							</li>
 						</ul>
 					</li>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				</ul>
 				  <ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -67,20 +87,17 @@
 						<?php if (!empty($_SESSION['MM_DisplayName'])) { echo $_SESSION['MM_DisplayName']; } else { ?>Users <?php } ?><span class="caret"></span></a>
 					  
 					  <ul class="dropdown-menu">
-						<?php if (!empty($_SESSION['MM_DisplayName'])) { ?>
+						<?php if (!empty($_SESSION['MM_UserId'])) { ?>
 							<li><a href="" onClick="signOut(); return false;">Signout</a></li>
 						<?php } else { ?>
 							<li><a href="" onClick="googleLogin(); return false;">Google</a></li>
-							<!--<li><a href="" onClick="facebookLogin(); return false;">Facebook</a></li>
 							<li><a href="" onClick="twitterLogin(); return false;">Twitter</a></li>
-							<li><a href="" onClick="gitHubLogin(); return false;">Github</a></li> -->
+							<li><a href="" onClick="gitHubLogin(); return false;">Github</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/login.php">Email</a></li>
 						<?php } ?>
 					  </ul>
 					</li>
 				  </ul>
-				  <form class="navbar-form navbar-right" method="get" action="<?php echo HTTP_PATH; ?>">
-					<input type="search" name="kw" class="form-control" placeholder="Search..." value="<?php echo !empty($_GET['kw']) ? $_GET['kw'] : ''; ?>">
-				  </form>
 			</div>
 		</div>
 	</div>

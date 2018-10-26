@@ -1,16 +1,10 @@
 <?php
-
 define('ROOT_DIR', dirname(__FILE__));
 define('BASE_DIR', dirname(dirname(__FILE__)));
-include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'conn.php');
-include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'constants.php');
-session_name('my_session');
-session_start();
 include_once(BASE_DIR.DIRECTORY_SEPARATOR.'functions.php');
 include_once(ROOT_DIR.DIRECTORY_SEPARATOR.'config.php');
 
-
-$suffix = SUFFIX;
+$suffix = '_V1';
 if (empty($_SESSION['MM_UserId']) && !empty($_COOKIE['MM_UserId'.$suffix])) {
 	$_SESSION['MM_Username'] = $_COOKIE['MM_Username'.$suffix];
 	$_SESSION['MM_Email'] = $_COOKIE['MM_Email'.$suffix];
@@ -24,44 +18,22 @@ if (empty($_SESSION['MM_UserId']) && !empty($_COOKIE['MM_UserId'.$suffix])) {
 }
 
 
-
-$base_page_path = 'sites'.'/'.$domainConfig['site_url'].'/';
-$page = '';
-$defaultPage = $base_page_path.'home.php';
-$page = $defaultPage;
-
-//override
-if (!empty($_GET['q']['action'])) {
-  $_GET['p'] = $_GET['q']['action'];
-}
-//end override
-
-if (!empty($_GET['p'])) {
-  $page = $_GET['p'];
-}
-
-if (!empty($_GET['direct']))
-	$page = $page.'.php';
-else
-	$page = $base_page_path.$page.'.php';
-
-
-$pageTitle = $domainConfig['pageTitle'];
-
-
-ob_start();
-if (file_exists($page)) {
-  include($page);
+define('HOST', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST']);
+if ($_SERVER['HTTP_HOST'] === 'localhost') {
+    define('HTTP_PATH', LOCAL_FOLDER);
 } else {
-  include($defaultPage);
+    define('HTTP_PATH', SERVER_FOLDER);
 }
 
-$contentForTemplate = ob_get_clean();
+define('COMPLETE_HTTP_PATH', HOST.HTTP_PATH);
 
-if (!empty($_GET['isJson'])) {
-	echo $contentForTemplate;
-	exit;
+
+$isCrawler = getIsCrawler($_SERVER['HTTP_USER_AGENT']);
+if ($isCrawler) {
+	$_SESSION['MM_Username'] = 'User';
+	$_SESSION['MM_UserGroup'] = 'member';
+	$_SESSION['MM_UserId'] = -1;
+	$_SESSION['MM_DisplayName'] = 'User';
 }
 
-include($base_page_path.$domainConfig['template_file']);
 ?>

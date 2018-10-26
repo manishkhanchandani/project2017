@@ -1,0 +1,59 @@
+Intentional Torts
+
+(3) Children are liable for their intentional torts when they are capable of forming the requisite intent. (3)
+
+
+
+Assault
+
+(1) To render a defendant liable in an assault action, the plaintiff must prove (1) that the defendant intended at the time of the act either to commit a harmful or offensive bodily contact, or to instill apprehension of such contact, and (2) that the plaintiff was indeed placed in apprehension of such imminent or immediate bodily harm. The requirement of apprehension of immediate bodily contact is usually satisfied by the showing of a threatening getsure by the defendant indicating the apparent present ability to bring about such a contact. 
+
+Actual ability to cause harm is not required, so long as there is apparent present ability sufficient to cause harm.
+
+Words alone do not make the actor liable for assault, if, together with other acts or circumstances, they put the plaintiff in apprehension of imminent harmful or offensive contact, there is liability for assault.
+
+The fact that a threat is conditional does not negate an assault. The fact that the defendant gives the plaintiff the option of avaoiding contact by obeying the defendant's command will not prevent an assault if the plaintiff believed, notwithstanding the condition, that there was danger of immediate bodily harm. The plaintiff is not required to buy safety by complying with a condition. (1)
+
+(2) A person can be responsible for an assault if he directed another to act, and a parent might be liable for the tort of the child where the parent directed or encouraged it. A parent is not vicariously liable for the torts of the child absent some negligence on the part of the parent. (2)
+
+Battery
+
+(5) The intent on the part of the defendant necessary to establish a battery is the intent to bring about touching which is harmful or offensive.
+
+It is not necessary to show that the defendant entertained a hostile intent toward the plaintiff or even an intent to cause injury or harm. Intent to bring about the contact is sufficient. The touching in a battery need not be brought about by a direct application of force. It is sufficient if the defendant sets something in motion which ultimately produces an unpermitted touching, such as putting poison or other deleterious ingredient in the plaintiff's food. 
+
+The intervening negligence of a third party will not relieve the original tortfeasor of liability in this case.
+
+Generally, for intentional torts, the defendant is liable for consequences even if those consequences were not intended and could not reasonably have been foreseen. Proximate cause is more broadly construed in favor of recovery for intentional torts than in negligence actions.
+
+Battery should have intentional act, it should be offensive or harmful contact, and it should not be consented to. (5)
+
+(6) Only a person who is threatened by bodily harm is previliged to use force to repel the attack. When the privilege exists, the person's conduct is not tortious. Most jurisdictions hold that the privilege of self-defense exists even though the defendant was in fact mistaken and the plaintiff was not actually about to attack him.  However, the defendant's belief must be reasonable. This is not a subjective standard. Even an honestly held belief is not sufficient. 
+
+A child or an insane person may be liable in battery if he has the mental capacity to entertain, and does in fact entertain an intent to strike the plaintiff, despite the absence of knowledge in the defendant of the wrongfulness of his act. Being under the influence of drugs, even involuntarily, does not preclude a person from having the requisite mental intent for battery if he understands the consequences of his actions i.e. that he is striking a person when he swings the cup. 
+
+In the law of torts, intention is defined as having a purpose or desire to bring about given consequences or having a belief or knowledge that given consequences are substantially certain to result from an act.(6)
+
+Transferred Intent
+
+(4) When the defendant has the requisite intent for the commission of assault and battery on one person, has inadvertent touching of another, or creation of the apprehension in another of such touching, will result in assault and battery on the other person. This is the doctrine of transferred intent. (4)
+
+Negligence
+
+(4) Something which is handled negligently. Whether minor had the capacity to foresee the consequences of this act and thus could be said to have breached his duty to act reasonably is uncertain. For minors, the standard of reasonable conduct is not an objective one. Some courts apply a rebuttable presumption of incapacity of minors between the ages of 7 and 14. Other courts measure the reasonableness of a minor's conduct by his age, knowledge, intelligence and experience. (4)
+
+(3) Plaintiff must suffer some physical harm in case of defendant's act for negligence. (3)
+
+
+NIED
+
+(3) NIED can only be had when the plaintiff has actually sustained physical contact as a result of defendant's actions or has suffered actual physical harm. (3)
+
+
+Respondeat Superior
+
+(7) The employer, might be liable for employee's acts like intentional torts committed during the course of his employment. (7)
+
+
+Assumption of Risks
+(7) Assumption of the risk is a defense only applicable in negligence, and not on the intentional tort of battery. But additional liability of the employer's would not relive employee of liability. (7)

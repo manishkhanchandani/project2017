@@ -28,6 +28,40 @@ define('CLIENTID', '754890700194-4p5reil092esbpr9p3kk46pf31vkl3ub.apps.googleuse
 define('CLIENTSECRET', '8uvHeE3vQU1HQU0JoA1mRQTK');
 define('DEVELOPERKEY', 'AIzaSyCWqKxrgU8N1SGtNoD6uD6wFoGeEz0xwbs');
 
+define('PARSE_APP_ID', 'myAppID');
+define('PARSE_MASTER_KEY', 'myMasterKey');
+define('PARSE_SERVER_URL', 'https://mkparse.info');
+define('PARSE_MOUNT_PATH', 'parse');
+/*
+
+use Parse\ParseObject;
+use Parse\ParseQuery;
+use Parse\ParseACL;
+use Parse\ParsePush;
+use Parse\ParseUser;
+use Parse\ParseInstallation;
+use Parse\ParseException;
+use Parse\ParseAnalytics;
+use Parse\ParseFile;
+use Parse\ParseCloud;
+use Parse\ParseClient;
+use Parse\ParsePushStatus;
+use Parse\ParseServerInfo;
+use Parse\ParseLogs;
+use Parse\ParseAudience;
+
+use Parse\ParseClient;
+use Parse\ParseObject;
+
+ParseClient::initialize( PARSE_APP_ID, null, PARSE_MASTER_KEY );
+ParseClient::setServerURL(PARSE_SERVER_URL, PARSE_MOUNT_PATH);
+$health = ParseClient::getServerHealth();
+pr($health);exit;
+
+*/
+
+
+
 ini_set("include_path", BASE_DIR.DIRECTORY_SEPARATOR.'libraries'.PATH_SEPARATOR . ini_get("include_path") );
 ini_set("include_path", ROOT_DIR.DIRECTORY_SEPARATOR.'api'.PATH_SEPARATOR . ini_get("include_path") );
 
@@ -36,10 +70,36 @@ function myautoload($class_name) {
 
    if (file_exists($classPath.'.class.php')) {
     include_once $classPath . '.class.php';
+	return;
    }
+   
+   $class = $class_name;
+   // Parse class prefix
+    $prefix = 'Parse\\';
+    // base directory for the namespace prefix
+    $base_dir = defined('PARSE_SDK_DIR') ? PARSE_SDK_DIR : BASE_DIR.'/libraries/Parse/';
+	
+    // does the class use the namespace prefix?
+    $len = strlen($prefix);
+
+    if (strncmp($prefix, $class, $len) !== 0) {
+        // no, move to the next registered autoloader
+        return;
+    }
+    // get the relative class name
+    $relative_class = substr($class, $len);
+    // replace the namespace prefix with the base directory, replace namespace
+    // separators with directory separators in the relative class name, append
+    // with .php
+    $file = $base_dir.str_replace('\\', '/', $relative_class).'.php';
+
+    // if the file exists, require it
+    if (file_exists($file)) {
+        require $file;
+		return;
+    }
 }
 spl_autoload_register('myautoload', true);
-
 
 /*
 if (isset($_GET['clearSession']) || empty($_COOKIE['ipDetails'])) {

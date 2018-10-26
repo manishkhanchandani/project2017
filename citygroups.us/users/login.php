@@ -154,7 +154,8 @@ if (isset($_POST['MM_Login'])) {
 	setcookie('MM_UID'.$suffix, $_SESSION['MM_UID'], $time, '/');
 	setcookie('MM_LoggedInTime'.$suffix, $_SESSION['MM_LoggedInTime'], $time, '/');
 	setcookie('MM_ProfileUID'.$suffix, $_SESSION['MM_ProfileUID'], $time, '/');
-
+	
+	
     if (isset($_SESSION['PrevUrl']) && true) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
     }
@@ -168,7 +169,7 @@ if (isset($_POST['MM_Login'])) {
 }
 ?>
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/newSite.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<html><!-- InstanceBegin template="/Templates/citygroups.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset="UTF-8">
