@@ -39,8 +39,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -184,11 +184,13 @@ $queryString_rsViewSubjects = sprintf("&totalRows_rsViewSubjects=%d%s", $totalRo
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
+<link href="<?php echo HTTP_PATH; ?>fontawesome-5.1.1/css/all.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/dashboard.css">
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/NavMulti.css">
 
 <script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
 <!-- Firebase App is always required and must be first -->
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>
 
@@ -315,8 +317,8 @@ $queryString_rsViewSubjects = sprintf("&totalRows_rsViewSubjects=%d%s", $totalRo
   </div>
 <!-- InstanceEndEditable -->
 </div>
-</body><!-- InstanceEnd -->
-</html>
+</body>
+<!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsView);
 

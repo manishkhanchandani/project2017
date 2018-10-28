@@ -39,8 +39,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
   if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
-  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
-  $MM_referrer .= "?" . $QUERY_STRING;
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
   $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
   header("Location: ". $MM_restrictGoTo); 
   exit;
@@ -111,7 +111,26 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 	$_POST['view_images'] = json_encode($_POST['view_images']);
 	$_POST['view_videos'] = json_encode($_POST['view_videos']);
 	$_POST['view_links'] = json_encode($_POST['view_links']);
-	$_POST['xtra1'] = json_encode($_POST['linebyline']);
+	if ($_POST['content_subtype'] === 'line') {
+		$_POST['xtra1'] = json_encode($_POST['linebyline']);
+	}
+	
+	if ($_POST['content_type'] === 'quiz') {
+		$arr = array(
+			'qz_question' => $_POST['qz_question'],
+			'qz_options' => array_filter($_POST['qz_options']),
+			'qz_correct' => $_POST['qz_correct'],
+			'qz_explanation' => $_POST['qz_explanation'],
+		);
+		$_POST['xtra1'] = json_encode($arr);
+	} else if ($_POST['content_type'] === 'qna') {
+		$arr = array();
+		foreach ($_POST['qna'] as $k => $v) {
+			if (!trim($v)) continue;
+			$arr[$k] = array('qna' => $v, 'qna_ans' => $_POST['qna_ans'][$k]);
+		}
+		$_POST['xtra1'] = json_encode($arr);
+	}
 
 	if (!empty($error)) {
 		unset($_POST['MM_insert']);
@@ -214,12 +233,28 @@ if (isset($_GET['pageNum_rsView'])) {
 }
 $startRow_rsView = $pageNum_rsView * $maxRows_rsView;
 
+$colcourseid_rsView = "-1";
+if (isset($_GET['course_id'])) {
+  $colcourseid_rsView = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
+}
+$colsubjectid_rsView = "-1";
+if (isset($_GET['subject_id'])) {
+  $colsubjectid_rsView = (get_magic_quotes_gpc()) ? $_GET['subject_id'] : addslashes($_GET['subject_id']);
+}
+$colchapterid_rsView = "-1";
+if (isset($_GET['chapter_id'])) {
+  $colchapterid_rsView = (get_magic_quotes_gpc()) ? $_GET['chapter_id'] : addslashes($_GET['chapter_id']);
+}
+$coltopicid_rsView = "-1";
+if (isset($_GET['topic_id'])) {
+  $coltopicid_rsView = (get_magic_quotes_gpc()) ? $_GET['topic_id'] : addslashes($_GET['topic_id']);
+}
 $colname_rsView = "-1";
 if (isset($_SESSION['MM_UserId'])) {
   $colname_rsView = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsView = sprintf("SELECT * FROM course_contents WHERE user_id = %s", $colname_rsView);
+$query_rsView = sprintf("SELECT * FROM course_contents WHERE user_id = %s AND course_id = %s AND subject_id = %s AND chapter_id = %s AND topic_id = %s", $colname_rsView,$colcourseid_rsView,$colsubjectid_rsView,$colchapterid_rsView,$coltopicid_rsView);
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);
@@ -258,11 +293,13 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
+<link href="<?php echo HTTP_PATH; ?>fontawesome-5.1.1/css/all.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/dashboard.css">
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/NavMulti.css">
 
 <script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
 <!-- Firebase App is always required and must be first -->
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>
 
@@ -273,7 +310,52 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include(BASE_DIR.DIRECTORY_SEPARATOR.'head.php'); ?>
-<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<script>
+function checkpara() {
+	if ($("#content_subtype_2").is(":checked")) {
+		$("#trLineByLine").show();
+	} else {
+		$("#trLineByLine").hide();
+	}
+}
+function hideQuiz() {
+	$("#qz1").hide();
+	$("#qz2").hide();
+	$("#qz3").hide();
+	$("#qz4").hide();
+}
+function showQuiz() {
+	$("#qz1").show();
+	$("#qz2").show();
+	$("#qz3").show();
+	$("#qz4").show();
+}
+function checktype() {
+	if ($("#content_type").is(":checked")) {
+		hideQuiz();
+		$("#content_subtype_2").attr('disabled', false);
+		$("#trQNA").hide();
+	} else if ($("#content_type_2").is(":checked")) {
+		hideQuiz();
+		$("#content_subtype_2").attr('disabled', false);
+		$("#trQNA").hide();
+	} else if ($("#content_type_3").is(":checked"))  {
+		showQuiz();
+		$("#content_subtype_2").attr('disabled', true);
+		$("#content_subtype").prop('checked', true);
+		$("#trLineByLine").hide();
+		$("#trQNA").hide();
+	}  else if ($("#content_type_4").is(":checked"))  {
+		$("#trQNA").show();
+		hideQuiz();
+		$("#content_subtype_2").attr('disabled', true);
+		$("#content_subtype").prop('checked', true);
+		$("#trLineByLine").hide();
+	}
+}
+</script>
+<!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -310,35 +392,95 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 		    <div class="table-responsive">
   <table class="table">
                 <tr valign="baseline">
-                    <td nowrap align="right"><strong>
-                        <label for="content_type">Content Type:</label>
-                    </strong></td>
-                    <td><div>
-					<input type="radio" id="content_type" name="content_type" value="read" <?php echo (empty($_POST['content_type']) || (!empty($_POST['content_type']) && $_POST['content_type'] === 'read')) ? 'checked' : ''; ?> /> Read 
-					<input type="radio" id="content_type_2" name="content_type" value="write" <?php echo (!empty($_POST['content_type']) && $_POST['content_type'] === 'write') ? 'checked' : ''; ?> /> Write 
-					<input type="radio" id="content_type_3" name="content_type" value="quiz" <?php echo (!empty($_POST['content_type']) && $_POST['content_type'] === 'quiz') ? 'checked' : ''; ?> /> Quiz 
-				</div></td>
-                </tr>
-                <tr valign="baseline">
-                    <td nowrap align="right"><strong>
-                        <label for="content_type">Content Sub Type:</label>
-                    </strong></td>
-                    <td><div>
-					<input type="radio" id="content_subtype" name="content_subtype" value="para" <?php echo (empty($_POST['content_subtype']) || (!empty($_POST['content_subtype']) && $_POST['content_subtype'] === 'para')) ? 'checked' : ''; ?> /> Paragraph 
-					<input type="radio" id="content_subtype_2" name="content_subtype" value="line" <?php echo (!empty($_POST['content_subtype']) && $_POST['content_subtype'] === 'line') ? 'checked' : ''; ?> /> Line By Line
-				</div></td>
-                </tr>
-                <tr valign="baseline">
-                    <td nowrap align="right"><strong>Content Title:</strong></td>
-                    <td><input type="text" name="content_title" value="" size="32"></td>
+                    <td align="right" valign="top" nowrap><strong>Content Title:</strong></td>
+                    <td valign="top"><input type="text" name="content_title" value="" class="form-control"  /></td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right" valign="top"><strong>Content Description:</strong></td>
-                    <td><textarea name="content_description" id="content_description" cols="50" rows="5"></textarea>                    </td>
+                    <td valign="top"><textarea name="content_description" id="content_description" rows="5"></textarea>                    </td>
                 </tr>
-              <tr valign="baseline">
-                  <td nowrap align="right"><strong>Line By Line Items:</strong></td>
-                  <td><div id="linebylineitems">
+				
+                <tr valign="baseline">
+                    <td align="right" valign="top" nowrap>
+                        <label for="content_type">Content Type:</label>
+                    </td>
+                    <td valign="top"><div>
+					<input type="radio" id="content_type" name="content_type" value="read" <?php echo (empty($_POST['content_type']) || (!empty($_POST['content_type']) && $_POST['content_type'] === 'read')) ? 'checked' : ''; ?> onClick="checktype()" /> Read 
+					<input type="radio" id="content_type_2" name="content_type" value="write" <?php echo (!empty($_POST['content_type']) && $_POST['content_type'] === 'write') ? 'checked' : ''; ?> onClick="checktype()" /> Write 
+					<input type="radio" id="content_type_3" name="content_type" value="quiz" <?php echo (!empty($_POST['content_type']) && $_POST['content_type'] === 'quiz') ? 'checked' : ''; ?> onClick="checktype()" /> Quiz 
+				    <input type="radio" id="content_type_4" name="content_type" value="qna" <?php echo (!empty($_POST['content_type']) && $_POST['content_type'] === 'qna') ? 'checked' : ''; ?> onClick="checktype()" />
+Q&amp;A </div></td>
+                </tr>
+                <tr valign="baseline">
+                    <td align="right" valign="top" nowrap><strong>
+                        <label for="content_type">Content Sub Type:</label>
+                    </strong></td>
+                    <td valign="top"><div>
+					<input type="radio" id="content_subtype" name="content_subtype" value="para" <?php echo (empty($_POST['content_subtype']) || (!empty($_POST['content_subtype']) && $_POST['content_subtype'] === 'para')) ? 'checked' : ''; ?> onClick="checkpara()" /> Paragraph 
+					<input type="radio" id="content_subtype_2" name="content_subtype" value="line" <?php echo (!empty($_POST['content_subtype']) && $_POST['content_subtype'] === 'line') ? 'checked' : ''; ?> onClick="checkpara()" /> Line By Line
+				</div></td>
+                </tr>
+				
+                <tr valign="baseline" id="qz1" style="display:none;">
+                    <td align="right" valign="top" nowrap><label>Quiz Question </label></td>
+                    <td valign="top">
+                        <textarea name="qz_question" class="form-control" rows="3" id="qz_question" placeholder="Add Question"></textarea>
+                    </td>
+                </tr>
+                <tr valign="baseline" id="qz2" style="display:none;">
+                    <td align="right" valign="top" nowrap><strong>Quiz Options: </strong></td>
+                    <td valign="top"><input name="addqzoptions" type="button" id="addqzoptions" value="Add More Options" onClick="addMoreOptions();" /><br /><br />
+					
+					<div id="qzoptsitems"><textarea name="qz_options[]"  class="form-control" rows="3" id="qz_options[]" placeholder="Add Option"></textarea></div>
+					<div id="qzoptsitems2" style="display:none;">
+						<br />
+						<textarea name="qz_options[]"  class="form-control" rows="3" id="qz_options[]" placeholder="Add Option"></textarea>
+						</div>
+						<script>
+							function addMoreOptions() {
+								$('#qzoptsitems').append($('#qzoptsitems2').html());
+							}
+						</script>
+					</td>
+                </tr>
+                <tr valign="baseline" id="qz3" style="display:none;">
+                    <td align="right" valign="top" nowrap><label>Quiz Correct Option </label></td>
+                    <td valign="top"><input type="text" name="qz_correct" value="" class="form-control" placeholder="Add Correct option (1 or 2,..)" />
+                    </td>
+                </tr>
+                <tr valign="baseline" id="qz4" style="display:none;">
+                    <td align="right" valign="top" nowrap><label>Quiz Explanation </label></td>
+                    <td valign="top">
+                        <textarea name="qz_explanation" class="form-control" rows="3" id="qz_explanation" placeholder="Add Explanation"></textarea>
+                    </td>
+                </tr>
+				
+                <tr valign="baseline" id="trQNA" style="display:none;">
+                  <td align="right" valign="top" nowrap><strong>Question & Answers:</strong></td>
+                  <td valign="top">
+						<input name="moreqna" type="button" id="moreqna" value="Add More Q&A" onClick="addMoreQnA();" />
+						<div id="qnaitems">
+				  		<strong>Question</strong><br />
+						<textarea name="qna[]" class="form-control" rows="3" id="qna[]" placeholder="Add Q&A"></textarea><br />
+						<strong>Answer (leave blank for custom answers by user)</strong><br />
+						<textarea name="qna_ans[]" class="form-control" rows="3" id="qna_ans[]" placeholder="Add Q&A Answer"></textarea>
+						</div>
+						<div id="qnaitems2" style="display:none;">
+						<br />
+				  		<strong>Question</strong><br />
+						<textarea name="qna[]" class="form-control" rows="3" id="qna[]" placeholder="Add Q&A"></textarea><br />
+						<strong>Answer (leave blank for custom answers by user)</strong><br />
+						<textarea name="qna_ans[]" class="form-control" rows="3" id="qna_ans[]" placeholder="Add Q&A Answer"></textarea>
+						</div>
+						<script>
+							function addMoreQnA() {
+								$('#qnaitems').append($('#qnaitems2').html());
+							}
+						</script>					</td>
+              </tr>
+                <tr valign="baseline" id="trLineByLine" style="display:none;">
+                  <td align="right" valign="top" nowrap><strong>Line By Line Items:</strong></td>
+                  <td valign="top"><div id="linebylineitems">
 						<input name="linebyline[]" type="text" id="linebyline[]" size="55" placeholder="Add Lines" />
 						<input name="morelinebyline" type="button" id="morelinebyline" value="Add More Lines" onClick="addMoreLines();" />
 						</div>
@@ -354,8 +496,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
               </tr>
 				
               <tr valign="baseline">
-                  <td nowrap align="right"><strong>Images:</strong></td>
-                  <td><div id="images">
+                  <td align="right" valign="top" nowrap><strong>Images:</strong></td>
+                  <td valign="top"><div id="images">
 						<input name="view_images2[]" type="text" id="view_images2[]" size="55" placeholder="Add Image URL" />
 						<input name="moreImage" type="button" id="moreImage" value="Add More Images" onClick="addMoreImages();" />
 						</div>
@@ -370,8 +512,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 						</script>					</td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right"><strong>Videos (Youtube URL):</strong></td>
-                  <td>
+                  <td align="right" valign="top" nowrap><strong>Videos (Youtube URL):</strong></td>
+                  <td valign="top">
 				  	<div id="videos">
 						<input name="view_videos2[]" type="text" id="view_videos2[]" size="55" placeholder="Add Youtube URLS" />
 						<input name="moreVideos" type="button" id="moreVideos" value="Add More Videos" onClick="addMoreVideos();" />
@@ -387,8 +529,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 						</script>				  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right"><strong>Links / PDF / Document:</strong></td>
-                  <td>
+                  <td align="right" valign="top" nowrap><strong>Links / PDF / Document:</strong></td>
+                  <td valign="top">
 				  	<div id="links">
 						<input name="view_links2[]" type="text" id="view_links2[]" size="55" placeholder="Add Links" />
 						<input name="moreLinks" type="button" id="moreLinks" value="Add More Links" onClick="addMoreLinks();" />
@@ -404,23 +546,23 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
 					</script>				  </td>
               </tr>
               <tr valign="baseline">
-                  <td nowrap align="right"><strong>Sorting:</strong></td>
-                  <td><input name="content_sorting" type="text" id="content_sorting" value="0" size="32"></td>
+                  <td align="right" valign="top" nowrap><strong>Sorting:</strong></td>
+                  <td valign="top"><input name="content_sorting" type="text" id="content_sorting" value="0" size="32"></td>
               </tr>
 
                 <tr valign="baseline">
-                    <td nowrap align="right"><strong>
+                    <td align="right" valign="top" nowrap><strong>
                         <label for="content_enabled">Status: </label>
                     </strong></td>
-                    <td>
+                    <td valign="top">
                         <input name="content_enabled" id="content_enabled" type="radio" value="1">
                         Enable
                         <input name="content_enabled" id="content_enabled_2" type="radio" value="0" checked>
                         Disable</td>
                 </tr>
                 <tr valign="baseline">
-                    <td nowrap align="right">&nbsp;</td>
-                    <td><input type="submit" value="Add New Content"></td>
+                    <td align="right" valign="top" nowrap>&nbsp;</td>
+                    <td valign="top"><input type="submit" value="Add New Content"></td>
                 </tr>
             </table>
 		    </div>
@@ -502,7 +644,8 @@ $queryString_rsView = sprintf("&totalRows_rsView=%d%s", $totalRows_rsView, $quer
   </div>
 <!-- InstanceEndEditable -->
 </div>
-</body><!-- InstanceEnd --></html>
+</body>
+<!-- InstanceEnd --></html>
 <?php
 mysql_free_result($rsCourse);
 

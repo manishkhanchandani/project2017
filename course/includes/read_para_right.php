@@ -1,0 +1,1 @@
+<p><strong>Read the statement on the left/above </strong><br /><br /></p>

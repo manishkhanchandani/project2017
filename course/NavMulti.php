@@ -16,6 +16,7 @@
 				<ul class="nav navbar-nav navbar-right">
 
 				</ul>
+				<?php if (!empty($_SESSION['MM_UserGroup']) && $_SESSION['MM_UserGroup'] === 'admin') { ?>
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="<?php echo HTTP_PATH; ?>">Home</a></li>
 					
@@ -25,43 +26,7 @@
 					<li>
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<?php if (!empty($_SESSION['MM_UserGroup'] && $_SESSION['MM_UserGroup'] === 'admin')) { ?>
 							<li><a href="<?php echo HTTP_PATH; ?>admin/">Create New Course</a></li>
-							<?php } ?>
-							<li><a href="">Another action</a></li>
-							<li><a href="">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="">One more separated link</a></li>
-							<li class="dropdown-submenu">
-								<a href="" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-								<ul class="dropdown-menu">
-									<li><a href="">Action</a></li>
-									<li><a href="">Another action</a></li>
-									<li><a href="">Something else here</a></li>
-									<li class="divider"></li>
-									<li><a href="">Separated link</a></li>
-									<li class="divider"></li>
-									<li class="dropdown-submenu">
-										<a href="" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-										<ul class="dropdown-menu">
-											<li class="dropdown-submenu">
-												<a href="" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-												<ul class="dropdown-menu">
-													<li><a href="">Action</a></li>
-													<li><a href="">Another action</a></li>
-													<li><a href="">Something else here</a></li>
-													<li class="divider"></li>
-													<li><a href="">Separated link</a></li>
-													<li class="divider"></li>
-													<li><a href="">One more separated link</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</li>
 					
@@ -81,6 +46,7 @@
 					
 					
 				</ul>
+				<?php } ?>
 				  <ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
