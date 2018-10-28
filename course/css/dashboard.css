@@ -145,8 +145,19 @@ body {
 
 
 
+.quiz-check {
+	float: right;
+	margin-right: 10px;
+	margin-top: 6px;
+	position: relative;
+	z-index: 2;
+	color: red;
 
+}
 
+.quiz-selected {
+	font-weight: bold;
+}
 
 .errspan {
 	float: right;
@@ -181,6 +192,15 @@ body {
     float: right;
     margin-right: 10px;
     margin-top: -269px;
+    position: relative;
+    z-index: 2;
+    color: red;
+}
+
+.errspanQna {
+    float: left;
+    margin-left: -18px;
+    margin-top: -52px;
     position: relative;
     z-index: 2;
     color: red;

@@ -64,6 +64,7 @@ $endtime = microtime(true);
 
 <script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
 <!-- Firebase App is always required and must be first -->
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>
 
