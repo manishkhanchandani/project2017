@@ -17,7 +17,7 @@
 		}
 	}
 </script>
-
+<p><strong>Read the text on left / top side and type it here.</strong></p>
 <textarea name="content_description" id="content_description" rows="5"></textarea>
 <i class="fa fa-check errspanwritepara" id="write_para_right_content" aria-hidden="true" style="display:none;"></i><i class="fa fa-times errspanwritepara" id="write_para_wrong_content" aria-hidden="true"></i>
 <script>

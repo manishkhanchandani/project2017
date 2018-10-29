@@ -176,6 +176,7 @@ function processRecs($content_type, $content_subtype, $record) {
 	
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header"><?php echo $row_rsView['course_name']; ?></h1>
+		<p class="page-header"><a href="study.php?course_id=<?php echo $_GET['course_id']; ?>">Refresh This Course</a> | <a href="study.php?course_id=<?php echo $_GET['course_id']; ?>&pageNum_rsContent=<?php echo $pageNum_rsContent; ?>">Refresh This Page</a> | <a href="details.php?course_id=<?php echo $_GET['course_id']; ?>">Back to Course Overview</a> | <a href="index.php">Back to Home Page </a></p>
 		<?php if ($totalRows_rsContent > 0) { // Show if recordset not empty ?>
         <?php do { ?>
 		<?php
@@ -191,7 +192,6 @@ function processRecs($content_type, $content_subtype, $record) {
 				</div>
 			</div>
 			
-<?php pr($row_rsContent); ?>
 		<?php } while ($row_rsContent = mysql_fetch_assoc($rsContent)); ?>
 
 <hr />

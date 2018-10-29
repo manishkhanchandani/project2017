@@ -12,7 +12,7 @@ $xtra1 = json_decode($record['xtra1'], true);
 		$('#qna_' + k).val(content);
 	}
 </script>
-<p><strong>Read the questions on left / top and answer it here. You can request the answers once you are done?</strong></p>
+<p><strong>Read the questions on left / top and answer it here?</strong></p>
 <ul class="list-group">
 	<?php foreach ($xtra1 as $k => $v) { ?>
 		<li class="list-group-item" style="padding-left: 25px;"><textarea class="form-control" id="qna_<?php echo $k; ?>" name="qna_<?php echo $k; ?>" onkeyup="matchString('<?php echo $k; ?>', this, '<?php echo $record['content_id']; ?>');"></textarea><span class="errspanQna"><?php echo $k + 1; ?>.</span>

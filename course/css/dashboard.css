@@ -159,6 +159,14 @@ body {
 	font-weight: bold;
 }
 
+.qna-btn {
+	float: right;
+	margin-right: 10px;
+	margin-top: 0px;
+	position: relative;
+	z-index: 2;
+}
+
 .errspan {
 	float: right;
 	margin-right: 10px;
@@ -182,6 +190,7 @@ body {
 	position: relative;
 	z-index: 2;
 	color: red;
+	font-weight: bold;
 }
 
 .errinput {

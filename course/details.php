@@ -54,11 +54,12 @@ if (isset($_GET['course_id'])) {
   $colname_rsTopic = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsTopic = sprintf("SELECT course_topics.*, course_chapters.chapter_name, course_subjects.subject_name FROM course_topics INNER JOIN course_chapters ON course_topics.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_topics.subject_id = course_subjects.subject_id WHERE course_topics.course_id = %s ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC", $colname_rsTopic);
+$query_rsTopic = sprintf("SELECT course_contents.*, course_topics.topic_name, course_chapters.chapter_name, course_subjects.subject_name FROM course_contents INNER JOIN course_topics ON course_contents.topic_id = course_topics.topic_id INNER JOIN course_chapters ON course_contents.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_contents.subject_id = course_subjects.subject_id WHERE course_contents.course_id = %s ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC, course_contents.content_sorting ASC", $colname_rsTopic);
 $rsTopic = mysql_query($query_rsTopic, $conn) or die(mysql_error());
 $row_rsTopic = mysql_fetch_assoc($rsTopic);
 $totalRows_rsTopic = mysql_num_rows($rsTopic);
 
+//SELECT course_topics.*, course_chapters.chapter_name, course_subjects.subject_name FROM course_topics INNER JOIN course_chapters ON course_topics.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_topics.subject_id = course_subjects.subject_id WHERE course_topics.course_id = %s ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC
 
 $return = array();
 
@@ -131,8 +132,8 @@ $endtime = microtime(true);
 
 <?php
 if ($totalRows_rsJoin > 0) { ?>
-	<p>You are Member of This Course</p>
-        
+	<p>You are Member of This Course | <a href="study.php?course_id=<?php echo $_GET['course_id']; ?>"><strong>Study</strong></a></p>
+    
 <?php } else { ?>
  <p> <a href="join.php?course_id=<?php echo $_GET['course_id']; ?>">Join This Course!!</a></p>
 <?php } ?>
@@ -146,14 +147,36 @@ if ($totalRows_rsJoin > 0) { ?>
                         <td><strong>Subject</strong></td>
                             <td><strong>Chapter</strong></td>
                             <td><strong>Topic</strong></td>
-                            <td><strong>Start</strong></td>
-                        </tr>
+                            <td><strong>Content</strong></td>
+                    </tr>
                     <?php do { ?>
                         <tr>
-                            <td><?php echo $row_rsTopic['subject_name']; ?></td>
-                            <td><?php echo $row_rsTopic['chapter_name']; ?></td>
+                            <td>
+								
+							<?php
+								if (empty($tmp)) {
+									$tmp = $row_rsTopic['subject_id'];
+									echo $row_rsTopic['subject_name'];
+								}							
+								else if ($tmp !== $row_rsTopic['subject_id']) {
+									$tmp = $row_rsTopic['subject_id'];
+									echo $row_rsTopic['subject_name'];
+								}
+							?></td>
+                            <td>
+								
+							<?php
+								if (empty($tmp2)) {
+									$tmp2 = $row_rsTopic['chapter_id'];
+									echo $row_rsTopic['chapter_name'];
+								}							
+								else if ($tmp2 !== $row_rsTopic['chapter_id']) {
+									$tmp2 = $row_rsTopic['chapter_id'];
+									echo $row_rsTopic['chapter_name'];
+								}
+							?></td>
                             <td><?php echo $row_rsTopic['topic_name']; ?></td>
-                            <td><a href="study.php?course_id=<?php echo $_GET['course_id']; ?>">Study</a></td>
+                            <td><?php echo $row_rsTopic['content_title']; ?></td>
                         </tr>
                         <?php } while ($row_rsTopic = mysql_fetch_assoc($rsTopic)); ?>
                                 </table>
