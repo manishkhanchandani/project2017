@@ -66,7 +66,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
                        GetSQLValueString($_POST['email'], "text"),
                        GetSQLValueString($_POST['provider_id'], "text"),
                        GetSQLValueString($_POST['password'], "text"),
-                       GetSQLValueString($_POST['access_level'], "text"),
+                       GetSQLValueString('member', "text"),
                        GetSQLValueString($_POST['uid'], "text"),
                        GetSQLValueString($_POST['logged_in_time'], "int"),
                        GetSQLValueString($_POST['profile_uid'], "text"),

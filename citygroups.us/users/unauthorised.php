@@ -1,14 +1,6 @@
-<?php require_once('../Connections/conn.php'); ?>
 <?php
-
-$starttime = microtime(true);
 session_start();
-include_once('init.php');
-$currentPage = HTTP_PATH;
-
-
-
-$endtime = microtime(true);
+include_once('../init.php');
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/citygroups.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -17,7 +9,7 @@ $endtime = microtime(true);
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>CityGroups</title>
+<title>Unauthorised Access</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
@@ -57,18 +49,19 @@ $endtime = microtime(true);
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'nav_side.php'); ?>
+    </div>
     
-	<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 main">
-	
-	</div>
-	<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8 main">
-	  <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'find_city_groups.php'); ?>
-	
-	</div>
-	<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 main">
-	
-	</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+  <h1 class="page-header">Unauthorised Access</h1>
+  <p class="page-header">You are unauthorised to access the related page. <?php echo $_GET['mes']; ?> </p>
+  
+
+  
 </div>
+
+  </div>
 <!-- InstanceEndEditable -->
 </div>
 </body>
