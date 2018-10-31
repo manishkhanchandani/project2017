@@ -3,6 +3,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+include_once('init.php');
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
@@ -43,21 +44,10 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   header("Location: ". $MM_restrictGoTo); 
   exit;
 }
-include_once('init.php');
 ?>
 <?php
 $currentPage = $_SERVER["PHP_SELF"];
 
-
-$colname_rsView = "-1";
-if (isset($_GET['course_id'])) {
-  $colname_rsView = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
-}
-mysql_select_db($database_conn, $conn);
-$query_rsView = sprintf("SELECT * FROM course_details WHERE course_id = %s", $colname_rsView);
-$rsView = mysql_query($query_rsView, $conn) or die(mysql_error());
-$row_rsView = mysql_fetch_assoc($rsView);
-$totalRows_rsView = mysql_num_rows($rsView);
 
 $colid_rsJoin = "-1";
 if (isset($_GET['course_id'])) {
@@ -73,6 +63,22 @@ $rsJoin = mysql_query($query_rsJoin, $conn) or die(mysql_error());
 $row_rsJoin = mysql_fetch_assoc($rsJoin);
 $totalRows_rsJoin = mysql_num_rows($rsJoin);
 
+if ($totalRows_rsJoin === 0) {
+	header("Location: details.php?course_id=".$_GET['course_id']);
+	exit;
+}
+
+$colname_rsView = "-1";
+if (isset($_GET['course_id'])) {
+  $colname_rsView = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsView = sprintf("SELECT * FROM course_details WHERE course_id = %s", $colname_rsView);
+$rsView = mysql_query($query_rsView, $conn) or die(mysql_error());
+$row_rsView = mysql_fetch_assoc($rsView);
+$totalRows_rsView = mysql_num_rows($rsView);
+
+
 
 $maxRows_rsContent = 1;
 $pageNum_rsContent = 0;
@@ -86,7 +92,7 @@ if (isset($_GET['course_id'])) {
   $colname_rsContent = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsContent = sprintf("SELECT course_contents.*, course_topics.topic_name, course_chapters.chapter_name, course_subjects.subject_name FROM course_contents INNER JOIN course_topics ON course_contents.topic_id = course_topics.topic_id INNER JOIN course_chapters ON course_contents.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_contents.subject_id = course_subjects.subject_id WHERE course_contents.course_id = %s ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC, course_contents.content_sorting ASC", $colname_rsContent);
+$query_rsContent = sprintf("SELECT course_contents.*, course_topics.topic_name, course_chapters.chapter_name, course_subjects.subject_name FROM course_contents INNER JOIN course_topics ON course_contents.topic_id = course_topics.topic_id INNER JOIN course_chapters ON course_contents.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_contents.subject_id = course_subjects.subject_id WHERE course_contents.course_id = %s AND course_contents.content_enabled = 1 AND course_topics.topic_enabled = 1 AND course_chapters.chapter_enabled = 1 AND course_subjects.subject_enabled = 1 ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC, course_contents.content_sorting ASC", $colname_rsContent);
 $query_limit_rsContent = sprintf("%s LIMIT %d, %d", $query_rsContent, $startRow_rsContent, $maxRows_rsContent);
 $rsContent = mysql_query($query_limit_rsContent, $conn) or die(mysql_error());
 $row_rsContent = mysql_fetch_assoc($rsContent);
@@ -180,6 +186,10 @@ function processRecs($content_type, $content_subtype, $record) {
 		<?php if ($totalRows_rsContent > 0) { // Show if recordset not empty ?>
         <?php do { ?>
 		<?php
+
+$images = json_decode($row_rsContent['view_images'], true);
+$videos = json_decode($row_rsContent['view_videos'], true); 
+$links = json_decode($row_rsContent['view_links'], true); 
 		$return = processRecs($row_rsContent['content_type'], $row_rsContent['content_subtype'], $row_rsContent);
 		?>
 			<h3 class="page-header"><?php echo $row_rsContent['topic_name']; ?> / <?php echo $row_rsContent['content_title']; ?> (<small>Subject &quot;<strong><?php echo $row_rsContent['subject_name']; ?></strong>&quot; and Chapter &quot;<strong><?php echo $row_rsContent['chapter_name']; ?></strong>&quot;</small>)</h3>
@@ -189,6 +199,60 @@ function processRecs($content_type, $content_subtype, $record) {
 				</div>
 				<div class="col-md-6">
 					<?php echo $return['right']; ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+
+
+<?php if (!empty($images)) { ?>
+<hr />
+<h3 class="page-header">Images</h3>
+<div class="row">
+	<?php
+	foreach ($images as $k => $v) {
+	?>
+		<div class="col-md-3"><img src="<?php echo $v; ?>" class="img-responsive" /></div>
+	<?php
+	}
+	?>
+</div>
+<?php } ?>
+				
+<?php if (!empty($videos)) { ?>
+<hr />
+<h3 class="page-header">Videos</h3>
+<div class="row">
+	<?php
+	foreach ($videos as $k => $v) {
+	?>
+		<div class="col-md-4">
+			<div class="embed-responsive embed-responsive-16by9">
+			  <iframe class="embed-responsive-item" src="<?php echo str_replace('watch?v=', 'embed/', $v); ?>" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+	<?php
+	}
+	?>
+</div>
+<?php } ?>
+				
+<?php if (!empty($links)) { ?>
+<hr />
+<h3 class="page-header">Links</h3>
+	<div class="list-group">
+		<?php
+			foreach ($links as $k => $v) {
+			?>
+	  <a href="<?php echo $v; ?>" class="list-group-item" target="_blank"><?php echo $v; ?></a>
+	  <?php
+		}
+	?>
+	</div>
+<?php } ?>
+
+
+
 				</div>
 			</div>
 			
@@ -228,9 +292,9 @@ Records <?php echo ($startRow_rsContent + 1) ?> to <?php echo min($startRow_rsCo
 </body>
 <!-- InstanceEnd --></html>
 <?php
-mysql_free_result($rsView);
-
 mysql_free_result($rsJoin);
+
+mysql_free_result($rsView);
 
 mysql_free_result($rsContent);
 ?>

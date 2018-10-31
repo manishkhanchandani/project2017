@@ -18,11 +18,11 @@ $rsGroupUser = mysql_query($query_rsGroupUser, $conn) or die(mysql_error());
 $row_rsGroupUser = mysql_fetch_assoc($rsGroupUser);
 $totalRows_rsGroupUser = mysql_num_rows($rsGroupUser);
 
-if ($totalRows_rsGroupUser === 0) {
+/*if ($totalRows_rsGroupUser === 0) {
 	$mes = "You are not a member of this group.";
 	header("Location: ../users/unauthorised.php?mes=".urlencode($mes));
 	exit;
-}
+}*/
 
 $colname_rsGroupInfo = "-1";
 if (isset($_GET['group_id'])) {

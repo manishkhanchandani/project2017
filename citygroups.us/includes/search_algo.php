@@ -1,4 +1,17 @@
 <?php
+require_once(ROOT_DIR.DIRECTORY_SEPARATOR.'groups'.DIRECTORY_SEPARATOR.'group_func.php');
+
+$totalRows_rsGroups = -1;
+if (!empty($_POST['location'])) {
+	$uid = !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : 0;
+	$groupCreationResult = $group->createNewGroup($_POST['location'], $uid, $_POST['lat'], $_POST['lng'], $_POST['country'], $_POST['state'], $_POST['county'], $_POST['city'], $_POST['addr']);
+	$url = $groupCreationResult['url'];
+	$row_rsGroups = $groupCreationResult['row_rsGroups'];
+	$totalRows_rsGroups = $groupCreationResult['totalRows_rsGroups'];
+
+}
+/*
+
 $totalRows_rsGroups = -1;
 $url = HTTP_PATH;
 if (!empty($_POST['location'])) {
@@ -14,9 +27,9 @@ if (!empty($_POST['location'])) {
 		
 		
 			$group_name = $_POST['location'];
+			$group_name_url = url_name_v2($group_name);
 			$_POST['group_description'] = '';
-			$uid = !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : 0;
-			$insertSQL = sprintf("INSERT INTO citygroup_groups (group_name, group_description, country, `state`, county, city, addr, lat, lng, group_creator_id, ip_address) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+			$insertSQL = sprintf("INSERT INTO citygroup_groups (group_name, group_description, country, `state`, county, city, addr, lat, lng, group_creator_id, ip_address, url) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
 						   GetSQLValueString($_POST['location'], "text"),
 						   GetSQLValueString($_POST['group_description'], "text"),
 						   GetSQLValueString($_POST['country'], "text"),
@@ -27,7 +40,8 @@ if (!empty($_POST['location'])) {
 						   GetSQLValueString($_POST['lat'], "double"),
 						   GetSQLValueString($_POST['lng'], "double"),
 						   GetSQLValueString($uid, "int"),
-						   GetSQLValueString($_SERVER['REMOTE_ADDR'], "text"));
+						   GetSQLValueString($_SERVER['REMOTE_ADDR'], "text"),
+						   GetSQLValueString($group_name_url, "text"));
 			  mysql_select_db($database_conn, $conn);
 			  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
 			  $id = mysql_insert_id();
@@ -58,5 +72,5 @@ if (!empty($_POST['redirect'])) {
 	}
 	header("Location: ".$url);
 	exit;
-}
+}*/
 ?>

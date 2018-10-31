@@ -194,10 +194,10 @@ function time_elapsed_string($datetime, $full = false) {
 
 
 if (!function_exists('timeAgo')) {
-function timeAgo($datetime) {
+function timeAgo($datetime, $timeDiff=(2*60*60)) { //timeDiff is difference in db and php time
 	$now = time();
 	$ago = strtotime($datetime);
-	$ago = $ago - (60 * 60 * 3);//5
+	$ago = $ago - ($timeDiff);//5
     $seconds = $now - $ago;
 	if ($seconds < 0 ) $seconds = 0;
 	$interval = floor($seconds / 31536000);
@@ -292,4 +292,40 @@ function redirect($MM_restrictGoTo, $MM_authorizedUsers) { //HTTPPATH.'/users/lo
 
 }
 }
+
+
+
+
+if (!function_exists('url_name_v2')) {
+function url_name_v2($name='')
+{
+	if (empty($name)) {
+		return $name;
+	}
+
+	$patterns = array();
+	$patterns[0] = "/\s+/";
+	$patterns[1] = '/[^A-Za-z0-9]+/';
+	$replacements = array();
+	$replacements[0] = "-";
+	$replacements[1] = '-';
+	ksort($patterns);
+	ksort($replacements);
+	$output = preg_replace($patterns, $replacements, $name);
+	$output = strtolower($output);
+	return $output;
+}//end url_name_v2()
+}
+
+if (!function_exists('urltoword')) {
+	function urltoword($url)
+	{
+		$url = str_replace('-', ' ', $url);
+		$url = ucwords(strtolower($url));
+		$url = trim($url);
+		return $url;
+	}
+}
+
+
 ?>

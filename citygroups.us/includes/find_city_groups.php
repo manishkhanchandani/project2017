@@ -60,7 +60,7 @@ if (!empty($_POST['location'])) {
 				<label for="autocomplete">City *:</label>
 				<input type="text" class="form-control addressBox" id="autocomplete" name="location" onFocus="geolocate()" placeholder="enter city" value="<?php echo !empty($_POST['location']) ? $_POST['location'] : ''; ?>">
 			</div>
-			<input type="submit" name="Submit" value="Find Group" />
+			<input type="submit" name="Submit" value="Find Group" /><br /><br />
 			<input type="hidden" name="country" id="country" value="<?php echo !empty($_POST['country']) ? $_POST['country'] : ''; ?>" />
 			<input type="hidden" name="state" id="state" value="<?php echo !empty($_POST['state']) ? $_POST['state'] : ''; ?>" />
 			<input type="hidden" name="county" id="county" value="<?php echo !empty($_POST['county']) ? $_POST['county'] : ''; ?>" />
@@ -141,7 +141,7 @@ initAutocomplete();
 		</form>
 		
 <?php
-if ($totalRows_rsGroups > 0) {
+if (isset($totalRows_rsGroups) && $totalRows_rsGroups > 0) {
 ?>
 <br />
 <br />
@@ -151,7 +151,7 @@ if ($totalRows_rsGroups > 0) {
 <?php
 }
 
-if ($totalRows_rsGroups === 0) {
+if (isset($totalRows_rsGroups) && $totalRows_rsGroups === 0) {
 ?>
 <br />
 <br />

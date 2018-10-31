@@ -10,7 +10,7 @@ if (isset($_GET['pageNum_rsView'])) {
 $startRow_rsView = $pageNum_rsView * $maxRows_rsView;
 
 mysql_select_db($database_conn, $conn);
-$query_rsView = "SELECT * FROM course_details";
+$query_rsView = "SELECT * FROM course_details WHERE live = 1 ORDER BY course_name";
 $query_limit_rsView = sprintf("%s LIMIT %d, %d", $query_rsView, $startRow_rsView, $maxRows_rsView);
 $rsView = mysql_query($query_limit_rsView, $conn) or die(mysql_error());
 $row_rsView = mysql_fetch_assoc($rsView);

@@ -96,13 +96,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO course_topics (user_id, course_id, subject_id, chapter_id, topic_name, topic_description, topic_sorting) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO course_topics (user_id, course_id, subject_id, chapter_id, topic_name, topic_description, topic_enabled, topic_sorting) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['user_id'], "int"),
                        GetSQLValueString($_POST['course_id'], "int"),
                        GetSQLValueString($_POST['subject_id'], "int"),
                        GetSQLValueString($_POST['chapter_id'], "int"),
                        GetSQLValueString($_POST['topic_name'], "text"),
                        GetSQLValueString($_POST['topic_description'], "text"),
+                       GetSQLValueString($_POST['topic_enabled'], "int"),
                        GetSQLValueString($_POST['topic_sorting'], "int"));
 
   mysql_select_db($database_conn, $conn);
@@ -283,14 +284,14 @@ $queryString_rsViewChapters = sprintf("&totalRows_rsViewChapters=%d%s", $totalRo
             </tr>
             <tr valign="baseline">
                 <td nowrap align="right">Topic Sorting:</td>
-                <td><input name="topic_sorting" type="text" id="topic_sorting" value="0" size="32"></td>
+                <td><input name="topic_sorting" type="text" id="topic_sorting" value="<?php echo $totalRows_rsViewChapters + 1; ?>" size="32"></td>
             </tr>
             <tr valign="baseline">
                 <td nowrap align="right">Status:</td>
                 <td><label>
-                    <input name="topic_enabled" type="radio" value="1">
+                    <input name="topic_enabled" type="radio" value="1" checked />
                     Enable
-                    <input name="topic_enabled" type="radio" value="0" checked>
+                    <input name="topic_enabled" type="radio" value="0" />
                     Disable </label></td>
             </tr>
             <tr valign="baseline">

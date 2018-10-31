@@ -23,3 +23,5 @@ function hideSelected(k) {
 		</li>
 	<?php } ?>
 </ul>
+<hr />
+<div><?php echo $record['content_description']; ?></div>

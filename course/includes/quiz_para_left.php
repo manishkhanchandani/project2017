@@ -24,3 +24,5 @@ $('#quiz_container input:radio').click(function() {
 	<?php } ?>
 });
 </script>
+<hr />
+<div><?php echo $record['content_description']; ?></div>

@@ -54,7 +54,7 @@ if (isset($_GET['course_id'])) {
   $colname_rsTopic = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsTopic = sprintf("SELECT course_contents.*, course_topics.topic_name, course_chapters.chapter_name, course_subjects.subject_name FROM course_contents INNER JOIN course_topics ON course_contents.topic_id = course_topics.topic_id INNER JOIN course_chapters ON course_contents.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_contents.subject_id = course_subjects.subject_id WHERE course_contents.course_id = %s ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC, course_contents.content_sorting ASC", $colname_rsTopic);
+$query_rsTopic = sprintf("SELECT course_contents.*, course_topics.topic_name, course_chapters.chapter_name, course_subjects.subject_name FROM course_contents INNER JOIN course_topics ON course_contents.topic_id = course_topics.topic_id INNER JOIN course_chapters ON course_contents.chapter_id = course_chapters.chapter_id INNER JOIN course_subjects ON course_contents.subject_id = course_subjects.subject_id WHERE course_contents.course_id = %s  AND course_contents.content_enabled = 1 AND course_topics.topic_enabled = 1 AND course_chapters.chapter_enabled = 1 AND course_subjects.subject_enabled = 1 ORDER BY course_subjects.subject_sorting ASC, course_chapters.chapter_sorting ASC, course_topics.topic_sorting ASC, course_contents.content_sorting ASC", $colname_rsTopic);
 $rsTopic = mysql_query($query_rsTopic, $conn) or die(mysql_error());
 $row_rsTopic = mysql_fetch_assoc($rsTopic);
 $totalRows_rsTopic = mysql_num_rows($rsTopic);
@@ -132,7 +132,7 @@ $endtime = microtime(true);
 
 <?php
 if ($totalRows_rsJoin > 0) { ?>
-	<p>You are Member of This Course | <a href="study.php?course_id=<?php echo $_GET['course_id']; ?>"><strong>Study</strong></a></p>
+	<p>You are Member of This Course | <a href="study.php?course_id=<?php echo $_GET['course_id']; ?>"><strong>Study</strong></a> | <a href="leave.php?course_id=<?php echo $_GET['course_id']; ?>" onClick="a = confirm('do you really want to leave this group?'); return a;"><strong>Leave This Course</strong></a></p>
     
 <?php } else { ?>
  <p> <a href="join.php?course_id=<?php echo $_GET['course_id']; ?>">Join This Course!!</a></p>
@@ -175,11 +175,22 @@ if ($totalRows_rsJoin > 0) { ?>
 									echo $row_rsTopic['chapter_name'];
 								}
 							?></td>
-                            <td><?php echo $row_rsTopic['topic_name']; ?></td>
+                            <td>
+							
+							<?php 
+								if (empty($tmp3)) {
+									$tmp3 = $row_rsTopic['topic_id'];
+									echo $row_rsTopic['topic_name'];
+								}							
+								else if ($tmp3 !== $row_rsTopic['topic_id']) {
+									$tmp3 = $row_rsTopic['topic_id'];
+									echo $row_rsTopic['topic_name'];
+								}
+							?></td>
                             <td><?php echo $row_rsTopic['content_title']; ?></td>
                         </tr>
                         <?php } while ($row_rsTopic = mysql_fetch_assoc($rsTopic)); ?>
-                                </table>
+                    </table>
                 </div><?php } // Show if recordset not empty ?>
         <hr />
 

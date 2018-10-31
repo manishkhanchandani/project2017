@@ -3,15 +3,6 @@
 session_start();
 include_once('../init.php');
 
-$colname_rsGroupInfo = "-1";
-if (isset($_GET['group_id'])) {
-  $colname_rsGroupInfo = (get_magic_quotes_gpc()) ? $_GET['group_id'] : addslashes($_GET['group_id']);
-}
-mysql_select_db($database_conn, $conn);
-$query_rsGroupInfo = sprintf("SELECT * FROM citygroup_groups WHERE group_id = %s", $colname_rsGroupInfo);
-$rsGroupInfo = mysql_query($query_rsGroupInfo, $conn) or die(mysql_error());
-$row_rsGroupInfo = mysql_fetch_assoc($rsGroupInfo);
-$totalRows_rsGroupInfo = mysql_num_rows($rsGroupInfo);
 
 $coluser_rsGroupUser = "-1";
 if (isset($_SESSION['MM_UserId'])) {
@@ -26,6 +17,23 @@ $query_rsGroupUser = sprintf("SELECT * FROM citygroup_group_users WHERE group_id
 $rsGroupUser = mysql_query($query_rsGroupUser, $conn) or die(mysql_error());
 $row_rsGroupUser = mysql_fetch_assoc($rsGroupUser);
 $totalRows_rsGroupUser = mysql_num_rows($rsGroupUser);
+
+if ($totalRows_rsGroupUser === 0) {
+	$mes = "You are not a member of this group. Click here to join the group and try again. <a href='".HTTP_PATH."includes/join_group.php?group_id=".$_GET['group_id']."'>Join This Group</a>";
+	header("Location: ../users/unauthorised.php?mes=".urlencode($mes));
+	exit;
+}
+
+$colname_rsGroupInfo = "-1";
+if (isset($_GET['group_id'])) {
+  $colname_rsGroupInfo = (get_magic_quotes_gpc()) ? $_GET['group_id'] : addslashes($_GET['group_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsGroupInfo = sprintf("SELECT * FROM citygroup_groups WHERE group_id = %s", $colname_rsGroupInfo);
+$rsGroupInfo = mysql_query($query_rsGroupInfo, $conn) or die(mysql_error());
+$row_rsGroupInfo = mysql_fetch_assoc($rsGroupInfo);
+$totalRows_rsGroupInfo = mysql_num_rows($rsGroupInfo);
+
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/citygroups.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -59,6 +67,7 @@ $totalRows_rsGroupUser = mysql_num_rows($rsGroupUser);
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'head.php'); ?>
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'localHead.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
+<script type="text/javascript" src="<?php echo HTTP_PATH; ?>js/jquery.gdrive-1.2.0.min.js"></script>
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -72,36 +81,77 @@ $totalRows_rsGroupUser = mysql_num_rows($rsGroupUser);
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'NavMulti.php'); ?>
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
+<div>
 	<div class="row">
-		<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-			<?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'find_city_groups.php'); ?>
+		<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2">
+			
 <ul class="list-group">
-	<li class="list-group-item"><a href="<?php echo HTTP_PATH; ?>events/?group_id=<?php echo $_GET['group_id']; ?>">Events</a></li>
+	<li class="list-group-item"><a href="<?php echo HTTP_PATH; ?>groups/?group_id=<?php echo $row_rsGroupInfo['group_id']; ?>&city=<?php echo urlencode($row_rsGroupInfo['group_name']); ?>">Back To Groups</a></li>
+	<li class="list-group-item"><a href="<?php echo HTTP_PATH; ?>events/create.php?group_id=<?php echo $row_rsGroupInfo['group_id']; ?>">Create New Event</a></li>
+	<li class="list-group-item"><a href="<?php echo HTTP_PATH; ?>events/?group_id=<?php echo $row_rsGroupInfo['group_id']; ?>">List All Events</a></li>
 </ul>
-			
-			
 		</div>
 		
 		<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7 main">
-			<h1 class="page-header"><?php echo $row_rsGroupInfo['group_name']; ?></h1>
+			<h3 class="page-header">Create New Event in "<?php echo $row_rsGroupInfo['group_name']; ?>"</h3>
 			<div><?php echo $row_rsGroupInfo['country']; ?>, <?php echo $row_rsGroupInfo['state']; ?>, <?php echo $row_rsGroupInfo['city']; ?></div>
-		</div>
-		<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2">
-			<?php if ($totalRows_rsGroupUser == 0) { // Show if recordset empty ?>
-				<div><a href="../includes/join_group.php?group_id=<?php echo $row_rsGroupInfo['group_id']; ?>">Join This Group</a></div>
-			<?php } else { // Show if recordset empty ?>
-				<div>You <strong>joined this group</strong> <?php echo timeAgo($row_rsGroupUser['joined_date']); ?><br /><br /> <a href="../includes/leave_group.php?group_id=<?php echo $row_rsGroupInfo['group_id']; ?>">Leave This Group</a></div>
-			<?php } // Show if recordset empty ?>
 			<hr />
+			<form action="" method="post" name="formNode" id="formNode">
+				<!--<div>
+					<div>You need google drive authorization to upload the image.</div>
+					<button id="apiDriveAuthenticate" type="submit">Start Google Drive Authentication</button>
+					<div id="gDriveAuthorization"></div>
+				</div> -->
+				<hr />
+			</form>
 		</div>
-	
+		<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+		</div>
+
 	</div>
+
+
+<script>
+//gdrive options with authentication and authorization level requested
+var gdrive_pluginOptions = {
+    authentication: {
+        clientID: "<?php echo GOOGLE_DRIVE_CLIENT_ID; ?>",
+        keyAPI: "<?php echo GOOGLE_API_KEY; ?>"
+    },
+    scopes: ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/userinfo.email"]
+}
+
+//initialize gdrive
+$(function () {
+    //initialize
+    $("#apiDriveAuthenticate").gDrive(gdrive_pluginOptions);
+    //listen to the event
+    $('body').bind('DrivePlugin_loaded',
+   function (e, data) {
+       
+    	var auth = $.gDrive.authorized();
+		console.log('auth: ', auth);
+    	if (auth) {
+        	$("#apiDriveAuthenticate").hide();
+        	$("#gDriveAuthorization").css("color", "green");
+        	$("#gDriveAuthorization").text("You are Authorized to access Google Drive");
+    	}
+    	else {
+        	$("#gDriveAuthorization").css("color", "orange");
+        	$("#gDriveAuthorization").text("You are Not Authorized to access Google Drive. Click above button to get authorization.");
+    	}
+
+   });
+
+});
+</script>
+</div>
 <!-- InstanceEndEditable -->
 </div>
 </body>
 <!-- InstanceEnd --></html>
 <?php
-mysql_free_result($rsGroupInfo);
-
 mysql_free_result($rsGroupUser);
+
+mysql_free_result($rsGroupInfo);
 ?>

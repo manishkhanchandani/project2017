@@ -547,7 +547,7 @@ Q&amp;A </div></td>
               </tr>
               <tr valign="baseline">
                   <td align="right" valign="top" nowrap><strong>Sorting:</strong></td>
-                  <td valign="top"><input name="content_sorting" type="text" id="content_sorting" value="0" size="32"></td>
+                  <td valign="top"><input name="content_sorting" type="text" id="content_sorting" value="<?php echo $totalRows_rsView + 1; ?>" size="32"></td>
               </tr>
 
                 <tr valign="baseline">
@@ -555,9 +555,9 @@ Q&amp;A </div></td>
                         <label for="content_enabled">Status: </label>
                     </strong></td>
                     <td valign="top">
-                        <input name="content_enabled" id="content_enabled" type="radio" value="1">
+                        <input name="content_enabled" type="radio" id="content_enabled" value="1" checked>
                         Enable
-                        <input name="content_enabled" id="content_enabled_2" type="radio" value="0" checked>
+                        <input name="content_enabled" id="content_enabled_2" type="radio" value="0">
                         Disable</td>
                 </tr>
                 <tr valign="baseline">

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "project100-fe20e",
+  "private_key_id": "5f4dd0f9ef40334cd730a936fe544ed5ab9111cc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDfQSFz2BT939N9\nX14UyhWsz5zD2hUUwKRrTj1F6sZvWgwSQTkTwf9t9CRcfH72aFbLcLjTA/o5SqX1\n80VRFdDFoyFNzB1z6pHq62Y1KyDT8rVT4oIeNV2BSdYg36bDxz4zQr/BBYgtetpX\nKrnjL3ursAVkkDnNX1bDFydwBQsbrxdVhLhY5SiKTCFc/m4VtRSN330l3Tu1g7r5\nQAXK7Mt+eCD54tosksH+5TX4T7Wu7iBIyL3M71uf3GWsk/gJB1Ez+gDyFAyNIZZ2\nZ4MmqxDJVFsrC+FkyVVQmMUWT3DE2rMDF/ssmB2wQOf0bujTede4Gwxyxlq1RHTR\naD7I/J6JAgMBAAECggEAEfdR09q9xbhvcpVsIswodmG2weQY8jSWhrQjJi9AjNF4\nSzfIehiQj66oBnFWXkoDQhfuJ70YM+gX9vT+zQmuZVk9Yt9cN2nXGEqdTQYNfED5\n6qg9xGSTA8aHXtngt7ye+s0SVVw2m0JZs84Sa3/0udpOdMtOe4KCnuyMFe2x+SY1\nhYQmEkWpWlRdnp+l0JLJnBw+S5Q3d3/7gPAByx4G9ajgFN0vHDVPMTA5Ls/8g54J\nGxSBNr5WPUufN9lCkSxuCxjxe+IXsFr00KKxUalAVkAqrw3YJq+OwAiZFpq6b1Ou\ntE1n8inJ5vzuvmLW7g3hAwtFYc/6VIOJZrHLg5rtoQKBgQDx4sMeaA1uEEHvKos7\nCjy288xjv5g18NYkWJ7I5SHsLA3DbpzOM/n8nT8mOzn3TN9mp9gpT3alrMy+PWco\nJ4P2umXL0ta8ywrzZgY0NB9TeQQL1S9zqhKiGgRVgvdS/PzondgLQLfkKjBePSyj\njfiYA7S2vljJjP1XBYYIX0FW3QKBgQDsSA6bFdfX/U5Aa3i2MG2tjV0/qFsz/ftl\n2UBRCSNn1OYnrWJlN5TR4W8xeODFS4IePxods19sFuPxb1iTL1KoQkriRc0CwID6\n2Bj8aYnMScjvXG/VrSL4vgnASatcTC5Et5F47BU6KmFrKzFQliOcqZwxiddHvbC+\nWwTDTiOtnQKBgBk1Vrxef7fOvfBc8LGweW9frRdgKk7E0KxtB+9L4eMpHC4X4wOi\naxUmliQ32+yn+EhMibyUaXsOrS/OWmfW5mvaNS2uxW5bgsKnCVJ7dCBQ5lkNWKqn\nONXn/DelNH1TnE/p01Ao6IFA3FWV7ocFDrlY+YZqA/rNVMGy86r/smGJAoGBALov\nhaLbMXw3VEQa68HUo3hQnpwc09FCX6k/6hhw9P9KmhnF3HUZuSExXOdE8wlEmMGw\nw6mHwLdxyihjrw48CgwgQNXQXt2+R2RiiD3OBBGASt+inVVo2tfbF9/3rRpLxWHM\nrMr2bTuqTZ2fKXrw9Brs4/F9RrB3XyCApF4p4p9ZAoGBAJQRPX4hys1/g2icaVxN\nsTDo3eu88/J6c2ASb/ly6e55xfMpJdBxXBAO8iMNlhcZspX2rh+Vy5UqFUcmOVjw\nLVBSGY/wCrO98hHyfqjxmfIGRwTpvhGhTmBlBBkzFn2RJ0nYbRBc1bq7TOYDPxUe\ntoy8KcAWOkTv0GqLJsfoy2qa\n-----END PRIVATE KEY-----\n",
+  "client_email": "citygroupservice@project100-fe20e.iam.gserviceaccount.com",
+  "client_id": "101100210474566395552",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/citygroupservice%40project100-fe20e.iam.gserviceaccount.com"
+}

@@ -1,14 +1,7 @@
-<?php require_once('../Connections/conn.php'); ?>
 <?php
-
-$starttime = microtime(true);
 session_start();
-include_once('init.php');
-$currentPage = HTTP_PATH;
 
-
-
-$endtime = microtime(true);
+include_once('../../init.php');
 ?>
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/citygroups.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -17,7 +10,7 @@ $endtime = microtime(true);
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>CityGroups</title>
+<title>Untitled Document</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
@@ -43,6 +36,9 @@ $endtime = microtime(true);
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'head.php'); ?>
 <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'localHead.php'); ?>
 <!-- InstanceBeginEditable name="head" -->
+
+<script src="https://www.gstatic.com/firebasejs/5.5.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.6/firebase-firestore.js"></script>
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -57,18 +53,79 @@ $endtime = microtime(true);
 <div class="container-fluid">
 <!-- InstanceBeginEditable name="EditRegion3" -->
   <div class="row">
-    
-	<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 main">
-	
-	</div>
-	<div class="col-sm-12 col-xs-12 col-md-7 col-lg-7 main">
-	  <?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'find_city_groups.php'); ?>
-	
-	</div>
-	<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2 main">
-	
-	</div>
-</div>
+
+<h1>Test</h1>
+<div id="hotDogOutput"></div>
+<h3>Hot dog status</h3>
+
+<form name="form1" id="form1" method="post" action="">
+    <label>name
+    <input name="latesthotdogs" type="text" id="latesthotdogs">
+    </label>
+    <p>
+        <label>
+        <input type="button" id="saveButton" name="Submit" value="Save">
+        <input type="button" id="loadButton" name="Submit" value="Load">
+        </label>
+    </p>
+</form>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBhpHK-ve2s0ynnr8og8Zx0S69ttEFpDKk",
+    authDomain: "project100-fe20e.firebaseapp.com",
+    databaseURL: "https://project100-fe20e.firebaseio.com",
+    projectId: "project100-fe20e",
+    storageBucket: "project100-fe20e.appspot.com",
+    messagingSenderId: "674827815611"
+  };
+  firebase.initializeApp(config);
+  const db = firebase.firestore();
+  db.settings({timestampsInSnapshots: true});
+  
+  const docRef = db.doc("samples/sandwichData");
+</script>
+<script>
+const outputHeader = document.querySelector("#hotDogOutput");
+const inputTextField = document.querySelector("#latesthotdogs");
+const saveButton = document.querySelector("#saveButton");
+
+
+saveButton.addEventListener('click', () => {
+	const textToSave = inputTextField.value;
+	console.log('textToSave: ', textToSave);
+	docRef.set({
+		hotDogStatus: textToSave
+	}).then(() => {
+		console.log('saved');
+	}).catch((error) => {
+		console.log('error: ', error);
+	});
+});
+
+
+loadButton.addEventListener('click', () => {
+	docRef.get().then((doc) => {
+		if (doc && doc.exists) {
+			const myData = doc.data();
+			outputHeader.innerText = myData.hotDogStatus;
+		}
+	});
+});
+
+const getRealtimeUpdates = () => {
+	docRef.onSnapshot({}, (doc) => {
+		if (doc && doc.exists) {
+			const myData = doc.data();
+			outputHeader.innerText = myData.hotDogStatus;
+		}
+	});
+};
+
+getRealtimeUpdates();
+
+</script>
+  </div>
 <!-- InstanceEndEditable -->
 </div>
 </body>
