@@ -1,6 +1,28 @@
 <?php
 
 ?>
+<script>
+
+	function LogoutUser(redirect=false) {
+		console.log('in logout');
+		firebase.auth().signOut().then(function() {
+		  // Sign-out successful.
+		  console.log('successful logged out from fb');
+		  $.get( "<?php echo HTTP_PATH; ?>users/logout_user.php")
+				  .done(function( data ) {
+					console.log( "hey you are logged out finally" );
+					if (redirect) {
+						window.location.href = "<?php echo HTTP_PATH; ?>users/login.php";
+					}
+				  }).fail(function(err, err2, err3) {
+				  	console.log( "fail fail fail" );
+				  });
+		}).catch(function(error) {
+		  // An error happened.
+		  console.log('unsuccessful logged: ', error);
+		});
+	}
+</script>
 <div class="nav-multi">
 	<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 		<div class="container">
@@ -30,7 +52,7 @@
 					  <ul class="dropdown-menu">
 						<?php if (!empty($_SESSION['MM_DisplayName'])) { ?>
 							<!--<li><a href="" onClick="signOut(); return false;">Signout</a></li> -->
-							<li><a href="<?php echo HTTP_PATH; ?>users/logout.php">Signout</a></li>
+							<li><a href="#" onclick="LogoutUser(1);">Signout</a></li>
 						<?php } else { ?>
 							<!--<li><a href="" onClick="googleLogin(); return false;">Google</a></li>
 							<li><a href="" onClick="twitterLogin(); return false;">Twitter</a></li>

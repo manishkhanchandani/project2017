@@ -445,7 +445,7 @@ Q&amp;A </div></td>
                 </tr>
                 <tr valign="baseline" id="qz3" style="display:none;">
                     <td align="right" valign="top" nowrap><label>Quiz Correct Option </label></td>
-                    <td valign="top"><input type="text" name="qz_correct" value="" class="form-control" placeholder="Add Correct option (1 or 2,..)" />
+                    <td valign="top"><input type="text" name="qz_correct" value="" class="form-control" placeholder="Add Correct option (0 or 1 or 2,..)" />
                     </td>
                 </tr>
                 <tr valign="baseline" id="qz4" style="display:none;">

@@ -157,7 +157,7 @@ if (isset($_GET['course_id'])) {
   $colname_rsViewChapters = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsViewChapters = sprintf("SELECT * FROM course_topics WHERE course_id = %s AND user_id = %s AND topic_deleted = 0 AND subject_id = %s AND chapter_id = %s", $colname_rsViewChapters,$coluser_rsViewChapters,$colsubid_rsViewChapters,$colchapid_rsViewChapters);
+$query_rsViewChapters = sprintf("SELECT * FROM course_topics WHERE course_id = %s AND user_id = %s AND topic_deleted = 0 AND subject_id = %s AND chapter_id = %s ORDER BY topic_sorting ASC", $colname_rsViewChapters,$coluser_rsViewChapters,$colsubid_rsViewChapters,$colchapid_rsViewChapters);
 $query_limit_rsViewChapters = sprintf("%s LIMIT %d, %d", $query_rsViewChapters, $startRow_rsViewChapters, $maxRows_rsViewChapters);
 $rsViewChapters = mysql_query($query_limit_rsViewChapters, $conn) or die(mysql_error());
 $row_rsViewChapters = mysql_fetch_assoc($rsViewChapters);

@@ -335,7 +335,7 @@ $queryString_rsViewChapters = sprintf("&totalRows_rsViewChapters=%d%s", $totalRo
                 <td><?php echo $row_rsViewChapters['chapter_enabled']; ?></td>
                 <td><?php echo $row_rsViewChapters['chapter_sorting']; ?></td>
                 <td><a href="manage_chapters.php?course_id=<?php echo $row_rsViewChapters['course_id']; ?>&subject_id=<?php echo $row_rsViewChapters['subject_id']; ?>&chapter_id=<?php echo $row_rsViewChapters['chapter_id']; ?>">Manage</a></td>
-                <td>Edit</td>
+                <td><a href="edit_subject.php?course_id=<?php echo $row_rsViewChapters['course_id']; ?>&subject_id=<?php echo $row_rsViewChapters['subject_id']; ?>&chapter_id=<?php echo $row_rsViewChapters['chapter_id']; ?>">Edit</a></td>
                 <td>Delete</td>
             </tr>
             <?php } while ($row_rsViewChapters = mysql_fetch_assoc($rsViewChapters)); ?>

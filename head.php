@@ -23,19 +23,19 @@ if (isset($_GET['accesscheck'])) {
 	var homeUrl = '<?php echo COMPLETE_HTTP_PATH; ?>';
 	var firebaseDatabase = firebase.database();
 	var userLocation = {};
-	
+	/*
 	function addInFb(obj) {
-		let url = '<?php echo FIREBASE_BASEPATH; ?>/trackPages/<?php echo date('Y-m-d'); ?>/user_<?php echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : ''; ?>';
+		let url = '<?php //echo FIREBASE_BASEPATH; ?>/trackPages/<?php //echo date('Y-m-d'); ?>/user_<?php //echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : ''; ?>';
 		let uniqueID = firebaseDatabase.ref(url).push(obj).key;
 		firebaseDatabase.ref(url).child(uniqueID).child('id').set(uniqueID);
 	}
 	function trackPage() {
 		let obj = {
-			page: '<?php echo $_SERVER['REQUEST_URI']; ?>',
-			user_id: <?php echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : -1; ?>,
-			ip: '<?php echo $_SERVER['REMOTE_ADDR']; ?>',
+			page: '<?php //echo $_SERVER['REQUEST_URI']; ?>',
+			user_id: <?php //echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : -1; ?>,
+			ip: '<?php //echo $_SERVER['REMOTE_ADDR']; ?>',
 			datetime: firebase.database.ServerValue.TIMESTAMP,
-			useragent: '<?php echo $_SERVER['HTTP_USER_AGENT']; ?>'
+			useragent: '<?php //echo $_SERVER['HTTP_USER_AGENT']; ?>'
 		};
 
 		if (navigator.geolocation) {
@@ -48,7 +48,7 @@ if (isset($_GET['accesscheck'])) {
 		} else {
 			addInFb(obj);
 		}
-	}
+	}*/
 	//trackPage();
 	/*
 	let url = '<?php //echo FIREBASE_BASEPATH; ?>/somepath';
@@ -74,7 +74,7 @@ if (isset($_GET['accesscheck'])) {
 		userData.profileUID = user.providerData[0].uid;
 		userData.refreshToken = user.refreshToken;
 		userData.uid = user.uid;
-        //console.log('userData is ', userData);
+        console.log('userData is ', userData);
 		
 	  } else {
 		console.log('user is logged out');

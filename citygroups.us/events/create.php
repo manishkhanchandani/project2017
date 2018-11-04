@@ -1,5 +1,75 @@
 <?php require_once('../../Connections/conn.php'); ?>
 <?php
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
+  $insertSQL = sprintf("INSERT INTO citygroup_nodes (node_title, node_description, node_images, node_links, node_videos, node_type, parent_node_id, evt_start_time, evt_end_time, evt_start_date, evt_end_date, evt_frequency, node_location_name, node_location, node_addr, node_country, node_state, node_county, node_city, node_lat, node_lng, node_featured_image, category_id, creator_id, xtra1, xtra2) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['node_title'], "text"),
+                       GetSQLValueString($_POST['node_description'], "text"),
+                       GetSQLValueString($_POST['node_images'], "text"),
+                       GetSQLValueString($_POST['node_links'], "text"),
+                       GetSQLValueString($_POST['node_videos'], "text"),
+                       GetSQLValueString($_POST['node_type'], "text"),
+                       GetSQLValueString($_POST['parent_node_id'], "int"),
+                       GetSQLValueString($_POST['evt_start_time'], "int"),
+                       GetSQLValueString($_POST['evt_end_time'], "int"),
+                       GetSQLValueString($_POST['evt_start_date'], "date"),
+                       GetSQLValueString($_POST['evt_end_date'], "date"),
+                       GetSQLValueString($_POST['evt_frequency'], "text"),
+                       GetSQLValueString($_POST['node_location_name'], "text"),
+                       GetSQLValueString($_POST['node_location'], "text"),
+                       GetSQLValueString($_POST['node_addr'], "text"),
+                       GetSQLValueString($_POST['node_country'], "text"),
+                       GetSQLValueString($_POST['node_state'], "text"),
+                       GetSQLValueString($_POST['node_county'], "text"),
+                       GetSQLValueString($_POST['node_city'], "text"),
+                       GetSQLValueString($_POST['node_lat'], "double"),
+                       GetSQLValueString($_POST['node_lng'], "double"),
+                       GetSQLValueString($_POST['node_featured_image'], "text"),
+                       GetSQLValueString($_POST['category_id'], "int"),
+                       GetSQLValueString($_POST['creator_id'], "int"),
+                       GetSQLValueString($_POST['xtra1'], "text"),
+                       GetSQLValueString($_POST['xtra2'], "text"));
+
+  mysql_select_db($database_conn, $conn);
+  $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
+
+  $insertGoTo = "confirm.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
+    $insertGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $insertGoTo));
+}
+
 session_start();
 include_once('../init.php');
 
@@ -56,11 +126,12 @@ $totalRows_rsGroupInfo = mysql_num_rows($rsGroupInfo);
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_LOCATION_KEY; ?>&libraries=places"></script>
 <script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
 <!-- Firebase App is always required and must be first -->
-<!--<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>-->
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
-<!--<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
-<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>-->
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-database.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script>
 
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
@@ -96,14 +167,79 @@ $totalRows_rsGroupInfo = mysql_num_rows($rsGroupInfo);
 			<h3 class="page-header">Create New Event in "<?php echo $row_rsGroupInfo['group_name']; ?>"</h3>
 			<div><?php echo $row_rsGroupInfo['country']; ?>, <?php echo $row_rsGroupInfo['state']; ?>, <?php echo $row_rsGroupInfo['city']; ?></div>
 			<hr />
-			<form action="" method="post" name="formNode" id="formNode">
-				<!--<div>
-					<div>You need google drive authorization to upload the image.</div>
-					<button id="apiDriveAuthenticate" type="submit">Start Google Drive Authentication</button>
-					<div id="gDriveAuthorization"></div>
-				</div> -->
-				<hr />
-			</form>
+			<!--<div>
+				<div>You need google drive authorization to upload the image.</div>
+				<button id="apiDriveAuthenticate" type="submit">Start Google Drive Authentication</button>
+				<div id="gDriveAuthorization"></div>
+			</div> -->
+			<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+			    <table>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Title:</td>
+                        <td><input type="text" name="node_title" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right" valign="top">Description:</td>
+                        <td><textarea name="node_description" cols="50" rows="5"></textarea>
+                        </td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Start Date:</td>
+                        <td><input type="text" name="evt_start_date" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">End date:</td>
+                        <td><input type="text" name="evt_end_date" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Fequency:</td>
+                        <td><input type="text" name="evt_frequency" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Location Name:</td>
+                        <td><input type="text" name="node_location_name" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Location:</td>
+                        <td><input type="text" name="node_location" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Featured Image:</td>
+                        <td><input type="text" name="node_featured_image" value="" size="32"></td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">Category:</td>
+                        <td><select name="category_id">
+                                <option value="menuitem1" >[ Label ]</option>
+                                <option value="menuitem2" >[ Label ]</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr valign="baseline">
+                        <td nowrap align="right">&nbsp;</td>
+                        <td><input type="submit" value="Insert record"></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="node_images" value="">
+                <input type="hidden" name="node_links" value="">
+                <input type="hidden" name="node_videos" value="">
+                <input type="hidden" name="node_type" value="events">
+                <input type="hidden" name="parent_node_id" value="0">
+                <input type="hidden" name="evt_start_time" value="">
+                <input type="hidden" name="evt_end_time" value="">
+                <input type="hidden" name="node_addr" value="">
+                <input type="hidden" name="node_country" value="">
+                <input type="hidden" name="node_state" value="">
+                <input type="hidden" name="node_county" value="">
+                <input type="hidden" name="node_city" value="">
+                <input type="hidden" name="node_lat" value="">
+                <input type="hidden" name="node_lng" value="">
+                <input type="hidden" name="creator_id" value="">
+                <input type="hidden" name="xtra1" value="">
+                <input type="hidden" name="xtra2" value="">
+                <input type="hidden" name="MM_insert" value="form1">
+            </form>
+            <p>&nbsp;</p>
 		</div>
 		<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
 		</div>

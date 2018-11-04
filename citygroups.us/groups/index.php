@@ -48,11 +48,12 @@ $totalRows_rsGroupUser = mysql_num_rows($rsGroupUser);
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_LOCATION_KEY; ?>&libraries=places"></script>
 <script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
 <!-- Firebase App is always required and must be first -->
-<!--<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>-->
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
-<!--<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
-<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>-->
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-database.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script>
 
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
@@ -74,10 +75,11 @@ $totalRows_rsGroupUser = mysql_num_rows($rsGroupUser);
 <!-- InstanceBeginEditable name="EditRegion3" -->
 	<div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+			<ul class="list-group">
+				<li class="list-group-item"><a href="<?php echo HTTP_PATH; ?>events/?group_id=<?php echo $_GET['group_id']; ?>">Events</a></li>
+			</ul>
 			<?php include(ROOT_DIR.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'find_city_groups.php'); ?>
-<ul class="list-group">
-	<li class="list-group-item"><a href="<?php echo HTTP_PATH; ?>events/?group_id=<?php echo $_GET['group_id']; ?>">Events</a></li>
-</ul>
+
 			
 			
 		</div>

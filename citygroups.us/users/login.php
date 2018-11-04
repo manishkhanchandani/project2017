@@ -42,6 +42,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 	
 	if (empty($_POST['password'])) {
 		$error .= 'Empty password, ';
+	} else {
+		if (strlen($_POST['password']) < 6) {
+			$error .= 'Password should be at least 6 characters, ';
+		}
 	}
 	
 	if (empty($_POST['cpassword'])) {
@@ -94,8 +98,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
   $id = mysql_insert_id();
-  mail($_POST['email'], 'Verify Email', 'Click here to verify your email. '.COMPLETE_HTTP_PATH.'?code='.$email_verified_code, 'From:Citygroups.us<admin@citygroups.us>');
-  
+  $_POST['id'] = $id;
+  //mail($_POST['email'], 'Verify Email', 'Click here to verify your email. '.COMPLETE_HTTP_PATH.'?code='.$email_verified_code, 'From:Citygroups.us<admin@citygroups.us>');
+  	/*
     $_SESSION['MM_Username'] = $_POST['email'];
     $_SESSION['MM_UserGroup'] = $_POST['access_level'];
 	$_SESSION['MM_Username'] = $_POST['display_name'];
@@ -107,13 +112,26 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
 	$_SESSION['MM_UID'] = $_POST['uid'];
 	$_SESSION['MM_LoggedInTime'] = $_POST['logged_in_time'];
 	$_SESSION['MM_ProfileUID'] = $_POST['profile_uid'];  
+	
+	
+	$time = time() + (60* 60* 24 * 7);
+	$suffix = '_V1';
+	setcookie('MM_Username'.$suffix, $_SESSION['MM_Username'], $time, '/');
+	setcookie('MM_Email'.$suffix, $_SESSION['MM_Email'], $time, '/');
+	setcookie('MM_UserGroup'.$suffix, $_SESSION['MM_UserGroup'], $time, '/');
+	setcookie('MM_UserId'.$suffix, $_SESSION['MM_UserId'], $time, '/');
+	setcookie('MM_DisplayName'.$suffix, $_SESSION['MM_DisplayName'], $time, '/');
+	setcookie('MM_ProfileImg'.$suffix, $_SESSION['MM_ProfileImg'], $time, '/');
+	setcookie('MM_UID'.$suffix, $_SESSION['MM_UID'], $time, '/');
+	setcookie('MM_LoggedInTime'.$suffix, $_SESSION['MM_LoggedInTime'], $time, '/');
+	setcookie('MM_ProfileUID'.$suffix, $_SESSION['MM_ProfileUID'], $time, '/');*/
 
   $MM_redirectLoginSuccess = "../index.php";
     if (isset($_SESSION['PrevUrl']) && true) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
     }
-    header("Location: " . $MM_redirectLoginSuccess );
-	exit;
+    //header("Location: " . $MM_redirectLoginSuccess );
+	//exit;
 }
 
 $loginFormAction = $_SERVER['PHP_SELF'];
@@ -209,11 +227,12 @@ if (isset($_POST['MM_Login'])) {
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_LOCATION_KEY; ?>&libraries=places"></script>
 <script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
 <!-- Firebase App is always required and must be first -->
-<!--<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-app.js"></script>-->
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
-<!--<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-auth.js"></script>
-<script src="<?php //echo HTTP_PATH; ?>js/firebase/5.2.0/firebase-database.js"></script>-->
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-database.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script>
 
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
@@ -222,6 +241,51 @@ if (isset($_POST['MM_Login'])) {
 <!-- InstanceBeginEditable name="head" -->
 <script>
 $(document).ready(function() {
+
+	$( "#form1" ).submit(function( event ) {
+		event.preventDefault();
+		$('#errorJS').hide();
+		console.log('$("#email2").val(): ', $("#email2").val());
+		console.log('$("#password2").val(): ', $("#password2").val());
+		firebase.auth().signInWithEmailAndPassword($("#email2").val(), $("#password2").val()).then((user) => {
+			console.log('log in is ', user);
+			if (!user.user.emailVerified) {
+				LogoutUser();
+				$('#errorJS').show();
+		  		$('#errorJS').html('Email Verification Failed. <a href="" onclick="alert(\'hello\');">Click here to resend the email verification</a>.');
+			} else {
+				var obj = {};
+				obj.username = $("#email2").val();
+				obj.password = $("#password2").val();
+				$.post( "login_user.php?accesscheck=<?php echo !empty($_GET['accesscheck']) ? $_GET['accesscheck'] : ''; ?>", obj)
+				  .done(function( data ) {
+					console.log( "Data Loaded: ", data );	
+					if (data.PrevUrl) {
+						window.location.href = data.PrevUrl;
+					} else {
+						window.location.href = '<?php echo HTTP_PATH; ?>';
+					}
+				  }).fail(function(err, err2, err3) {
+				  	LogoutUser();
+					$('#errorJS').show();
+					$('#errorJS').html(err2);
+				  });
+			}
+
+		
+		}).catch(function(error) {
+		  // Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  console.log('errorCode is ', errorCode);
+		  console.log('errorMessage is ', errorMessage);
+		  $('#errorJS').show();
+		  $('#errorJS').html(errorMessage);
+		  // ...
+		});
+	});
+
+
 	$("#buttonEl").on("click", function() {
 		
 		var fileUploadControl = $("#inputEl")[0];
@@ -237,6 +301,41 @@ $(document).ready(function() {
 		}
 	});
 });
+<?php
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2") && !empty($id)) {
+?>
+$('#errorRegisterJS').hide();
+var em = '<?php echo $_POST['email']; ?>';
+var pa = '<?php echo $_POST['password']; ?>';
+firebase.auth().createUserWithEmailAndPassword(em, pa).then((user) => {
+
+	
+	var obj = {uid: user.user.uid, profile_uid: user.user.providerData[0].uid};
+	//console.log('obj is ', obj);
+	$.post( "update_user.php", obj)
+	  .done(function( data ) {
+		//console.log( "Data Loaded: ", data );
+		var u = firebase.auth().currentUser;
+
+		u.sendEmailVerification().then(function() {
+		  // Email sent.
+		  console.log('verification email sent');
+		  $('#errorRegisterJS').show();
+		  $('#errorRegisterJS').html('Email Verification Sent. Check your email to confirm.');
+		  LogoutUser();
+		}).catch(function(error) {
+		  // An error happened.
+		});
+
+	  });
+
+	}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+<?php } ?>
 </script>
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -286,6 +385,9 @@ $(document).ready(function() {
 <div class="panel panel-primary">
 	<div class="panel-heading">Login</div>
 	<div class="panel-body">
+<div class="alert alert-danger" id="errorJS" style="display:none;">
+  
+</div>
 <?php if (!empty($error2)) { ?>
 <div class="alert alert-danger">
   <?php echo $error2; ?>
@@ -337,11 +439,16 @@ $(document).ready(function() {
 <div class="panel panel-primary">
 	<div class="panel-heading">Register</div>
 	<div class="panel-body">
+<div class="alert alert-danger" id="errorRegisterJS" style="display:none;">
+  
+</div>
 <?php if (!empty($error)) { ?>
 <div class="alert alert-danger">
   <?php echo $error; ?>
 </div>
-<?php } ?>
+<?php }  else if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2") && !empty($id)) { 
+$_POST = array();
+} ?>
 		<div class="form-group">
 			<label for="autocomplete">Current City *:</label>
 			<input type="text" class="form-control addressBox" id="autocomplete" name="location" onFocus="geolocate()" placeholder="enter city" value="<?php echo !empty($_POST['location']) ? $_POST['location'] : ''; ?>">
@@ -421,7 +528,7 @@ $(document).ready(function() {
 
   var placeSearch, autocomplete;
 
-  function initAutocomplete() {
+  function initAutocompleteLogin() {
 	// Create the autocomplete object, restricting the search to geographical
 	// location types.
 	autocomplete = new google.maps.places.Autocomplete(
@@ -475,9 +582,8 @@ $(document).ready(function() {
 	  });
 	}
   }
+initAutocompleteLogin();
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_LOCATION_KEY; ?>&libraries=places&callback=initAutocomplete"
-        async defer></script>
 </form>
 
 	

@@ -113,7 +113,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   header(sprintf("Location: %s", $insertGoTo));
 }
 
-
 $coluser_rsView = "-1";
 if (isset($_SESSION['MM_UserId'])) {
   $coluser_rsView = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
@@ -302,14 +301,21 @@ $queryString_rsViewSubjects = sprintf("&totalRows_rsViewSubjects=%d%s", $totalRo
                 <td><?php echo $row_rsViewSubjects['subject_enabled']; ?></td>
                 <td><?php echo $row_rsViewSubjects['subject_sorting']; ?></td>
                 <td><a href="manage_subjects.php?course_id=<?php echo $row_rsViewSubjects['course_id']; ?>&subject_id=<?php echo $row_rsViewSubjects['subject_id']; ?>">Manage</a></td>
-                <td>Edit</td>
+                <td><a href="edit_course.php?course_id=<?php echo $row_rsViewSubjects['course_id']; ?>&subject_id=<?php echo $row_rsViewSubjects['subject_id']; ?>">Edit</a></td>
                 <td>Delete</td>
             </tr>
             <?php } while ($row_rsViewSubjects = mysql_fetch_assoc($rsViewSubjects)); ?>
     </table>
 </div>
-    <p>&nbsp;</p>
     <?php } // Show if recordset not empty ?>
+		
+		
+
+    <h3>&nbsp;</h3>
+    <p>&nbsp; </p>
+    <p>&nbsp;</p>
+		
+		
 		
 		
 		</div>

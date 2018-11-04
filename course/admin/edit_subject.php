@@ -77,18 +77,32 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+$currentPage = $_SERVER["PHP_SELF"];
+
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE course_subjects SET subject_name=%s, subject_description=%s, subject_enabled=%s, subject_sorting=%s WHERE subject_id=%s",
-                       GetSQLValueString($_POST['subject_name'], "text"),
-                       GetSQLValueString($_POST['subject_description'], "text"),
-                       GetSQLValueString($_POST['subject_enabled'], "int"),
-                       GetSQLValueString($_POST['subject_sorting'], "int"),
-                       GetSQLValueString($_POST['subject_id'], "int"));
+	$error = '';
+	
+	if (empty($_POST['chapter_name'])) {
+		$error .= 'Empty Chapter Name, ';
+	}
+	
+	$_POST['chapter_id'] = $_GET['chapter_id'];
+	if (!empty($error)) {
+		unset($_POST["MM_insert"]);
+	}
+}
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
+  $updateSQL = sprintf("UPDATE course_chapters SET chapter_name=%s, chapter_description=%s, chapter_enabled=%s, chapter_sorting=%s WHERE chapter_id=%s",
+                       GetSQLValueString($_POST['chapter_name'], "text"),
+                       GetSQLValueString($_POST['chapter_description'], "text"),
+                       GetSQLValueString($_POST['chapter_enabled'], "int"),
+                       GetSQLValueString($_POST['chapter_sorting'], "int"),
+                       GetSQLValueString($_POST['chapter_id'], "int"));
 
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 
-  $updateGoTo = "manage_course.php";
+  $updateGoTo = "manage_subjects.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
@@ -96,15 +110,32 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
   header(sprintf("Location: %s", $updateGoTo));
 }
 
-$colname_rsEdit = "-1";
-if (isset($_GET['subject_id'])) {
-  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_GET['subject_id'] : addslashes($_GET['subject_id']);
+
+$coluser_rsView = "-1";
+if (isset($_SESSION['MM_UserId'])) {
+  $coluser_rsView = (get_magic_quotes_gpc()) ? $_SESSION['MM_UserId'] : addslashes($_SESSION['MM_UserId']);
+}
+$colname_rsView = "-1";
+if (isset($_GET['course_id'])) {
+  $colname_rsView = (get_magic_quotes_gpc()) ? $_GET['course_id'] : addslashes($_GET['course_id']);
 }
 mysql_select_db($database_conn, $conn);
-$query_rsEdit = sprintf("SELECT * FROM course_subjects WHERE subject_id = %s", $colname_rsEdit);
+$query_rsView = sprintf("SELECT * FROM course_details WHERE course_id = %s AND course_deleted = 0 AND user_id = %s", $colname_rsView,$coluser_rsView);
+$rsView = mysql_query($query_rsView, $conn) or die(mysql_error());
+$row_rsView = mysql_fetch_assoc($rsView);
+$totalRows_rsView = mysql_num_rows($rsView);
+
+$colname_rsEdit = "-1";
+if (isset($_GET['chapter_id'])) {
+  $colname_rsEdit = (get_magic_quotes_gpc()) ? $_GET['chapter_id'] : addslashes($_GET['chapter_id']);
+}
+mysql_select_db($database_conn, $conn);
+$query_rsEdit = sprintf("SELECT * FROM course_chapters WHERE chapter_id = %s", $colname_rsEdit);
 $rsEdit = mysql_query($query_rsEdit, $conn) or die(mysql_error());
 $row_rsEdit = mysql_fetch_assoc($rsEdit);
 $totalRows_rsEdit = mysql_num_rows($rsEdit);
+
+
 ?><!doctype html>
 <html><!-- InstanceBegin template="/Templates/course.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -112,7 +143,7 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>Edit Subject</title>
+<title>Manage Courses</title>
 <!-- InstanceEndEditable -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="<?php echo HTTP_PATH; ?>css/bootstrap.min.css">
@@ -133,8 +164,7 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
 <?php include(BASE_DIR.DIRECTORY_SEPARATOR.'head.php'); ?>
-<!-- InstanceBeginEditable name="head" -->
-<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -153,46 +183,53 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
     </div>
     
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	  <h1 class="page-header">Edit Subject</h1>
-	  <form method="POST" name="form1" id="form1" action="<?php echo $editFormAction; ?>">
-          <?php if (!empty($error)) { ?>
-          <div class="alert alert-danger"> <?php echo $error; ?> </div>
-	      <?php } ?>
-          <div class="table-responsive">
-              <table class="table">
-                  <tr valign="baseline">
-                      <td nowrap align="right"><strong>Subject Name:</strong></td>
-                      <td><input type="text" name="subject_name" value="<?php echo $row_rsEdit['subject_name']; ?>" size="32"></td>
-                  </tr>
-                  <tr valign="baseline">
-                      <td nowrap align="right" valign="top"><strong>Subject Description:</strong></td>
-                      <td><textarea name="subject_description" cols="50" rows="5"><?php echo $row_rsEdit['subject_description']; ?></textarea>
-                      </td>
-                  </tr>
-                  <tr valign="baseline">
-                      <td nowrap align="right"><strong>Sorting:</strong></td>
-                      <td><input type="text" name="subject_sorting" value="<?php echo $row_rsEdit['subject_sorting']; ?>" size="32"></td>
-                  </tr>
-                  <tr valign="baseline">
-                      <td nowrap align="right"><strong>Status:</strong></td>
-                      <td><label>
-                          <input <?php if (!(strcmp($row_rsEdit['subject_enabled'],"1"))) {echo "checked=\"checked\"";} ?> name="subject_enabled" type="radio" value="1">
-                          Enable
-                          <input <?php if (!(strcmp($row_rsEdit['subject_enabled'],"0"))) {echo "checked=\"checked\"";} ?> name="subject_enabled" type="radio" value="0">
-                          Disable </label></td>
-                  </tr>
-                  <tr valign="baseline">
-                      <td nowrap align="right">&nbsp;</td>
-                      <td><input name="submit" type="submit" value="Edit Subject"></td>
-                  </tr>
-              </table>
-          </div>
-	      <input type="hidden" name="subject_id" value="<?php echo $row_rsEdit['subject_id']; ?>">
-          <input type="hidden" name="MM_update" value="form1">
-      </form>
-	  <p>&nbsp;</p>
+		<h1>Edit Chapter &quot;<?php echo $row_rsEdit['chapter_name']; ?>&quot; </h1>
+		<hr />
 	  <p class="page-header">&nbsp;</p>
-	</div>
+	  <h3>&nbsp;</h3>
+      <form action="<?php echo $editFormAction; ?>" method="POST" name="form1">
+<?php if (!empty($error)) { ?>
+<div class="alert alert-danger">
+  <?php echo $error; ?>
+</div>
+<?php } ?>
+        <div class="table-responsive">
+  <table class="table">
+            <tr valign="baseline">
+                <td nowrap align="right"><strong>Chapter Name:</strong></td>
+                <td><input type="text" name="chapter_name" value="<?php echo $row_rsEdit['chapter_name']; ?>" size="32"></td>
+            </tr>
+            <tr valign="baseline">
+                <td nowrap align="right" valign="top"><strong>Chapter Description:</strong></td>
+                <td><textarea name="chapter_description" cols="50" rows="5"><?php echo $row_rsEdit['chapter_description']; ?></textarea>                </td>
+            </tr>
+            <tr valign="baseline">
+                <td nowrap align="right"><strong>Sorting:</strong></td>
+                <td><input type="text" name="chapter_sorting" value="<?php echo $row_rsEdit['chapter_sorting']; ?>" size="32"></td>
+            </tr>
+            <tr valign="baseline">
+                <td nowrap align="right"><strong>Status:</strong></td>
+                <td><label>
+                    <input <?php if (!(strcmp($row_rsEdit['chapter_enabled'],"1"))) {echo "checked=\"checked\"";} ?> name="chapter_enabled" type="radio" value="1">
+                    Enable 
+                    <input <?php if (!(strcmp($row_rsEdit['chapter_enabled'],"0"))) {echo "checked=\"checked\"";} ?> name="chapter_enabled" type="radio" value="0"> 
+                    Disable
+</label></td>
+            </tr>
+            <tr valign="baseline">
+                <td nowrap align="right">&nbsp;</td>
+                <td><input type="submit" value="Update Chapter"></td>
+            </tr>
+        </table>
+		</div>
+        <p>
+            <input name="chapter_id" type="hidden" id="chapter_id">
+        </p>
+        <input type="hidden" name="MM_update" value="form1">
+      </form>
+    
+        <h3>&nbsp;</h3>
+      </div>
 
   </div>
 <!-- InstanceEndEditable -->
@@ -200,5 +237,7 @@ $totalRows_rsEdit = mysql_num_rows($rsEdit);
 </body>
 <!-- InstanceEnd --></html>
 <?php
+mysql_free_result($rsView);
+
 mysql_free_result($rsEdit);
 ?>
