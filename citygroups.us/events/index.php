@@ -51,17 +51,18 @@ $totalRows_rsGroupInfo = mysql_num_rows($rsGroupInfo);
 
 <script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
-<!--<script src="<?php echo HTTP_PATH; ?>js/parse-latest.js"></script> -->
+<script src="<?php echo HTTP_PATH; ?>js/parse-latest.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_LOCATION_KEY; ?>&libraries=places"></script>
 <script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
+
 <!-- Firebase App is always required and must be first -->
-<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script>
+<!--<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script> -->
 
 <!-- Add additional services that you want to use -->
-<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
+<!--<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-database.js"></script>
-<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script> -->
 
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>

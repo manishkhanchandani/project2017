@@ -23,6 +23,7 @@ if (isset($_POST[$MM_flag])) {
 }
 
 
+require_once(ROOT_DIR.DIRECTORY_SEPARATOR.'groups'.DIRECTORY_SEPARATOR.'group_func.php');
 
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
@@ -98,8 +99,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   mysql_select_db($database_conn, $conn);
   $Result1 = mysql_query($insertSQL, $conn) or die(mysql_error());
   $id = mysql_insert_id();
+	$url = '';
+	if (!empty($_POST['location'])) {
+		$groupCreationResult = $group->createNewGroup($_POST['location'], $id, $_POST['user_lat'], $_POST['user_lng'], $_POST['user_country'], $_POST['user_state'], $_POST['user_county'], $_POST['user_city'], $_POST['user_addr']);
+		$url = $groupCreationResult['url'];
+		$group->joinGroup($groupCreationResult['row_rsGroups']['group_id'], $id);
+	}
   $_POST['id'] = $id;
-  //mail($_POST['email'], 'Verify Email', 'Click here to verify your email. '.COMPLETE_HTTP_PATH.'?code='.$email_verified_code, 'From:Citygroups.us<admin@citygroups.us>');
+  $message = 'Click here to verify your email. '.COMPLETE_HTTP_PATH.'users/verify.php?user_id='.$id.'&code='.$email_verified_code.'&url='.urlencode($url);
+  //mail($_POST['email'], 'Verify Email', 'Click here to verify your email. '.COMPLETE_HTTP_PATH.'?code='.$email_verified_code.'&url='.urlencode($url), 'From:Citygroups.us<admin@citygroups.us>');
   	/*
     $_SESSION['MM_Username'] = $_POST['email'];
     $_SESSION['MM_UserGroup'] = $_POST['access_level'];
@@ -132,6 +140,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
     }
     //header("Location: " . $MM_redirectLoginSuccess );
 	//exit;
+	$error = 'You are registered successfully, Verify your email.';
+	$_POST = array();
 }
 
 $loginFormAction = $_SERVER['PHP_SELF'];
@@ -160,14 +170,21 @@ if (isset($_POST['MM_Login'])) {
   $MM_redirecttoReferrer = true;
   mysql_select_db($database_conn, $conn);
   	
-  $LoginRS__query=sprintf("SELECT * FROM users_auth WHERE email='%s' AND password='%s' AND webReference='%s' AND provider_id = 'email1'",
+  $LoginRS__query=sprintf("SELECT * FROM users_auth as u LEFT JOIN citygroup_groups as g ON g.country = u.user_country AND g.state = u.user_state AND g.city = u.user_city WHERE u.email='%s' AND u.password='%s' AND u.webReference='%s' AND u.provider_id = 'email1'",
   get_magic_quotes_gpc() ? $loginUsername : addslashes($loginUsername), get_magic_quotes_gpc() ? $password : addslashes($password), get_magic_quotes_gpc() ? WEBREFERENCE : addslashes(WEBREFERENCE)); 
    
   $LoginRS = mysql_query($LoginRS__query, $conn) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
+  $url = '';
   if ($loginFoundUser) {
   	$rec = mysql_fetch_array($LoginRS);
-    
+	$url = HTTP_PATH."groups/?group_url=".$rec['url']."&city=".urlencode($rec['group_name'])."&group_id=".$rec['group_id'];
+	if ((int) $rec['email_verified'] === 0) {
+		$email_verified_code = $rec['email_verified_code'];
+		
+		$message = '<a href="'.COMPLETE_HTTP_PATH.'users/verify.php?user_id='.$rec['user_id'].'&code='.$email_verified_code.'&url='.urlencode($url).'">Click here to verify your email.</a>';
+		$error2 = 'Pending verification Email. <!-- '.$message.' -->';
+	} else {
     //declare two session variables and assign them
     $_SESSION['MM_UserGroup'] = $rec['access_level'];
 	$_SESSION['MM_Username'] = $rec['display_name'];
@@ -195,12 +212,17 @@ if (isset($_POST['MM_Login'])) {
 	
     if (isset($_SESSION['PrevUrl']) && true) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
-    }
+    } else if (!empty($url)) {
+		$MM_redirectLoginSuccess = $url;	
+	}
+
     header("Location: " . $MM_redirectLoginSuccess );
+	exit;
+	}//if email verified === 0
   }
   else {
-  echo 'failed';exit;
-    header("Location: ". $MM_redirectLoginFailed );
+  	$error2 = 'Incorrect username and password.';
+    //header("Location: ". $MM_redirectLoginFailed );
   }
 	}
 }
@@ -222,17 +244,18 @@ if (isset($_POST['MM_Login'])) {
 
 <script src="<?php echo HTTP_PATH; ?>js/jquery.min.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/bootstrap.min.js"></script>
-<!--<script src="<?php echo HTTP_PATH; ?>js/parse-latest.js"></script> -->
+<script src="<?php echo HTTP_PATH; ?>js/parse-latest.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_LOCATION_KEY; ?>&libraries=places"></script>
 <script src="<?php echo HTTP_PATH; ?>js/script.js"></script>
+
 <!-- Firebase App is always required and must be first -->
-<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script>
+<!--<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-app.js"></script> -->
 
 <!-- Add additional services that you want to use -->
-<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
+<!--<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-auth.js"></script>
 <script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-database.js"></script>
-<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script>
+<script src="<?php echo HTTP_PATH; ?>js/firebase/5.5.5/firebase-firestore.js"></script> -->
 
 <link href="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.css" rel="stylesheet">
 <script src="<?php echo HTTP_PATH; ?>library/wysiwyg/summernote.js"></script>
@@ -241,49 +264,6 @@ if (isset($_POST['MM_Login'])) {
 <!-- InstanceBeginEditable name="head" -->
 <script>
 $(document).ready(function() {
-
-	$( "#form1" ).submit(function( event ) {
-		event.preventDefault();
-		$('#errorJS').hide();
-		console.log('$("#email2").val(): ', $("#email2").val());
-		console.log('$("#password2").val(): ', $("#password2").val());
-		firebase.auth().signInWithEmailAndPassword($("#email2").val(), $("#password2").val()).then((user) => {
-			console.log('log in is ', user);
-			if (!user.user.emailVerified) {
-				LogoutUser();
-				$('#errorJS').show();
-		  		$('#errorJS').html('Email Verification Failed. <a href="" onclick="alert(\'hello\');">Click here to resend the email verification</a>.');
-			} else {
-				var obj = {};
-				obj.username = $("#email2").val();
-				obj.password = $("#password2").val();
-				$.post( "login_user.php?accesscheck=<?php echo !empty($_GET['accesscheck']) ? $_GET['accesscheck'] : ''; ?>", obj)
-				  .done(function( data ) {
-					console.log( "Data Loaded: ", data );	
-					if (data.PrevUrl) {
-						window.location.href = data.PrevUrl;
-					} else {
-						window.location.href = '<?php echo HTTP_PATH; ?>';
-					}
-				  }).fail(function(err, err2, err3) {
-				  	LogoutUser();
-					$('#errorJS').show();
-					$('#errorJS').html(err2);
-				  });
-			}
-
-		
-		}).catch(function(error) {
-		  // Handle Errors here.
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  console.log('errorCode is ', errorCode);
-		  console.log('errorMessage is ', errorMessage);
-		  $('#errorJS').show();
-		  $('#errorJS').html(errorMessage);
-		  // ...
-		});
-	});
 
 
 	$("#buttonEl").on("click", function() {
@@ -301,41 +281,6 @@ $(document).ready(function() {
 		}
 	});
 });
-<?php
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2") && !empty($id)) {
-?>
-$('#errorRegisterJS').hide();
-var em = '<?php echo $_POST['email']; ?>';
-var pa = '<?php echo $_POST['password']; ?>';
-firebase.auth().createUserWithEmailAndPassword(em, pa).then((user) => {
-
-	
-	var obj = {uid: user.user.uid, profile_uid: user.user.providerData[0].uid};
-	//console.log('obj is ', obj);
-	$.post( "update_user.php", obj)
-	  .done(function( data ) {
-		//console.log( "Data Loaded: ", data );
-		var u = firebase.auth().currentUser;
-
-		u.sendEmailVerification().then(function() {
-		  // Email sent.
-		  console.log('verification email sent');
-		  $('#errorRegisterJS').show();
-		  $('#errorRegisterJS').html('Email Verification Sent. Check your email to confirm.');
-		  LogoutUser();
-		}).catch(function(error) {
-		  // An error happened.
-		});
-
-	  });
-
-	}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-<?php } ?>
 </script>
 <!-- InstanceEndEditable -->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -382,6 +327,7 @@ firebase.auth().createUserWithEmailAndPassword(em, pa).then((user) => {
 	
 
 <form id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">
+<a name="login"></a>
 <div class="panel panel-primary">
 	<div class="panel-heading">Login</div>
 	<div class="panel-body">
@@ -410,6 +356,7 @@ firebase.auth().createUserWithEmailAndPassword(em, pa).then((user) => {
 
 
 <form id="form3" name="form3" method="POST" action="">
+<a name="forgot"></a>
 <div class="panel panel-primary">
 	<div class="panel-heading">Forgot Password</div>
 	<div class="panel-body">
@@ -427,6 +374,32 @@ firebase.auth().createUserWithEmailAndPassword(em, pa).then((user) => {
 	</div>
 </div>
 </form>
+
+
+
+<form id="form4" name="form4" method="POST" action="">
+<a name="change"></a>
+<div class="panel panel-primary">
+	<div class="panel-heading">Change Password</div>
+	<div class="panel-body">
+<?php if (!empty($error4)) { ?>
+<div class="alert alert-danger">
+  <?php echo $error4; ?>
+</div>
+<?php } ?>
+		<div class="form-group">
+			<label for="display_name">New Password:</label>
+			<input type="password" class="form-control" id="password_change" name="password" placeholder="New Password" value="<?php echo (!empty($_POST['password'])) ? $_POST['password'] : ''; ?>" />
+		</div>
+		<div class="form-group">
+			<label for="display_name">Confirm New Password:</label>
+			<input type="password" class="form-control" id="password_change2" name="cpassword" placeholder="Confirm New Password" value="<?php echo (!empty($_POST['cpassword'])) ? $_POST['cpassword'] : ''; ?>" />
+		</div>
+		<input type="hidden" name="MM_Change" value="1" />
+		<input type="submit" name="Submit" value="Send My Password" />
+	</div>
+</div>
+</form>
 	
 	
 	
@@ -436,6 +409,7 @@ firebase.auth().createUserWithEmailAndPassword(em, pa).then((user) => {
 
 
 <form id="form2" name="form2" method="POST" action="<?php echo $editFormAction; ?>">
+<a name="register"></a>
 <div class="panel panel-primary">
 	<div class="panel-heading">Register</div>
 	<div class="panel-body">

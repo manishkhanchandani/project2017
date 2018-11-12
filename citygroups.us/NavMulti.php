@@ -2,7 +2,7 @@
 
 ?>
 <script>
-
+/*
 	function LogoutUser(redirect=false) {
 		console.log('in logout');
 		firebase.auth().signOut().then(function() {
@@ -22,6 +22,7 @@
 		  console.log('unsuccessful logged: ', error);
 		});
 	}
+	*/
 </script>
 <div class="nav-multi">
 	<div class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -52,12 +53,15 @@
 					  <ul class="dropdown-menu">
 						<?php if (!empty($_SESSION['MM_DisplayName'])) { ?>
 							<!--<li><a href="" onClick="signOut(); return false;">Signout</a></li> -->
-							<li><a href="#" onclick="LogoutUser(1);">Signout</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/login.php#change">Change Password</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/logout.php">Signout</a></li>
 						<?php } else { ?>
 							<!--<li><a href="" onClick="googleLogin(); return false;">Google</a></li>
 							<li><a href="" onClick="twitterLogin(); return false;">Twitter</a></li>
 							<li><a href="" onClick="gitHubLogin(); return false;">Github</a></li> -->
-							<li><a href="<?php echo HTTP_PATH; ?>users/login.php">Login / Register</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/login.php#login">Login</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/login.php#register">Register</a></li>
+							<li><a href="<?php echo HTTP_PATH; ?>users/login.php#forgot">Forgot Password</a></li>
 						<?php } ?>
 					  </ul>
 					</li>

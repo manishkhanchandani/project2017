@@ -55,7 +55,10 @@ if (!empty($_POST['location'])) {
 */
 ?>
 <h3 class="page-header">Find City Group</h3>
-		<form id="form2" name="form2" method="POST" action="">
+<div class="alert alert-danger" id="groupErrorJS" style="display:none;">
+  
+</div>
+		<form id="formGroup" name="formGroup" method="POST" action="">
 			<div class="form-group">
 				<label for="autocomplete">City *:</label>
 				<input type="text" class="form-control addressBox" id="autocomplete" name="location" onFocus="geolocate()" placeholder="enter city" value="<?php echo !empty($_POST['location']) ? $_POST['location'] : ''; ?>">
@@ -68,7 +71,34 @@ if (!empty($_POST['location'])) {
 			<input type="hidden" name="addr" id="addr" value="<?php echo !empty($_POST['addr']) ? $_POST['addr'] : ''; ?>" />
 			<input type="hidden" name="lat" id="lat" value="<?php echo !empty($_POST['lat']) ? $_POST['lat'] : ''; ?>" />
 			<input type="hidden" name="lng" id="lng" value="<?php echo !empty($_POST['lng']) ? $_POST['lng'] : ''; ?>" />
+<script src="<?php echo HTTP_PATH; ?>groups/groupJs.js"></script>
+<script>
+	function saveGroupData() {
+		let obj = {
+			location: document.getElementById('autocomplete').value,
+			addr: document.getElementById('addr').value,
+			lat: document.getElementById('lat').value,
+			lng: document.getElementById('lng').value,
+			country: document.getElementById('country').value,
+			state: document.getElementById('state').value,
+			county: document.getElementById('county').value,
+			city: document.getElementById('city').value,
+		};
+		console.log('obj is ', obj);
+		let apiUrl = "<?php echo HTTP_PATH; ?>groups/group_create_api.php";
+		let returnUrl = null;
+		createNewGroup(apiUrl, obj, returnUrl);
+	}
+</script>
 
+<script>
+$(document).ready(function() {
+	/*$( "#formGroup" ).submit(function( event ) {
+		event.preventDefault();
+		saveGroupData();
+	})*/;
+});
+</script>
 <script>
   // This example displays an address form, using the autocomplete feature
   // of the Google Places API to help users fill in the information.
@@ -115,6 +145,8 @@ if (!empty($_POST['location'])) {
 		}
 	}
 	document.getElementById('addr').value = place.formatted_address;
+	//saveGroupData();
+	
   }
 
   // Bias the autocomplete object to the user's geographical location,

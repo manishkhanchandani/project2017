@@ -1,5 +1,5 @@
 <?php
-
+/*
 $MM_redirectLoginSuccess = COMPLETE_HTTP_PATH;
 
 if (isset($_GET['accesscheck'])) {
@@ -24,7 +24,8 @@ if (isset($_GET['accesscheck'])) {
   	dbFirestore.settings({
   		timestampsInSnapshots: true
 	});
-	/* add data
+	///* 
+	//add data
 	dbFirestore.collection("users").add({
 		first: "Ada",
 		last: "Lovelace",
@@ -159,14 +160,14 @@ return db.runTransaction(function(transaction) {
 	}).catch(function(error) {
 		console.log("Transaction failed: ", error);
 	});
-*/
+////
 
 </script>
 <script>
 	var homeUrl = '<?php echo COMPLETE_HTTP_PATH; ?>';
 	var firebaseDatabase = firebase.database();
 	var userLocation = {};
-	/*
+	///*
 	function addInFb(obj) {
 		let url = '<?php //echo FIREBASE_BASEPATH; ?>/trackPages/<?php //echo date('Y-m-d'); ?>/user_<?php //echo !empty($_SESSION['MM_UserId']) ? $_SESSION['MM_UserId'] : ''; ?>';
 		let uniqueID = firebaseDatabase.ref(url).push(obj).key;
@@ -191,7 +192,8 @@ return db.runTransaction(function(transaction) {
 		} else {
 			addInFb(obj);
 		}
-	}*/
+	}
+	////
 	//trackPage();
 	//let url = '<?php //echo FIREBASE_BASEPATH; ?>/somepath';
 	//firebaseDatabase.ref(url).child(this.state.deleteIssueModalData.id).set(null);
@@ -306,3 +308,5 @@ return db.runTransaction(function(transaction) {
 		$('#' + id).toggle();
 	}
 </script>
+*/
+?>

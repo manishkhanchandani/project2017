@@ -16,7 +16,7 @@ $totalRows_rsMyGroups = mysql_num_rows($rsMyGroups);
         <a href="" class="dropdown-toggle" data-toggle="dropdown">My Groups<b class="caret"></b></a>
         <ul class="dropdown-menu">
             <?php do { ?>
-			<li><a href="<?php echo HTTP_PATH; ?>groups/?group_id=<?php echo $row_rsMyGroups['group_id']; ?>&city=<?php echo urlencode($row_rsMyGroups['group_name']); ?>"><?php echo $row_rsMyGroups['group_name']; ?></a></li>
+			<li><a href="<?php echo HTTP_PATH; ?>groups/?group_url=<?php echo $row_rsMyGroups['url']; ?>&city=<?php echo urlencode($row_rsMyGroups['group_name']); ?>&group_id=<?php echo $row_rsMyGroups['group_id']; ?>"><?php echo $row_rsMyGroups['group_name']; ?></a></li>
             <?php } while ($row_rsMyGroups = mysql_fetch_assoc($rsMyGroups)); ?>
         </ul>
 </li>
