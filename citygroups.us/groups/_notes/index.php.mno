@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rsGroupInfo" value="name:group_id;datatype:int,name:group_name;datatype:string,name:group_description;datatype:blob,name:country;datatype:string,name:state;datatype:string,name:county;datatype:string,name:city;datatype:string,name:addr;datatype:string,name:lat;datatype:real,name:lng;datatype:real,name:deleted;datatype:int,name:status;datatype:int,name:admin_approval;datatype:int,name:group_created_dt;datatype:timestamp,name:group_updated_dt;datatype:timestamp,name:group_creator_id;datatype:int,name:group_manager_id;datatype:int,name:ip_address;datatype:string,name:url;datatype:string" />
-	<infoitem key="UD_rsGroupUser" value="name:group_id;datatype:int,name:user_id;datatype:int,name:joined_date;datatype:timestamp,name:approved;datatype:int,name:joined_updated_dt;datatype:timestamp" />
-</info>
