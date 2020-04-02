@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsDistinct" value="name:created;datatype:datetime" />
+	<infoitem key="UD_rsList" value="name:id;datatype:int,name:country;datatype:string,name:total_cases;datatype:int,name:new_cases;datatype:int,name:total_deaths;datatype:int,name:new_deaths;datatype:int,name:total_recovered;datatype:int,name:active_cases;datatype:int,name:serious_critical;datatype:int,name:totalcases_1mpop;datatype:int,name:totaldeaths_1mpop;datatype:int,name:created;datatype:datetime,name:sorting;datatype:int" />
+</info>

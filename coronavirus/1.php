@@ -11,6 +11,14 @@ use Parse\ParseException;
 use Parse\ParseObject;
 
 $sid = date('r');
+$sidTime = time();
+
+
+	$object = Parse\ParseObject::create("CoronavirusSids");
+	$objectId = $object->getObjectId();
+	$object->set('sid', $sid);
+	$object->set('sidTime', $sidTime);
+	$object->save();
 
 $url = 'https://www.worldometers.info/coronavirus/';
 $page = curlget($url);
@@ -50,5 +58,5 @@ foreach ($matches2 as $k => $v) {
 	$sorting++;
 }
 pr($result);
-// file_put_contents('files/'.date('Y_m_d_h_i_s').'.json', json_encode($result));
+file_put_contents('files/'.date('Y_m_d_h_i_s').'.json', json_encode($result));
 
