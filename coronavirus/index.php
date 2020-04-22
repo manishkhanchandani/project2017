@@ -79,7 +79,8 @@ if (!empty($_SERVER['QUERY_STRING'])) {
   }
 }
 $queryString_rsDistinct = sprintf("&totalRows_rsDistinct=%d%s", $totalRows_rsDistinct, $queryString_rsDistinct);
-
+$counter = 1;
+$exclude = array('North America', 'Europe', 'Asia', 'South America', 'Oceania', 'Africa', 'World');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -140,6 +141,7 @@ th {
 <table class="table table-striped table-dark">
   <thead class="thead-light">
   <tr>
+    <th>&nbsp;</th>
     <th><strong>Country</strong></th>
     <th><strong>Total Cases</strong></th>
     <th><strong>New Cases</strong></th>
@@ -154,6 +156,8 @@ th {
   <tbody id="coronabody">
   	  <?php do { ?>
   	<tr>
+  	  <td><?php if (!in_array(trim($row_rsList['country']), $exclude) && !empty(trim($row_rsList['country']))) {
+		  echo $counter; $counter++;} ?></td>
   	    <td><?php echo $row_rsList['country']; ?></td><td><?php echo $row_rsList['total_cases']; ?></td><td <?php if ( $row_rsList['new_cases']) { ?>style="font-weight: bold; text-align:right;background-color:#FFEEAA;color:black;"<?php } ?>><?php if ( $row_rsList['new_cases']) { ?>+<?php echo $row_rsList['new_cases']; ?><?php } ?>&nbsp;</td><td><?php echo $row_rsList['total_deaths']; ?></td><td <?php if ( $row_rsList['new_deaths']) { ?>style="font-weight: bold; text-align:right;background-color:red; color:white"<?php } ?>><?php if ( $row_rsList['new_deaths']) { ?>+<?php echo $row_rsList['new_deaths']; ?><?php } ?>&nbsp;</td><td><?php echo $row_rsList['total_recovered']; ?></td><td><?php echo $row_rsList['active_cases']; ?></td><td><?php echo $row_rsList['serious_critical']; ?></td><td><?php echo $row_rsList['totalcases_1mpop']; ?></td><td><?php echo $row_rsList['totaldeaths_1mpop']; ?></td>
     </tr>
   	    <?php } while ($row_rsList = mysql_fetch_assoc($rsList)); ?>
